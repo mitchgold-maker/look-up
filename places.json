@@ -1,0 +1,71 @@
+{
+ "state-college-pa": {
+  "name": "State College",
+  "note": "Drive times are rough. Parks can close day-use areas at dusk, so check hours before you go.",
+  "spots": [
+   {
+    "caution": "State College's lights sit right below, so faint stars and faint aurora get washed out.",
+    "drive": "about 15 min",
+    "name": "Jo Hays Vista",
+    "types": [
+     "aurora",
+     "sunset",
+     "moon",
+     "stars",
+     "meteor"
+    ],
+    "url": "https://www.google.com/maps/search/?api=1&query=Jo+Hays+Vista+Pennsylvania",
+    "why": "Roadside overlook on PA-26 at the top of Tussey Mountain, with a wide open view north and west over the valley. The closest place with a clear northern horizon."
+   },
+   {
+    "caution": "Check park hours for after-dark access.",
+    "drive": "about 35 min",
+    "name": "Black Moshannon State Park",
+    "types": [
+     "stars",
+     "meteor",
+     "aurora",
+     "moon"
+    ],
+    "url": "https://www.google.com/maps/search/?api=1&query=Black+Moshannon+State+Park",
+    "why": "Up on the plateau northwest of town and well away from its glow. The lake gives you an open sky and a reflection."
+   },
+   {
+    "caution": "Check park hours for after-dark access.",
+    "drive": "about 35 min",
+    "name": "Bald Eagle State Park",
+    "types": [
+     "sunset",
+     "moon",
+     "stars",
+     "meteor"
+    ],
+    "url": "https://www.google.com/maps/search/?api=1&query=Bald+Eagle+State+Park+Pennsylvania",
+    "why": "A long lake with wide horizons in several directions. Good when you want the Moon or the sunset over water."
+   },
+   {
+    "caution": "Ridges on both sides cut off the low horizon, so it is poor for aurora.",
+    "drive": "about 35 min",
+    "name": "Greenwood Furnace State Park",
+    "types": [
+     "stars",
+     "meteor"
+    ],
+    "url": "https://www.google.com/maps/search/?api=1&query=Greenwood+Furnace+State+Park",
+    "why": "A sheltered valley south of the ridges with very little light around it."
+   },
+   {
+    "caution": "White light is restricted on the field. Bring a red flashlight and arrive before dark.",
+    "drive": "about 2 hours",
+    "name": "Cherry Springs State Park",
+    "types": [
+     "stars",
+     "meteor",
+     "aurora"
+    ],
+    "url": "https://www.google.com/maps/search/?api=1&query=Cherry+Springs+State+Park",
+    "why": "A certified International Dark Sky Park in Potter County with a public night-sky viewing area. Worth the trip for a big shower peak or a strong aurora forecast."
+   }
+  ]
+ }
+}

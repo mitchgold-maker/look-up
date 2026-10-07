@@ -1,0 +1,473 @@
+[
+ {
+  "checkedLabel": "Tue Oct 6, 4:53 PM ET",
+  "date": "2026-10-06",
+  "events": [
+   {
+    "chance": 88,
+    "conds": [
+     {
+      "name": "Clear sky",
+      "note": "Every forecast block from 8 PM to 5 AM is in the lowest cloud band, so nothing should block the view.",
+      "score": 0.97,
+      "val": "About 3% cloud all night"
+     },
+     {
+      "name": "Low moonlight",
+      "note": "The waning crescent rises in the small hours, so the evening and midnight sky is fully dark.",
+      "score": 0.95,
+      "val": "Moon 19% lit, not up in the evening"
+     },
+     {
+      "name": "Clear air",
+      "note": "Near the clear end of the scale all night, which helps faint stars and the Milky Way away from town.",
+      "score": 0.95,
+      "val": "Transparency 2 on a 1-8 scale"
+     }
+    ],
+    "facts": [
+     {
+      "cat": "Tonight",
+      "text": "The air is very dry and clear but turbulent, with seeing at 6 on a scale where 8 is worst. Expect strong twinkling near the horizon. It is a good night for wide views and the Milky Way, and a soft one for telescope detail on Saturn until the air steadies a little toward dawn."
+     },
+     {
+      "cat": "Before dawn",
+      "text": "EarthSky notes that shortly before sunrise on October 7 and 8 the thin waning Moon glows in the east below Jupiter and Regulus, a day after the Moon passed in front of Jupiter."
+     }
+    ],
+    "look": {
+     "bearing": 135,
+     "label": "Southeast after dark, for Saturn"
+    },
+    "params": {
+     "clarity": 4,
+     "cloud": 3,
+     "moon": 19,
+     "planets": [
+      "Saturn",
+      "Jupiter",
+      "Mars"
+     ]
+    },
+    "readings": [
+     {
+      "name": "Cloud cover, 8 PM to 5 AM",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "Band 1 of 9, about 3%"
+     },
+     {
+      "name": "Transparency",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "2 (scale 1 clear to 8 murky)"
+     },
+     {
+      "name": "Seeing",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "6 easing to 5 by dawn (scale 1 steady to 8 turbulent)"
+     },
+     {
+      "name": "Temperature overnight",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "7 C at 8 PM falling to 4 C by 5 AM"
+     },
+     {
+      "name": "Moon",
+      "source": "computed from the lunar cycle",
+      "value": "19% lit, waning crescent"
+     },
+     {
+      "name": "Saturn",
+      "source": "Space.com planet guide",
+      "url": "https://www.space.com/stargazing/jupiter-disappears-behind-the-moon-saturn-shines-at-its-best-and-mars-meets-the-beehive-october-2026-planet-guide",
+      "value": "Opposition October 4, risen by the end of twilight"
+     }
+    ],
+    "research": [
+     {
+      "note": "Where each planet is this month, including Saturn just past opposition.",
+      "source": "Space.com",
+      "title": "October 2026 planet guide",
+      "url": "https://www.space.com/stargazing/jupiter-disappears-behind-the-moon-saturn-shines-at-its-best-and-mars-meets-the-beehive-october-2026-planet-guide"
+     },
+     {
+      "note": "The source for the Moon, Jupiter and Regulus grouping before sunrise.",
+      "source": "EarthSky",
+      "title": "Visible planets and night sky guide",
+      "url": "https://earthsky.org/astronomy-essentials/visible-planets-tonight-mars-jupiter-venus-saturn/"
+     }
+    ],
+    "series": [
+     {
+      "label": "Cloud cover tonight",
+      "max": 100,
+      "points": [
+       {
+        "t": "8 PM",
+        "v": 3
+       },
+       {
+        "t": "11 PM",
+        "v": 3
+       },
+       {
+        "t": "2 AM",
+        "v": 3
+       },
+       {
+        "t": "5 AM",
+        "v": 3
+       }
+      ],
+      "source": "7Timer, band midpoint",
+      "unit": "%"
+     },
+     {
+      "label": "Atmospheric seeing (lower is steadier)",
+      "max": 8,
+      "points": [
+       {
+        "t": "8 PM",
+        "v": 6
+       },
+       {
+        "t": "11 PM",
+        "v": 6
+       },
+       {
+        "t": "2 AM",
+        "v": 6
+       },
+       {
+        "t": "5 AM",
+        "v": 5
+       }
+      ],
+      "source": "7Timer",
+      "unit": "1-8 scale"
+     }
+    ],
+    "sub": "Clear from dusk to dawn with no Moon until the small hours. Saturn is the best target: a bright, steady point in the east as twilight fades, moving into the southeast. The odds are high because cloud, moonlight and haze are all low at once.",
+    "title": "Great night for stargazing",
+    "type": "stars"
+   },
+   {
+    "chance": 20,
+    "conds": [
+     {
+      "name": "Some cloud to catch the light",
+      "note": "A partly cloudy sky gives the best colour. A nearly empty sky gives a smooth gradient and little else.",
+      "score": 0.3,
+      "val": "About 3% cloud at sunset"
+     },
+     {
+      "name": "Dry at sunset",
+      "note": "No rain to grey out the horizon.",
+      "score": 0.95,
+      "val": "No precipitation forecast"
+     },
+     {
+      "name": "Forecast confidence",
+      "note": "This uses total cloud only, with no information on cloud height, so treat it as a rough guide.",
+      "score": 0.7,
+      "val": "Rough guide"
+     }
+    ],
+    "facts": [
+     {
+      "cat": "Tonight",
+      "text": "With the air this clear and dry, the best part of the evening is likely after the sun is down: watch the east for Saturn appearing as the twilight fades."
+     }
+    ],
+    "look": {
+     "bearing": 265,
+     "label": "West, at sunset"
+    },
+    "params": {
+     "highCloud": 3
+    },
+    "readings": [
+     {
+      "name": "Cloud cover, 5 PM and 8 PM",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "Band 1 of 9, about 3%"
+     },
+     {
+      "name": "Precipitation",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "None"
+     },
+     {
+      "name": "Humidity",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "Very low this afternoon"
+     }
+    ],
+    "research": [
+     {
+      "note": "The cloud and precipitation forecast behind these odds.",
+      "source": "7Timer",
+      "title": "7Timer astronomical forecast",
+      "url": "https://www.7timer.info/"
+     }
+    ],
+    "series": [
+     {
+      "label": "Cloud cover this evening",
+      "max": 100,
+      "points": [
+       {
+        "t": "2 PM",
+        "v": 3
+       },
+       {
+        "t": "5 PM",
+        "v": 3
+       },
+       {
+        "t": "8 PM",
+        "v": 3
+       }
+      ],
+      "source": "7Timer, band midpoint",
+      "unit": "%"
+     }
+    ],
+    "sub": "The sky is forecast almost cloudless at sunset, so expect a clean orange glow on the western horizon without the lit-up clouds that make a sunset vivid. Colour needs some cloud to catch the light, and there is very little.",
+    "title": "Plain, clear sunset likely",
+    "type": "sunset"
+   },
+   {
+    "chance": 3,
+    "conds": [
+     {
+      "name": "Storm strong enough for your latitude",
+      "note": "This is the forecast peak for tonight's dark hours, 8 PM to 2 AM. At this level the aurora stays far north of Pennsylvania.",
+      "score": 0.03,
+      "val": "Kp 2.67, need 7"
+     },
+     {
+      "name": "Clear sky to the north",
+      "note": "Clear all night, so cloud is not the limit.",
+      "score": 0.97,
+      "val": "About 3% cloud"
+     },
+     {
+      "name": "Low moonlight",
+      "note": "A thin crescent that rises late. The sky is dark.",
+      "score": 0.96,
+      "val": "Moon 19% lit"
+     }
+    ],
+    "facts": [
+     {
+      "cat": "Tonight",
+      "text": "NOAA's forecast issued October 6 says no G1 or greater geomagnetic storms are expected through October 8. The highest value in the three-day table, Kp 4, was in the early hours of October 6 and activity declines from there."
+     }
+    ],
+    "look": {
+     "bearing": 0,
+     "label": "North, low on the horizon"
+    },
+    "params": {
+     "cloud": 3,
+     "kp": 2.67,
+     "moon": 19
+    },
+    "readings": [
+     {
+      "name": "Peak Kp, tonight's dark hours",
+      "source": "NOAA SWPC Kp forecast",
+      "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json",
+      "value": "2.67"
+     },
+     {
+      "name": "Greatest expected Kp, Oct 6-8",
+      "source": "NOAA SWPC 3-day forecast",
+      "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt",
+      "value": "4.00, below NOAA storm levels"
+     },
+     {
+      "name": "Storm watch",
+      "source": "NOAA SWPC 3-day forecast",
+      "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt",
+      "value": "None. No G1 or greater storms expected"
+     },
+     {
+      "name": "Cloud cover, 8 PM to 5 AM",
+      "source": "7Timer astro forecast",
+      "url": "https://www.7timer.info/",
+      "value": "About 3%"
+     },
+     {
+      "name": "Moon",
+      "source": "computed from the lunar cycle",
+      "value": "19% lit, waning crescent"
+     }
+    ],
+    "research": [
+     {
+      "note": "Issued October 6, 0030 UTC. The source for tonight's Kp outlook.",
+      "source": "NOAA Space Weather Prediction Center",
+      "title": "3-day space weather forecast",
+      "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+     }
+    ],
+    "series": [
+     {
+      "label": "Kp forecast, 3-hour blocks",
+      "max": 9,
+      "points": [
+       {
+        "t": "2 PM",
+        "v": 2.67
+       },
+       {
+        "t": "5 PM",
+        "v": 2.67
+       },
+       {
+        "t": "8 PM",
+        "v": 2.67
+       },
+       {
+        "t": "11 PM",
+        "v": 2.67
+       },
+       {
+        "t": "2 AM",
+        "v": 2.33
+       },
+       {
+        "t": "5 AM",
+        "v": 2
+       },
+       {
+        "t": "8 AM",
+        "v": 1.67
+       }
+      ],
+      "source": "NOAA SWPC",
+      "threshold": 7,
+      "thresholdLabel": "needed at 41N",
+      "unit": "Kp"
+     },
+     {
+      "label": "Cloud cover tonight",
+      "max": 100,
+      "points": [
+       {
+        "t": "8 PM",
+        "v": 3
+       },
+       {
+        "t": "11 PM",
+        "v": 3
+       },
+       {
+        "t": "2 AM",
+        "v": 3
+       },
+       {
+        "t": "5 AM",
+        "v": 3
+       }
+      ],
+      "source": "7Timer, band midpoint",
+      "unit": "%"
+     }
+    ],
+    "sub": "Kp peaks near 2.7 this evening and you need about 7 at this latitude. The sky is clear and dark, so the only thing missing is the storm itself.",
+    "title": "Aurora very unlikely tonight",
+    "type": "aurora"
+   }
+  ],
+  "lat": 40.79,
+  "lon": -77.86,
+  "next": {
+   "date": "2026-10-08",
+   "name": "Draconids meteor shower peak"
+  },
+  "pick": "Shortly before sunrise on Wednesday, look low in the east for the thin crescent Moon sitting below bright Jupiter and the star Regulus. If you would rather stay up than get up, Saturn is the steady point in the southeast after dark.",
+  "place": "State College, PA",
+  "placeId": "state-college-pa",
+  "quiz": {
+   "answer": 0,
+   "explain": "Seeing is about turbulence in the air: poor seeing makes stars twinkle and smears fine detail in a telescope, while transparency is the separate measure of how clear the air is.",
+   "options": [
+    "How steady the air is, which sets how much stars twinkle and blur",
+    "How much cloud is overhead",
+    "How dark the sky is away from city lights",
+    "How much moisture and haze is dimming faint stars"
+   ],
+   "q": "Tonight's forecast says the air is very clear but the 'seeing' is poor. What does seeing measure?"
+  },
+  "sky": {
+   "items": [
+    {
+     "name": "Saturn",
+     "note": "Two days past its October 4 opposition, so it is already up when the sky gets dark",
+     "when": "All night",
+     "where": "East as twilight fades, climbing through the southeast"
+    },
+    {
+     "name": "Jupiter",
+     "note": "The thin Moon glows below it shortly before sunrise on October 7 and 8",
+     "when": "Before dawn",
+     "where": "East, near the star Regulus"
+    },
+    {
+     "name": "Mars",
+     "note": "Heading for the Beehive star cluster, which it crosses on the morning of October 11",
+     "when": "After 2:30 AM",
+     "where": "East-northeast, above Jupiter"
+    },
+    {
+     "name": "Venus and Mercury",
+     "note": "Both are hard to catch from this latitude. Venus is dropping toward the sun and is lost from view for several weeks",
+     "when": "Just after sunset",
+     "where": "Very low in the west-southwest"
+    }
+   ],
+   "moon": {
+    "lit": 19,
+    "note": "Rises in the small hours, so the evening sky stays dark. Down to about 17% lit by dawn.",
+    "phase": "Waning crescent"
+   }
+  },
+  "summary": "Clear and dark from dusk to dawn, with Saturn up all night and a thin Moon under Jupiter before sunrise; no aurora expected.",
+  "upcoming": [
+   {
+    "date": "Oct 8-9",
+    "name": "Draconids peak",
+    "note": "A minor shower, around five an hour under ideal conditions, best in the evening right after dark. The sky is almost moonless, with new Moon on October 10."
+   },
+   {
+    "date": "Oct 11",
+    "name": "Mars crosses the Beehive cluster",
+    "note": "A binocular sight in the east-northeast before dawn, after Mars rises around 2:30 AM."
+   },
+   {
+    "date": "Oct 21-22",
+    "name": "Orionids peak",
+    "note": "The Moon is 74% lit and waxing, per the American Meteor Society, so the faint ones will be hidden until it sets."
+   },
+   {
+    "date": "Oct 23",
+    "name": "Saturn near the Moon",
+    "note": "Saturn sits close to the waxing gibbous Moon in the evening sky."
+   },
+   {
+    "date": "Nov 16-17",
+    "name": "Leonids peak",
+    "note": "Moon 39% lit, a waxing crescent, per the American Meteor Society."
+   }
+  ]
+ }
+]
