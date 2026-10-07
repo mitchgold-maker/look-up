@@ -1,7 +1,7 @@
 [
   {
     "date": "2026-10-07",
-    "checkedLabel": "Wed Oct 7, 1:01 PM ET",
+    "checkedLabel": "Wed Oct 7, 2:02 PM ET",
     "place": "State College, PA",
     "placeId": "state-college-pa",
     "lat": 40.79,
@@ -144,12 +144,24 @@
             "name": "Moon",
             "value": "13% lit, waning crescent",
             "source": "Calculated from the synodic month"
+          },
+          {
+            "name": "Cloud cover 5 PM to 2 AM",
+            "value": "0%",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&hourly=cloud_cover,cloud_cover_low,cloud_cover_high&timezone=America/New_York&forecast_days=2"
+          },
+          {
+            "name": "NWS forecast tonight",
+            "value": "Mostly clear, low around 53",
+            "source": "NWS",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast"
           }
         ],
         "facts": [
           {
             "cat": "Tonight",
-            "text": "The clear window runs from dusk to about 2 AM. After that 7Timer shows cloud building to roughly 62% near 5 AM, so the predawn Jupiter and Moon pairing may be partly hidden."
+            "text": "Three forecasts agree on a clear evening. 7Timer brings cloud to about 62% near 5 AM, while Open-Meteo shows only a brief patch of low cloud around 4 AM, so the predawn Jupiter and Moon pairing may still be visible."
           },
           {
             "cat": "New research",
