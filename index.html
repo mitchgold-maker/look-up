@@ -5,8 +5,8 @@
    Under it, one line of odds, then closed sections a curious reader opens to go deeper. */
 :root{
   color-scheme:dark;
-  --night:#090c1a; --panel:#111630; --ink:#e9ecf7; --dim:#98a0c0; --line:#262d52;
-  --accent:#6ff2b0; --good:#7be0a5; --warn:#f2c56b; --bad:#ff8f8f;
+  --night:#05070d; --panel:#121725; --ink:#ede9e1; --dim:#9ba2b3; --line:#222839;
+  --accent:#e9cf98; --good:#9fd4a9; --warn:#e8c47e; --bad:#e49b8f;
   --display:"Syne","Trebuchet MS",sans-serif;
   --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
   --mono:"DM Mono",ui-monospace,Menlo,monospace;
@@ -109,6 +109,51 @@ a{color:var(--accent)}
 .badges li.got::before{content:"\2713\00a0";color:var(--accent)}
 .sky{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px 34px;list-style:none;margin:0;padding:0}
 .sky small{display:block;color:var(--dim);font-size:14px}
+/* Motion: a fixed sky behind the page, reveals on scroll, smooth sections. Off for reduced motion. */
+:root{interpolate-size:allow-keywords}
+#bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;pointer-events:none}
+.progress{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(var(--sp,0));background:linear-gradient(90deg,transparent,var(--accent));box-shadow:0 0 12px var(--accent);z-index:5;pointer-events:none}
+h1{text-shadow:0 0 28px rgba(233,207,152,.18)}
+h1 .ch{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*60ms)}
+.view{border-radius:14px;transform:scale(calc(1 - var(--q,0)*.06));opacity:calc(1 - var(--q,0)*.35);box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.alert{transform:translateY(calc(var(--q,0)*-40px))}
+.chips button,.seg button,.btn,.quiz button{transition:background .35s,color .35s,border-color .35s,transform .25s}
+.chips button:active,.btn:active,.quiz button:active{transform:scale(.96)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.chance b{display:inline-block;text-shadow:0 0 30px color-mix(in srgb,var(--accent) 45%,transparent)}
+details::details-content{block-size:0;overflow:clip;transition:block-size .55s cubic-bezier(.2,.7,.2,1),content-visibility .55s allow-discrete}
+details[open]::details-content{block-size:auto}
+summary::before{transition:transform .4s}
+details[open]>summary::before{transform:rotate(180deg)}
+summary{transition:color .3s}summary:hover{color:var(--accent)}
+details[open] .body>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+details[open] .body>*:nth-child(2){animation-delay:.08s}details[open] .body>*:nth-child(3){animation-delay:.16s}
+details[open] .conds li,details[open] .facts li,details[open] .links li,details[open] .spots li,details[open] .sky li{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+details[open] li:nth-child(2){animation-delay:.07s}details[open] li:nth-child(3){animation-delay:.14s}details[open] li:nth-child(4){animation-delay:.21s}details[open] li:nth-child(5){animation-delay:.28s}details[open] li:nth-child(n+6){animation-delay:.35s}
+details[open] .mark{animation:pop .55s .25s cubic-bezier(.3,1.6,.5,1) both}
+details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;animation:grow .9s .15s cubic-bezier(.2,.7,.2,1) both}
+.view canvas.real{cursor:grab;touch-action:pan-y}.view canvas.real:active{cursor:grabbing}
+.dragHint{position:absolute;right:16px;top:16px;font:500 12px var(--mono);color:var(--ink);background:rgba(9,12,26,.6);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;pointer-events:none;animation:nudge 2.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}
+.btn[aria-pressed="false"]{opacity:.6}
+.stage-spacer{display:none}
+@media (min-width:641px){
+  .stage{position:sticky;top:14px;z-index:1}
+  .stage-spacer{display:block;height:170px}
+  .alert{cursor:pointer;width:calc(min(390px,100% - 32px) - var(--col,0)*130px);padding:calc(13px - var(--col,0)*5px) 16px calc(14px - var(--col,0)*6px);transition:width .3s,padding .3s}
+  .alert .sub{max-height:calc((1 - var(--col,0))*10em);opacity:calc(1 - var(--col,0)*1.6);overflow:hidden;transition:max-height .3s,opacity .3s}
+  .alert .title{font-size:calc(18px - var(--col,0)*3px);transition:font-size .3s}
+  .alert .app{margin-bottom:calc(6px - var(--col,0)*4px)}
+  .alert.open{--col:0}
+}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after,details::details-content{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}.view,.alert{transform:none;opacity:1}
+}
 @media (max-width:640px){
   body{padding-inline:16px;padding-block:18px 40px}
   .view{height:min(118vw,540px)}
@@ -133,6 +178,7 @@ a{color:var(--accent)}
 }
 </style>
 
+<canvas id="bg" aria-hidden="true"></canvas><div class="progress" aria-hidden="true"></div>
 <div class="wrap">
   <header>
     <h1>Look Up</h1>
@@ -147,20 +193,24 @@ a{color:var(--accent)}
     <div class="chips" id="chips" role="group" aria-label="Sky event"></div>
   </div>
 
+  <div class="stage-wrap">
   <div class="stage">
-    <div class="view"><canvas id="sky" aria-label="Generative animation of the selected sky event"></canvas></div>
-    <div class="alert" aria-live="polite">
-      <div class="app"><span>Look Up</span><b id="aChance"></b></div>
+    <div class="view"><canvas id="sky" aria-label="Animation of the selected sky event"></canvas><span class="dragHint" id="dragHint" hidden>Drag to look around</span></div>
+    <div class="alert" aria-live="polite" title="Tap to expand">
+      <div class="app"><span id="aApp">Look Up</span><b id="aChance"></b></div>
       <p class="title" id="aTitle"></p>
       <p class="sub" id="aSub"></p>
     </div>
     <div class="foot">
       <span class="edition" id="edition"></span>
       <span class="btns">
+        <button class="btn ghost" id="lines" type="button" aria-pressed="true" hidden>Constellations</button>
         <button class="btn ghost" id="next" type="button">Next style</button>
         <button class="btn" id="again" type="button">New edition</button>
       </span>
     </div>
+  </div>
+  <div class="stage-spacer" aria-hidden="true"></div>
   </div>
 
   <p class="chance"><b id="pct"></b><span id="pctNote"></span></p>
@@ -200,31 +250,26 @@ const HN=['8 PM','9 PM','10 PM','11 PM','12 AM','1 AM','2 AM','3 AM','4 AM','5 A
 const SR=(label,unit,labels,vals,o={})=>({label,unit,points:labels.map((t,i)=>({t,v:Math.round(vals[i]*10)/10})),...o});
 
 const TYPES={
-  aurora:{label:'Northern lights',accent:'#6ff2b0'},
-  meteor:{label:'Meteor shower',accent:'#ffd98a'},
-  rainbow:{label:'Rainbow',accent:'#ff9d8c'},
-  halo:{label:'Moon halo',accent:'#b9d4ff'},
-  storm:{label:'Lightning',accent:'#c9a8ff'},
-  stars:{label:'Stargazing',accent:'#a9b8ff'},
-  moon:{label:'Moon',accent:'#f1ead0'},
-  sunset:{label:'Sunset',accent:'#ffb36b'},
-  iss:{label:'Space station',accent:'#8fe3ff'},
-  snow:{label:'Snow',accent:'#d6ecff'}
+  aurora:{label:'Northern lights',accent:'#86d9a8'},
+  meteor:{label:'Meteor shower',accent:'#efd69c'},
+  rainbow:{label:'Rainbow',accent:'#e7a796'},
+  halo:{label:'Moon halo',accent:'#c3d3ee'},
+  storm:{label:'Lightning',accent:'#bba9df'},
+  stars:{label:'Stargazing',accent:'#c9d3f0'},
+  moon:{label:'Moon',accent:'#ece4cc'},
+  sunset:{label:'Sunset',accent:'#f0ad78'},
+  iss:{label:'Space station',accent:'#acd7ec'},
+  snow:{label:'Snow',accent:'#dbe8f4'},
+  fog:{label:'Valley fog',accent:'#dcd8d2'},
+  frost:{label:'Frost',accent:'#cfe3ee'},
+  comet:{label:'Comet',accent:'#bfe8dc'},
+  eclipse:{label:'Eclipse',accent:'#e8a07a'}
 };
 const STYLES=[
   {id:'natural',n:'Natural',why:'drawn straight'},
   {id:'long',n:'Long exposure',buf:'full',why:'frames stack like a shutter left open, so anything bright leaves a trail'},
   {id:'bloom',n:'Bloom',buf:'full',why:'a blurred copy is added back so bright parts glow'},
-  {id:'film',n:'35mm film',why:'warm tone, grain and dark corners'},
-  {id:'cyan',n:'Cyanotype',mono:1,why:'the blue print process John Herschel invented in 1842'},
-  {id:'plate',n:'Glass plate',mono:1,why:'a negative on paper, the way observatories stored the sky for a century'},
-  {id:'scope',n:'Phosphor scope',mono:1,why:'green phosphor and scanlines, like an old instrument display'},
-  {id:'inferno',n:'False color, inferno',buf:'half',mono:1,why:'brightness mapped to a heat scale, as in scientific imaging'},
-  {id:'viridis',n:'False color, viridis',buf:'half',mono:1,why:'brightness mapped to a purple-to-yellow scale'},
-  {id:'ice',n:'False color, ice',buf:'half',mono:1,why:'brightness mapped to a cold blue scale'},
-  {id:'print',n:'Screenprint',buf:'half',sc:1,why:'brightness squeezed into six flat steps, like layered inks'},
-  {id:'contour',n:'Contour map',buf:'half',sc:1,why:'lines join points of equal brightness, like a topographic map of the sky'},
-  {id:'ridge',n:'Ridgeline plot',buf:'half',why:'each row of the picture becomes a line that rises where the sky is bright'}
+  {id:'film',n:'35mm film',why:'warm tone, grain and dark corners'}
 ];
 const GROUNDS=[['ridge','Ridgeline'],['pines','Pine line'],['lake','Lakeshore'],['town','Rooftops']];
 const FACTS={
@@ -314,6 +359,30 @@ const FACTS={
     ['By the numbers','Ten inches of snow usually melts down to about one inch of water, but the ratio runs from 5 to 1 for wet snow to 30 to 1 for dry powder.'],
     ['What to look for','It goes quiet when it snows because fresh snow is full of air pockets that absorb sound.'],
     ['History','Wilson Bentley, a Vermont farmer, took the first photograph of a single snow crystal in 1885 and went on to capture more than 5,000.']
+  ],
+  fog:[
+    ['How it works','On clear, calm nights the ground loses heat to the sky and chills the air touching it. When that air cools to its dew point, the water vapor condenses into fog.'],
+    ['Why valleys','Cold air is denser than warm air, so overnight it drains downhill and pools in low ground. The ridge-and-valley country of central Pennsylvania is built for it.'],
+    ['What to look for','From a ridgetop at sunrise the valleys can look like a lake of cloud with the ridges standing out like islands. Forecasters call it a valley inversion.'],
+    ['How it ends','Morning sun warms the ground, which warms the air from below. The fog thins from the edges and lifts, usually within a few hours of sunrise.']
+  ],
+  frost:[
+    ['How it works','Frost forms when a surface drops below freezing and water vapor turns straight into ice on it, skipping the liquid stage.'],
+    ['Why the forecast low can mislead','Thermometers sit about 2 m above the ground. On clear, calm nights grass and car roofs can run several degrees colder, so frost can form with an official low in the mid 30s °F.'],
+    ['What to look for','Feathery fern frost on windows grows outward from tiny scratches and specks of dust, which give the first crystals somewhere to start.'],
+    ['Hoar frost','In humid air the ice can keep growing into long interlocking needles and plates, coating every twig and fence wire.']
+  ],
+  comet:[
+    ['How it works','A comet’s nucleus is a few kilometers of ice and dust. Near the Sun the ice turns to gas, releasing a glowing cloud called the coma and the tails.'],
+    ['Two tails','The dust tail is curved and white, following the comet’s path. The gas tail is straight and often bluish, pushed directly away from the Sun by the solar wind.'],
+    ['What to look for','Most comets look like a small fuzzy star. Binoculars help more than a telescope, because they show the tail and coma together.'],
+    ['History','Edmond Halley showed that the comets of 1531, 1607 and 1682 were one object and predicted its return in 1758. It came back on schedule, after his death.']
+  ],
+  eclipse:[
+    ['Lunar eclipses','They only happen at full Moon, when the Sun, Earth and Moon line up. Anyone on the night side of Earth can see one.'],
+    ['Why the Moon turns red','Earth’s atmosphere bends a little sunlight into its shadow. Blue light is scattered out on the way, so the Moon is lit by the red of every sunrise and sunset on Earth at once.'],
+    ['Solar safety','Only look at a partly covered Sun through certified ISO 12312-2 eclipse glasses or a solar filter. Sunglasses are not safe.'],
+    ['By the numbers','The Danjon scale rates how dark a total lunar eclipse looks, from 0 (nearly invisible) to 4 (bright copper orange).']
   ]
 };
 const LINKS={
@@ -326,18 +395,28 @@ const LINKS={
   moon:[['Moon','https://science.nasa.gov/moon/','NASA Science','Phases, eclipses and current missions.']],
   sunset:[['The colors of sunset and twilight','https://www.spc.noaa.gov/publications/corfidi/sunset/','NOAA Storm Prediction Center','A forecaster explains what makes a sunset vivid.']],
   iss:[['Spot the Station','https://spotthestation.nasa.gov/','NASA','Pass times for your location.']],
-  snow:[['Snow crystals','https://www.snowcrystals.com/','Kenneth Libbrecht, Caltech','The physics of how each shape forms, with photographs.']]
+  snow:[['Snow crystals','https://www.snowcrystals.com/','Kenneth Libbrecht, Caltech','The physics of how each shape forms, with photographs.']],
+  fog:[['NWS State College forecast office','https://www.weather.gov/ctp/','National Weather Service','Local forecasts and dense fog advisories for central Pennsylvania.']],
+  frost:[['NWS State College forecast office','https://www.weather.gov/ctp/','National Weather Service','Frost and freeze advisories during the growing season.']],
+  comet:[['Comets','https://science.nasa.gov/solar-system/comets/','NASA','What comets are made of and where they come from.']],
+  eclipse:[['Eclipses','https://science.nasa.gov/eclipses/','NASA','Upcoming solar and lunar eclipses and how to watch safely.'],['NASA Eclipse Web Site','https://eclipse.gsfc.nasa.gov/','NASA Goddard','Eclipse predictions and maps by Fred Espenak.']]
 };
 const SHOWERS=[
   {n:'Orionids',c:'Orion',v:66,z:20,p:'Halley’s Comet'},
   {n:'Perseids',c:'Perseus',v:59,z:100,p:'Comet Swift–Tuttle'},
   {n:'Geminids',c:'Gemini',v:35,z:150,p:'asteroid Phaethon'},
-  {n:'Leonids',c:'Leo',v:71,z:15,p:'Comet Tempel–Tuttle'}
+  {n:'Leonids',c:'Leo',v:71,z:15,p:'Comet Tempel–Tuttle'},
+  {n:'Draconids',c:'Draco',v:20,z:10,p:'Comet 21P/Giacobini–Zinner'},
+  {n:'Lyrids',c:'Lyra',v:49,z:18,p:'Comet Thatcher'}
 ];
 
-const LOOKS={aurora:[0,'North, low on the horizon'],meteor:[90,'The whole sky. The radiant climbs in the east'],rainbow:[90,'Opposite the sun'],halo:[180,'At the Moon'],storm:[180,'South, toward the storm'],stars:[null,'Straight up, away from town glow'],iss:[315,'Northwest first, then overhead'],moon:[100,'East, where it rises'],sunset:[270,'West'],snow:[null,'Out any window']};
-const GENERIC={aurora:'Anywhere with a clear, dark view to the north. Put town lights behind you.',meteor:'The darkest open sky you can reach. Lie back: you want the whole sky, not one direction.',rainbow:'Any open view opposite the sun. Do not drive anywhere, it will be gone before you arrive.',halo:'Anywhere you can see the Moon. Step away from streetlights.',storm:'Indoors or in a car with a view toward the storm. Never an open field or a ridge top.',stars:'As far from town glow as you can get, with a wide open sky.',iss:'Anywhere with an open sky. It is bright enough to see from the middle of town.',moon:'A clear view to the horizon where it rises. Water or a ridge line in front makes it better.',sunset:'An open view west, ideally over water or from high ground.',snow:'Your own window.'};
+const LOOKS={fog:[90,'Down into the valleys, from a ridge at sunrise'],frost:[null,'Lawns, roofs and windshields at dawn'],comet:[290,'Low in the west-northwest after dusk'],eclipse:[135,'Toward the Moon'],aurora:[0,'North, low on the horizon'],meteor:[90,'The whole sky. The radiant climbs in the east'],rainbow:[90,'Opposite the sun'],halo:[180,'At the Moon'],storm:[180,'South, toward the storm'],stars:[null,'Straight up, away from town glow'],iss:[315,'Northwest first, then overhead'],moon:[100,'East, where it rises'],sunset:[270,'West'],snow:[null,'Out any window']};
+const GENERIC={fog:'A ridgetop overlook above the valley at sunrise. You want to look down on the fog, not stand in it.',frost:'Any open lawn, field or parked car before the sun reaches it.',comet:'Somewhere dark with a low, open horizon toward the comet. Bring binoculars.',eclipse:'Anywhere with a clear view toward the Moon or Sun. Town lights matter little for a bright eclipse.',aurora:'Anywhere with a clear, dark view to the north. Put town lights behind you.',meteor:'The darkest open sky you can reach. Lie back: you want the whole sky, not one direction.',rainbow:'Any open view opposite the sun. Do not drive anywhere, it will be gone before you arrive.',halo:'Anywhere you can see the Moon. Step away from streetlights.',storm:'Indoors or in a car with a view toward the storm. Never an open field or a ridge top.',stars:'As far from town glow as you can get, with a wide open sky.',iss:'Anywhere with an open sky. It is bright enough to see from the middle of town.',moon:'A clear view to the horizon where it rises. Water or a ridge line in front makes it better.',sunset:'An open view west, ideally over water or from high ground.',snow:'Your own window.'};
 const QUIZ={
+  fog:{q:'On a calm, clear night, why does fog form in valleys first?',options:['Cold air is dense and drains downhill','Valleys get more rain','Rivers give off steam','Trees breathe out fog'],answer:0,explain:'Air chilled by the cooling ground slides downslope and pools in low spots, where it reaches its dew point first.'},
+  frost:{q:'Frost can form when the thermometer reads above freezing. Why?',options:['Grass and car roofs get colder than the air','Thermometers run warm','Frost is not really ice','Wind makes frost'],answer:0,explain:'On clear, calm nights surfaces radiate heat to the sky and cool below the air temperature measured a couple of meters up.'},
+  comet:{q:'Which way does a comet’s tail point?',options:['Away from the Sun','Toward the Sun','Behind it, along its path','Toward Earth'],answer:0,explain:'Sunlight and the solar wind push the gas and dust outward, so the tail points away from the Sun whichever way the comet travels.'},
+  eclipse:{q:'Why can a lunar eclipse only happen at full Moon?',options:['Earth must sit between the Sun and Moon','The Moon is closest then','The Moon is brightest then','It is a coincidence'],answer:0,explain:'Only at full Moon is the Moon on the far side of Earth from the Sun, where Earth’s shadow falls.'},
   aurora:{q:'Why is most aurora green?',options:['Oxygen about 100 km up','Nitrogen near the ground','Ice crystals','Reflected city light'],answer:0,explain:'Oxygen atoms 100 to 150 km up give off green light when electrons from the solar wind hit them.'},
   meteor:{q:'How big is a typical meteor you can see?',options:['A grain of sand','A golf ball','A car','A house'],answer:0,explain:'Most are sand-sized. Speed, not size, makes them bright.'},
   rainbow:{q:'Where is the sun when you see a rainbow?',options:['Behind you','In front of you','Directly overhead','It does not matter'],answer:0,explain:'The bow is centered on the point directly opposite the sun.'},
@@ -355,18 +434,13 @@ let seed=(Math.random()*2**31)|0,t0=performance.now(),last=0,tip=null;
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function lut(stops){const c=mk();c.width=256;c.height=1;const x=c.getContext('2d'),g=x.createLinearGradient(0,0,256,0);stops.forEach((s,i)=>g.addColorStop(i/(stops.length-1),s));x.fillStyle=g;x.fillRect(0,0,256,1);return x.getImageData(0,0,256,1).data}
-const PAL={inferno:lut(['#000004','#1b0c41','#4a0c6b','#781c6d','#a52c60','#cf4446','#ed6925','#fb9b06','#f7d13d','#fcffa4']),
-  viridis:lut(['#440154','#482878','#3e4989','#31688e','#26828e','#1f9e89','#35b779','#6ece58','#b5de2b','#fde725']),
-  ice:lut(['#03051a','#0b1c4d','#12448a','#1a7fb5','#52b7d0','#a8e2e0','#f2fbf5'])};
-const LIFT=Uint8Array.from({length:256},(_,i)=>Math.round(255*Math.pow(i/255,.6)));
-const POST=Uint8Array.from({length:256},(_,i)=>Math.round(Math.round(Math.pow(i/255,.75)*5)/5*255));
 const grain=(()=>{const c=mk();c.width=c.height=128;const x=c.getContext('2d'),d=x.createImageData(128,128);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=70}x.putImageData(d,0,0);return main.createPattern(c,'repeat')})();
-const scan=(()=>{const c=mk();c.width=1;c.height=3;const x=c.getContext('2d');x.fillStyle='rgba(0,0,0,.38)';x.fillRect(0,2,1,1);return main.createPattern(c,'repeat')})();
+
 
 function sky(stops){const g=ctx.createLinearGradient(0,0,0,H);stops.forEach((c,i)=>g.addColorStop(i/(stops.length-1),c));ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
 function glow(px,col){ctx.shadowBlur=px*S;if(col)ctx.shadowColor=col}
-function makeStars(r,n,maxY){return Array.from({length:Math.max(0,n)},()=>({x:r()*W,y:r()*maxY,s:.4+r()*r()*1.5,p:r()*TAU,w:.5+r()*2}))}
-function drawStars(st,t,k){ctx.fillStyle='#fff';for(const s of st){ctx.globalAlpha=k*(.45+.55*Math.sin(t*s.w+s.p)**2);ctx.beginPath();ctx.arc(s.x,s.y,s.s*LW,0,TAU);ctx.fill()}ctx.globalAlpha=1}
+function makeStars(r,n,maxY){if(REAL){const a=[];a.real=1;for(let i=0;i<n*1.8;i++)a.push({az:r()*360,alt:Math.asin(r())/D,s:.3+r()*r()*.9,p:r()*TAU,w:.5+r()*2});return a}return Array.from({length:Math.max(0,n)},()=>({x:r()*W,y:r()*maxY,s:.4+r()*r()*1.5,p:r()*TAU,w:.5+r()*2}))}
+function drawStars(st,t,k){if(st.real){drawReal(st,t,k);return}ctx.fillStyle='#fff';for(const s of st){ctx.globalAlpha=k*(.45+.55*Math.sin(t*s.w+s.p)**2);ctx.beginPath();ctx.arc(s.x,s.y,s.s*LW,0,TAU);ctx.fill()}ctx.globalAlpha=1}
 function makeRain(r,n,slant){const d=Array.from({length:n},()=>({x:r()*W*1.2,y:r()*H,l:8+r()*14,v:500+r()*400}));return(dt,a)=>{ctx.strokeStyle='rgba(210,220,255,'+a+')';ctx.lineWidth=LW;ctx.beginPath();for(const p of d){p.y+=p.v*dt;p.x-=p.v*dt*slant;if(p.y>H){p.y=-20;p.x=Math.random()*W*1.2}ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+p.l*slant,p.y-p.l)}ctx.stroke()}}
 function makeGround(nz,r,kind){
   const o1=r()*200,o2=r()*200,lake=kind==='lake',hz=H*(lake?.8:kind==='town'?.9:.88);
@@ -388,10 +462,82 @@ function makeGround(nz,r,kind){
 function moonDisc(x,y,rad,k){let g=ctx.createRadialGradient(x,y,0,x,y,rad*9);g.addColorStop(0,`rgba(225,232,255,${.5*k})`);g.addColorStop(.3,`rgba(180,200,255,${.12*k})`);g.addColorStop(1,'rgba(180,200,255,0)');ctx.fillStyle=g;ctx.fillRect(x-rad*9,y-rad*9,rad*18,rad*18);
   ctx.fillStyle='#f6f4ea';ctx.beginPath();ctx.arc(x,y,rad,0,TAU);ctx.fill();ctx.fillStyle='rgba(90,100,130,.16)';[[-.3,-.25,.32],[.25,.1,.26],[-.1,.4,.2]].forEach(([a,b,c])=>{ctx.beginPath();ctx.arc(x+a*rad,y+b*rad,c*rad,0,TAU);ctx.fill()})}
 
+// Real sky. Catalog stars, planets, the Moon and the Milky Way are placed by compass direction and height
+// for the report's place and time. Scenes keep their painted look; this only decides where things sit.
+let SKYDB=null,REAL=null,view=null,showLines=true;
+const D=Math.PI/180;
+// JPL approximate Keplerian elements, J2000 values and rates per century (valid 1800-2050).
+const EL={Mercury:[[.38709927,.20563593,7.00497902,252.2503235,77.45779628,48.33076593],[3.7e-7,1.906e-5,-.00594749,149472.67411175,.16047689,-.12534081]],
+  Venus:[[.72333566,.00677672,3.39467605,181.9790995,131.60246718,76.67984255],[3.9e-6,-4.107e-5,-7.889e-4,58517.81538729,.00268329,-.27769418]],
+  Earth:[[1.00000261,.01671123,-1.531e-5,100.46457166,102.93768193,0],[5.62e-6,-4.392e-5,-.01294668,35999.37244981,.32327364,0]],
+  Mars:[[1.52371034,.0933941,1.84969142,-4.55343205,-23.94362959,49.55953891],[1.847e-5,7.882e-5,-.00813131,19140.30268499,.44441088,-.29257343]],
+  Jupiter:[[5.202887,.04838624,1.30439695,34.39644051,14.72847983,100.47390909],[-1.1607e-4,-1.3253e-4,-.00183714,3034.74612775,.21252668,.20469106]],
+  Saturn:[[9.53667594,.05386179,2.48599187,49.95424423,92.59887831,113.66242448],[-.0012506,-5.0991e-4,.00193609,1222.49362201,-.41897216,-.28867794]]};
+const PLC={Mercury:'#e8dcc8',Venus:'#fffaf0',Mars:'#ffb08a',Jupiter:'#fff3dc',Saturn:'#ffe9b8'};
+// Shower radiants, J2000 degrees, keyed by constellation.
+const RADIANTS={Orion:[95,16],Perseus:[48,58],Gemini:[112,33],Leo:[152,22],Draco:[262,54],Bootes:[230,49],Lyra:[272,33],Aquarius:[338,-1],Taurus:[52,15]};
+function helio(el,T){const[a0,e0,I0,L0,w0,O0]=el[0],[da,de,dI,dL,dw,dO]=el[1],a=a0+da*T,e=e0+de*T,I=(I0+dI*T)*D,wb=w0+dw*T,O=(O0+dO*T)*D,w=(wb-(O0+dO*T))*D;
+  const M=((((L0+dL*T)-wb)%360+540)%360-180)*D;let E=M+e*Math.sin(M);for(let k=0;k<8;k++)E-=(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));
+  const xp=a*(Math.cos(E)-e),yp=a*Math.sqrt(1-e*e)*Math.sin(E),cw=Math.cos(w),sw=Math.sin(w),co=Math.cos(O),so=Math.sin(O),ci=Math.cos(I),si=Math.sin(I);
+  return[(cw*co-sw*so*ci)*xp+(-sw*co-cw*so*ci)*yp,(cw*so+sw*co*ci)*xp+(-sw*so+cw*co*ci)*yp,sw*si*xp+cw*si*yp]}
+function eqOf([x,y,z]){const ep=23.43928*D,Y=y*Math.cos(ep)-z*Math.sin(ep),Z=y*Math.sin(ep)+z*Math.cos(ep);return[(Math.atan2(Y,x)/D+360)%360,Math.atan2(Z,Math.hypot(x,Y))/D]}
+function altazOf(ra,dec,lst,lat){const h=(lst-ra)*D,d=dec*D,p=lat*D,alt=Math.asin(Math.sin(p)*Math.sin(d)+Math.cos(p)*Math.cos(d)*Math.cos(h));
+  return[(Math.atan2(Math.sin(h),Math.cos(h)*Math.sin(p)-Math.tan(d)*Math.cos(p))/D+180)%360,alt/D]}
+function galEq(l,b){const aG=192.85948*D,dG=27.12825*D,ln=122.93192*D;l*=D;b*=D;
+  const sd=Math.sin(dG)*Math.sin(b)+Math.cos(dG)*Math.cos(b)*Math.cos(ln-l);
+  return[((aG+Math.atan2(Math.cos(b)*Math.sin(ln-l),Math.cos(dG)*Math.sin(b)-Math.sin(dG)*Math.cos(b)*Math.cos(ln-l)))/D+360)%360,Math.asin(sd)/D]}
+// The instant a local clock hour happens on a date in New York. Hours past 24 run into the next morning.
+function localAt(ds,hour){const[y,m,d]=String(ds).split('-').map(Number),f=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'});
+  for(const off of[4,5]){const dt=new Date(Date.UTC(y,m-1,d,hour+off));if(+f.format(dt)===hour%24)return dt}return new Date(Date.UTC(y,m-1,d,hour+5))}
+const todayNY=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
+const clockNY=dt=>new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'}).format(dt);
+const compass=az=>['N','NE','E','SE','S','SW','W','NW'][Math.round(((az%360)+360)%360/45)%8];
+function sunAltAz(jd,lat,lon){const T=(jd-2451545)/36525,E=helio(EL.Earth,T),[ra,dec]=eqOf([-E[0],-E[1],-E[2]]),lst=(280.46061837+360.98564736629*(jd-2451545)+lon)%360;return altazOf(ra,dec,lst,lat)}
+// Sunset or sunrise for a date: scan the evening (or morning) in 2-minute steps for the moment the Sun crosses the horizon.
+function sunEvent(ds,lat,lon,rise){const t0=localAt(ds,rise?4:15).getTime();let prev=null;
+  for(let i=0;i<=240;i++){const dt=new Date(t0+i*120000),[az,alt]=sunAltAz(dt.getTime()/864e5+2440587.5,lat,lon);if(prev!=null&&((rise&&prev<-.83&&alt>=-.83)||(!rise&&prev>-.83&&alt<=-.83)))return{when:dt,az};prev=alt}return null}
+function realSky(when,lat,lon,r){
+  const jd=when.getTime()/864e5+2440587.5,T=(jd-2451545)/36525,lst=((280.46061837+360.98564736629*(jd-2451545)+lon)%360+360)%360,A=(ra,dec)=>altazOf(ra,dec,lst,lat);
+  const stars=SKYDB.stars.map(s=>{const[az,alt]=A(s[0],s[1]);return{az,alt,m:s[2],bv:s[3],p:r()*TAU,w:.4+r()*1.6}}).filter(s=>s.alt>-3);
+  const lines=SKYDB.lines.map(l=>{const o=[];for(let i=0;i<l.length;i+=2)o.push(A(l[i],l[i+1]));return o}).filter(l=>l.some(p=>p[1]>0));
+  const E=helio(EL.Earth,T),pl=['Mercury','Venus','Mars','Jupiter','Saturn'].map(n=>{const h=helio(EL[n],T),[az,alt]=A(...eqOf([h[0]-E[0],h[1]-E[1],h[2]-E[2]]));return{n,az,alt,c:PLC[n]}});
+  const sunLon=Math.atan2(-E[1],-E[0])/D,[sra,sdec]=eqOf([-E[0],-E[1],-E[2]]),sun=A(sra,sdec);
+  // Moon, low precision (about a degree): mean longitude plus the largest periodic terms.
+  const d=jd-2451545,Lm=218.316+13.176396*d,Mm=(134.963+13.064993*d)*D,F=(93.272+13.22935*d)*D,lam=(Lm+6.289*Math.sin(Mm))*D,bet=5.128*Math.sin(F)*D;
+  const mq=A(...eqOf([Math.cos(bet)*Math.cos(lam),Math.cos(bet)*Math.sin(lam),Math.sin(bet)])),el=((lam/D-sunLon)%360+360)%360;
+  const moon={az:mq[0],alt:mq[1],lit:Math.round(50*(1-Math.cos(el*D))),wax:el<180};
+  // Milky Way: soft clumps along the galactic plane, brightest toward Sagittarius and Cygnus.
+  const mw=[];for(let l=0;l<360;l+=2)for(let k=0;k<3;k++){const b=(r()+r()+r()-1.5)*7,[az,alt]=A(...galEq(l+r()*2,b));
+    if(alt>-5)mw.push({az,alt,s:3+r()*6,w:(.25+.75*Math.max(0,Math.cos(l*D))**2+.45*Math.exp(-((((l-80+540)%360-180)/28)**2)))*(.6+r()*.4)})}
+  return{when,lat,lon,lst,A,stars,lines,pl,moon,sun:{az:sun[0],alt:sun[1]},mw,skipMoon:false};
+}
+const mwSprite=(()=>{const c=mk();c.width=c.height=64;const x=c.getContext('2d'),g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(225,220,255,1)');g.addColorStop(1,'rgba(225,220,255,0)');x.fillStyle=g;x.fillRect(0,0,64,64);return c})();
+function proj(az,alt){return[W/2+(((az-view.az)%360+540)%360-180)*view.ppd,view.hz-alt*view.ppd]}
+const bvCol=bv=>bv<0?'205,218,255':bv<.4?'238,242,255':bv<.8?'255,246,226':bv<1.2?'255,228,190':'255,205,160';
+function drawReal(st,t,k){
+  const R=REAL,dark=Math.max(0,Math.min(1,(-R.sun.alt-6)/12));k*=.35+.65*dark;
+  ctx.globalCompositeOperation='lighter';
+  for(const b of R.mw){const[x,y]=proj(b.az,b.alt),s=b.s*view.ppd*.9;if(x<-s||x>W+s||y>view.hz+s)continue;ctx.globalAlpha=.085*b.w*k*dark;ctx.drawImage(mwSprite,x-s,y-s,s*2,s*2)}
+  ctx.globalCompositeOperation='source-over';
+  if(showLines){ctx.strokeStyle=`rgba(170,190,235,${.065*k})`;ctx.lineWidth=.8*LW;ctx.globalAlpha=1;
+    for(const l of R.lines){ctx.beginPath();let px=null;for(const p of l){const[x,y]=proj(p[0],p[1]);if(px==null||Math.abs(x-px)>W*.5)ctx.moveTo(x,y);else ctx.lineTo(x,y);px=x}ctx.stroke()}}
+  for(const s of st){if(s.az==null)continue;const[x,y]=proj(s.az,s.alt);if(x<0||x>W||y>view.hz)continue;ctx.globalAlpha=k*.7*(.45+.55*Math.sin(t*s.w+s.p)**2);ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x,y,s.s*LW,0,TAU);ctx.fill()}
+  for(const s of R.stars){const[x,y]=proj(s.az,s.alt);if(x<-4||x>W+4||y>view.hz+2)continue;
+    const ext=Math.max(.2,Math.min(1,s.alt/14)),tw=s.m<2.5?.75+.25*Math.sin(t*s.w*2+s.p)*(1-ext*.6):.55+.45*Math.sin(t*s.w+s.p)**2;
+    ctx.globalAlpha=Math.min(1,k*ext*tw*Math.max(.4,1.3-s.m*.16));ctx.fillStyle=`rgb(${bvCol(s.bv)})`;const rad=Math.max(.8,(5.8-s.m)*.68)*LW;
+    ctx.beginPath();ctx.arc(x,y,rad,0,TAU);ctx.fill();if(s.m<1.6){ctx.globalAlpha*=.16;ctx.beginPath();ctx.arc(x,y,rad*3.2,0,TAU);ctx.fill()}}
+  ctx.globalAlpha=1;
+  for(const p of R.pl){if(p.alt<1)continue;const[x,y]=proj(p.az,p.alt);if(x<0||x>W)continue;glow(10,p.c);ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(x,y,(p.n==='Venus'?3.2:p.n==='Jupiter'?2.8:2.3)*LW,0,TAU);ctx.fill();ctx.shadowBlur=0;
+    if(!style.buf){ctx.fillStyle='rgba(220,228,255,.75)';ctx.font='11px ui-monospace,monospace';ctx.fillText(p.n,x+9,y+4)}}
+  if(!R.skipMoon&&R.moon.alt>0&&R.moon.lit>3){const[x,y]=proj(R.moon.az,R.moon.alt);if(x>-30&&x<W+30)moonDisc(x,y,6+R.moon.lit*.05,R.moon.lit/100)}
+}
+function compassMarks(){ctx.font='10px ui-monospace,monospace';ctx.textAlign='center';ctx.fillStyle='rgba(225,230,245,.5)';
+  for(let a=0;a<360;a+=45){const[x]=proj(a,0);if(x>8&&x<W-8)ctx.fillText(compass(a),x,view.hz+15)}ctx.textAlign='start'}
+
 function build(){
-  W=cv.clientWidth;H=cv.clientHeight;
+  W=cv.clientWidth||1;H=cv.clientHeight||1;
   const r=rng(seed),nz=noise(seed^0x9e37),P=(live&&live.params)||{},num=(k,f)=>typeof P[k]==='number'?P[k]:f();
-  const pool=type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES,pickS=Math.floor(r()*pool.length);
+  const pool=type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES,pickS=live?0:Math.floor(r()*pool.length);
   style=pool[(styleOver==null?pickS:styleOver)%pool.length];
   const gk=GROUNDS[Math.floor(r()*GROUNDS.length)];
   const sc=style.sc||.5;LW=style.buf==='half'&&sc<1?1.7:1;
@@ -404,6 +550,13 @@ function build(){
   const cMoon=()=>C('Low moonlight','Moon '+moon+'% lit',1-moon/100*.45,moon<35?'A dark sky lets the faint detail through.':'Moonlight washes out the faint parts. Bright ones still show.');
   const cloudSeries=()=>SR('Cloud cover tonight','%',HN,HN.map((_,i)=>cl(cloud+(nz(i*.7+3)-.5)*40,0,100)),{max:100});
   let info,draw;
+  // Real-sky setup: when and where this scene is, and which way the picture faces.
+  const NIGHT={stars:21,iss:20,aurora:23,meteor:25,moon:21,comet:20,eclipse:22,frost:30,halo:22},ds=live&&report&&/^\d{4}-\d\d-\d\d$/.test(report.date)?report.date:todayNY();
+  const lat=report&&typeof report.lat==='number'?report.lat:40.79,lon=report&&typeof report.lon==='number'?report.lon:-77.86;
+  const lk=live&&live.look&&typeof live.look.bearing==='number'?live.look.bearing:LOOKS[type]&&typeof LOOKS[type][0]==='number'?LOOKS[type][0]:180;
+  view={az:lk,hz:G.hz,ppd:Math.min(W/95,G.hz/46),date:ds,lat,lon,fixed:!(type in NIGHT)};
+  REAL=SKYDB&&(type in NIGHT)?realSky(localAt(ds,NIGHT[type]),lat,lon,r):null;
+  if(REAL&&(type==='moon'||(type==='eclipse'&&P.kind!=='solar'))&&REAL.moon.alt>2)view.az=REAL.moon.az;
 
   if(type==='aurora'){
     const kp=num('kp',()=>ri(r,5,8)),wind=num('wind',()=>ri(r,42,82)*10),bz=ri(r,-14,3),red=kp>=7,rays=r()<.45,quiet=kp<5?.3+kp*.1:1;
@@ -437,7 +590,8 @@ function build(){
     const stars=makeStars(r,Math.round(W*H/1900*dim),G.hz);
     const ang=-.5-r()*.5,mx=W*(.3+r()*.4);
     for(let i=0;i<Math.round(W*.5*dim);i++){const u=r()*W*1.4-W*.2,sp=(r()+r()+r()-1.5)*H*.13;stars.push({x:u,y:H*.42+(u-mx)*Math.tan(ang)*.5+sp,s:.3+r()*.6,p:r()*TAU,w:.4+r()})}
-    const rad={x:W*(.25+r()*.5),y:H*(.2+r()*.22)},mp={x:W*(.12+r()*.76),y:H*(.14+r()*.3)},rate=(.35+sh.z/60)*(.5+dim*.5),ms=[];
+    const radEq=RADIANTS[String(sh.c).normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/[ ,]/)[0]],rad={x:W*(.25+r()*.5),y:H*(.2+r()*.22)},mp={x:W*(.12+r()*.76),y:H*(.14+r()*.3)},rate=(.35+sh.z/60)*(.5+dim*.5),ms=[];
+    if(REAL&&radEq){const[a,e]=REAL.A(...radEq);if(e>12)view.az=a}
     const per=Math.max(1,Math.round(sh.z*.55*(1-cloud/100)*dim));
     const spawn=()=>{const a=Math.random()*TAU,d=30+Math.random()*Math.hypot(W,H)*.45,big=Math.random()<.07;ms.push({x:rad.x+Math.cos(a)*d,y:rad.y+Math.sin(a)*d,dx:Math.cos(a),dy:Math.sin(a),age:0,life:.45+Math.random()*.5,v:sh.v*8,len:sh.v*2.4*(big?1.8:1),big})};
     for(let i=0;i<3;i++){spawn();ms[i].age=.1+i*.12}
@@ -447,8 +601,9 @@ function build(){
       series:[SR('Meteors you could count, by hour','per hour',HN,HN.map((_,i)=>per*(.25+.75*Math.sin(Math.min(1,i/7)*Math.PI/2))*(.8+nz(i)*.4))),cloudSeries()],
       d:[['ZHR '+sh.z,'how often a streak crosses (sped up here)'],[sh.v+' km/s','streak length and speed'],['Moon '+moon+'%','how many faint stars survive'],[sh.p,'where the dust came from']]};
     draw=(t,dt)=>{
+      if(REAL&&radEq){const q=proj(...REAL.A(...radEq));rad.x=q[0];rad.y=q[1]}
       sky(['#02030b','#070b1e','#141a33']);drawStars(stars,t,.95);
-      if(moon>25)moonDisc(mp.x,mp.y,7+moon*.06,moon/100);
+      if(moon>25&&!REAL)moonDisc(mp.x,mp.y,7+moon*.06,moon/100);
       ctx.strokeStyle='rgba(255,217,138,.4)';ctx.setLineDash([3,5]);ctx.lineWidth=LW;ctx.beginPath();ctx.arc(rad.x,rad.y,13,0,TAU);ctx.stroke();ctx.setLineDash([]);
       if(!style.buf){ctx.fillStyle='rgba(255,217,138,.65)';ctx.font='11px ui-monospace,monospace';ctx.fillText('radiant',rad.x+19,rad.y+4)}
       if(Math.random()<rate*dt)spawn();
@@ -520,7 +675,7 @@ function build(){
     const stars=makeStars(r,Math.round(W*H/1300*dim),G.hz);
     const ang=-.4-r()*.6,mx=W*(.3+r()*.4);
     for(let i=0;i<Math.round(W*.9*dim);i++){const u=r()*W*1.4-W*.2,sp=(r()+r()+r()-1.5)*H*.12;stars.push({x:u,y:H*.4+(u-mx)*Math.tan(ang)*.5+sp,s:.3+r()*.6,p:r()*TAU,w:.4+r()})}
-    const pick3=[['Saturn'],['Jupiter','Saturn'],['Mars'],['Venus','Jupiter']][ri(r,0,3)],names=Array.isArray(P.planets)&&P.planets.length?P.planets.slice(0,3).map(String):pick3;
+    const pick3=[['Saturn'],['Jupiter','Saturn'],['Mars'],['Venus','Jupiter']][ri(r,0,3)],names=Array.isArray(P.planets)&&P.planets.length?P.planets.slice(0,3).map(String):REAL&&REAL.pl.some(p=>p.alt>5)?REAL.pl.filter(p=>p.alt>5).map(p=>p.n).slice(0,3):pick3;
     const pl=names.map(n=>({n,x:W*(.15+r()*.7),y:H*(.25+r()*.4),c:{Mars:'#ffb08a',Saturn:'#ffe9b8',Jupiter:'#fff3dc',Venus:'#ffffff'}[n]||'#fff3dc'}));
     const rc=r(),comet=P.comet===true||(!live&&rc<.12),cm={x:W*(.2+r()*.6),y:H*(.2+r()*.25),a:-.6-r()*1.2};
     const mp={x:W*(.1+r()*.8),y:H*(.14+r()*.25)},maxEl=Math.round(num('maxEl',()=>ri(r,35,85))),tr=Math.round(num('clarity',()=>ri(r,2,5)));
@@ -538,9 +693,9 @@ function build(){
     const dot=(x,y,rad,col,g)=>{glow(g,col);ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,rad*LW,0,TAU);ctx.fill();ctx.shadowBlur=0};
     draw=(t,dt)=>{
       sky(['#02030c','#070c22','#131c3a']);drawStars(stars,t,.95);
-      for(const p of pl){dot(p.x,p.y,2.6,p.c,10);if(!style.buf){ctx.fillStyle='rgba(220,228,255,.75)';ctx.font='11px ui-monospace,monospace';ctx.fillText(p.n,p.x+9,p.y+4)}}
+      if(!REAL)for(const p of pl){dot(p.x,p.y,2.6,p.c,10);if(!style.buf){ctx.fillStyle='rgba(220,228,255,.75)';ctx.font='11px ui-monospace,monospace';ctx.fillText(p.n,p.x+9,p.y+4)}}
       if(comet){const ex=cm.x+Math.cos(cm.a)*90,ey=cm.y+Math.sin(cm.a)*90,g=ctx.createLinearGradient(cm.x,cm.y,ex,ey);g.addColorStop(0,'rgba(200,255,235,.8)');g.addColorStop(1,'rgba(200,255,235,0)');ctx.strokeStyle=g;ctx.lineWidth=5*LW;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(cm.x,cm.y);ctx.lineTo(ex,ey);ctx.stroke();dot(cm.x,cm.y,2.4,'#eafff7',12)}
-      if(moon>25)moonDisc(mp.x,mp.y,7+moon*.06,moon/100);
+      if(moon>25&&!REAL)moonDisc(mp.x,mp.y,7+moon*.06,moon/100);
       if(iss){const u=(t%9)/7;if(u<=1){const x=p0.x+(p1.x-p0.x)*u,y=p0.y+(p1.y-p0.y)*u-Math.sin(u*Math.PI)*lift,a=Math.min(1,u*6)*(u>.7?Math.max(0,1-(u-.7)/.2):1);ctx.globalAlpha=a;dot(x,y,3.2,'#fffaeb',16);ctx.globalAlpha=1}}
       else{if(!shoot&&Math.random()<dt*.12)shoot={x:Math.random()*W,y:Math.random()*H*.45,a:.3+Math.random()*.9,age:0};
         if(shoot){shoot.age+=dt;const q=shoot.age/.6;if(q>1)shoot=null;else{const hx=shoot.x+Math.cos(shoot.a)*q*170,hy=shoot.y+Math.sin(shoot.a)*q*170;ctx.strokeStyle=`rgba(255,255,255,${Math.sin(q*Math.PI)})`;ctx.lineWidth=1.4*LW;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(hx,hy);ctx.lineTo(hx-Math.cos(shoot.a)*55,hy-Math.sin(shoot.a)*55);ctx.stroke()}}}
@@ -551,7 +706,7 @@ function build(){
   else if(type==='moon'){
     const v=['super','earthshine','conjunction','eclipse'].includes(P.variant)?P.variant:['super','earthshine','conjunction','eclipse'][ri(r,0,3)],ecl=v==='eclipse';
     const lit=Math.round(num('lit',()=>v==='super'||ecl?100:v==='earthshine'?ri(r,6,16):ri(r,20,60))),wax=r()<.5,near=typeof P.near==='string'?P.near:(v==='conjunction'?['Jupiter','Saturn','Venus','Mars'][ri(r,0,3)]:null);
-    const R=Math.min(W,H)*(v==='super'?.2:.15),cx=W*(.35+r()*.3),cy=H*(.34+r()*.1),stars=makeStars(r,Math.round(W*H/(lit>60&&!ecl?9000:3000)),G.hz);
+    const R=Math.min(W,H)*(v==='super'?.2:.15),cx0=W*(.35+r()*.3),cy0=H*(.34+r()*.1),stars=makeStars(r,Math.round(W*H/(lit>60&&!ecl?9000:3000)),G.hz);
     const cr=Array.from({length:9},()=>{const a=r()*TAU,d=Math.sqrt(r())*.78;return[Math.cos(a)*d,Math.sin(a)*d,.07+r()*.19]});
     const what={super:['Full Moon near its closest point','357,000 km away',.97,'About 7% wider than an average full Moon.'],earthshine:['Thin crescent',lit+'% lit',.95,'Thin enough that the dark part shows a ghostly glow.'],conjunction:[(near||'A planet')+' close to the Moon','About 2° apart',.95,'Both fit in one binocular view.'],eclipse:['Moon inside Earth’s shadow','Totality lasts 58 min',.97,'The whole event happens while the Moon is up for you.']}[v];
     const conds=[C(...what),C('Moon above your horizon','Rises 6:52 PM',.97,'Low in the east at first, where it looks biggest.'),cCloud()];
@@ -559,7 +714,9 @@ function build(){
       sub:{super:'Catch it in the first 20 minutes after it clears the horizon.',earthshine:'Look west after sunset. The dark part of the disc glows faintly.',conjunction:'Look for a steady bright point right next to the Moon.',eclipse:'The Moon dims, then turns copper red at mid-eclipse.'}[v],conds,
       series:[SR('Moon height','°',HN,HN.map((_,i)=>Math.max(0,58*Math.sin((i+1)/11*Math.PI))),{max:90}),cloudSeries()],
       d:[[lit+'% lit','shape of the bright part'],[{super:'Supermoon',earthshine:'Earthshine',conjunction:'Conjunction',eclipse:'Eclipse'}[v],'which Moon event this edition shows'],[wax?'Waxing':'Waning','which side is lit']]};
+    if(REAL)REAL.skipMoon=true;
     draw=t=>{
+      let cx=cx0,cy=cy0;if(REAL&&REAL.moon.alt>2){[cx,cy]=proj(REAL.moon.az,REAL.moon.alt);cy=Math.min(cy,G.hz-R*1.3)}
       sky(ecl?['#04040c','#0d0a16','#1a1220']:['#050818','#0c1530','#17223f']);drawStars(stars,t,.8);
       const k=ecl?.3:.25+lit/130,sgn=wax?1:-1,f=lit/100;
       let g=ctx.createRadialGradient(cx,cy,R*.6,cx,cy,R*4.5);g.addColorStop(0,`rgba(${ecl?'255,120,90':'205,218,255'},${.4*k})`);g.addColorStop(1,`rgba(${ecl?'255,120,90':'205,218,255'},0)`);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
@@ -574,11 +731,11 @@ function build(){
 
   else if(type==='sunset'){
     const hi=Math.round(num('highCloud',()=>ri(r,15,80))),gap=r()<.75,rays=r()<.5,pal=[['#1b2a5c','#6a4a8c','#e0705a','#ffb45e'],['#1a2452','#8a3f86','#ff5f7a','#ffc27a'],['#12324a','#3f6f8a','#f0a35a','#ffe08a']][ri(r,0,2)];
-    const sx=W*(.25+r()*.5),hz=G.hz,cls=Array.from({length:18},()=>({x:r()*W*1.3-W*.15,y:H*(.1+r()*.52),w:W*(.1+r()*.28),h:6+r()*15,v:2+r()*5}));
+    const sset=sunEvent(view.date,view.lat,view.lon,false),sx=sset?proj(sset.az,0)[0]:W*(.25+r()*.5),hz=G.hz,cls=Array.from({length:18},()=>({x:r()*W*1.3-W*.15,y:H*(.1+r()*.52),w:W*(.1+r()*.28),h:6+r()*15,v:2+r()*5}));
     const conds=[C('High cloud to catch the light',hi+'% (best is 30 to 60)',hi>=30&&hi<=60?.95:hi>=20&&hi<=75?.7:.4,hi<30?'Too little cloud. Expect a clean but plain fade.':hi>60?'A lot of cloud. The color depends on a gap at the horizon.':'Enough cloud to light up without closing the sky.'),
       C('Clear gap on the western horizon',gap?'Open':'Blocked',gap?.92:.35,'Sunlight has to slip under the cloud deck to paint it from below.'),C('Clean air','Low haze',.9,'Clean air gives purer reds. Haze and smog mute them.')];
     const sl=['5 PM','6 PM','7 PM','8 PM'];
-    info={title:w=>'Vivid sunset '+w+' tonight',sub:'Sunset is at 6:44 PM. The best color comes 5 to 15 minutes after the sun is gone.',conds,
+    info={title:w=>'Vivid sunset '+w+' tonight',sub:'Sunset is at '+(sset?clockNY(sset.when):'dusk')+(sset?', in the '+compass(sset.az):'')+'. The best color comes 5 to 15 minutes after the sun is gone.',conds,
       series:[SR('High cloud around sunset','%',sl,sl.map((_,i)=>cl(hi+(nz(i)-.5)*30,0,100)),{max:100,threshold:30,thresholdLabel:'enough to color'})],
       d:[[hi+'% high cloud','how much cloud is lit'],[rays?'Sunbeams':'No sunbeams','beams through gaps, in some editions'],['Palette','one of three, picked per edition']]};
     draw=(t,dt)=>{
@@ -603,6 +760,112 @@ function build(){
       const g=ctx.createRadialGradient(W*.5,G.hz,0,W*.5,G.hz,H*.75);g.addColorStop(0,'rgba(255,205,160,.16)');g.addColorStop(1,'rgba(255,205,160,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
       G.draw(['#9aa5c0','#dfe6f2']);
       ctx.fillStyle='#fff';for(const f of fl){f.y+=f.v*dt;f.x+=(Math.sin(t*.8+f.p)*f.z*18+6)*dt;if(f.y>H){f.y=-4;f.x=Math.random()*W}if(f.x>W)f.x-=W;ctx.globalAlpha=.35+f.z*.6;ctx.beginPath();ctx.arc(f.x,f.y,f.s*LW,0,TAU);ctx.fill()}ctx.globalAlpha=1;
+    };
+  }
+
+  else if(type==='fog'){
+    const spread=Math.round(num('spreadF',()=>ri(r,0,5))),wind=Math.round(num('wind',()=>ri(r,0,8)));
+    const sat=spread<=2?.95:spread<=4?.75:spread<=6?.45:.2,calm=wind<=4?.95:wind<=8?.7:.35,thick=cl(1.15-spread/6,.25,1)*cl(1.2-wind/10,.4,1);
+    const conds=[C('Air close to saturation','Dew point within '+spread+'°F',sat,spread<=2?'The air only has to cool a degree or two more before fog forms.':'The air has to cool a few more degrees, so fog may stay patchy.'),
+      C('Light wind',wind+' mph',calm,wind<=4?'Calm air lets the cold layer settle into the valleys.':'A breeze stirs the air and can stop fog from forming.'),cCloud('Clear night')];
+    const rise=sunEvent(view.date,view.lat,view.lon,true),sAz=rise?rise.az:100;
+    const ridges=Array.from({length:5},(_,i)=>({y:H*(.4+i*.12),amp:H*(.035+r()*.04),f:.004+r()*.004,o:r()*100}));
+    const banks=ridges.map((rd,i)=>Array.from({length:7},()=>({x:r()*W*1.3-W*.15,y:rd.y+H*(.025+r()*.05),w:W*(.3+r()*.5),h:H*(.025+r()*.04)*(1+i*.25),v:(2+r()*5)*(1+i*.3)})));
+    const dl=['3 AM','4 AM','5 AM','6 AM','7 AM','8 AM'];
+    info={title:w=>'Valley fog '+w+' at sunrise',sub:'Cold air drains into the valleys overnight. From a ridge at first light'+(rise?' ('+clockNY(rise.when)+')':'')+', look down on a sea of cloud with the ridgetops showing through.',conds,
+      series:[SR('Temperature minus dew point','°F',dl,dl.map((_,i)=>Math.max(0,spread+(i>3?(i-3)*2.5:0)+(nz(i)-.5)*1.5)),{max:15,threshold:2,thresholdLabel:'fog forms'}),SR('Wind','mph',dl,dl.map((_,i)=>Math.max(0,wind+(nz(i+5)-.5)*3+(i>3?(i-3)*1.5:0))),{max:20})],
+      d:[['Fog depth','set by the dew point gap and the wind'],['Ridge-and-valley','five ridgelines, like the view off Tussey Mountain'],['Sunrise '+compass(sAz),rise?'where the Sun really comes up on this date':'sunrise direction']]};
+    draw=(t,dt)=>{
+      const sx=view.fixed?proj(sAz,0)[0]:W*.7,sy=H*.42-Math.min(H*.05,t*.7);
+      sky(['#26304c','#6f7090','#e6b48c']);
+      let g=ctx.createRadialGradient(sx,sy,0,sx,sy,H*.7);g.addColorStop(0,'rgba(255,222,170,.7)');g.addColorStop(1,'rgba(255,200,150,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='#fff1d2';ctx.beginPath();ctx.arc(sx,sy,H*.028,0,TAU);ctx.fill();
+      ridges.forEach((rd,i)=>{const k=i/(ridges.length-1);ctx.fillStyle=`rgb(${78-k*55|0},${86-k*58|0},${112-k*72|0})`;ctx.beginPath();ctx.moveTo(0,H);
+        for(let x=0;x<=W+8;x+=8)ctx.lineTo(x,rd.y-rd.amp*(.5+.5*Math.sin(x*rd.f+rd.o))-nz(x*.01+rd.o)*rd.amp*.7);ctx.lineTo(W,H);ctx.fill();
+        for(const b of banks[i]){b.x+=b.v*dt*.4;if(b.x-b.w/2>W)b.x=-b.w/2;const a=.6*thick*(1-k*.25);ctx.save();ctx.translate(b.x,b.y);ctx.scale(1,b.h/(b.w*.5));
+          const fg=ctx.createRadialGradient(0,0,0,0,0,b.w*.5);fg.addColorStop(0,`rgba(244,238,232,${a})`);fg.addColorStop(.6,`rgba(236,230,226,${a*.5})`);fg.addColorStop(1,'rgba(236,230,226,0)');ctx.fillStyle=fg;ctx.fillRect(-b.w*.5,-b.w*.5,b.w,b.w);ctx.restore()}});
+    };
+  }
+
+  else if(type==='frost'){
+    const low=Math.round(num('lowF',()=>ri(r,24,36))),wind=Math.round(num('wind',()=>ri(r,0,9)));
+    const cold=low<=30?.95:low<=34?.75:low<=36?.45:.15,calm=wind<=5?.95:wind<=10?.7:.4,cover=cl((37-low)/10,.15,1)*(1-cloud/160);
+    const conds=[C('Cold enough at the ground','Low of '+low+'°F',cold,low<=32?'Below freezing even at thermometer height, so frost is close to certain on open ground.':'Thermometers sit about 2 m up. Grass and car roofs run a few degrees colder on a clear night.'),cCloud('Clear sky overnight'),C('Light wind',wind+' mph',calm,'Calm air lets the coldest layer sit right on the ground.')];
+    const blades=Array.from({length:Math.round(W/3)},()=>({x:r()*W,h:H*(.07+r()*r()*.3),b:(r()-.5)*.6,w:1.4+r()*2.4,d:r()}));
+    const glints=Array.from({length:Math.round(W/3.5)},()=>({x:r()*W,y:H*(.7+r()*.3),p:r()*TAU,s:.6+r()*1.5,w:.8+r()*2.5}));
+    const stars=makeStars(r,Math.round(W*H/5000),H*.6);
+    info={title:w=>'Frost '+w+' by morning',sub:'Clear and calm overnight with a low near '+low+'°F. Lawns, roofs and windshields whiten before sunrise, then sparkle when the first light hits.',conds,
+      series:[SR('Temperature overnight','°F',HN,HN.map((_,i)=>low+10-i*1.1+(nz(i)-.5)*2),{max:60,threshold:32,thresholdLabel:'freezing'}),cloudSeries()],
+      d:[[low+'°F','how much of each blade is coated'],['Glints','ice crystals catching the first light'],['Pre-dawn sky','the real stars over State College at 6 AM']]};
+    draw=(t,dt)=>{
+      sky(['#0b1430','#33446c','#c3a59e']);drawStars(stars,t,.55);
+      const gg=ctx.createLinearGradient(0,H*.68,0,H);gg.addColorStop(0,'#1a2438');gg.addColorStop(1,`rgb(${60+120*cover|0},${72+125*cover|0},${92+125*cover|0})`);ctx.fillStyle=gg;ctx.fillRect(0,H*.7,W,H*.3);
+      ctx.lineCap='round';
+      for(const b of blades){const sw=Math.sin(t*.4+b.x*.02)*1.5,ex=b.x+b.b*b.h+sw,ey=H-b.h;ctx.strokeStyle=`rgb(${16+b.d*22|0},${28+b.d*26|0},${40+b.d*30|0})`;ctx.lineWidth=b.w*LW;
+        ctx.beginPath();ctx.moveTo(b.x,H);ctx.quadraticCurveTo(b.x+b.b*b.h*.3,H-b.h*.6,ex,ey);ctx.stroke();ctx.strokeStyle=`rgba(232,242,252,${.6*cover})`;ctx.lineWidth=b.w*.4*LW;ctx.stroke()}
+      ctx.fillStyle='#fff';for(const g of glints){const a=Math.max(0,Math.sin(t*g.w+g.p))**10*cover;if(a<.04)continue;ctx.globalAlpha=a;ctx.fillRect(g.x-g.s*2,g.y-.4,g.s*4,.8);ctx.fillRect(g.x-.4,g.y-g.s*2,.8,g.s*4)}ctx.globalAlpha=1;
+    };
+  }
+
+  else if(type==='comet'){
+    const name=typeof P.name==='string'&&P.name?P.name:'Comet',mag=num('mag',()=>Math.round((2+r()*5)*10)/10);
+    const bright=mag<=4?.95:mag<=6?.7:mag<=8?.4:.15,k=mag<=4?1:mag<=6?.7:.45;
+    const conds=[C('Bright enough to see','Magnitude '+mag,bright,mag<=4?'Visible to the eye from a dark site.':mag<=6?'A fuzzy patch to the eye, clear in binoculars.':'A binocular or telescope target.'),cMoon(),cCloud()];
+    const stars=makeStars(r,Math.round(W*H/2200),G.hz),ca=num('az',()=>view.az),ce=num('alt',()=>14+r()*14);
+    const dust=Array.from({length:300},()=>({u:r(),v:r()-.5,p:r()*TAU}));
+    info={title:w=>name+' '+w+' after dusk',sub:'Look low toward the '+compass(ca)+' as twilight fades. The tail always points away from the Sun, so after sunset it rises up from the horizon.',conds,
+      series:[SR('Comet height after sunset','°',['7 PM','7:30','8 PM','8:30','9 PM'],[ce+8,ce+4,ce,ce-4,ce-8].map(v=>Math.max(0,v)),{max:40}),cloudSeries()],
+      d:[['Magnitude '+mag,'length and brightness of the tails'],['Two tails','curved white dust tail and straight blue gas tail'],['Tail direction','pointing away from where the Sun has set']]};
+    draw=t=>{
+      sky(['#040817','#0b1a36','#3a3a58']);drawStars(stars,t,.85);
+      const[hx,hy]=REAL?proj(ca,ce):[W*.5,G.hz*.55];
+      // tail points away from the Sun, which sits below the horizon in the sunset direction
+      let ang=-Math.PI/2;if(REAL){const[sx,sy]=proj(REAL.sun.az,REAL.sun.alt);ang=Math.atan2(hy-sy,hx-sx)}
+      const c=Math.cos(ang),s=Math.sin(ang),px=-s,py=c,L=G.hz*(mag<=4?.85:mag<=6?.6:.4);
+      ctx.globalCompositeOperation='lighter';
+      let g=ctx.createLinearGradient(hx,hy,hx+c*L*1.1,hy+s*L*1.1);g.addColorStop(0,`rgba(140,190,255,${.4*k})`);g.addColorStop(1,'rgba(140,190,255,0)');ctx.strokeStyle=g;ctx.lineWidth=2.5*LW;ctx.beginPath();ctx.moveTo(hx,hy);ctx.lineTo(hx+c*L*1.1,hy+s*L*1.1);ctx.stroke();
+      // dust tail: a soft curved fan, brightest at the head, with a little drifting texture
+      const ctr=u=>{const b=u*u*.3;return[hx+(c*u+px*b)*L,hy+(s*u+py*b)*L]};
+      for(const[wf,al]of[[1,.09],[.6,.12],[.28,.16]]){const side=[],back=[];for(let u=0;u<=1.001;u+=.05){const[x,y]=ctr(u),w=(1.5+u*L*.11*wf)*LW;side.push([x+px*w,y+py*w]);back.unshift([x-px*w*.55,y-py*w*.55])}
+        g=ctx.createLinearGradient(hx,hy,...ctr(1));g.addColorStop(0,`rgba(255,241,214,${al*k*2.2})`);g.addColorStop(.45,`rgba(255,236,206,${al*k})`);g.addColorStop(1,'rgba(255,236,206,0)');
+        ctx.fillStyle=g;ctx.beginPath();[...side,...back].forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.fill()}
+      ctx.fillStyle='#fff1d6';for(const d of dust){const u=d.u,[x,y]=ctr(u),w=d.v*u*L*.3;ctx.globalAlpha=k*(1-u)*(.06+.05*Math.sin(t*.7+d.p));ctx.beginPath();ctx.arc(x+px*w,y+py*w,(2+u*6)*LW,0,TAU);ctx.fill()}
+      ctx.globalAlpha=1;g=ctx.createRadialGradient(hx,hy,0,hx,hy,14*LW);g.addColorStop(0,'rgba(235,255,245,.95)');g.addColorStop(.3,'rgba(160,230,200,.45)');g.addColorStop(1,'rgba(160,230,200,0)');ctx.fillStyle=g;ctx.fillRect(hx-14*LW,hy-14*LW,28*LW,28*LW);
+      ctx.globalCompositeOperation='source-over';G.draw(['#0b1222','#04070f']);
+    };
+  }
+
+  else if(type==='eclipse'){
+    const kind=P.kind==='solar'||P.kind==='lunar'?P.kind:(r()<.5?'lunar':'solar'),phases=kind==='solar'?['total','partial','annular']:['total','partial','penumbral'];
+    const phase=phases.includes(P.phase)?P.phase:phases[ri(r,0,1)],pct=Math.round(num('pct',()=>phase==='total'?100:ri(r,35,92)));
+    const conds=[C('Eclipse visible from here',phase+' '+kind+', '+pct+'% covered',.97,kind==='solar'?'Use certified ISO 12312-2 eclipse glasses for every partial phase.':'Safe to watch with the eye. Binoculars bring out the color.'),
+      C((kind==='solar'?'Sun':'Moon')+' above the horizon','Up for the whole event',.95,'An open view in that direction is all you need.'),cCloud()];
+    info={title:()=>phase[0].toUpperCase()+phase.slice(1)+' '+kind+' eclipse '+(kind==='lunar'?'tonight':'today'),
+      sub:kind==='lunar'?'The Moon slides into Earth’s shadow and darkens'+(phase==='total'?', turning copper red at mid-eclipse.':'.'):'The Moon crosses the Sun. Never look at the partly covered Sun without certified eclipse glasses.',conds,
+      series:[SR('Share covered','%',['start','','','max','','','end'],[0,.3,.7,1,.7,.3,0].map(v=>Math.round(v*pct)),{max:100}),cloudSeries()],
+      d:[[phase+' '+kind,'which eclipse this edition shows'],[pct+'% covered','how deep the shadow reaches'],['Looping','the whole event squeezed into about 20 seconds']]};
+    if(kind==='solar'){REAL=null;view.fixed=true}else if(REAL)REAL.skipMoon=true;
+    const stars=makeStars(r,Math.round(W*H/2600),G.hz),R0=Math.min(W,H)*.12,fx=W*(.5+(r()-.5)*.3),fy=H*.34;
+    const mix=(a,b,k)=>a.map((v,i)=>Math.round(v+(b[i]-v)*k)),rgb=a=>`rgb(${a})`;
+    draw=t=>{
+      const u=(t%20)/20,f=Math.sin(u*Math.PI)*pct/100,sg=u<.5?-1:1;
+      let cx=fx,cy=fy;if(REAL&&kind==='lunar'&&REAL.moon.alt>2){[cx,cy]=proj(REAL.moon.az,REAL.moon.alt);cy=Math.min(cy,G.hz-R0*1.4)}
+      if(kind==='lunar'){
+        const red=phase==='total'?f:phase==='partial'?f*.45:f*.15;sky(['#03040b','#0a0c1c','#171528']);drawStars(stars,t,.45+.55*f);
+        let g=ctx.createRadialGradient(cx,cy,R0*.6,cx,cy,R0*4.2);g.addColorStop(0,`rgba(${mix([205,218,255],[255,120,80],red)},${.32*(1-f*.6)})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='#f3efe2';ctx.beginPath();ctx.arc(cx,cy,R0,0,TAU);ctx.fill();
+        const Rs=R0*2.6,dd=R0+Rs-2*R0*f;ctx.save();ctx.beginPath();ctx.arc(cx,cy,R0,0,TAU);ctx.clip();
+        g=ctx.createRadialGradient(cx+sg*dd,cy,Rs*.55,cx+sg*dd,cy,Rs);g.addColorStop(0,`rgba(${mix([60,30,30],[150,45,25],red)},${phase==='penumbral'?.35:.93})`);g.addColorStop(.92,`rgba(${mix([70,35,30],[175,60,35],red)},${phase==='penumbral'?.3:.86})`);g.addColorStop(1,'rgba(60,30,30,0)');
+        ctx.fillStyle=g;ctx.fillRect(cx-R0,cy-R0,R0*2,R0*2);ctx.restore();
+      }else{
+        const dk=phase==='total'?f**6:f*.25;sky([rgb(mix([62,110,176],[10,16,32],dk)),rgb(mix([126,166,214],[28,38,64],dk)),rgb(mix([206,224,240],[200,130,90],dk))]);
+        if(dk>.6)drawStars(stars,t,(dk-.6)*2.5);
+        const Rm=phase==='annular'?R0*.92:R0*1.02,dd=(R0+Rm)*(1-f);
+        if(phase==='total'&&f>.97){ctx.globalCompositeOperation='lighter';for(let i=0;i<40;i++){const a=i/40*TAU+Math.sin(i*7.3)*.1,l=R0*(1.4+Math.abs(Math.sin(i*3.1+t*.2))*1.4),g=ctx.createLinearGradient(cx,cy,cx+Math.cos(a)*l,cy+Math.sin(a)*l);g.addColorStop(.35,'rgba(230,236,255,.35)');g.addColorStop(1,'rgba(230,236,255,0)');ctx.strokeStyle=g;ctx.lineWidth=R0*.18;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*l,cy+Math.sin(a)*l);ctx.stroke()}ctx.globalCompositeOperation='source-over'}
+        let g=ctx.createRadialGradient(cx,cy,R0,cx,cy,R0*3.5);g.addColorStop(0,`rgba(255,244,214,${.55*(1-dk)})`);g.addColorStop(1,'rgba(255,244,214,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='#fff6dc';ctx.beginPath();ctx.arc(cx,cy,R0,0,TAU);ctx.fill();ctx.fillStyle=rgb(mix([40,50,70],[6,8,14],dk));ctx.beginPath();ctx.arc(cx+sg*dd,cy-dd*.15,Rm,0,TAU);ctx.fill();
+      }
+      G.draw(kind==='lunar'?['#0a0e1f','#04060e']:[rgb(mix([58,72,88],[12,14,22],phase==='total'?f**6:0)),rgb(mix([34,44,56],[6,8,12],phase==='total'?f**6:0))]);
     };
   }
 
@@ -645,7 +908,7 @@ function render(info,gk){
   const ch=typeof L.chance==='number'?cl(Math.round(L.chance),0,100):cl(Math.round(100*conds.reduce((a,c)=>a*c.score,1)),4,96);
   const worst=[...conds].sort((a,b)=>a.score-b.score)[0],ok=conds.filter(c=>c.state==='yes').length;
   $('aTitle').textContent=L.title||info.title(word(ch),ch);$('aSub').textContent=L.sub||info.sub;$('aChance').textContent=ch+'% chance';
-  $('pct').textContent=ch+'%';$('pctNote').textContent=!worst||worst.score>=.8?'chance to see it. Everything is lined up.':'chance to see it. Weakest link: '+worst.name.toLowerCase()+'.';
+  countUp($('pct'),ch);$('pctNote').textContent=!worst||worst.score>=.8?'chance to see it. Everything is lined up.':'chance to see it. Weakest link: '+worst.name.toLowerCase()+'.';
   $('edition').textContent=`${live?'Live':'Sample'} · Edition ${(seed>>>0).toString(36).toUpperCase()} · ${style.n} · ${gk[1]}`;
   $('h-conds').textContent=ok+' of '+conds.length+' lined up';
   $('conds').replaceChildren(...conds.map(c=>{const li=el('li'),m=el('span',c.state==='yes'?'✓':c.state==='maybe'?'~':'✕','mark '+c.state);m.title=c.state==='yes'?'Lined up':c.state==='maybe'?'Borderline':'Working against you';li.append(m,el('strong',c.name),el('em',c.val),el('p',c.note));return li}));
@@ -654,18 +917,21 @@ function render(info,gk){
   const rd=arr(L.readings).length?arr(L.readings):conds.map(c=>({name:c.name,value:c.val,source:live?'':'sample'}));
   $('readings').replaceChildren(...rd.map(x=>{const tr=el('tr');tr.append(el('td',x.name),el('td',x.value));const td=el('td');if(safe(x.url)){const a=el('a',x.source||'source');a.href=x.url;a.target='_blank';a.rel='noopener';td.append(a)}else td.textContent=x.source||'';tr.append(td);return tr}));
   $('h-data').textContent=series.length+' charts, '+rd.length+' readings';
-  const facts=[...arr(L.facts).map(f=>[String(f.cat||'Tonight'),String(f.text||'')]),...FACTS[type]];
+  const day=Math.floor(Date.parse((report&&report.date)||todayNY())/864e5)||0,rot=a=>a.length?[...a.slice(day%a.length),...a.slice(0,day%a.length)]:a;
+  const facts=[...arr(L.facts).map(f=>[String(f.cat||'Tonight'),String(f.text||'')]),...rot(FACTS[type])];
   $('facts').replaceChildren(...facts.map(f=>{const li=el('li');li.append(el('small',f[0]),document.createTextNode(f[1]));return li}));
   $('h-facts').textContent=facts.length+' notes';
-  const links=[...arr(L.research).map(x=>[x.title,x.url,x.source,x.note]),...LINKS[type]].filter(x=>safe(x[1]));
+  const links=[...arr(L.research).map(x=>[x.title,x.url,x.source,x.note]),...rot(LINKS[type])].filter(x=>safe(x[1]));
   $('links').replaceChildren(...links.map(linkItem));$('h-links').textContent=links.length+' links';
-  $('drawn').replaceChildren(...[...info.d,[style.n,style.why],[gk[1],'foreground for this edition']].map(([a,b])=>{const li=el('li');li.append(el('b',a),document.createTextNode(b));return li}));
+  $('drawn').replaceChildren(...[...(REAL?[['Real sky','stars, planets and Moon placed for '+((report&&report.place)||'State College, PA')+' at '+clockNY(REAL.when)+(live?'':' tonight')+', facing '+compass(view.az)+'. Drag the picture to look around.']]:[]),...info.d,[style.n,style.why],[gk[1],'foreground for this edition']].map(([a,b])=>{const li=el('li');li.append(el('b',a),document.createTextNode(b));return li}));
   $('h-drawn').textContent=style.n;
   const up=report?arr(report.upcoming):[];$('d-next').hidden=!(live&&up.length);
   $('upnext').replaceChildren(...up.map(u=>{const li=el('li');li.append(el('strong',(u.date?u.date+': ':'')+(u.name||'')),el('small',u.note||''));return li}));$('h-next').textContent=up.length+' dated';
   $('note').textContent=live?'Odds are estimates from public forecasts and can be wrong. The checklist shows what they rest on.':'This gallery uses invented readings so you can judge the look. Tonight’s view uses real forecasts.';
   $('status').textContent=live&&report?`Checked ${report.checkedLabel||report.date||''} for ${report.place||'your location'}. ${report.summary||''}`:'Sample alerts with invented readings.';
   extras(info);
+  $('aApp').textContent=live&&type===featured?'Tonight’s highlight':'Look Up';
+  $('lines').hidden=!REAL;$('dragHint').hidden=!REAL||dragged;cv.classList.toggle('real',!!REAL);
   document.documentElement.style.setProperty('--accent',TYPES[type].accent);
   document.querySelectorAll('#chips button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===type));
 }
@@ -722,39 +988,28 @@ function paint(t,dt){
   const d=devicePixelRatio||1,b=style.buf;
   ctx=b==='half'?hctx:b==='full'?octx:main;S=b==='half'?(style.sc||.5):d;
   ctx.setTransform(S,0,0,S,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.shadowBlur=0;
-  scene.draw(t,dt);
+  scene.draw(t,dt);if(REAL&&view)compassMarks();
   const m=main;m.globalAlpha=1;m.shadowBlur=0;
   const wash=(op,col)=>{m.globalCompositeOperation=op;m.fillStyle=col;m.fillRect(0,0,W,H)};
   if(!b){m.setTransform(d,0,0,d,0,0);
-    if(style.id==='cyan')wash('color','#2c6db5');
-    else if(style.id==='scope'){wash('saturation','#777');wash('color-dodge','#8a8a8a');wash('multiply','#4dff8f');wash('source-over',scan)}
-    else if(style.id==='plate'){wash('color-dodge','#a8a8a8');wash('difference','#fff');wash('saturation','#777');wash('multiply','#eadfc6')}
-    else if(style.id==='film'){wash('soft-light','rgba(255,176,96,.24)');m.save();m.globalCompositeOperation='overlay';m.globalAlpha=.55;m.translate(-(Math.random()*128|0),-(Math.random()*128|0));m.fillStyle=grain;m.fillRect(0,0,W+128,H+128);m.restore();
+    if(style.id==='film'){wash('soft-light','rgba(255,176,96,.24)');m.save();m.globalCompositeOperation='overlay';m.globalAlpha=.55;m.translate(-(Math.random()*128|0),-(Math.random()*128|0));m.fillStyle=grain;m.fillRect(0,0,W+128,H+128);m.restore();
       const g=m.createRadialGradient(W/2,H/2,H*.3,W/2,H/2,Math.hypot(W,H)*.58);g.addColorStop(0,'#fff');g.addColorStop(1,'#4a4a4a');wash('multiply',g)}
     m.globalCompositeOperation='source-over';return}
   m.setTransform(1,0,0,1,0,0);
   if(style.id==='long'){m.globalCompositeOperation='source-over';m.fillStyle='rgba(0,0,0,.045)';m.fillRect(0,0,cv.width,cv.height);m.globalCompositeOperation='lighten';m.drawImage(off,0,0);m.globalCompositeOperation='source-over';return}
   if(style.id==='bloom'){m.globalCompositeOperation='source-over';m.drawImage(off,0,0);sctx.drawImage(off,0,0,sm.width,sm.height);m.globalCompositeOperation='screen';m.globalAlpha=.8;m.imageSmoothingEnabled=true;m.drawImage(sm,0,0,cv.width,cv.height);m.globalAlpha=1;m.globalCompositeOperation='source-over';return}
-  const im=hctx.getImageData(0,0,hw,hh).data,o=fxImg.data,N=hw*hh;m.globalCompositeOperation='source-over';
-  if(style.id==='ridge'){m.setTransform(d,0,0,d,0,0);m.fillStyle='#070a18';m.fillRect(0,0,W,H);m.lineWidth=1.15;m.lineJoin='round';
-    for(let y0=12;y0<H+26;y0+=9){const yi=Math.min(hh-1,y0>>1);let best=0,bp=0;m.beginPath();m.moveTo(-2,y0);
-      for(let x=0;x<=W;x+=4){const p=(yi*hw+Math.min(hw-1,x>>1))*4,l=LIFT[(77*im[p]+150*im[p+1]+29*im[p+2])>>8];if(l>best){best=l;bp=p}m.lineTo(x,y0-l/255*30)}
-      m.lineTo(W+2,y0);m.fill();const k=255/Math.max(im[bp],im[bp+1],im[bp+2],1);
-      m.strokeStyle=best<60?'rgba(150,165,210,.5)':`rgb(${im[bp]*k*.7+76|0},${im[bp+1]*k*.7+76|0},${im[bp+2]*k*.7+76|0})`;m.stroke()}
-    return}
-  if(style.id==='contour'){for(let i=0;i<N;i++){const p=i*4;lev[i]=LIFT[(77*im[p]+150*im[p+1]+29*im[p+2])>>8]*11>>8}
-    for(let i=0;i<N;i++){const p=i*4,R=im[p],G2=im[p+1],B=im[p+2],edge=(i%hw<hw-1&&lev[i]!==lev[i+1])||(i+hw<N&&lev[i]!==lev[i+hw]);
-      if(edge){const k=255/Math.max(R,G2,B,1);o[p]=R*k*.72+70;o[p+1]=G2*k*.72+70;o[p+2]=B*k*.72+70}else{o[p]=7+R*.2;o[p+1]=10+G2*.2;o[p+2]=24+B*.22}o[p+3]=255}}
-  else if(style.id==='print'){for(let i=0;i<N;i++){const p=i*4,l=(77*im[p]+150*im[p+1]+29*im[p+2])>>8,q=POST[l];if(l<10){o[p]=q*.35+6;o[p+1]=q*.4+9;o[p+2]=q*.7+22}else{const k=q/l;o[p]=Math.min(255,im[p]*k);o[p+1]=Math.min(255,im[p+1]*k);o[p+2]=Math.min(255,im[p+2]*k)}o[p+3]=255}}
-  else{const pal=PAL[style.id];for(let i=0;i<N;i++){const p=i*4,q=LIFT[(77*im[p]+150*im[p+1]+29*im[p+2])>>8]*4;o[p]=pal[q];o[p+1]=pal[q+1];o[p+2]=pal[q+2];o[p+3]=255}}
-  fctx.putImageData(fxImg,0,0);m.imageSmoothingEnabled=true;m.drawImage(fx,0,0,cv.width,cv.height);
 }
-function fit(){const d=devicePixelRatio||1;cv.width=Math.round(cv.clientWidth*d);cv.height=Math.round(cv.clientHeight*d);build()}
-function loop(now){const t=(now-t0)/1000,dt=Math.min(.05,Math.max(0,t-last));last=t;if(scene)paint(t,dt);requestAnimationFrame(loop)}
+function fit(){const d=devicePixelRatio||1;cv.width=Math.max(1,Math.round(cv.clientWidth*d));cv.height=Math.max(1,Math.round(cv.clientHeight*d));build()}
+function loop(now){const t=(now-t0)/1000,dt=Math.min(.05,Math.max(0,t-last));last=t;if(scene)try{paint(t,dt)}catch(e){}requestAnimationFrame(loop)}
 
+// How notable each kind of sky is, as a multiplier on its odds. The routine can override with report.featured.
+const RARITY={eclipse:6,comet:4,aurora:4,meteor:3,moon:2.2,snow:2,iss:1.6,fog:1.5,frost:1.2,sunset:1.2,stars:1};
+const notable=e=>(report&&report.featured===e.type?1e3:0)+(e.chance||0)/100*(RARITY[e.type]||1);
+let featured=null;
 function chips(){
-  const items=mode==='tonight'&&report?[...report.events].filter(e=>e&&TYPES[e.type]).sort((a,b)=>(b.chance||0)-(a.chance||0)).map(e=>[e.type,TYPES[e.type].label+' '+Math.round(e.chance||0)+'%',e]):Object.entries(TYPES).map(([k,v])=>[k,v.label,null]);
-  $('chips').replaceChildren(...items.map(([k,label,ev])=>{const b=el('button',label);b.type='button';b.dataset.t=k;b.id='chip-'+k;b.onclick=()=>{touched=true;pick(k,ev)};return b}));
+  const items=mode==='tonight'&&report?[...report.events].filter(e=>e&&TYPES[e.type]).sort((a,b)=>notable(b)-notable(a)).map(e=>[e.type,TYPES[e.type].label+' '+Math.round(e.chance||0)+'%',e]):Object.entries(TYPES).map(([k,v])=>[k,v.label,null]);
+  featured=mode==='tonight'&&items.length?items[0][0]:null;
+  $('chips').replaceChildren(...items.map(([k,label,ev])=>{const b=el('button',(k===featured?'★ ':'')+label);b.type='button';b.dataset.t=k;b.id='chip-'+k;b.onclick=()=>{touched=true;pick(k,ev)};return b}));
   return items;
 }
 function pick(k,ev){type=k;live=ev||null;styleOver=null;seed=ev?hash(report.date+'.'+k):(Math.random()*2**31)|0;build()}
@@ -771,6 +1026,68 @@ $('m-tonight').onclick=()=>{touched=true;setMode('tonight')};$('m-gallery').oncl
 $('again').onclick=()=>{touched=true;styleOver=null;seed=(Math.random()*2**31)|0;build()};
 $('next').onclick=()=>{touched=true;const n=(type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES);styleOver=(n.indexOf(style)+1)%n.length;build()};
 
+// Drag the sky picture sideways to turn and look in another direction. Vertical swipes still scroll the page.
+let drag=null,dragged=false;
+cv.addEventListener('pointerdown',e=>{if(!REAL||!view)return;drag={x:e.clientX,az:view.az};try{cv.setPointerCapture(e.pointerId)}catch(_){}});
+cv.addEventListener('pointermove',e=>{if(!drag)return;view.az=((drag.az-(e.clientX-drag.x)/view.ppd)%360+360)%360;
+  if(!dragged&&Math.abs(e.clientX-drag.x)>6){dragged=true;$('dragHint').hidden=true}if(still)paint(.4,.016)});
+['pointerup','pointercancel'].forEach(n=>cv.addEventListener(n,()=>{drag=null}));
+$('lines').onclick=()=>{showLines=!showLines;$('lines').setAttribute('aria-pressed',showLines);if(still)paint(.4,.016)};
+// The alert shrinks to its headline as you scroll. Tap it to read the rest; it folds away again when you scroll on.
+(()=>{const al=document.querySelector('.alert');let at=0;
+  al.addEventListener('click',()=>{if(innerWidth<=640)return;al.classList.toggle('open');at=scrollY});
+  addEventListener('scroll',()=>{if(al.classList.contains('open')&&Math.abs(scrollY-at)>80)al.classList.remove('open')},{passive:true})})();
+
+// Scroll motion. The background sky darkens and fills with stars as you scroll down, as if dusk turns to night.
+const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function countUp(node,to){cancelAnimationFrame(node._cu);node.textContent=to+'%';if(calm)return;const t0=performance.now();
+  const step=now=>{const k=Math.min(1,(now-t0)/1100),e=1-Math.pow(1-k,3);node.textContent=Math.round(to*e)+'%';if(k<1)node._cu=requestAnimationFrame(step)};node._cu=requestAnimationFrame(step)}
+(()=>{
+  const h=document.querySelector('h1');h.replaceChildren(...[...h.textContent].map((c,i)=>{const x=el('span',c===' '?' ':c,'ch');x.style.setProperty('--i',i);return x}));
+  const rvs=[...document.querySelectorAll('.chance,.meta,.acts,.deep>details,.note')];
+  if(!calm&&'IntersectionObserver' in window){
+    rvs.forEach((e,i)=>{e.classList.add('rv');e.style.setProperty('--d',(i%4)*.07+'s')});
+    const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;x.target.classList.add('in');io.unobserve(x.target);
+      if(x.target.classList.contains('chance')){const n=parseInt($('pct').textContent);if(n)countUp($('pct'),n)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(e=>io.observe(e))}
+  // Sections open by themselves as you scroll to them, once. Anything you open or close yourself stays that way.
+  document.querySelectorAll('.deep>details>summary').forEach(x=>x.addEventListener('click',()=>{x.parentElement.dataset.seen='1'}));
+  function reveal(){const h=innerHeight;if(!h)return;for(const e of rvs)if(!e.classList.contains('in')&&e.getBoundingClientRect().top<h*.95)e.classList.add('in');
+    for(const d of document.querySelectorAll('.deep>details')){if(d.hidden||d.dataset.seen)continue;const y=d.getBoundingClientRect().top;if(y<h*.6&&y>-40){d.open=true;d.dataset.seen='1'}}}
+  const bg=$('bg'),bx=bg.getContext('2d'),stage=document.querySelector('.stage'),sw=document.querySelector('.stage-wrap'),root=document.documentElement,R=rng(20261007);
+  let BW=0,BH=0,stars=[],shots=[],nextShot=2,dust=null;const bt0=performance.now();
+  function size(){const d=Math.min(2,devicePixelRatio||1);BW=Math.max(1,innerWidth);BH=Math.max(1,innerHeight);bg.width=BW*d;bg.height=BH*d;bx.setTransform(d,0,0,d,0,0);
+    const n=Math.min(700,Math.round(BW*BH/2200));
+    stars=Array.from({length:n},()=>{const z=R();return{x:R()*BW,y:R()*BH*1.6,z,r:.35+z*z*1.5,ph:R()*TAU,sp:.6+R()*1.8,late:R(),c:R()<.18?'255,226,190':R()<.3?'200,215,255':'255,250,240'}});
+    // a faint Milky Way band, drawn once
+    dust=mk();dust.width=BW;dust.height=Math.ceil(BH*1.6);const g=dust.getContext('2d'),nz=noise(77);
+    for(let i=0;i<1600;i++){const t=R(),x=t*BW,y=BH*1.6*(.15+.7*t)+(R()-.5)*BH*.35*(.6+nz(t*6));g.fillStyle=`rgba(${R()<.5?'220,210,255':'255,236,214'},${.015+R()*.03})`;g.beginPath();g.arc(x,y,4+R()*26,0,TAU);g.fill()}}
+  function frame(now){try{draw(now)}catch(e){}if(!calm)requestAnimationFrame(frame)}
+  function draw(now){
+    const t=(now-bt0)/1000,y=scrollY,max=Math.max(1,root.scrollHeight-BH),k=Math.min(1,y/max);
+    root.style.setProperty('--sp',k.toFixed(4));
+    root.style.setProperty('--col',innerWidth>640&&sw?Math.min(1,Math.max(0,y/Math.max(1,sw.offsetTop-14+170))).toFixed(3):'0');
+    if(stage){const r=stage.getBoundingClientRect();root.style.setProperty('--q',Math.min(1,Math.max(0,-r.top/(r.height||1))).toFixed(3))}
+    // dusk blue with a low warm glow at the top of the page, deep night by the bottom
+    const g=bx.createLinearGradient(0,0,0,BH);
+    g.addColorStop(0,`rgb(${14-9*k|0},${20-13*k|0},${44-30*k|0})`);g.addColorStop(.6,`rgb(${8-4*k|0},${11-6*k|0},${24-14*k|0})`);g.addColorStop(1,`rgb(${30-24*k|0},${24-18*k|0},${34-24*k|0})`);
+    bx.globalAlpha=1;bx.fillStyle=g;bx.fillRect(0,0,BW,BH);
+    bx.globalAlpha=.08+.18*k;bx.drawImage(dust,0,-(y*.08)%(BH*.6));
+    for(const s of stars){if(s.late>.35+.65*k)continue;const sy=((s.y-y*(.05+s.z*.25))%(BH*1.6)+BH*1.6)%(BH*1.6);if(sy>BH)continue;
+      const tw=.55+.45*Math.sin(t*s.sp+s.ph);bx.globalAlpha=Math.min(1,(.25+s.z*.75)*tw);bx.fillStyle=`rgb(${s.c})`;bx.beginPath();bx.arc(s.x,sy,s.r,0,TAU);bx.fill();
+      if(s.r>1.4){const rg=bx.createRadialGradient(s.x,sy,0,s.x,sy,s.r*5);rg.addColorStop(0,`rgba(${s.c},.35)`);rg.addColorStop(1,`rgba(${s.c},0)`);bx.fillStyle=rg;bx.fillRect(s.x-s.r*5,sy-s.r*5,s.r*10,s.r*10)}}
+    if(!calm){
+      if(t>nextShot){const dir=R()<.5?1:-1;shots.push({x:BW*(.1+.8*R()),y:BH*.45*R(),dx:dir*Math.cos(.35+R()*.5),dy:Math.sin(.35+R()*.5),v:600+R()*500,born:t,life:.7+R()*.6});nextShot=t+3+R()*6*(1.4-k)}
+      shots=shots.filter(m=>t-m.born<m.life);
+      for(const m of shots){const age=(t-m.born)/m.life,d=m.v*(t-m.born),hx=m.x+m.dx*d,hy=m.y+m.dy*d,len=120*(1-age*.5),tx=hx-m.dx*len,ty=hy-m.dy*len;
+        const lg=bx.createLinearGradient(tx,ty,hx,hy);lg.addColorStop(0,'rgba(255,248,235,0)');lg.addColorStop(1,'rgba(255,248,235,.9)');
+        bx.globalAlpha=Math.sin(Math.PI*age);bx.strokeStyle=lg;bx.lineWidth=1.4;bx.beginPath();bx.moveTo(tx,ty);bx.lineTo(hx,hy);bx.stroke()}}
+    bx.globalAlpha=1}
+  size();const resz=()=>{if(innerWidth!==BW||innerHeight!==BH)size();reveal();if(calm)draw(performance.now())};addEventListener('resize',resz);document.addEventListener('visibilitychange',resz);
+  addEventListener('scroll',()=>{reveal();if(calm)draw(performance.now())},{passive:true});setTimeout(reveal,1500);
+  requestAnimationFrame(frame);
+})();
+
 const h0=location.hash.slice(1).split('.'),wantDate=/^\d{4}-\d\d-\d\d$/.test(h0[0])?h0[0]:null,wantType=wantDate?h0[1]:h0[0];
 chips();if(TYPES[wantType]&&!wantDate)type=wantType;
 let rz;new ResizeObserver(()=>{clearTimeout(rz);rz=setTimeout(()=>{if(cv.clientWidth!==W||cv.clientHeight!==H)fit()},120)}).observe(cv);
@@ -782,7 +1099,8 @@ fit();if(!still)requestAnimationFrame(loop);
   try{sight=JSON.parse(localStorage.getItem('lookup.sightings')||'[]')}catch(e){sight=[]}
   uid='me';db={};
   const get=async p=>{const r=await fetch(p+'?t='+Math.floor(Date.now()/6e5),{cache:'no-store'});if(!r.ok)throw 0;return r.json()};
-  const all=await get('data/reports.json');
+  const skyP=get('data/sky.json').catch(()=>null),all=await get('data/reports.json');
+  SKYDB=await skyP;if(SKYDB&&SKYDB.stars)build();else SKYDB=null;
   reports=(Array.isArray(all)?all:[]).filter(r=>r&&Array.isArray(r.events)&&r.events.some(e=>e&&TYPES[e.type])).sort((x,y)=>x.date<y.date?1:-1);
   if(!reports.length){updateSaw();return}
   report=reports.find(r=>r.date===wantDate)||reports[0];$('modes').hidden=false;
