@@ -1,0 +1,795 @@
+<!doctype html><html><head><meta charset=utf8><title>Look Up Sky Alerts</title><meta name="description" content="Nightly odds for stargazing, aurora, meteors and more over State College, PA."><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one wide sky "stage" carries the page with the alert on it like a notification.
+   Under it, one line of odds, then closed sections a curious reader opens to go deeper. */
+:root{
+  color-scheme:dark;
+  --night:#090c1a; --panel:#111630; --ink:#e9ecf7; --dim:#98a0c0; --line:#262d52;
+  --accent:#6ff2b0; --good:#7be0a5; --warn:#f2c56b; --bad:#ff8f8f;
+  --display:"Syne","Trebuchet MS",sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--night);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0;padding-inline:20px;padding-block:28px 56px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 18px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,38px);letter-spacing:-.02em;margin:0;line-height:1.25}
+.status{margin:0;color:var(--dim);font-size:14px;max-width:70ch}
+.bar{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{font:500 13px var(--body);color:var(--dim);background:transparent;border:0;border-radius:999px;padding:6px 13px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--panel);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:500 14px var(--body);color:var(--dim);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer}
+.chips button:hover{color:var(--ink);border-color:var(--dim)}
+.chips button[aria-pressed="true"]{color:var(--night);background:var(--accent);border-color:var(--accent)}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.stage{position:relative}
+.view{position:relative;height:clamp(380px,56vw,610px);border-radius:6px;overflow:hidden;background:#05070f;border:1px solid var(--line)}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.alert{position:absolute;left:16px;top:16px;width:min(390px,calc(100% - 32px));background:rgba(9,12,26,.74);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 16px 14px}
+.alert .app{font:500 11px/1.6 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim);display:flex;justify-content:space-between;gap:12px;margin-bottom:6px}
+.alert .app b{font-weight:500;color:var(--accent)}
+.alert .title{display:block;font-family:var(--display);font-weight:600;font-size:18px;line-height:1.4;padding-bottom:3px;margin:0 0 4px;text-wrap:balance}
+.alert .sub{display:block;font-size:14px;line-height:1.5;margin:0;opacity:.88}
+.foot{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.edition{font:400 12px/1.6 var(--mono);color:#e9ecf7;background:rgba(9,12,26,.6);padding:2px 8px;border-radius:6px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:600 14px var(--body);color:var(--night);background:var(--ink);border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:rgba(9,12,26,.7);color:var(--ink);border:1px solid rgba(255,255,255,.25)}
+.btn.ghost:hover{background:rgba(9,12,26,.9);border-color:var(--ink)}
+.chance{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin:6px 0 4px}
+.chance b{font:700 46px/1.15 var(--display);font-variant-numeric:tabular-nums}
+.chance span{color:var(--dim);max-width:52ch;font-size:17px}
+.deep{border-bottom:1px solid var(--line)}
+details{border-top:1px solid var(--line)}
+summary{display:flex;align-items:baseline;gap:14px;padding:15px 0;cursor:pointer;list-style:none;font:600 17px var(--body)}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font:400 20px/1 var(--mono);color:var(--accent);width:14px}
+details[open]>summary::before{content:"\2212"}
+summary .hint{margin-left:auto;color:var(--dim);font:400 13px var(--mono);text-align:right}
+.body{padding:2px 0 24px 28px}
+h3{font:500 12px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:18px 0 6px}
+.conds{list-style:none;margin:0;padding:0;max-width:680px}
+.conds li{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:2px 10px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.conds li:first-child{border-top:0}
+.mark{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;font:600 12px/1 var(--mono);color:var(--night)}
+.mark.yes{background:var(--good)} .mark.maybe{background:var(--warn)} .mark.no{background:var(--bad)}
+.conds strong{font-weight:500}
+.conds em{font:500 14px var(--mono);font-style:normal;font-variant-numeric:tabular-nums;text-align:right}
+.conds p{grid-column:2/-1;margin:0;color:var(--dim);font-size:14px}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px 34px}
+figure{margin:0;min-width:0;position:relative}
+figcaption{font-weight:500;margin-bottom:4px}
+figcaption small{display:block;color:var(--dim);font-weight:400;font-size:13px}
+svg.chart{width:100%;height:auto;display:block;overflow:visible}
+svg.chart text{font:400 10px var(--mono);fill:var(--dim)}
+svg.chart .bar{fill:var(--accent)} svg.chart .bar.low{opacity:.45}
+svg.chart .hit{fill:transparent} svg.chart .hit:hover{fill:rgba(255,255,255,.07)}
+svg.chart .grid{stroke:var(--line);stroke-width:1} svg.chart .thr{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 3;opacity:.7}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--night);font:500 12px var(--mono);padding:4px 8px;border-radius:5px;white-space:nowrap;transform:translate(-50%,-130%)}
+table{border-collapse:collapse;width:100%;max-width:680px;font-size:14px}
+td{padding:8px 12px 8px 0;border-top:1px solid var(--line);vertical-align:baseline}
+td:nth-child(2){font-family:var(--mono);font-variant-numeric:tabular-nums}
+td:last-child{color:var(--dim)}
+.tw{overflow-x:auto}
+a{color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px 34px;margin:0;padding:0;list-style:none}
+.facts small{display:block;font:500 11px/1.6 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+.links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:70ch}
+.links small{display:block;color:var(--dim);font-size:14px}
+.drawn{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;color:var(--dim);font-size:14px}
+.drawn b{font:500 14px var(--mono);color:var(--ink);margin-right:6px}
+.note{color:var(--dim);font-size:14px;margin:0;max-width:75ch}
+.meta{display:flex;flex-direction:column;gap:6px}
+.look{display:flex;align-items:center;gap:10px;font-size:15px}
+.look svg{width:38px;height:38px;flex:none}
+.pick,.count{margin:0;color:var(--dim);max-width:70ch}
+.pick b,.count b{color:var(--ink);font-weight:600}
+.body .pick{margin:0 0 12px}
+.acts{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.acts .btn{background:transparent;color:var(--ink);border:1px solid var(--line);white-space:nowrap;flex:none}
+.acts .btn:hover{border-color:var(--ink);background:transparent}
+.acts .btn[aria-pressed="true"]{background:var(--accent);color:var(--night);border-color:var(--accent)}
+.acts span{color:var(--dim);font-size:14px}
+.spots{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;max-width:70ch}
+.spots small{display:block;color:var(--dim);font-size:14px}
+.spots .tag{font:400 12px var(--mono);color:var(--dim);margin-left:8px;white-space:nowrap}
+.quiz{display:flex;flex-direction:column;gap:8px;max-width:560px;margin-bottom:12px}
+.quiz button{text-align:left;font:500 15px var(--body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px 14px;cursor:pointer}
+.quiz button:disabled{cursor:default;opacity:.75}
+.quiz button.right{border-color:var(--good);color:var(--good);opacity:1}
+.quiz button.wrong{border-color:var(--bad);color:var(--bad);opacity:1}
+.badges{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.badges li{font:500 13px var(--body);border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.badges li.got{border-color:var(--accent);color:var(--ink)}
+.badges li.got::before{content:"\2713\00a0";color:var(--accent)}
+.sky{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px 34px;list-style:none;margin:0;padding:0}
+.sky small{display:block;color:var(--dim);font-size:14px}
+@media (max-width:640px){
+  body{padding-inline:16px;padding-block:18px 40px}
+  .view{height:min(118vw,540px)}
+  .alert{position:static;width:auto;margin-top:12px;padding:0;background:transparent;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .alert .app{display:none}
+  .alert .title{font-size:22px;line-height:1.3}
+  .alert .sub{font-size:16px;color:var(--dim);opacity:1}
+  .foot{position:static;margin-top:14px;flex-direction:column;align-items:stretch}
+  .edition{order:2;background:transparent;padding:0;color:var(--dim)}
+  .btns{flex-wrap:nowrap}.btn{flex:1;padding:12px 10px}
+  .btn.ghost{background:transparent;border-color:var(--line)}
+  .acts .btn{flex:none;padding:10px 16px}.acts span{flex-basis:100%}
+  .chance{margin-top:0}.chance b{font-size:40px}.chance span{font-size:16px}
+  .body{padding-left:0}
+  summary{flex-wrap:wrap;gap:2px 12px}summary .hint{font-size:12px}
+  .conds li{grid-template-columns:26px minmax(0,1fr)}
+  .conds em{grid-column:2;text-align:left;color:var(--accent)}
+  table,tbody,tr,td{display:block}
+  tr{padding:10px 0;border-top:1px solid var(--line)}
+  td{padding:0;border:0}
+  td:first-child{color:var(--dim);font-size:13px}
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Look Up</h1>
+    <p class="status" id="status">Sample alerts with invented readings.</p>
+  </header>
+
+  <div class="bar">
+    <div class="seg" id="modes" role="group" aria-label="View" hidden>
+      <button type="button" id="m-tonight" aria-pressed="false">Tonight</button>
+      <button type="button" id="m-gallery" aria-pressed="true">Sample gallery</button>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Sky event"></div>
+  </div>
+
+  <div class="stage">
+    <div class="view"><canvas id="sky" aria-label="Generative animation of the selected sky event"></canvas></div>
+    <div class="alert" aria-live="polite">
+      <div class="app"><span>Look Up</span><b id="aChance"></b></div>
+      <p class="title" id="aTitle"></p>
+      <p class="sub" id="aSub"></p>
+    </div>
+    <div class="foot">
+      <span class="edition" id="edition"></span>
+      <span class="btns">
+        <button class="btn ghost" id="next" type="button">Next style</button>
+        <button class="btn" id="again" type="button">New edition</button>
+      </span>
+    </div>
+  </div>
+
+  <p class="chance"><b id="pct"></b><span id="pctNote"></span></p>
+  <div class="meta"><div class="look" id="look"></div><p class="pick" id="pick" hidden></p><p class="count" id="count" hidden></p></div>
+  <div class="acts"><button class="btn" id="saw" type="button" aria-pressed="false" hidden>I saw it</button><button class="btn" id="save" type="button" hidden>Save this image</button><span id="actNote"></span></div>
+
+  <div class="deep">
+    <details id="d-conds"><summary>What has to line up <span class="hint" id="h-conds"></span></summary><div class="body"><ul class="conds" id="conds"></ul></div></details>
+    <details id="d-where"><summary>Where to watch <span class="hint" id="h-where"></span></summary><div class="body"><p class="pick" id="whereTip"></p><ul class="spots" id="spots"></ul></div></details>
+    <details id="d-sky" hidden><summary>Also up tonight <span class="hint" id="h-sky"></span></summary><div class="body"><ul class="sky" id="skyList"></ul></div></details>
+    <details id="d-quiz"><summary>Quick question <span class="hint" id="h-quiz"></span></summary><div class="body"><p class="pick" id="quizQ"></p><div class="quiz" id="quizA"></div><p class="pick" id="quizX" hidden></p></div></details>
+    <details id="d-data"><summary>The data <span class="hint" id="h-data"></span></summary><div class="body"><div class="charts" id="charts"></div><h3>Readings</h3><div class="tw"><table id="readings"></table></div></div></details>
+    <details id="d-facts"><summary>Why it happens <span class="hint" id="h-facts"></span></summary><div class="body"><ul class="facts" id="facts"></ul></div></details>
+    <details id="d-links"><summary>Research and sources <span class="hint" id="h-links"></span></summary><div class="body"><ul class="links" id="links"></ul></div></details>
+    <details id="d-next" hidden><summary>Coming up <span class="hint" id="h-next"></span></summary><div class="body"><ul class="links" id="upnext"></ul></div></details>
+    <details id="d-log" hidden><summary>Your sky log <span class="hint" id="h-log"></span></summary><div class="body"><p class="pick">Tap “I saw it” on a live alert to collect that kind of sky.</p><ul class="badges" id="badges"></ul></div></details>
+    <details id="d-drawn"><summary>How this one was drawn <span class="hint" id="h-drawn"></span></summary><div class="body"><ul class="drawn" id="drawn"></ul></div></details>
+  </div>
+  <p class="note" id="note"></p>
+</div>
+
+<script>
+const cv=document.getElementById('sky'),main=cv.getContext('2d');
+const mk=()=>document.createElement('canvas');
+const off=mk(),octx=off.getContext('2d'),half=mk(),hctx=half.getContext('2d',{willReadFrequently:true}),fx=mk(),fctx=fx.getContext('2d'),sm=mk(),sctx=sm.getContext('2d');
+let ctx=main,S=1,LW=1,hw=1,hh=1,fxImg=null,lev=null;
+const $=id=>document.getElementById(id);
+const el=(tag,txt,cls)=>{const e=document.createElement(tag);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e};
+const rng=s=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const noise=seed=>{const r=rng(seed),a=Array.from({length:256},r);return x=>{const i=Math.floor(x),f=x-i,u=f*f*(3-2*f);return a[i&255]*(1-u)+a[(i+1)&255]*u}};
+const hash=s=>{let h=2166136261;for(const c of String(s)){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h|0};
+const TAU=Math.PI*2,ri=(r,a,b)=>a+Math.floor(r()*(b-a+1)),cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+const stateOf=s=>s>=.8?'yes':s>=.5?'maybe':'no';
+const C=(name,val,score,note)=>({name,val,score,note});
+const word=c=>c>=65?'likely':c>=35?'possible':'a long shot';
+const HN=['8 PM','9 PM','10 PM','11 PM','12 AM','1 AM','2 AM','3 AM','4 AM','5 AM'];
+const SR=(label,unit,labels,vals,o={})=>({label,unit,points:labels.map((t,i)=>({t,v:Math.round(vals[i]*10)/10})),...o});
+
+const TYPES={
+  aurora:{label:'Northern lights',accent:'#6ff2b0'},
+  meteor:{label:'Meteor shower',accent:'#ffd98a'},
+  rainbow:{label:'Rainbow',accent:'#ff9d8c'},
+  halo:{label:'Moon halo',accent:'#b9d4ff'},
+  storm:{label:'Lightning',accent:'#c9a8ff'},
+  stars:{label:'Stargazing',accent:'#a9b8ff'},
+  moon:{label:'Moon',accent:'#f1ead0'},
+  sunset:{label:'Sunset',accent:'#ffb36b'},
+  iss:{label:'Space station',accent:'#8fe3ff'},
+  snow:{label:'Snow',accent:'#d6ecff'}
+};
+const STYLES=[
+  {id:'natural',n:'Natural',why:'drawn straight'},
+  {id:'long',n:'Long exposure',buf:'full',why:'frames stack like a shutter left open, so anything bright leaves a trail'},
+  {id:'bloom',n:'Bloom',buf:'full',why:'a blurred copy is added back so bright parts glow'},
+  {id:'film',n:'35mm film',why:'warm tone, grain and dark corners'},
+  {id:'cyan',n:'Cyanotype',mono:1,why:'the blue print process John Herschel invented in 1842'},
+  {id:'plate',n:'Glass plate',mono:1,why:'a negative on paper, the way observatories stored the sky for a century'},
+  {id:'scope',n:'Phosphor scope',mono:1,why:'green phosphor and scanlines, like an old instrument display'},
+  {id:'inferno',n:'False color, inferno',buf:'half',mono:1,why:'brightness mapped to a heat scale, as in scientific imaging'},
+  {id:'viridis',n:'False color, viridis',buf:'half',mono:1,why:'brightness mapped to a purple-to-yellow scale'},
+  {id:'ice',n:'False color, ice',buf:'half',mono:1,why:'brightness mapped to a cold blue scale'},
+  {id:'print',n:'Screenprint',buf:'half',sc:1,why:'brightness squeezed into six flat steps, like layered inks'},
+  {id:'contour',n:'Contour map',buf:'half',sc:1,why:'lines join points of equal brightness, like a topographic map of the sky'},
+  {id:'ridge',n:'Ridgeline plot',buf:'half',why:'each row of the picture becomes a line that rises where the sky is bright'}
+];
+const GROUNDS=[['ridge','Ridgeline'],['pines','Pine line'],['lake','Lakeshore'],['town','Rooftops']];
+const FACTS={
+  aurora:[
+    ['How it works','The green comes from oxygen atoms about 100 to 150 km up, glowing at a wavelength of 557.7 nanometers after being struck by electrons from the solar wind.'],
+    ['How it works','Red fringes come from oxygen much higher, above roughly 200 km, where the air is so thin an excited atom can wait almost two minutes before it releases its light.'],
+    ['By the numbers','The Kp index runs from 0 to 9. Each step up pushes the aurora farther from the poles, which is why a Kp 7 storm can reach the mid-latitudes.'],
+    ['By the numbers','A satellite parked 1.5 million km toward the sun samples the solar wind before it arrives. That gives forecasters roughly 15 to 60 minutes of warning.'],
+    ['Recent science','STEVE, a thin purple ribbon that citizen photographers named in 2016, turned out to be a fast river of hot gas and not a true aurora.'],
+    ['Recent science','The storm of May 2024 was the strongest in about twenty years. Auroras were photographed from Florida and northern Mexico.'],
+    ['History','The Carrington storm of 1859 pushed auroras as far south as the Caribbean and sent sparks through telegraph equipment.'],
+    ['What to look for','Faint aurora looks grey-white to the eye, because night vision is nearly colorblind. A phone on a three-second exposure will show the green before you can.']
+  ],
+  meteor:[
+    ['How it works','Most meteors you see are grains no bigger than sand. They glow because they hit the air at tens of kilometers per second and heat it white-hot, about 70 to 100 km overhead.'],
+    ['How it works','A shower happens when Earth crosses the dust trail of a comet or asteroid. The streaks seem to fan out from one point, the radiant, for the same reason snowflakes seem to rush at a moving car.'],
+    ['What to look for','Rates climb after midnight because your side of the planet has turned to face the direction Earth is travelling, so you sweep up more dust.'],
+    ['What to look for','Color hints at what the grain is made of. Sodium burns orange-yellow, magnesium blue-green, iron yellow.'],
+    ['By the numbers','ZHR, the zenithal hourly rate, is what one observer would count under a perfect dark sky with the radiant overhead. Real counts are usually lower.'],
+    ['Try this','Give your eyes 20 to 30 minutes in the dark. One glance at a bright phone screen starts the clock again.'],
+    ['History','In November 1833 the Leonids fell at tens of thousands an hour over North America. Trying to explain that night is what started meteor science.'],
+    ['Recent science','Parker Solar Probe data published in 2023 suggest the Geminid stream was made by one violent event, such as a collision, and not by slow comet-style shedding.']
+  ],
+  rainbow:[
+    ['How it works','Sunlight bends entering a raindrop, reflects once off the back, and bends again leaving. The light piles up at 42° from the point opposite the sun, which sets the size of the bow.'],
+    ['How it works','No two people see the same rainbow. Each eye receives light from a different set of drops.'],
+    ['What to look for','A fainter second bow sits near 51°, made by light that reflects twice inside each drop. Its colors run in reverse.'],
+    ['What to look for','The darker sky between the two bows is Alexander’s band, named for Alexander of Aphrodisias, who described it around 200 AD.'],
+    ['What to look for','Pale pink and green fringes just inside the main bow are supernumerary bows. Ray optics cannot produce them, so they became early evidence that light is a wave.'],
+    ['By the numbers','If the sun is higher than 42°, the whole bow falls below the horizon. That is why rainbows belong to mornings and evenings.'],
+    ['Try this','Rainbow light is strongly polarized. Tilt your head while wearing polarized sunglasses and part of the bow fades out.'],
+    ['Try this','From a plane or a high ridge, with rain below you, the bow can close into a full circle.']
+  ],
+  halo:[
+    ['How it works','The ring is light bent through six-sided ice crystals in thin cirrus cloud, 6 to 12 km up. Each crystal acts like a tiny 60° prism.'],
+    ['How it works','Ice bends this light by at least 22°, never less. That is why the sky just inside the ring looks darker than the sky outside it.'],
+    ['What to look for','The inner edge is tinged red because red light bends slightly less than blue.'],
+    ['What to look for','Bright spots level with the Moon on either side of the ring are moon dogs. They appear when flat plate crystals fall like leaves.'],
+    ['Try this','Stretch your arm out and spread your fingers. Thumb tip to little finger spans about 20°, close to the distance from the Moon to the ring.'],
+    ['History','“Ring around the Moon, rain soon” has some truth in it. High cirrus often runs a day or so ahead of a warm front.'],
+    ['By the numbers','A second, much larger halo exists at 46°. It is faint and rare enough that most people never see one.']
+  ],
+  storm:[
+    ['How it works','A lightning channel heats the air to around 30,000 K, roughly five times hotter than the surface of the sun, in a few millionths of a second.'],
+    ['How it works','The bolt first feels its way down in jumps of about 50 meters, called a stepped leader. The bright flash is the return stroke racing back up the finished path.'],
+    ['Try this','Sound covers about a kilometer every three seconds. Count from flash to thunder and divide by three for the distance in kilometers.'],
+    ['Try this','If thunder follows the flash by less than 30 seconds, the storm is within about 10 km and you are in range. Go inside.'],
+    ['By the numbers','Earth has about 44 lightning flashes every second, most of them over land in the tropics.'],
+    ['Recent science','In 2025 the World Meteorological Organization certified the longest flash on record: 829 km, from Texas to near Kansas City, in October 2017.'],
+    ['Recent science','Thunderstorms also fire brief bursts of gamma rays upward. A satellite built to watch distant space found them by accident in the early 1990s.'],
+    ['What to look for','Sprites are red flashes 50 to 90 km above a strong storm. They last milliseconds and are best seen from far away, over the top of the clouds.']
+  ],
+  stars:[
+    ['How it works','Stars twinkle because each is a single point of light bent by moving pockets of air. Planets are tiny discs, which averages the flicker out, so a bright “star” that holds steady is usually a planet.'],
+    ['What to look for','The Milky Way is the disc of our own galaxy seen edge-on from the inside. You need a dark site and no Moon to see it as a band.'],
+    ['By the numbers','Under a truly dark sky about 2,500 stars are visible at once. From a typical suburb it is a few hundred.'],
+    ['Try this','For faint objects, look slightly to one side. The edge of your retina is more sensitive to dim light than the center.'],
+    ['History','The Andromeda Galaxy is the farthest thing most people can see without a telescope. Its light left about 2.5 million years ago.'],
+    ['Recent science','A 2023 study in Science, built on more than 50,000 volunteer observations, found the night sky has been getting about 10% brighter every year.']
+  ],
+  moon:[
+    ['How it works','The faint glow on the dark part of a crescent Moon is earthshine: sunlight that bounced off Earth, lit the Moon and came back. Leonardo da Vinci worked this out around 1510.'],
+    ['How it works','A fully eclipsed Moon turns red because the only light reaching it has been bent through Earth’s atmosphere. It is lit by every sunrise and sunset on Earth at once.'],
+    ['By the numbers','A full Moon at its closest looks up to 14% wider and about 30% brighter than one at its farthest.'],
+    ['By the numbers','The Moon drifts about 3.8 cm farther from Earth every year, roughly the speed fingernails grow.'],
+    ['Try this','The Moon looks huge near the horizon, but it is no bigger there. Hold a pea at arm’s length: it covers the Moon wherever it is.'],
+    ['What to look for','You always see the same face. The Moon turns once for each trip around Earth, so the far side never comes into view.']
+  ],
+  sunset:[
+    ['How it works','At sunset the light crosses far more air than at noon. Blue is scattered out along the way, leaving orange and red.'],
+    ['How it works','The best color comes from mid and high cloud lit from underneath, a few minutes after the sun has already set for you on the ground.'],
+    ['By the numbers','Clean air makes more vivid sunsets, not dirty air. Haze and smog scatter all colors and wash the reds out.'],
+    ['What to look for','After the sun is down, turn around. The pink band low in the east is the Belt of Venus, and the dark blue strip under it is Earth’s own shadow.'],
+    ['What to look for','Sunbeams fanning out from behind a cloud are actually parallel. Perspective makes them spread, like railway tracks.'],
+    ['Try this','With a flat, sharp horizon, watch the last sliver of sun. It can flash green for a second as the air bends colors by different amounts.']
+  ],
+  iss:[
+    ['How it works','You can only see it near dusk or dawn, when the ground under you is dark but the station, 400 km up, is still in sunlight.'],
+    ['What to look for','It does not blink and it does not make a sound. A steady white light crossing the sky in a few minutes is the station; a blinking one is a plane.'],
+    ['What to look for','It often fades out in mid-sky. That is the station flying into Earth’s shadow.'],
+    ['By the numbers','It moves at about 28,000 km/h and circles Earth roughly every 90 minutes, about 16 times a day.'],
+    ['History','People have lived aboard without a break since November 2000.']
+  ],
+  snow:[
+    ['How it works','Snowflakes have six sides because water molecules lock into a hexagonal lattice as they freeze.'],
+    ['How it works','Shape depends on temperature. Flat plates form near −2°C, needles near −5°C, and the classic branching stars near −15°C.'],
+    ['By the numbers','Ten inches of snow usually melts down to about one inch of water, but the ratio runs from 5 to 1 for wet snow to 30 to 1 for dry powder.'],
+    ['What to look for','It goes quiet when it snows because fresh snow is full of air pockets that absorb sound.'],
+    ['History','Wilson Bentley, a Vermont farmer, took the first photograph of a single snow crystal in 1885 and went on to capture more than 5,000.']
+  ]
+};
+const LINKS={
+  aurora:[['Aurora 30-minute forecast','https://www.swpc.noaa.gov/products/aurora-30-minute-forecast','NOAA Space Weather Prediction Center','Live map of where the aurora oval sits right now.'],['Planetary K-index','https://www.swpc.noaa.gov/products/planetary-k-index','NOAA Space Weather Prediction Center','The Kp readings and forecast this alert is built on.'],['New science in plain sight: citizen scientists lead to the discovery of optical structure in the upper atmosphere','https://doi.org/10.1126/sciadv.aaq0030','Science Advances, 2018','The paper that introduced STEVE.']],
+  meteor:[['Meteor shower calendar','https://www.amsmeteors.org/meteor-showers/meteor-shower-calendar/','American Meteor Society','Peak nights, rates and moon phase for every major shower.'],['International Meteor Organization','https://www.imo.net/','IMO','Live counts from observers during active showers.']],
+  rainbow:[['Atmospheric Optics','https://atoptics.co.uk/','Les Cowley','The standard reference for rainbows, with ray diagrams and photographs of every variant.']],
+  halo:[['Atmospheric Optics','https://atoptics.co.uk/','Les Cowley','Catalog of ice halos, from the common 22° ring to rare arcs, with simulations.']],
+  storm:[['Lightning safety','https://www.weather.gov/safety/lightning','National Weather Service','What counts as a safe place and when to go there.']],
+  stars:[['Globe at Night','https://globeatnight.org/','NSF NOIRLab','Measure how dark your own sky is and add it to a worldwide dataset.'],['Citizen scientists report global rapid reductions in the visibility of stars from 2011 to 2022','https://doi.org/10.1126/science.abq7781','Science, 2023','The study behind the 10%-a-year figure.']],
+  moon:[['Moon','https://science.nasa.gov/moon/','NASA Science','Phases, eclipses and current missions.']],
+  sunset:[['The colors of sunset and twilight','https://www.spc.noaa.gov/publications/corfidi/sunset/','NOAA Storm Prediction Center','A forecaster explains what makes a sunset vivid.']],
+  iss:[['Spot the Station','https://spotthestation.nasa.gov/','NASA','Pass times for your location.']],
+  snow:[['Snow crystals','https://www.snowcrystals.com/','Kenneth Libbrecht, Caltech','The physics of how each shape forms, with photographs.']]
+};
+const SHOWERS=[
+  {n:'Orionids',c:'Orion',v:66,z:20,p:'Halley’s Comet'},
+  {n:'Perseids',c:'Perseus',v:59,z:100,p:'Comet Swift–Tuttle'},
+  {n:'Geminids',c:'Gemini',v:35,z:150,p:'asteroid Phaethon'},
+  {n:'Leonids',c:'Leo',v:71,z:15,p:'Comet Tempel–Tuttle'}
+];
+
+const LOOKS={aurora:[0,'North, low on the horizon'],meteor:[90,'The whole sky. The radiant climbs in the east'],rainbow:[90,'Opposite the sun'],halo:[180,'At the Moon'],storm:[180,'South, toward the storm'],stars:[null,'Straight up, away from town glow'],iss:[315,'Northwest first, then overhead'],moon:[100,'East, where it rises'],sunset:[270,'West'],snow:[null,'Out any window']};
+const GENERIC={aurora:'Anywhere with a clear, dark view to the north. Put town lights behind you.',meteor:'The darkest open sky you can reach. Lie back: you want the whole sky, not one direction.',rainbow:'Any open view opposite the sun. Do not drive anywhere, it will be gone before you arrive.',halo:'Anywhere you can see the Moon. Step away from streetlights.',storm:'Indoors or in a car with a view toward the storm. Never an open field or a ridge top.',stars:'As far from town glow as you can get, with a wide open sky.',iss:'Anywhere with an open sky. It is bright enough to see from the middle of town.',moon:'A clear view to the horizon where it rises. Water or a ridge line in front makes it better.',sunset:'An open view west, ideally over water or from high ground.',snow:'Your own window.'};
+const QUIZ={
+  aurora:{q:'Why is most aurora green?',options:['Oxygen about 100 km up','Nitrogen near the ground','Ice crystals','Reflected city light'],answer:0,explain:'Oxygen atoms 100 to 150 km up give off green light when electrons from the solar wind hit them.'},
+  meteor:{q:'How big is a typical meteor you can see?',options:['A grain of sand','A golf ball','A car','A house'],answer:0,explain:'Most are sand-sized. Speed, not size, makes them bright.'},
+  rainbow:{q:'Where is the sun when you see a rainbow?',options:['Behind you','In front of you','Directly overhead','It does not matter'],answer:0,explain:'The bow is centered on the point directly opposite the sun.'},
+  halo:{q:'What makes a ring around the Moon?',options:['Ice crystals in high cloud','Raindrops','Dust','The Moon’s own atmosphere'],answer:0,explain:'Six-sided ice crystals bend moonlight by 22 degrees.'},
+  storm:{q:'You see a flash, then hear thunder 9 seconds later. How far away was it?',options:['About 3 km','About 9 km','About 1 km','About 30 km'],answer:0,explain:'Sound takes about 3 seconds to cover a kilometer.'},
+  stars:{q:'A bright “star” that does not twinkle is probably…',options:['A planet','A very hot star','A plane','A galaxy'],answer:0,explain:'Planets show a tiny disc, which smooths out the flicker that makes stars twinkle.'},
+  iss:{q:'How long does the space station take to circle Earth?',options:['About 90 minutes','About 6 hours','About 24 hours','About a week'],answer:0,explain:'It travels about 28,000 km/h, so the crew sees roughly 16 sunrises a day.'},
+  moon:{q:'Why does a fully eclipsed Moon turn red?',options:['Sunlight bent through Earth’s atmosphere','The Moon heats up','Mars reflects onto it','Dust on the Moon'],answer:0,explain:'Earth’s air bends red light into the shadow, the same light that colors sunsets.'},
+  sunset:{q:'Which air gives the most vivid sunsets?',options:['Clean, clear air','Smoggy air','Humid, hazy air','Dusty air'],answer:0,explain:'Haze mutes color. The best sunsets tend to follow rain or a cold front.'},
+  snow:{q:'Why do snowflakes have six sides?',options:['Water freezes into a hexagonal lattice','They spin as they fall','Wind shapes them','It is chance, many have five'],answer:0,explain:'The six-fold shape starts at the scale of the molecules and is kept as the crystal grows.'}
+};
+let db=null,uid=null,dl=null,places=null,sight=[];
+let W=0,H=0,scene=null,style=STYLES[0],styleOver=null,type='aurora',live=null,report=null,reports=[],mode='gallery',touched=false;
+let seed=(Math.random()*2**31)|0,t0=performance.now(),last=0,tip=null;
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function lut(stops){const c=mk();c.width=256;c.height=1;const x=c.getContext('2d'),g=x.createLinearGradient(0,0,256,0);stops.forEach((s,i)=>g.addColorStop(i/(stops.length-1),s));x.fillStyle=g;x.fillRect(0,0,256,1);return x.getImageData(0,0,256,1).data}
+const PAL={inferno:lut(['#000004','#1b0c41','#4a0c6b','#781c6d','#a52c60','#cf4446','#ed6925','#fb9b06','#f7d13d','#fcffa4']),
+  viridis:lut(['#440154','#482878','#3e4989','#31688e','#26828e','#1f9e89','#35b779','#6ece58','#b5de2b','#fde725']),
+  ice:lut(['#03051a','#0b1c4d','#12448a','#1a7fb5','#52b7d0','#a8e2e0','#f2fbf5'])};
+const LIFT=Uint8Array.from({length:256},(_,i)=>Math.round(255*Math.pow(i/255,.6)));
+const POST=Uint8Array.from({length:256},(_,i)=>Math.round(Math.round(Math.pow(i/255,.75)*5)/5*255));
+const grain=(()=>{const c=mk();c.width=c.height=128;const x=c.getContext('2d'),d=x.createImageData(128,128);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=70}x.putImageData(d,0,0);return main.createPattern(c,'repeat')})();
+const scan=(()=>{const c=mk();c.width=1;c.height=3;const x=c.getContext('2d');x.fillStyle='rgba(0,0,0,.38)';x.fillRect(0,2,1,1);return main.createPattern(c,'repeat')})();
+
+function sky(stops){const g=ctx.createLinearGradient(0,0,0,H);stops.forEach((c,i)=>g.addColorStop(i/(stops.length-1),c));ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+function glow(px,col){ctx.shadowBlur=px*S;if(col)ctx.shadowColor=col}
+function makeStars(r,n,maxY){return Array.from({length:Math.max(0,n)},()=>({x:r()*W,y:r()*maxY,s:.4+r()*r()*1.5,p:r()*TAU,w:.5+r()*2}))}
+function drawStars(st,t,k){ctx.fillStyle='#fff';for(const s of st){ctx.globalAlpha=k*(.45+.55*Math.sin(t*s.w+s.p)**2);ctx.beginPath();ctx.arc(s.x,s.y,s.s*LW,0,TAU);ctx.fill()}ctx.globalAlpha=1}
+function makeRain(r,n,slant){const d=Array.from({length:n},()=>({x:r()*W*1.2,y:r()*H,l:8+r()*14,v:500+r()*400}));return(dt,a)=>{ctx.strokeStyle='rgba(210,220,255,'+a+')';ctx.lineWidth=LW;ctx.beginPath();for(const p of d){p.y+=p.v*dt;p.x-=p.v*dt*slant;if(p.y>H){p.y=-20;p.x=Math.random()*W*1.2}ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+p.l*slant,p.y-p.l)}ctx.stroke()}}
+function makeGround(nz,r,kind){
+  const o1=r()*200,o2=r()*200,lake=kind==='lake',hz=H*(lake?.8:kind==='town'?.9:.88);
+  const L=lake?[[.006,H*.035,o1,0]]:[[.0035,H*.13,o1,0],[.007,H*.08,o2,H*.035]];
+  const yAt=(l,x)=>hz+l[3]-l[1]*nz(x*l[0]+l[2])-l[1]*.25*nz(x*l[0]*4+l[2]);
+  const trees=[],blds=[];
+  if(kind==='pines')for(let x=-10;x<W+20;x+=7+r()*13)trees.push([x,16+r()*r()*54,5+r()*6]);
+  if(kind==='town')for(let x=-12;x<W+10;){const w=16+r()*34,h=12+r()*r()*H*.17,win=[];for(let wy=6;wy<h-4;wy+=9)for(let wx=4;wx<w-5;wx+=7)if(r()<.22)win.push([wx,wy]);blds.push([x,w,h,win]);x+=w+r()*5}
+  const layer=(l,c)=>{ctx.fillStyle=c;ctx.beginPath();ctx.moveTo(0,H);for(let x=0;x<=W+8;x+=8)ctx.lineTo(x,yAt(l,x));ctx.lineTo(W,H);ctx.fill()};
+  return{hz,draw(cols){
+    if(lake){const c=ctx.canvas,y=Math.round(hz*S);ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.beginPath();ctx.rect(0,y,c.width,c.height-y);ctx.clip();ctx.globalAlpha=.62;ctx.setTransform(1,0,0,-1,0,2*y);ctx.drawImage(c,0,0);ctx.restore();
+      ctx.fillStyle='rgba(3,7,16,.42)';ctx.fillRect(0,hz,W,H-hz);ctx.fillStyle=cols[1];ctx.beginPath();ctx.moveTo(0,hz+2);for(let x=0;x<=W+8;x+=8)ctx.lineTo(x,yAt(L[0],x));ctx.lineTo(W,hz+2);ctx.fill();return}
+    if(kind==='town'){layer(L[0],cols[0]);ctx.fillStyle=cols[1];for(const[x,w,h]of blds)ctx.fillRect(x,hz-h,w,H-hz+h);ctx.fillStyle='rgba(255,214,150,.8)';for(const[x,,h,win]of blds)for(const[wx,wy]of win)ctx.fillRect(x+wx,hz-h+wy,2.6*LW,3.4*LW);return}
+    layer(L[0],cols[0]);
+    if(trees.length){ctx.fillStyle=cols[1];ctx.beginPath();for(const[x,h,w]of trees){const y=yAt(L[1],x)+4;ctx.moveTo(x-w,y);ctx.lineTo(x,y-h);ctx.lineTo(x+w,y)}ctx.fill()}
+    layer(L[1],cols[1]);
+  }};
+}
+function moonDisc(x,y,rad,k){let g=ctx.createRadialGradient(x,y,0,x,y,rad*9);g.addColorStop(0,`rgba(225,232,255,${.5*k})`);g.addColorStop(.3,`rgba(180,200,255,${.12*k})`);g.addColorStop(1,'rgba(180,200,255,0)');ctx.fillStyle=g;ctx.fillRect(x-rad*9,y-rad*9,rad*18,rad*18);
+  ctx.fillStyle='#f6f4ea';ctx.beginPath();ctx.arc(x,y,rad,0,TAU);ctx.fill();ctx.fillStyle='rgba(90,100,130,.16)';[[-.3,-.25,.32],[.25,.1,.26],[-.1,.4,.2]].forEach(([a,b,c])=>{ctx.beginPath();ctx.arc(x+a*rad,y+b*rad,c*rad,0,TAU);ctx.fill()})}
+
+function build(){
+  W=cv.clientWidth;H=cv.clientHeight;
+  const r=rng(seed),nz=noise(seed^0x9e37),P=(live&&live.params)||{},num=(k,f)=>typeof P[k]==='number'?P[k]:f();
+  const pool=type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES,pickS=Math.floor(r()*pool.length);
+  style=pool[(styleOver==null?pickS:styleOver)%pool.length];
+  const gk=GROUNDS[Math.floor(r()*GROUNDS.length)];
+  const sc=style.sc||.5;LW=style.buf==='half'&&sc<1?1.7:1;
+  off.width=cv.width;off.height=cv.height;hw=half.width=fx.width=Math.ceil(W*sc);hh=half.height=fx.height=Math.ceil(H*sc);sm.width=Math.ceil(cv.width/8);sm.height=Math.ceil(cv.height/8);
+  fxImg=fctx.createImageData(hw,hh);lev=new Uint8Array(hw*hh);
+  main.setTransform(1,0,0,1,0,0);main.globalCompositeOperation='source-over';main.globalAlpha=1;main.fillStyle='#000';main.fillRect(0,0,cv.width,cv.height);
+  ctx=main;S=1;
+  const G=makeGround(nz,r,gk[0]),cloud=Math.round(num('cloud',()=>ri(r,3,75))),moon=Math.round(num('moon',()=>ri(r,0,100)));
+  const cCloud=n=>C(n||'Clear sky',cloud+'% cloud',Math.max(.1,1-cloud/100*.9),cloud<30?'Mostly clear. Gaps are all you need.':cloud<60?'Broken cloud. You may need to wait for a gap.':'Heavy cloud is the main thing working against you.');
+  const cMoon=()=>C('Low moonlight','Moon '+moon+'% lit',1-moon/100*.45,moon<35?'A dark sky lets the faint detail through.':'Moonlight washes out the faint parts. Bright ones still show.');
+  const cloudSeries=()=>SR('Cloud cover tonight','%',HN,HN.map((_,i)=>cl(cloud+(nz(i*.7+3)-.5)*40,0,100)),{max:100});
+  let info,draw;
+
+  if(type==='aurora'){
+    const kp=num('kp',()=>ri(r,5,8)),wind=num('wind',()=>ri(r,42,82)*10),bz=ri(r,-14,3),red=kp>=7,rays=r()<.45,quiet=kp<5?.3+kp*.1:1;
+    const stars=makeStars(r,Math.round(W*H/2600),G.hz);
+    const top=red?[255,70,95]:[150,95,255];
+    const cur=Array.from({length:2+Math.floor(kp/3)},()=>({base:G.hz*(kp<5?.8+r()*.12:.56+r()*.24),amp:H*(.04+r()*.09)*(kp<5?.4:1),f:(.001+r()*.0022)*(rays?1.6:1),sp:(.05+r()*.06)*wind/500,o:r()*100,h:H*(.15+kp*.035)*(.75+r()*.5)*(rays?1.25:1)*(kp<5?.45:1)}));
+    const kk=Math.round(kp),conds=[C('Storm strong enough for your latitude','Kp '+kk+', need 7',kk>=8?.95:kk==7?.82:kk==6?.4:.15,kk>=7?'At 41°N the lights should clear the northern horizon.':'Probably stays north of you. A camera may still catch a glow.'),cCloud('Clear sky to the north'),
+      [C('Magnetic field tipped south','Bz '+(bz>0?'+':'')+bz+' nT',bz<=-5?.95:bz<0?.7:.4,'A southward field lets the solar wind pour in. If Bz flips north, the show can shut off in minutes.'),cMoon(),C('Fast solar wind',wind+' km/s',wind>=550?.95:.8,'Faster wind means brighter, more active curtains.')][ri(r,0,2)]];
+    const kl=['5 PM','8 PM','11 PM','2 AM','5 AM','8 AM'];
+    info={title:w=>'Aurora '+w+' tonight',sub:'Look north between 10:40 PM and 1:15 AM, from somewhere without streetlights.',conds,
+      series:[SR('Kp forecast, 3-hour blocks','Kp',kl,kl.map((_,i)=>cl(kp-Math.abs(i-2)*(.8+nz(i)*1.2),1,9)),{max:9,threshold:7,thresholdLabel:'needed at 41°N'}),cloudSeries()],
+      d:[['Kp '+(Math.round(kp*10)/10),'height and number of curtains'],[wind+' km/s','ripple speed'],[red?'Red top':'Violet top',red?'strong storms light the high oxygen layer':'nitrogen glow on the upper rays'],[rays?'Tall rays':'Soft curtains','form picked for this edition']]};
+    draw=t=>{
+      sky(['#03050f','#081226','#0d2230']);drawStars(stars,t,.9);
+      ctx.globalCompositeOperation='lighter';
+      for(const c of cur)for(let x=0;x<W;x+=4){
+        const y=c.base+(nz(x*c.f+t*c.sp+c.o)-.5)*2*c.amp+(nz(x*c.f*5-t*c.sp*2+c.o)-.5)*c.amp*.5;
+        const a=.34*Math.pow(nz(x*c.f*3-t*c.sp*1.7+c.o*2),1.6)*(.55+kp*.07)*quiet;
+        const h=c.h*(.35+nz(x*c.f*9+t*.25+c.o*3));
+        const g=ctx.createLinearGradient(0,y,0,y-h);
+        g.addColorStop(0,`rgba(140,255,180,${a})`);g.addColorStop(.3,`rgba(50,230,150,${a*.55})`);
+        g.addColorStop(.72,`rgba(${top},${a*.3})`);g.addColorStop(1,`rgba(${top},0)`);
+        ctx.fillStyle=g;ctx.fillRect(x,y-h,4.6,h);
+      }
+      ctx.globalCompositeOperation='source-over';G.draw(['#07111a','#03070c']);
+    };
+  }
+
+  else if(type==='meteor'){
+    const s0=SHOWERS[Math.floor(r()*SHOWERS.length)],sh={n:P.shower||s0.n,c:P.radiant||s0.c,v:num('speed',()=>s0.v),z:num('zhr',()=>s0.z),p:P.parent||s0.p},dim=1-moon/100*.6;
+    const stars=makeStars(r,Math.round(W*H/1900*dim),G.hz);
+    const ang=-.5-r()*.5,mx=W*(.3+r()*.4);
+    for(let i=0;i<Math.round(W*.5*dim);i++){const u=r()*W*1.4-W*.2,sp=(r()+r()+r()-1.5)*H*.13;stars.push({x:u,y:H*.42+(u-mx)*Math.tan(ang)*.5+sp,s:.3+r()*.6,p:r()*TAU,w:.4+r()})}
+    const rad={x:W*(.25+r()*.5),y:H*(.2+r()*.22)},mp={x:W*(.12+r()*.76),y:H*(.14+r()*.3)},rate=(.35+sh.z/60)*(.5+dim*.5),ms=[];
+    const per=Math.max(1,Math.round(sh.z*.55*(1-cloud/100)*dim));
+    const spawn=()=>{const a=Math.random()*TAU,d=30+Math.random()*Math.hypot(W,H)*.45,big=Math.random()<.07;ms.push({x:rad.x+Math.cos(a)*d,y:rad.y+Math.sin(a)*d,dx:Math.cos(a),dy:Math.sin(a),age:0,life:.45+Math.random()*.5,v:sh.v*8,len:sh.v*2.4*(big?1.8:1),big})};
+    for(let i=0;i<3;i++){spawn();ms[i].age=.1+i*.12}
+    const conds=[C('Shower at its peak','ZHR '+sh.z,.96,'Earth is crossing the densest part of the dust trail tonight.'),cCloud(),cMoon(),
+      [C('Radiant high in the sky',sh.c+' highest near 2 AM',.9,'The higher the radiant, the more of the shower is above your horizon.'),C('Dark surroundings','Suburban sky',.75,'Town glow hides the faint majority. A field outside town roughly doubles the count.')][ri(r,0,1)]];
+    info={title:()=>sh.n+' peak tonight',sub:`Best after midnight. Expect about ${per} an hour from your spot. Streaks fan out from ${sh.c}.`,conds,
+      series:[SR('Meteors you could count, by hour','per hour',HN,HN.map((_,i)=>per*(.25+.75*Math.sin(Math.min(1,i/7)*Math.PI/2))*(.8+nz(i)*.4))),cloudSeries()],
+      d:[['ZHR '+sh.z,'how often a streak crosses (sped up here)'],[sh.v+' km/s','streak length and speed'],['Moon '+moon+'%','how many faint stars survive'],[sh.p,'where the dust came from']]};
+    draw=(t,dt)=>{
+      sky(['#02030b','#070b1e','#141a33']);drawStars(stars,t,.95);
+      if(moon>25)moonDisc(mp.x,mp.y,7+moon*.06,moon/100);
+      ctx.strokeStyle='rgba(255,217,138,.4)';ctx.setLineDash([3,5]);ctx.lineWidth=LW;ctx.beginPath();ctx.arc(rad.x,rad.y,13,0,TAU);ctx.stroke();ctx.setLineDash([]);
+      if(!style.buf){ctx.fillStyle='rgba(255,217,138,.65)';ctx.font='11px ui-monospace,monospace';ctx.fillText('radiant',rad.x+19,rad.y+4)}
+      if(Math.random()<rate*dt)spawn();
+      ctx.lineCap='round';
+      for(let i=ms.length-1;i>=0;i--){const m=ms[i];m.age+=dt;if(m.age>m.life){ms.splice(i,1);continue}
+        const hx=m.x+m.dx*m.v*m.age,hy=m.y+m.dy*m.v*m.age,L=m.len*Math.min(1,m.age*5),a=Math.sin(Math.PI*m.age/m.life);
+        const g=ctx.createLinearGradient(hx,hy,hx-m.dx*L,hy-m.dy*L);g.addColorStop(0,`rgba(255,255,255,${a})`);g.addColorStop(.25,m.big?`rgba(150,255,200,${a*.7})`:`rgba(255,225,170,${a*.6})`);g.addColorStop(1,'rgba(255,255,255,0)');
+        ctx.strokeStyle=g;ctx.lineWidth=(m.big?3:1.5)*LW;glow(m.big?18:6,m.big?'#9fffcf':'#fff');ctx.beginPath();ctx.moveTo(hx,hy);ctx.lineTo(hx-m.dx*L,hy-m.dy*L);ctx.stroke()}
+      ctx.shadowBlur=0;G.draw(['#0a0e1f','#04060e']);
+    };
+  }
+
+  else if(type==='rainbow'){
+    const elv=Math.round(num('sunEl',()=>ri(r,4,30))),wet=num('wet',()=>.5+r()*.5),sun=ri(r,40,96),eve=r()<.6,hz=G.hz,s=hz/(57-elv),cx=W*(.12+r()*.76),cy=hz+elv*s;
+    const rain=makeRain(r,Math.round(W/9),.18),N=30,b0=wet*(.5+sun/200);
+    const conds=[C('Sun lower than 42°',elv+'° up',1,'The top of the bow will sit '+(42-elv)+'° above the horizon. A lower sun gives a taller arc.'),
+      C('Rain falling opposite the sun',eve?'Showers to the east':'Showers to the west',wet,wet>.8?'A solid curtain of rain right where the bow forms.':'Patchy rain. You may only get one leg of the arc.'),
+      C('Direct sun reaching the rain',sun+'% sun',sun/100,sun>70?'A clean break in the cloud behind you.':'The sun is in and out. The bow will come and go with it.'),
+      ...(r()<.5?[C('Big drops','Shower, not drizzle',.92,'Large drops give vivid, separate colors. Mist-size drops make a pale white bow.')]:[])];
+    const ml=['now','+10 min','+20','+30','+40','+50','+60'];
+    info={look:[eve?90:270,eve?'East, opposite the sun':'West, opposite the sun'],title:w=>'Rainbow '+w+' in the next 20 minutes',sub:eve?'Sun is breaking through in the west. Turn your back to it and look east.':'Morning sun is out in the east. Turn your back to it and look west.',conds,
+      series:[SR('Rain chance, next hour','%',ml,ml.map((_,i)=>cl(wet*100-Math.abs(i-2)*9+(nz(i)-.5)*20,0,100)),{max:100}),SR('Sun height','°',ml,ml.map((_,i)=>eve?Math.max(0,elv-i*1.9):elv+i*1.9),{max:50,threshold:42,thresholdLabel:'no bow above 42°'})],
+      d:[['Sun '+elv+'°','height of the arc'],[Math.round(wet*100)+'% rain','brightness of the bands'],[eve?'Evening':'Morning','color of the sky'],['Second bow','fainter, colors reversed, at 51°']]};
+    const arc=(deg,st,w)=>{ctx.strokeStyle=st;ctx.lineWidth=w;ctx.beginPath();ctx.arc(cx,cy,deg*s,Math.PI,TAU);ctx.stroke()};
+    draw=(t,dt)=>{
+      sky(eve?['#18223d','#34415f','#6f6f80','#96807a']:['#1a2a44','#35506b','#6c8794','#9fb0ad']);
+      ctx.save();ctx.beginPath();ctx.rect(0,0,W,hz+4);ctx.clip();
+      ctx.fillStyle='rgba(255,250,235,.07)';ctx.beginPath();ctx.arc(cx,cy,40.4*s,0,TAU);ctx.fill();
+      arc(46.4,'rgba(4,8,25,.16)',7.6*s);
+      ctx.globalCompositeOperation='screen';
+      const b=b0*(.82+.18*nz(t*.6));
+      for(let i=0;i<N;i++){const f=i/(N-1);
+        arc(40.5+f*1.9,`hsla(${275-f*275},95%,62%,${.46*b})`,1.9*s/N*2.2);
+        arc(50.3+f*3.2,`hsla(${f*275},90%,65%,${.14*b})`,3.2*s/N*2.2)}
+      arc(39.7,`rgba(200,140,255,${.1*b})`,.35*s);arc(39.0,`rgba(140,255,190,${.06*b})`,.3*s);
+      ctx.globalCompositeOperation='source-over';ctx.restore();
+      rain(dt,.22*wet);G.draw(eve?['#1c2a2c','#0c1516']:['#1d3034','#0d191b']);
+    };
+  }
+
+  else if(type==='halo'){
+    const lit=Math.round(num('lit',()=>ri(r,55,100))),cir=Math.round(num('cirrus',()=>ri(r,25,90))),alt=ri(r,22,68),dogs=r()<.45,tang=r()<.4;
+    const s=Math.min(W,H*1.3)/96,cx=W*(.3+r()*.4),cy=H*(.36+r()*.08),R=22*s;
+    const stars=makeStars(r,Math.round(W*H/7000),G.hz);
+    const fib=Array.from({length:38},()=>({y:r()*H*.86,o:r()*100,w:8+r()*30,a:.012+r()*.03,v:.012+r()*.03,amp:8+r()*34,sl:-.06+r()*.1}));
+    const conds=[C('Thin ice cloud overhead',cir+'% cirrus',cir>=60?.95:cir>=40?.7:.4,cir>=60?'An even veil of crystals, enough for a full ring.':'Wispy cloud. Expect arcs that fade in and out.'),
+      C('Bright Moon',lit+'% lit',lit>=80?.95:.7,'The ring is weak light. It needs a bright Moon behind it.'),
+      [C('Moon well above the horizon',alt+'° up',alt>=30?.95:.65,'Low down, haze and thicker cloud tend to smother the ring.'),C('No low cloud underneath',cloud<40?'Clear below':'Patchy low cloud',cloud<40?.95:.55,'Low cloud blocks the view of the high ice layer.')][ri(r,0,1)]];
+    info={title:w=>'Moon halo '+w+' right now',sub:'Thin high cloud is drifting over. Look up at the Moon; the ring can fade within the hour.',conds,
+      series:[SR('High cirrus cover tonight','%',HN,HN.map((_,i)=>cl(cir+(nz(i*.6)-.5)*50,0,100)),{max:100}),SR('Moon height','°',HN,HN.map((_,i)=>Math.max(0,alt*Math.sin((i+2)/12*Math.PI))),{max:90})],
+      d:[[lit+'% lit','brightness of ring and glow'],[cir+'% cirrus','how complete the ring is'],[dogs?'Moon dogs':'No moon dogs',dogs?'plate crystals add side spots':'tumbling crystals, even ring'],['22°','ring radius, fixed by the shape of ice']]};
+    draw=t=>{
+      sky(['#0a1226','#15213f','#243352']);drawStars(stars,t,.45);
+      const k=(lit/100)*(.4+cir/150)*(.78+.22*nz(t*.35));
+      ctx.lineCap='round';for(const f of fib){ctx.strokeStyle=`rgba(205,218,255,${f.a*cir/55})`;ctx.lineWidth=f.w;ctx.beginPath();for(let x=-60;x<=W+60;x+=40){const y=f.y+(nz(x*.004+f.o+t*f.v)-.5)*f.amp*2+x*f.sl;x<0?ctx.moveTo(x,y):ctx.lineTo(x,y)}ctx.stroke()}
+      let g=ctx.createRadialGradient(cx,cy,R*.8,cx,cy,R*1.25);
+      g.addColorStop(0,'rgba(0,0,12,0)');g.addColorStop(.38,'rgba(0,0,12,.13)');g.addColorStop(.445,`rgba(255,178,140,${.5*k})`);g.addColorStop(.5,`rgba(238,244,255,${.6*k})`);g.addColorStop(.66,`rgba(200,216,255,${.16*k})`);g.addColorStop(1,'rgba(200,216,255,0)');
+      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      const spot=(x,y,rx,ry,a)=>{ctx.save();ctx.translate(x,y);ctx.scale(rx/ry,1);const q=ctx.createRadialGradient(0,0,0,0,0,ry);q.addColorStop(0,`rgba(255,240,222,${a})`);q.addColorStop(.45,`rgba(255,205,175,${a*.3})`);q.addColorStop(1,'rgba(255,205,175,0)');ctx.fillStyle=q;ctx.beginPath();ctx.arc(0,0,ry,0,TAU);ctx.fill();ctx.restore()};
+      if(dogs){spot(cx-R*1.03,cy,s*2.2,s*3.4,.7*k);spot(cx+R*1.03,cy,s*2.2,s*3.4,.7*k)}
+      if(tang)spot(cx,cy-R*1.01,s*8,s*2,.55*k);
+      moonDisc(cx,cy,Math.max(7,s*1.7),.5+k*.6);
+      G.draw(['#0c1428','#050912']);
+    };
+  }
+
+  else if(type==='stars'||type==='iss'){
+    const iss=type==='iss',dim=1-moon/100*.55;
+    const stars=makeStars(r,Math.round(W*H/1300*dim),G.hz);
+    const ang=-.4-r()*.6,mx=W*(.3+r()*.4);
+    for(let i=0;i<Math.round(W*.9*dim);i++){const u=r()*W*1.4-W*.2,sp=(r()+r()+r()-1.5)*H*.12;stars.push({x:u,y:H*.4+(u-mx)*Math.tan(ang)*.5+sp,s:.3+r()*.6,p:r()*TAU,w:.4+r()})}
+    const pick3=[['Saturn'],['Jupiter','Saturn'],['Mars'],['Venus','Jupiter']][ri(r,0,3)],names=Array.isArray(P.planets)&&P.planets.length?P.planets.slice(0,3).map(String):pick3;
+    const pl=names.map(n=>({n,x:W*(.15+r()*.7),y:H*(.25+r()*.4),c:{Mars:'#ffb08a',Saturn:'#ffe9b8',Jupiter:'#fff3dc',Venus:'#ffffff'}[n]||'#fff3dc'}));
+    const rc=r(),comet=P.comet===true||(!live&&rc<.12),cm={x:W*(.2+r()*.6),y:H*(.2+r()*.25),a:-.6-r()*1.2};
+    const mp={x:W*(.1+r()*.8),y:H*(.14+r()*.25)},maxEl=Math.round(num('maxEl',()=>ri(r,35,85))),tr=Math.round(num('clarity',()=>ri(r,2,5)));
+    const p0={x:-20,y:G.hz*.9},p1={x:W+20,y:G.hz*(.7+r()*.2)},lift=G.hz*(.15+maxEl/90*.6);
+    let shoot=null;
+    const conds=iss?[C('High pass','Peaks '+maxEl+'° up',maxEl>=60?.97:maxEl>=40?.85:.6,'Higher passes are brighter and last longer.'),C('Station in sunlight, you in the dark','Yes, for 4 minutes',.95,'That only happens shortly after dusk or before dawn.'),cCloud()]
+      :[cCloud(),cMoon(),C('Clear, steady air','Clarity '+tr+' of 5',tr>=4?.95:tr==3?.75:.5,tr>=4?'Dry, clean air. Faint stars reach nearly to the horizon.':'Some haze. The best view is high overhead.')];
+    const pm=['7:41','7:42','7:43','7:44','7:45','7:46'];
+    info=iss?{title:()=>'Space station pass at 7:42 PM',sub:'Rises in the northwest, climbs to '+maxEl+'° and fades out in the southeast. It does not blink.',conds,
+        series:[SR('Height above the horizon during the pass','°',pm,[10,maxEl*.5,maxEl,maxEl*.7,maxEl*.3,10],{max:90}),cloudSeries()],
+        d:[['Peak '+maxEl+'°','how high the arc climbs'],['Steady light','no blinking, unlike a plane'],['Fade-out','it dims as it enters Earth’s shadow']]}
+      :{title:(w,c)=>c>=65?'Great night for stargazing':c>=35?'Decent night for stargazing':'Poor night for stargazing',sub:names.join(' and ')+(names.length>1?' are':' is')+' up after dark. Give your eyes 20 minutes away from screens.',conds,
+        series:[cloudSeries(),SR('Moon height','°',HN,HN.map((_,i)=>Math.max(0,50*Math.sin((i-3)/9*Math.PI))),{max:90})],
+        d:[['Moon '+moon+'%','how many stars are drawn'],[names.join(', '),'steady bright points, labelled'],[comet?'Comet':'No comet','a rare extra some editions get'],['Milky Way','the dense band of faint stars']]};
+    const dot=(x,y,rad,col,g)=>{glow(g,col);ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,rad*LW,0,TAU);ctx.fill();ctx.shadowBlur=0};
+    draw=(t,dt)=>{
+      sky(['#02030c','#070c22','#131c3a']);drawStars(stars,t,.95);
+      for(const p of pl){dot(p.x,p.y,2.6,p.c,10);if(!style.buf){ctx.fillStyle='rgba(220,228,255,.75)';ctx.font='11px ui-monospace,monospace';ctx.fillText(p.n,p.x+9,p.y+4)}}
+      if(comet){const ex=cm.x+Math.cos(cm.a)*90,ey=cm.y+Math.sin(cm.a)*90,g=ctx.createLinearGradient(cm.x,cm.y,ex,ey);g.addColorStop(0,'rgba(200,255,235,.8)');g.addColorStop(1,'rgba(200,255,235,0)');ctx.strokeStyle=g;ctx.lineWidth=5*LW;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(cm.x,cm.y);ctx.lineTo(ex,ey);ctx.stroke();dot(cm.x,cm.y,2.4,'#eafff7',12)}
+      if(moon>25)moonDisc(mp.x,mp.y,7+moon*.06,moon/100);
+      if(iss){const u=(t%9)/7;if(u<=1){const x=p0.x+(p1.x-p0.x)*u,y=p0.y+(p1.y-p0.y)*u-Math.sin(u*Math.PI)*lift,a=Math.min(1,u*6)*(u>.7?Math.max(0,1-(u-.7)/.2):1);ctx.globalAlpha=a;dot(x,y,3.2,'#fffaeb',16);ctx.globalAlpha=1}}
+      else{if(!shoot&&Math.random()<dt*.12)shoot={x:Math.random()*W,y:Math.random()*H*.45,a:.3+Math.random()*.9,age:0};
+        if(shoot){shoot.age+=dt;const q=shoot.age/.6;if(q>1)shoot=null;else{const hx=shoot.x+Math.cos(shoot.a)*q*170,hy=shoot.y+Math.sin(shoot.a)*q*170;ctx.strokeStyle=`rgba(255,255,255,${Math.sin(q*Math.PI)})`;ctx.lineWidth=1.4*LW;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(hx,hy);ctx.lineTo(hx-Math.cos(shoot.a)*55,hy-Math.sin(shoot.a)*55);ctx.stroke()}}}
+      G.draw(['#080c1c','#03050c']);
+    };
+  }
+
+  else if(type==='moon'){
+    const v=['super','earthshine','conjunction','eclipse'].includes(P.variant)?P.variant:['super','earthshine','conjunction','eclipse'][ri(r,0,3)],ecl=v==='eclipse';
+    const lit=Math.round(num('lit',()=>v==='super'||ecl?100:v==='earthshine'?ri(r,6,16):ri(r,20,60))),wax=r()<.5,near=typeof P.near==='string'?P.near:(v==='conjunction'?['Jupiter','Saturn','Venus','Mars'][ri(r,0,3)]:null);
+    const R=Math.min(W,H)*(v==='super'?.2:.15),cx=W*(.35+r()*.3),cy=H*(.34+r()*.1),stars=makeStars(r,Math.round(W*H/(lit>60&&!ecl?9000:3000)),G.hz);
+    const cr=Array.from({length:9},()=>{const a=r()*TAU,d=Math.sqrt(r())*.78;return[Math.cos(a)*d,Math.sin(a)*d,.07+r()*.19]});
+    const what={super:['Full Moon near its closest point','357,000 km away',.97,'About 7% wider than an average full Moon.'],earthshine:['Thin crescent',lit+'% lit',.95,'Thin enough that the dark part shows a ghostly glow.'],conjunction:[(near||'A planet')+' close to the Moon','About 2° apart',.95,'Both fit in one binocular view.'],eclipse:['Moon inside Earth’s shadow','Totality lasts 58 min',.97,'The whole event happens while the Moon is up for you.']}[v];
+    const conds=[C(...what),C('Moon above your horizon','Rises 6:52 PM',.97,'Low in the east at first, where it looks biggest.'),cCloud()];
+    info={title:()=>({super:'Supermoon rises at 6:52 PM',earthshine:'Crescent Moon with earthshine tonight',conjunction:(near||'A planet')+' beside the Moon tonight',eclipse:'Total lunar eclipse tonight'}[v]),
+      sub:{super:'Catch it in the first 20 minutes after it clears the horizon.',earthshine:'Look west after sunset. The dark part of the disc glows faintly.',conjunction:'Look for a steady bright point right next to the Moon.',eclipse:'The Moon dims, then turns copper red at mid-eclipse.'}[v],conds,
+      series:[SR('Moon height','°',HN,HN.map((_,i)=>Math.max(0,58*Math.sin((i+1)/11*Math.PI))),{max:90}),cloudSeries()],
+      d:[[lit+'% lit','shape of the bright part'],[{super:'Supermoon',earthshine:'Earthshine',conjunction:'Conjunction',eclipse:'Eclipse'}[v],'which Moon event this edition shows'],[wax?'Waxing':'Waning','which side is lit']]};
+    draw=t=>{
+      sky(ecl?['#04040c','#0d0a16','#1a1220']:['#050818','#0c1530','#17223f']);drawStars(stars,t,.8);
+      const k=ecl?.3:.25+lit/130,sgn=wax?1:-1,f=lit/100;
+      let g=ctx.createRadialGradient(cx,cy,R*.6,cx,cy,R*4.5);g.addColorStop(0,`rgba(${ecl?'255,120,90':'205,218,255'},${.4*k})`);g.addColorStop(1,`rgba(${ecl?'255,120,90':'205,218,255'},0)`);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      if(ecl){g=ctx.createRadialGradient(cx-R*.3,cy-R*.3,R*.1,cx,cy,R);g.addColorStop(0,'#d9683f');g.addColorStop(1,'#5a1a12');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R,0,TAU);ctx.fill()}
+      else{ctx.fillStyle='#1c2439';ctx.beginPath();ctx.arc(cx,cy,R,0,TAU);ctx.fill();
+        ctx.fillStyle='#f4f1e4';ctx.beginPath();ctx.arc(cx,cy,R,-Math.PI/2,Math.PI/2,sgn<0);ctx.ellipse(cx,cy,Math.max(.01,R*Math.abs(1-2*f)),R,0,Math.PI/2,-Math.PI/2,(f<.5)===(sgn>0));ctx.fill()}
+      ctx.fillStyle=ecl?'rgba(40,8,6,.2)':'rgba(70,80,110,.16)';for(const[a,b,c]of cr){ctx.beginPath();ctx.arc(cx+a*R,cy+b*R,c*R,0,TAU);ctx.fill()}
+      if(near){const px=cx-sgn*R*1.9,py=cy-R*.5;glow(10,'#fff3dc');ctx.fillStyle='#fff3dc';ctx.beginPath();ctx.arc(px,py,2.8*LW,0,TAU);ctx.fill();ctx.shadowBlur=0;if(!style.buf){ctx.fillStyle='rgba(220,228,255,.75)';ctx.font='11px ui-monospace,monospace';ctx.fillText(near,px+9,py+4)}}
+      G.draw(['#0a1024','#04070f']);
+    };
+  }
+
+  else if(type==='sunset'){
+    const hi=Math.round(num('highCloud',()=>ri(r,15,80))),gap=r()<.75,rays=r()<.5,pal=[['#1b2a5c','#6a4a8c','#e0705a','#ffb45e'],['#1a2452','#8a3f86','#ff5f7a','#ffc27a'],['#12324a','#3f6f8a','#f0a35a','#ffe08a']][ri(r,0,2)];
+    const sx=W*(.25+r()*.5),hz=G.hz,cls=Array.from({length:18},()=>({x:r()*W*1.3-W*.15,y:H*(.1+r()*.52),w:W*(.1+r()*.28),h:6+r()*15,v:2+r()*5}));
+    const conds=[C('High cloud to catch the light',hi+'% (best is 30 to 60)',hi>=30&&hi<=60?.95:hi>=20&&hi<=75?.7:.4,hi<30?'Too little cloud. Expect a clean but plain fade.':hi>60?'A lot of cloud. The color depends on a gap at the horizon.':'Enough cloud to light up without closing the sky.'),
+      C('Clear gap on the western horizon',gap?'Open':'Blocked',gap?.92:.35,'Sunlight has to slip under the cloud deck to paint it from below.'),C('Clean air','Low haze',.9,'Clean air gives purer reds. Haze and smog mute them.')];
+    const sl=['5 PM','6 PM','7 PM','8 PM'];
+    info={title:w=>'Vivid sunset '+w+' tonight',sub:'Sunset is at 6:44 PM. The best color comes 5 to 15 minutes after the sun is gone.',conds,
+      series:[SR('High cloud around sunset','%',sl,sl.map((_,i)=>cl(hi+(nz(i)-.5)*30,0,100)),{max:100,threshold:30,thresholdLabel:'enough to color'})],
+      d:[[hi+'% high cloud','how much cloud is lit'],[rays?'Sunbeams':'No sunbeams','beams through gaps, in some editions'],['Palette','one of three, picked per edition']]};
+    draw=(t,dt)=>{
+      const sy=hz-H*.03+Math.min(H*.05,t*1.1);sky(pal);
+      let g=ctx.createRadialGradient(sx,sy,0,sx,sy,H*.75);g.addColorStop(0,'rgba(255,226,160,.6)');g.addColorStop(.35,'rgba(255,170,110,.22)');g.addColorStop(1,'rgba(255,170,110,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      if(rays){ctx.globalCompositeOperation='lighter';for(let i=0;i<7;i++){const a=-Math.PI*(.14+i*.12)+(nz(i*3)-.5)*.1,w=.035;ctx.fillStyle=`rgba(255,205,135,${.05*(.5+nz(i+t*.05))})`;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx+Math.cos(a-w)*W*1.6,sy+Math.sin(a-w)*W*1.6);ctx.lineTo(sx+Math.cos(a+w)*W*1.6,sy+Math.sin(a+w)*W*1.6);ctx.fill()}ctx.globalCompositeOperation='source-over'}
+      ctx.fillStyle='#fff3c4';ctx.beginPath();ctx.arc(sx,sy,H*.036,0,TAU);ctx.fill();
+      for(const c of cls){c.x+=c.v*dt;if(c.x-c.w>W)c.x=-c.w;const q=c.y/(H*.62),a=.55*Math.min(1,hi/55);ctx.save();ctx.translate(c.x,c.y);ctx.scale(c.w/c.h,1);g=ctx.createRadialGradient(0,c.h*.3,0,0,0,c.h);g.addColorStop(0,`rgba(255,${110+q*90|0},${150-q*70|0},${a})`);g.addColorStop(.6,`rgba(${120+q*80|0},${70+q*30|0},${120-q*30|0},${a*.6})`);g.addColorStop(1,'rgba(90,60,110,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,c.h,0,TAU);ctx.fill();ctx.restore()}
+      G.draw(['#1a1320','#0a070d']);
+    };
+  }
+
+  else if(type==='snow'){
+    const tF=Math.round(num('tempF',()=>ri(r,18,33))),pop=Math.round(num('pop',()=>ri(r,45,95))),inch=num('inches',()=>ri(r,1,6));
+    const fl=Array.from({length:Math.round(W/2.2*pop/100)},()=>{const z=r();return{x:r()*W,y:r()*H,z,s:.8+z*2.6,v:18+z*55,p:r()*TAU}});
+    const conds=[C('Cold enough to stick',tF+'°F',tF<=30?.95:tF<=32?.75:.45,tF<=30?'Cold from cloud to ground. It will accumulate.':'Marginal. Expect a wet mix on the roads.'),C('Moisture arriving',pop+'% chance',pop/100,'The storm track decides this one.'),C('Enough to notice',inch+' in forecast',inch>=2?.95:.75,'Grass and cars whiten first.')];
+    info={title:w=>'Snow '+w+' tonight',sub:'Starting around 9 PM. About '+inch+' inches by morning if it stays cold.',conds,
+      series:[SR('Snow chance by hour','%',HN,HN.map((_,i)=>cl(pop-Math.abs(i-4)*7+(nz(i)-.5)*16,0,100)),{max:100}),SR('Temperature','°F',HN,HN.map((_,i)=>tF+4-i*.8),{max:40,threshold:32,thresholdLabel:'freezing'})],
+      d:[[tF+'°F','how far the flakes drift sideways'],[pop+'%','how thick the snowfall is'],['Three depths','near flakes are bigger and faster']]};
+    draw=(t,dt)=>{
+      sky(['#141a2c','#27304a','#454d68']);
+      const g=ctx.createRadialGradient(W*.5,G.hz,0,W*.5,G.hz,H*.75);g.addColorStop(0,'rgba(255,205,160,.16)');g.addColorStop(1,'rgba(255,205,160,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      G.draw(['#9aa5c0','#dfe6f2']);
+      ctx.fillStyle='#fff';for(const f of fl){f.y+=f.v*dt;f.x+=(Math.sin(t*.8+f.p)*f.z*18+6)*dt;if(f.y>H){f.y=-4;f.x=Math.random()*W}if(f.x>W)f.x-=W;ctx.globalAlpha=.35+f.z*.6;ctx.beginPath();ctx.arc(f.x,f.y,f.s*LW,0,TAU);ctx.fill()}ctx.globalAlpha=1;
+    };
+  }
+
+  else{
+    const km=Math.round(num('km',()=>ri(r,4,22))),fpm=Math.round(num('fpm',()=>ri(r,5,26))),dark=r()<.7,hz=G.hz;
+    const hue=[[[190,175,255],'#b79cff'],[[170,205,255],'#9cc8ff'],[[255,208,165],'#ffb878']][ri(r,0,2)];
+    const rain=makeRain(r,Math.round(W/5),.28);
+    const clouds=Array.from({length:Math.round(W/55)+4},()=>({x:r()*W,y:H*(.02+r()*.2),R:H*(.14+r()*.16),v:3+r()*6}));
+    let bolts=[],next=.3,born=-9;
+    const grow=(x,y,w,depth,out)=>{const pts=[[x,y]],end=depth?y+H*(.1+Math.random()*.25):hz+6;let drift=(Math.random()-.5)*(depth?14:5);
+      while(y<end){y+=7+Math.random()*13;x+=(Math.random()-.5)*26+drift;pts.push([x,y]);if(depth<2&&Math.random()<(depth?.05:.13))grow(x,y,w*.5,depth+1,out)}out.push({pts,w})};
+    const conds=[C('Active storm in view',km+' km away',km<=15?.95:.8,'Thunder arrives about '+Math.round(km/.343)+' seconds after each flash.'),
+      C('Dark enough to see flashes',dark?'After dusk':'Daylight',dark?.95:.55,dark?'At night a storm shows from much farther away.':'In daylight only the brighter ground strikes stand out.'),
+      [cCloud('Clear line of sight to the storm'),C('Storm still firing',fpm+' flashes a minute',fpm>=10?.95:.7,'A high flash rate means the storm is still building.')][ri(r,0,1)]];
+    const fl5=['-50 min','-40','-30','-20','-10','now'];
+    info={title:()=>'Lightning '+km+' km away',sub:km<10?'Close enough to strike where you are. Watch from indoors or a car.':'Storm is passing to the south. Watch from a window or a car.',conds,
+      series:[SR('Flashes per minute, last hour','per min',fl5,fl5.map((_,i)=>fpm*(.35+i*.13)*(.8+nz(i)*.4))),SR('Distance to the storm','km',fl5,fl5.map((_,i)=>km+(5-i)*2.5*(.6+nz(i+9))),{threshold:10,thresholdLabel:'within striking range'})],
+      d:[[km+' km','thunder delay'],[fpm+' a minute','how often a bolt fires'],['New path every strike','each channel is grown step by step'],[hue[1]==='#ffb878'?'Amber':'Cool','glow color for this edition']]};
+    draw=(t,dt)=>{
+      if(t>=next){bolts=[];grow(W*(.15+Math.random()*.7),H*.2,2.6,0,bolts);born=next;next=t+(.8+Math.random()*2.2)*18/fpm+.5}
+      const age=t-born,fl=age<1.1?Math.max(0,Math.exp(-age*4.5)*(.75+.25*Math.cos(age*55))):0;
+      sky(dark?['#0b0a18','#17152b','#24203a']:['#1b1d2e','#2c2e44','#44435a']);
+      ctx.fillStyle=`rgba(${hue[0]},${fl*.3})`;ctx.fillRect(0,0,W,H);
+      if(fl>.02){ctx.lineCap='round';ctx.lineJoin='round';glow(22,hue[1]);
+        for(const b of bolts){ctx.strokeStyle=`rgba(250,246,255,${Math.min(1,fl*1.5)})`;ctx.lineWidth=b.w*LW;ctx.beginPath();b.pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke()}ctx.shadowBlur=0}
+      for(const c of clouds){c.x+=c.v*dt;if(c.x-c.R>W)c.x=-c.R;const g=ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,c.R),l=Math.round((dark?22:44)+fl*120);g.addColorStop(0,`rgba(${l},${l-2},${l+18},.95)`);g.addColorStop(1,`rgba(${l},${l-2},${l+18},0)`);ctx.fillStyle=g;ctx.fillRect(c.x-c.R,c.y-c.R,c.R*2,c.R*2)}
+      rain(dt,.16+fl*.25);G.draw(['#0d0c1b','#050409']);
+    };
+  }
+
+  scene={draw};
+  render(info,gk);
+  t0=performance.now();last=0;
+  if(still)paint(.4,.016);
+}
+
+function render(info,gk){
+  const L=live||{},arr=a=>Array.isArray(a)?a:[];
+  const conds=(arr(L.conds).length?arr(L.conds).map(c=>C(String(c.name||''),String(c.val||''),cl(+c.score||0,0,1),String(c.note||''))):info.conds).map(c=>({...c,state:stateOf(c.score)}));
+  const ch=typeof L.chance==='number'?cl(Math.round(L.chance),0,100):cl(Math.round(100*conds.reduce((a,c)=>a*c.score,1)),4,96);
+  const worst=[...conds].sort((a,b)=>a.score-b.score)[0],ok=conds.filter(c=>c.state==='yes').length;
+  $('aTitle').textContent=L.title||info.title(word(ch),ch);$('aSub').textContent=L.sub||info.sub;$('aChance').textContent=ch+'% chance';
+  $('pct').textContent=ch+'%';$('pctNote').textContent=!worst||worst.score>=.8?'chance to see it. Everything is lined up.':'chance to see it. Weakest link: '+worst.name.toLowerCase()+'.';
+  $('edition').textContent=`${live?'Live':'Sample'} · Edition ${(seed>>>0).toString(36).toUpperCase()} · ${style.n} · ${gk[1]}`;
+  $('h-conds').textContent=ok+' of '+conds.length+' lined up';
+  $('conds').replaceChildren(...conds.map(c=>{const li=el('li'),m=el('span',c.state==='yes'?'✓':c.state==='maybe'?'~':'✕','mark '+c.state);m.title=c.state==='yes'?'Lined up':c.state==='maybe'?'Borderline':'Working against you';li.append(m,el('strong',c.name),el('em',c.val),el('p',c.note));return li}));
+  const series=arr(L.series).length?arr(L.series):info.series;
+  $('charts').replaceChildren(...series.filter(s=>s&&arr(s.points).length).map(chart));
+  const rd=arr(L.readings).length?arr(L.readings):conds.map(c=>({name:c.name,value:c.val,source:live?'':'sample'}));
+  $('readings').replaceChildren(...rd.map(x=>{const tr=el('tr');tr.append(el('td',x.name),el('td',x.value));const td=el('td');if(safe(x.url)){const a=el('a',x.source||'source');a.href=x.url;a.target='_blank';a.rel='noopener';td.append(a)}else td.textContent=x.source||'';tr.append(td);return tr}));
+  $('h-data').textContent=series.length+' charts, '+rd.length+' readings';
+  const facts=[...arr(L.facts).map(f=>[String(f.cat||'Tonight'),String(f.text||'')]),...FACTS[type]];
+  $('facts').replaceChildren(...facts.map(f=>{const li=el('li');li.append(el('small',f[0]),document.createTextNode(f[1]));return li}));
+  $('h-facts').textContent=facts.length+' notes';
+  const links=[...arr(L.research).map(x=>[x.title,x.url,x.source,x.note]),...LINKS[type]].filter(x=>safe(x[1]));
+  $('links').replaceChildren(...links.map(linkItem));$('h-links').textContent=links.length+' links';
+  $('drawn').replaceChildren(...[...info.d,[style.n,style.why],[gk[1],'foreground for this edition']].map(([a,b])=>{const li=el('li');li.append(el('b',a),document.createTextNode(b));return li}));
+  $('h-drawn').textContent=style.n;
+  const up=report?arr(report.upcoming):[];$('d-next').hidden=!(live&&up.length);
+  $('upnext').replaceChildren(...up.map(u=>{const li=el('li');li.append(el('strong',(u.date?u.date+': ':'')+(u.name||'')),el('small',u.note||''));return li}));$('h-next').textContent=up.length+' dated';
+  $('note').textContent=live?'Odds are estimates from public forecasts and can be wrong. The checklist shows what they rest on.':'This gallery uses invented readings so you can judge the look. Tonight’s view uses real forecasts.';
+  $('status').textContent=live&&report?`Checked ${report.checkedLabel||report.date||''} for ${report.place||'your location'}. ${report.summary||''}`:'Sample alerts with invented readings.';
+  extras(info);
+  document.documentElement.style.setProperty('--accent',TYPES[type].accent);
+  document.querySelectorAll('#chips button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===type));
+}
+function extras(info){
+  const L=live||{},lk=L.look&&typeof L.look==='object'?[typeof L.look.bearing==='number'?L.look.bearing:null,String(L.look.label||'')]:(info.look||LOOKS[type]);
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 40 40');svg.setAttribute('aria-hidden','true');
+  svg.innerHTML='<circle cx="20" cy="20" r="15" fill="none" stroke="var(--line)" stroke-width="1.5"/><path d="M20 1v5" stroke="var(--dim)" stroke-width="1.5"/>'+(lk[0]==null?'<circle cx="20" cy="20" r="4" fill="var(--accent)"/>':'<g transform="rotate('+(+lk[0])+' 20 20)"><path d="M20 8L25 23L20 20L15 23Z" fill="var(--accent)"/></g>');
+  $('look').replaceChildren(svg,el('span','Look: '+lk[1]));
+  const sp=live&&places&&Array.isArray(places.spots)?places.spots.filter(x=>x&&Array.isArray(x.types)&&x.types.includes(type)):[];
+  $('whereTip').textContent=GENERIC[type];$('h-where').textContent=sp.length?sp.length+' spots near '+(places.name||'you'):'general advice';
+  $('spots').replaceChildren(...sp.map(x=>{const li=el('li'),h=el('strong');if(safe(x.url)){const a=el('a',x.name);a.href=x.url;a.target='_blank';a.rel='noopener';h.append(a)}else h.textContent=x.name;if(x.drive)h.append(el('span',x.drive,'tag'));li.append(h,el('small',x.why||''));if(x.caution)li.append(el('small','Heads up: '+x.caution));return li}));
+  const qz=live&&report&&report.quiz&&Array.isArray(report.quiz.options)&&report.quiz.options.length>1?report.quiz:QUIZ[type],qr=rng(seed^1234);
+  const order=qz.options.map((o,i)=>[qr(),i]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+  $('quizQ').textContent=qz.q;$('quizX').hidden=true;$('quizX').textContent=qz.explain||'';$('h-quiz').textContent='tap to answer';
+  $('quizA').replaceChildren(...order.map(i=>{const b=el('button',String(qz.options[i]));b.type='button';b.onclick=()=>{[...$('quizA').children].forEach(c=>c.disabled=true);b.className=i===qz.answer?'right':'wrong';if(i!==qz.answer)$('quizA').children[order.indexOf(qz.answer)].className='right';$('quizX').hidden=!qz.explain;$('h-quiz').textContent=i===qz.answer?'correct':'not quite'};return b}));
+  const pk=live&&report&&report.pick;$('pick').hidden=!pk;if(pk){$('pick').replaceChildren(el('b','Tonight’s pick: '),document.createTextNode(String(pk).replace(/^Tonight.s pick:\s*/i,'')))}
+  const nx=live&&report&&report.next,days=nx&&nx.date?Math.round((new Date(nx.date+'T12:00:00')-new Date(new Date().toDateString()+' 12:00:00'))/864e5):null;
+  $('count').hidden=!(nx&&days!=null&&days>=0);if(!$('count').hidden)$('count').replaceChildren(el('b','Next up: '),document.createTextNode(nx.name+(days===0?', tonight.':days===1?', tomorrow.':', in '+days+' days.')));
+  const sk=live&&report&&report.sky,items=sk&&Array.isArray(sk.items)?sk.items:[];$('d-sky').hidden=!(sk&&(items.length||sk.moon));
+  if(sk){const rows=[];if(sk.moon){const li=el('li');li.append(el('strong','Moon: '+(sk.moon.phase||'')+(typeof sk.moon.lit==='number'?', '+sk.moon.lit+'% lit':'')),el('small',sk.moon.note||''));rows.push(li)}
+    for(const it of items){const li=el('li');li.append(el('strong',it.name||''),el('small',[it.when,it.where,it.note].filter(Boolean).join('. ')));rows.push(li)}
+    $('skyList').replaceChildren(...rows);$('h-sky').textContent=items.map(i=>i.name).slice(0,3).join(', ')}
+  updateSaw();
+}
+function updateSaw(){
+  const on=!!(live&&report&&db&&uid),key=on?report.date+'.'+type:'';
+  $('saw').hidden=!on;$('d-log').hidden=!(db&&uid);$('actNote').textContent='';
+  if(on){const mine=sight.some(s=>s.uid===uid&&s.key===key),n=sight.filter(s=>s.key===key).length;$('saw').setAttribute('aria-pressed',mine);$('saw').textContent=mine?'Seen it ✓':'I saw it';}
+  const got=new Set(sight.filter(s=>s.uid===uid).map(s=>s.type));
+  $('badges').replaceChildren(...Object.entries(TYPES).map(([k,v])=>el('li',v.label,got.has(k)?'got':'')));$('h-log').textContent=got.size+' of '+Object.keys(TYPES).length+' seen';
+}
+const safe=u=>typeof u==='string'&&/^https:\/\//.test(u);
+function linkItem([title,url,source,note]){const li=el('li'),a=el('a',title||url);a.href=url;a.target='_blank';a.rel='noopener';li.append(a,el('small',[source,note].filter(Boolean).join('. ')));return li}
+
+function chart(s){
+  const NS='http://www.w3.org/2000/svg',n=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+  const pts=s.points.map(p=>({t:String(p.t),v:+p.v||0})),VW=340,VH=132,pl=30,pr=8,pt=14,pb=20,iw=VW-pl-pr,ih=VH-pt-pb;
+  const raw=Math.max(...pts.map(p=>p.v),s.threshold||0,1e-9),max=s.max||[1,2,5,10,20,50,100,200,500,1000].find(x=>x>=raw*1.08)||raw,y=v=>pt+ih-cl(v/max,0,1)*ih,slot=iw/pts.length,bw=Math.min(14,slot*.5);
+  const fig=el('figure'),cap=el('figcaption',s.label);cap.append(el('small',(s.unit||'')+(s.source?' · '+s.source:live?'':' · sample')));
+  const svg=n('svg',{class:'chart',viewBox:`0 0 ${VW} ${VH}`,role:'img','aria-label':s.label+': '+pts.map(p=>p.t+' '+p.v).join(', ')});
+  [0,max].forEach(v=>{svg.append(n('line',{class:'grid',x1:pl,x2:VW-pr,y1:y(v),y2:y(v)}));const t=n('text',{x:pl-5,y:y(v)+3,'text-anchor':'end'});t.textContent=v;svg.append(t)});
+  const every=Math.ceil(pts.length/5);
+  pts.forEach((p,i)=>{const x=pl+slot*i+slot/2,top=y(p.v),h=pt+ih-top,r=Math.min(3,bw/2,h);
+    if(h>0)svg.append(n('path',{class:'bar'+(s.threshold!=null&&p.v<s.threshold?' low':''),d:`M${x-bw/2},${pt+ih}V${top+r}Q${x-bw/2},${top} ${x-bw/2+r},${top}H${x+bw/2-r}Q${x+bw/2},${top} ${x+bw/2},${top+r}V${pt+ih}Z`}));
+    if(i%every===0){const t=n('text',{x,y:VH-6,'text-anchor':'middle'});t.textContent=p.t;svg.append(t)}
+    const hit=n('rect',{class:'hit',x:pl+slot*i,y:pt,width:slot,height:ih});
+    const show=()=>{tip&&tip.remove();tip=el('div',`${p.t}: ${p.v} ${s.unit||''}`,'tip');const b=svg.getBoundingClientRect(),f=fig.getBoundingClientRect();tip.style.left=cl(b.left-f.left+x/VW*b.width,50,f.width-50)+'px';tip.style.top=(b.top-f.top+top/VH*b.height)+'px';fig.append(tip)};
+    hit.addEventListener('pointerenter',show);hit.addEventListener('pointerdown',show);hit.addEventListener('pointerleave',()=>{tip&&tip.remove();tip=null});svg.append(hit)});
+  if(s.threshold!=null){svg.append(n('line',{class:'thr',x1:pl,x2:VW-pr,y1:y(s.threshold),y2:y(s.threshold)}));const t=n('text',{x:VW-pr,y:y(s.threshold)-4,'text-anchor':'end'});t.textContent=(s.thresholdLabel||'threshold')+' ('+s.threshold+')';svg.append(t)}
+  fig.append(cap,svg);return fig;
+}
+
+function paint(t,dt){
+  const d=devicePixelRatio||1,b=style.buf;
+  ctx=b==='half'?hctx:b==='full'?octx:main;S=b==='half'?(style.sc||.5):d;
+  ctx.setTransform(S,0,0,S,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.shadowBlur=0;
+  scene.draw(t,dt);
+  const m=main;m.globalAlpha=1;m.shadowBlur=0;
+  const wash=(op,col)=>{m.globalCompositeOperation=op;m.fillStyle=col;m.fillRect(0,0,W,H)};
+  if(!b){m.setTransform(d,0,0,d,0,0);
+    if(style.id==='cyan')wash('color','#2c6db5');
+    else if(style.id==='scope'){wash('saturation','#777');wash('color-dodge','#8a8a8a');wash('multiply','#4dff8f');wash('source-over',scan)}
+    else if(style.id==='plate'){wash('color-dodge','#a8a8a8');wash('difference','#fff');wash('saturation','#777');wash('multiply','#eadfc6')}
+    else if(style.id==='film'){wash('soft-light','rgba(255,176,96,.24)');m.save();m.globalCompositeOperation='overlay';m.globalAlpha=.55;m.translate(-(Math.random()*128|0),-(Math.random()*128|0));m.fillStyle=grain;m.fillRect(0,0,W+128,H+128);m.restore();
+      const g=m.createRadialGradient(W/2,H/2,H*.3,W/2,H/2,Math.hypot(W,H)*.58);g.addColorStop(0,'#fff');g.addColorStop(1,'#4a4a4a');wash('multiply',g)}
+    m.globalCompositeOperation='source-over';return}
+  m.setTransform(1,0,0,1,0,0);
+  if(style.id==='long'){m.globalCompositeOperation='source-over';m.fillStyle='rgba(0,0,0,.045)';m.fillRect(0,0,cv.width,cv.height);m.globalCompositeOperation='lighten';m.drawImage(off,0,0);m.globalCompositeOperation='source-over';return}
+  if(style.id==='bloom'){m.globalCompositeOperation='source-over';m.drawImage(off,0,0);sctx.drawImage(off,0,0,sm.width,sm.height);m.globalCompositeOperation='screen';m.globalAlpha=.8;m.imageSmoothingEnabled=true;m.drawImage(sm,0,0,cv.width,cv.height);m.globalAlpha=1;m.globalCompositeOperation='source-over';return}
+  const im=hctx.getImageData(0,0,hw,hh).data,o=fxImg.data,N=hw*hh;m.globalCompositeOperation='source-over';
+  if(style.id==='ridge'){m.setTransform(d,0,0,d,0,0);m.fillStyle='#070a18';m.fillRect(0,0,W,H);m.lineWidth=1.15;m.lineJoin='round';
+    for(let y0=12;y0<H+26;y0+=9){const yi=Math.min(hh-1,y0>>1);let best=0,bp=0;m.beginPath();m.moveTo(-2,y0);
+      for(let x=0;x<=W;x+=4){const p=(yi*hw+Math.min(hw-1,x>>1))*4,l=LIFT[(77*im[p]+150*im[p+1]+29*im[p+2])>>8];if(l>best){best=l;bp=p}m.lineTo(x,y0-l/255*30)}
+      m.lineTo(W+2,y0);m.fill();const k=255/Math.max(im[bp],im[bp+1],im[bp+2],1);
+      m.strokeStyle=best<60?'rgba(150,165,210,.5)':`rgb(${im[bp]*k*.7+76|0},${im[bp+1]*k*.7+76|0},${im[bp+2]*k*.7+76|0})`;m.stroke()}
+    return}
+  if(style.id==='contour'){for(let i=0;i<N;i++){const p=i*4;lev[i]=LIFT[(77*im[p]+150*im[p+1]+29*im[p+2])>>8]*11>>8}
+    for(let i=0;i<N;i++){const p=i*4,R=im[p],G2=im[p+1],B=im[p+2],edge=(i%hw<hw-1&&lev[i]!==lev[i+1])||(i+hw<N&&lev[i]!==lev[i+hw]);
+      if(edge){const k=255/Math.max(R,G2,B,1);o[p]=R*k*.72+70;o[p+1]=G2*k*.72+70;o[p+2]=B*k*.72+70}else{o[p]=7+R*.2;o[p+1]=10+G2*.2;o[p+2]=24+B*.22}o[p+3]=255}}
+  else if(style.id==='print'){for(let i=0;i<N;i++){const p=i*4,l=(77*im[p]+150*im[p+1]+29*im[p+2])>>8,q=POST[l];if(l<10){o[p]=q*.35+6;o[p+1]=q*.4+9;o[p+2]=q*.7+22}else{const k=q/l;o[p]=Math.min(255,im[p]*k);o[p+1]=Math.min(255,im[p+1]*k);o[p+2]=Math.min(255,im[p+2]*k)}o[p+3]=255}}
+  else{const pal=PAL[style.id];for(let i=0;i<N;i++){const p=i*4,q=LIFT[(77*im[p]+150*im[p+1]+29*im[p+2])>>8]*4;o[p]=pal[q];o[p+1]=pal[q+1];o[p+2]=pal[q+2];o[p+3]=255}}
+  fctx.putImageData(fxImg,0,0);m.imageSmoothingEnabled=true;m.drawImage(fx,0,0,cv.width,cv.height);
+}
+function fit(){const d=devicePixelRatio||1;cv.width=Math.round(cv.clientWidth*d);cv.height=Math.round(cv.clientHeight*d);build()}
+function loop(now){const t=(now-t0)/1000,dt=Math.min(.05,Math.max(0,t-last));last=t;if(scene)paint(t,dt);requestAnimationFrame(loop)}
+
+function chips(){
+  const items=mode==='tonight'&&report?[...report.events].filter(e=>e&&TYPES[e.type]).sort((a,b)=>(b.chance||0)-(a.chance||0)).map(e=>[e.type,TYPES[e.type].label+' '+Math.round(e.chance||0)+'%',e]):Object.entries(TYPES).map(([k,v])=>[k,v.label,null]);
+  $('chips').replaceChildren(...items.map(([k,label,ev])=>{const b=el('button',label);b.type='button';b.dataset.t=k;b.id='chip-'+k;b.onclick=()=>{touched=true;pick(k,ev)};return b}));
+  return items;
+}
+function pick(k,ev){type=k;live=ev||null;styleOver=null;seed=ev?hash(report.date+'.'+k):(Math.random()*2**31)|0;build()}
+function setMode(m,want){
+  mode=m==='tonight'&&report?'tonight':'gallery';
+  $('m-tonight').setAttribute('aria-pressed',mode==='tonight');$('m-gallery').setAttribute('aria-pressed',mode==='gallery');
+  const items=chips(),it=items.find(i=>i[0]===want)||items[0];pick(it[0],it[2]);
+}
+$('saw').onclick=()=>{if(!(live&&report))return;const key=report.date+'.'+type,mine=sight.some(s=>s.key===key);
+  if(mine)sight=sight.filter(s=>s.key!==key);else sight.push({uid,key,type,date:report.date,at:new Date().toISOString()});
+  try{localStorage.setItem('lookup.sightings',JSON.stringify(sight))}catch(e){}updateSaw()};
+$('save').onclick=()=>{const name='look-up-'+type+'-'+(seed>>>0).toString(36)+'.png';cv.toBlob(b=>{if(!b)return;const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},'image/png')};
+$('m-tonight').onclick=()=>{touched=true;setMode('tonight')};$('m-gallery').onclick=()=>{touched=true;setMode('gallery')};
+$('again').onclick=()=>{touched=true;styleOver=null;seed=(Math.random()*2**31)|0;build()};
+$('next').onclick=()=>{touched=true;const n=(type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES);styleOver=(n.indexOf(style)+1)%n.length;build()};
+
+const h0=location.hash.slice(1).split('.'),wantDate=/^\d{4}-\d\d-\d\d$/.test(h0[0])?h0[0]:null,wantType=wantDate?h0[1]:h0[0];
+chips();if(TYPES[wantType]&&!wantDate)type=wantType;
+let rz;new ResizeObserver(()=>{clearTimeout(rz);rz=setTimeout(()=>{if(cv.clientWidth!==W||cv.clientHeight!==H)fit()},120)}).observe(cv);
+fit();if(!still)requestAnimationFrame(loop);
+
+(async()=>{try{
+  // Static build: nightly reports are plain JSON files in data/. Sightings stay in this browser only.
+  $('save').hidden=false;
+  try{sight=JSON.parse(localStorage.getItem('lookup.sightings')||'[]')}catch(e){sight=[]}
+  uid='me';db={};
+  const get=async p=>{const r=await fetch(p+'?t='+Math.floor(Date.now()/6e5),{cache:'no-store'});if(!r.ok)throw 0;return r.json()};
+  const all=await get('data/reports.json');
+  reports=(Array.isArray(all)?all:[]).filter(r=>r&&Array.isArray(r.events)&&r.events.some(e=>e&&TYPES[e.type])).sort((x,y)=>x.date<y.date?1:-1);
+  if(!reports.length){updateSaw();return}
+  report=reports.find(r=>r.date===wantDate)||reports[0];$('modes').hidden=false;
+  try{const p=await get('data/places.json');places=p[report.placeId||'state-college-pa']||null}catch(e){}
+  if(!touched)setMode('tonight',wantType);
+  updateSaw();
+}catch(e){}})();
+</script>
+
+</body></html>
