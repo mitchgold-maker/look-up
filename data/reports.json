@@ -1,5 +1,610 @@
 [
   {
+    "date": "2026-10-08",
+    "checkedLabel": "Thu Oct 8, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "Clear and dark tonight, with the Draconid meteors peaking around 9 PM, Saturn up all night and valley fog likely at sunrise.",
+    "featured": "meteor",
+    "pick": "Around 9 PM, the predicted Draconid peak, face north toward Draco for a few slow meteors an hour, with bright Saturn rising in the east behind you. At sunrise, look down into the valleys from a ridge for fog.",
+    "next": {
+      "name": "Southern Taurids early peak",
+      "date": "2026-10-13"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning crescent",
+        "lit": 6,
+        "note": "Rises shortly before dawn, so the evening and most of the night are dark. New Moon is October 10."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "All night",
+          "where": "East at dusk, climbing through the southeast",
+          "note": "Just past its October 4 opposition, so near its brightest of the year"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "East",
+          "note": "The brightest planet in the morning sky, shining near the star Regulus"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "East, near the Beehive star cluster",
+          "note": "A binocular sight in the east before sunrise"
+        },
+        {
+          "name": "Mercury",
+          "when": "Just after sunset",
+          "where": "Low in the west",
+          "note": "A short, difficult target early this month before it drops into the glow"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Tonight's forecast says the temperature and dew point will meet near 43°F before sunrise. What does that mean for the air?",
+      "options": [
+        "It is saturated, so fog or dew forms",
+        "It is at its driest of the night",
+        "Frost is certain",
+        "The wind will pick up"
+      ],
+      "answer": 0,
+      "explain": "The dew point is the temperature at which air holds all the water vapour it can, so when the temperature falls to it, water condenses as dew or fog."
+    },
+    "events": [
+      {
+        "type": "stars",
+        "chance": 86,
+        "title": "Great night for stargazing",
+        "sub": "Saturn is the steady bright point rising in the east at dusk and climbing through the southeast. Cloud stays at 3 to 12 percent all night, the air is clear and the Moon stays below the horizon until near dawn, so the Milky Way should show from a dark spot.",
+        "look": {
+          "bearing": 135,
+          "label": "East to southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 5,
+          "moon": 6,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "About 5% average cloud",
+            "score": 0.953,
+            "note": "7Timer shows 1 to 2 on its 9-step cloud scale from 8 PM to 8 AM, so almost nothing blocks the view."
+          },
+          {
+            "name": "Moonlight",
+            "val": "6% lit, rises near dawn",
+            "score": 0.95,
+            "note": "The thin waning crescent stays down through the evening and most of the night, so faint stars and the Milky Way are not washed out."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 of 8",
+            "score": 0.95,
+            "note": "7Timer rates the air second best on its scale, so distant faint stars should be easy to see. Seeing is poor, at 5 to 6 of 8, which only affects telescope detail and planet twinkle."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 12
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "3-12%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency",
+            "value": "2 of 8 (1 is clearest) through the night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "About 6% lit, waning crescent, new Moon October 10",
+            "source": "Computed from the lunar cycle; Old Farmer's Almanac via Star Walk",
+            "url": "https://starwalk.space/en/news/october-meteor-showers"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "With the Moon only 6% lit and not rising until the small hours, tonight is a good one for the Milky Way. Look for the pale band running through Cygnus, high in the west after dark, once your eyes have adjusted."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Dark adaptation takes 20 to 30 minutes. Keep your phone on its dimmest setting with a red filter, and use averted vision, looking slightly beside a faint object, so the more sensitive edge of your retina does the work."
+          }
+        ],
+        "research": []
+      },
+      {
+        "type": "fog",
+        "chance": 86,
+        "title": "Valley fog likely at sunrise",
+        "sub": "The National Weather Service hourly forecast has patchy fog from about 4 AM to 8 AM, with temperature and dew point meeting at 43 to 41°F and a 2 mph breeze. Best viewed at sunrise from a ridge looking down into the valleys.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 2,
+          "cloud": 3
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "Temperature minus dew point 0°F by 5 AM",
+            "score": 0.95,
+            "note": "The gap shrinks from 6°F at midnight to 0°F at 5 AM, which is the point where water vapour condenses into fog droplets."
+          },
+          {
+            "name": "Light wind",
+            "val": "2 mph southwest",
+            "score": 0.95,
+            "note": "Wind this light lets the chilled air pool in low ground instead of mixing the fog away."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 3% cloud, midnight to 8 AM",
+            "score": 0.953,
+            "note": "A clear sky lets the ground radiate its heat to space overnight, which is what cools the air to the dew point."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 25,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "10 PM",
+                "v": 10
+              },
+              {
+                "t": "12 AM",
+                "v": 6
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "4 AM",
+                "v": 1
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 1
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature-dew point gap",
+            "value": "0°F, 5 AM to 7 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Overnight low",
+            "value": "41°F at 7 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at that time",
+            "value": "2 mph southwest",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The forecast lists patchy fog from 4 AM through 8 AM. The low is 41°F at 7 AM, which stays above 40°F, so frost is not expected on lawns and windshields, but damp grass and dripping car roofs are likely."
+          },
+          {
+            "cat": "New research",
+            "text": "A NOAA satellite team published a case from August 3, 2026, where GOES-19 night imagery tracked river valley fog along the Mississippi. Light winds and clear skies under a high-pressure ridge drove it, and it cleared within a few hours of sunrise. A night satellite image even caught the fog by the light of a 75% Moon."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Morning fog rarely lifts as a cloud. Sunlight warms the ground and the fog's lower edge evaporates first, so the top of the layer can look to be rising while it is really being eaten away from below."
+          }
+        ],
+        "research": [
+          {
+            "title": "River valley fog in the Upper Midwest",
+            "url": "https://cimss.ssec.wisc.edu/satellite-blog/archives/71703",
+            "source": "CIMSS Satellite Blog, University of Wisconsin",
+            "note": "August 2026 satellite case study of nocturnal valley fog forming under light wind and clear sky."
+          }
+        ]
+      },
+      {
+        "type": "meteor",
+        "chance": 49,
+        "title": "Draconids peak after dark",
+        "sub": "The Draconids peak around 9 PM tonight. Face north toward Draco as darkness falls, when the radiant is high. Expect only a handful an hour, but the Moon is nearly new and the sky is clear.",
+        "look": {
+          "bearing": 0,
+          "label": "North after dark, toward the head of Draco"
+        },
+        "params": {
+          "shower": "Draconids",
+          "radiant": "Draco, near Eltanin and Rastaban",
+          "zhr": 5,
+          "parent": "21P/Giacobini-Zinner",
+          "cloud": 5,
+          "moon": 6
+        },
+        "conds": [
+          {
+            "name": "Shower strength",
+            "val": "About 5 an hour at peak",
+            "score": 0.525,
+            "note": "Star Walk and the Old Farmer's Almanac expect roughly 5 to 6 an hour, and the IMO has published no outburst prediction for 2026."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 5% average cloud",
+            "score": 0.953,
+            "note": "Cloud stays at 3 to 12% from 8 PM to 5 AM, so the whole evening is usable."
+          },
+          {
+            "name": "Moonlight",
+            "val": "6% lit, rises near dawn",
+            "score": 0.97,
+            "note": "New Moon is on October 10, so the sky is as dark as it gets for this shower."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 12
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Draconid peak",
+            "value": "About 01 UTC October 9 (9 PM EDT October 8)",
+            "source": "IMO calendar, via Space.com search summary",
+            "url": "https://www.space.com/draconid-meteor-shower-2026-guide-where-when-how-to-see-draconids"
+          },
+          {
+            "name": "Expected rate",
+            "value": "About 5 an hour",
+            "source": "Star Walk",
+            "url": "https://starwalk.space/en/news/october-meteor-showers"
+          },
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "3-12%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The predicted peak, about 9 PM EDT, lands right at the best viewing time for this shower. Unlike most showers, the Draconids favour the evening because Draco stands high in the north after dusk. Give it 20 to 30 minutes in a lawn chair; meteors from this comet are slow and often faint."
+          },
+          {
+            "cat": "New research",
+            "text": "In March 2026 the Global Meteor Network reported a new shower in Dorado, with a speed of 17.3 km/s and a Jupiter-family comet orbit. The Draconid parent, 21P/Giacobini-Zinner, is also a Jupiter-family comet, and its debris is similarly slow, which is why Draconids drift rather than streak."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Comet 21P was found by Michel Giacobini in Nice in December 1900, then lost. Ernst Zinner recovered it on October 23, 1913, which is why it carries both names, and why the shower is sometimes called the Giacobinids."
+          }
+        ],
+        "research": [
+          {
+            "title": "New meteor shower in Dorado (M2026-E1)",
+            "url": "https://www.emeteornews.net/2026/03/28/new-meteor-shower-in-dorado-m2026-e1/",
+            "source": "eMeteorNews",
+            "note": "A March 2026 discovery from Global Meteor Network data with a slow, Jupiter-family comet orbit like the Draconids."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 40,
+        "title": "Clean sunset, little cloud to light up",
+        "sub": "The sky is dry and mostly clear, so expect a clean glow along the western horizon rather than a painted sky. This uses total cloud only and is a rough guide.",
+        "look": {
+          "bearing": 270,
+          "label": "West at sunset"
+        },
+        "params": {
+          "highCloud": 12
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "About 12% total cloud",
+            "score": 0.6,
+            "note": "A few thin clouds help catch the colour. With almost none, the light has little to reflect from."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain",
+            "score": 0.95,
+            "note": "Precipitation chance is 1% or less through the evening."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Fixed at 70%",
+            "score": 0.7,
+            "note": "This uses total cloud only, not cloud height, so treat it as a rough guide."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 12
+              },
+              {
+                "t": "8 PM",
+                "v": 12
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "3-12%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance",
+            "value": "0 to 1%, 6 PM to 11 PM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The hourly forecast says Mostly Clear at 6 PM and Clear from 9 PM, with 7Timer cloud at about 12%. Expect a smooth gradient from orange to blue, and the best colour in the 20 minutes after the Sun is down."
+          },
+          {
+            "cat": "New research",
+            "text": "A 2026 paper by Daniel Toledo, posted in May and published in Atmospheric Measurement Techniques in September, explains why twilight colour changes in a measurable way when high cloud is present. The sky's colour peaks at a Sun angle that depends on how high the cloud is, so twilight hues can be used to estimate cloud height."
+          },
+          {
+            "cat": "How it works",
+            "text": "After sunset the ground is in shadow while high clouds are still in direct sunlight. Because sunlight reaches them at a shallow angle through a long air path that strips out blue, they glow red or orange, and the higher the cloud, the longer it keeps its colour."
+          }
+        ],
+        "research": [
+          {
+            "title": "On the origin of the twilight color index maximum and its application to cloud-height retrieval",
+            "url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-2295/",
+            "source": "EGUsphere / Atmospheric Measurement Techniques",
+            "note": "2026 study linking twilight colour to cloud altitude."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 9,
+        "title": "Aurora unlikely despite a CME",
+        "sub": "NOAA expects a G1 to G2 storm as a CME arrives, with Kp up to 5.67 in the small hours and near dawn. That is well below the Kp of about 7 usually needed this far south, so only a glance north is worthwhile.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low over the horizon"
+        },
+        "params": {
+          "kp": 5.67,
+          "cloud": 5,
+          "moon": 6
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 5.67 at most (G2)",
+            "score": 0.1,
+            "note": "The 3-day forecast calls for a G1 storm from 11 PM to 2 AM and a G2 from 5 AM to 8 AM, but this latitude usually needs about Kp 7."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 5% average cloud",
+            "score": 0.953,
+            "note": "Skies are clear, so if the storm overperforms nothing will block the view."
+          },
+          {
+            "name": "Moonlight",
+            "val": "6% lit, rises near dawn",
+            "score": 0.99,
+            "note": "Moonlight is not a factor tonight."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 1.67
+              },
+              {
+                "t": "11 PM",
+                "v": 5
+              },
+              {
+                "t": "2 AM",
+                "v": 4.33
+              },
+              {
+                "t": "5 AM",
+                "v": 5.67
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Greatest expected Kp",
+            "value": "5.67 (G2), October 9 UTC",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Watch text",
+            "value": "G1-G2 storms likely on October 9 from a CME of October 6",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "3-12%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's two products disagree on timing. The 3-day text puts Kp 5.0 at 11 PM to 2 AM and 5.67 from 5 AM to 8 AM, while the JSON forecast puts the 5.67 peak around 2 AM. Both agree on the maximum, which stays under the Kp 7 line for this latitude."
+          },
+          {
+            "cat": "How it works",
+            "text": "A CME's effect depends on its magnetic field. If the field points south when it reaches Earth, it connects with Earth's field and pours energy in; if it points north, much of the storm fizzles. That is only measurable about an hour before arrival, so forecast Kp can change on the night."
+          }
+        ],
+        "research": []
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 13-14",
+        "name": "Southern Taurids early peak",
+        "note": "About 5 an hour with a waxing crescent Moon, best in the small hours."
+      },
+      {
+        "date": "Oct 15",
+        "name": "Bright space station pass",
+        "note": "Magnitude -3.6, reaching 79 degrees in the southeast around 6:40 AM."
+      },
+      {
+        "date": "Oct 21-22",
+        "name": "Orionids peak",
+        "note": "Around 20 an hour in a clear year, but a 74% waxing gibbous Moon will wash out the fainter ones."
+      },
+      {
+        "date": "Oct 28",
+        "name": "Uranus at opposition",
+        "note": "Brightest of the year, but a binocular or telescope target."
+      }
+    ],
+    "ideas": [
+      {
+        "title": "Sunrise and sunset times from a free API",
+        "kind": "data"
+      },
+      {
+        "title": "Open-Meteo low, mid and high cloud layers for sunset score",
+        "kind": "data"
+      }
+    ],
+    "sourceFailures": [
+      "AMS meteor shower calendar",
+      "Space.com Draconid guide",
+      "NASA eclipse site (no visibility info)"
+    ]
+  },
+  {
     "date": "2026-10-07",
     "checkedLabel": "Wed Oct 7, 2:02 PM ET",
     "place": "State College, PA",
