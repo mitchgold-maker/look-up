@@ -14,7 +14,7 @@ This repo is the single source of truth for Look Up, Mitch's hobby sky-alert pro
 - Any Look Up routine or one-off cloud job must have this repo attached as a source. Jobs that instead ask for repo access at run time sit waiting for Mitch to approve it, and one-off jobs without it cannot push at all.
 - It may only change `data/reports.json`. Page changes are made deliberately in a session with Mitch, never by the daily run.
 - Ideas and bugs it finds are asked about in its own run session ("Questions for Mitch"), never by email.
-- Older Look Up routines may still be listed at claude.ai/code/routines but are disabled and retired (the 4:53 PM nightly task, "Look Up morning (GitHub)", the Claude artifact page). Do not revive them.
+- Older Look Up routines may still be listed at claude.ai/code/routines but are disabled and retired (the 4:53 PM nightly task, "Look Up morning (OLD, replaced - needs approvals)", the Claude artifact page). Do not revive them.
 
 ## Mailing list and privacy
 - Subscribers live in a private Google Sheet in Mitch's Drive. It is never copied into this repo.
