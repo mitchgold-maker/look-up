@@ -155,9 +155,20 @@
           {
             "cat": "Observing tip",
             "text": "Dark adaptation takes 20 to 30 minutes. Keep your phone on its dimmest setting with a red filter, and use averted vision, looking slightly beside a faint object, so the more sensitive edge of your retina does the work."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Saturn's rings are only about 7.5 degrees open this month, roughly a quarter of their maximum, having been edge-on in March 2025. They will not be fully open, at about 27 degrees, until 2032. At 1.26 billion km away, the light you see left Saturn about 70 minutes ago."
           }
         ],
-        "research": []
+        "research": [
+          {
+            "title": "Saturn at opposition: closest, brightest, best",
+            "url": "https://earthsky.org/astronomy-essentials/saturn-at-opposition-closest-brightest-best",
+            "source": "EarthSky",
+            "note": "Background on this month's Saturn opposition and why it is brightest now."
+          }
+        ]
       },
       {
         "type": "fog",
@@ -285,7 +296,8 @@
           "zhr": 5,
           "parent": "21P/Giacobini-Zinner",
           "cloud": 5,
-          "moon": 6
+          "moon": 6,
+          "speed": 20
         },
         "conds": [
           {
@@ -369,6 +381,10 @@
           {
             "cat": "Did you know",
             "text": "Comet 21P was found by Michel Giacobini in Nice in December 1900, then lost. Ernst Zinner recovered it on October 23, 1913, which is why it carries both names, and why the shower is sometimes called the Giacobinids."
+          },
+          {
+            "cat": "How it works",
+            "text": "Draconid meteoroids reach Earth at only about 20 km/s because they catch up to us from behind, rather than meeting us head on like the 66 km/s Orionids. The parent comet's nucleus is only about 2 km across, yet it sheds enough dust to have produced two great storms, in 1933 and 1946."
           }
         ],
         "research": [
@@ -377,6 +393,12 @@
             "url": "https://www.emeteornews.net/2026/03/28/new-meteor-shower-in-dorado-m2026-e1/",
             "source": "eMeteorNews",
             "note": "A March 2026 discovery from Global Meteor Network data with a slow, Jupiter-family comet orbit like the Draconids."
+          },
+          {
+            "title": "October's unpredictable Draconid meteors",
+            "url": "https://skyandtelescope.org/astronomy-news/observing-news/octobers-unpredictable-draconid-meteors-100820155/",
+            "source": "Sky & Telescope",
+            "note": "Explains the Draconids' unusually slow speed and erratic activity."
           }
         ]
       },
@@ -384,7 +406,7 @@
         "type": "sunset",
         "chance": 40,
         "title": "Clean sunset, little cloud to light up",
-        "sub": "The sky is dry and mostly clear, so expect a clean glow along the western horizon rather than a painted sky. This uses total cloud only and is a rough guide.",
+        "sub": "Sunset is at 6:41 PM. The sky is dry and nearly cloudless at every level, so expect a clean glow along the western horizon rather than a painted sky. This uses total cloud only and is a rough guide.",
         "look": {
           "bearing": 270,
           "label": "West at sunset"
@@ -446,6 +468,12 @@
             "value": "0 to 1%, 6 PM to 11 PM",
             "source": "NWS hourly forecast, State College grid",
             "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunset time and cloud layers",
+            "value": "Sunset 6:41 PM; low, mid and high cloud all 0% at 6 PM",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
           }
         ],
         "facts": [
@@ -460,6 +488,10 @@
           {
             "cat": "How it works",
             "text": "After sunset the ground is in shadow while high clouds are still in direct sunlight. Because sunlight reaches them at a shallow angle through a long air path that strips out blue, they glow red or orange, and the higher the cloud, the longer it keeps its colour."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Open-Meteo's layer data shows 0% low, mid and high cloud at sunset. With no cloud at any height there is nothing to catch the light, so the colour stays in the sky's own gradient. Sunrise tomorrow is 7:16 AM and sunset 6:40 PM, so the days are shortening by about two minutes a day."
           }
         ],
         "research": [
