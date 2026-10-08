@@ -11,6 +11,7 @@ This repo is the single source of truth for Look Up, Mitch's hobby sky-alert pro
 
 ## The routine
 - One scheduled task, "Look Up morning", runs daily at 5:54 AM ET. It gathers forecasts, writes today's entry in `data/reports.json`, pushes to main, and emails people on the mailing list whose criteria match.
+- Any Look Up routine or one-off cloud job must have this repo attached as a source. Jobs that instead ask for repo access at run time sit waiting for Mitch to approve it, and one-off jobs without it cannot push at all.
 - It may only change `data/reports.json`. Page changes are made deliberately in a session with Mitch, never by the daily run.
 - Ideas and bugs it finds are asked about in its own run session ("Questions for Mitch"), never by email.
 - Older Look Up routines may still be listed at claude.ai/code/routines but are disabled and retired (the 4:53 PM nightly task, "Look Up morning (GitHub)", the Claude artifact page). Do not revive them.
