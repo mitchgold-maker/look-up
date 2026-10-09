@@ -552,7 +552,7 @@ function drawReal(st,t,k){
   if(!R.skipMoon&&R.moon.alt>0&&R.moon.lit>3){const[x,y]=proj(R.moon.az,R.moon.alt);if(x>-30&&x<W+30)moonDisc(x,y,6+R.moon.lit*.05,R.moon.lit/100)}
 }
 function compassMarks(){
-  const acc=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#e9cf98';
+  const acc=(TYPES[type]&&TYPES[type].accent)||'#e9cf98';
   ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';ctx.shadowBlur=0;
   for(let a=0;a<360;a+=45){const[x]=proj(a,0),main=a%90===0;if(x<14||x>W-14)continue;
     const y=view.hz+(main?24:20),t=compass(a),fs=main?17:12;
@@ -1032,11 +1032,11 @@ function paint(t,dt){
       const g=m.createRadialGradient(W/2,H/2,H*.3,W/2,H/2,Math.hypot(W,H)*.58);g.addColorStop(0,'#fff');g.addColorStop(1,'#4a4a4a');wash('multiply',g)}
     m.globalCompositeOperation='source-over';return}
   m.setTransform(1,0,0,1,0,0);
-  if(style.id==='long'){m.globalCompositeOperation='source-over';m.fillStyle='rgba(0,0,0,.045)';m.fillRect(0,0,cv.width,cv.height);m.globalCompositeOperation='lighten';m.drawImage(off,0,0);m.globalCompositeOperation='source-over';return}
+  if(style.id==='long'){m.globalCompositeOperation='source-over';m.fillStyle=view&&view.moving?'#000':'rgba(0,0,0,.045)';m.fillRect(0,0,cv.width,cv.height);m.globalCompositeOperation='lighten';m.drawImage(off,0,0);m.globalCompositeOperation='source-over';return}
   if(style.id==='bloom'){m.globalCompositeOperation='source-over';m.drawImage(off,0,0);sctx.drawImage(off,0,0,sm.width,sm.height);m.globalCompositeOperation='screen';m.globalAlpha=.8;m.imageSmoothingEnabled=true;m.drawImage(sm,0,0,cv.width,cv.height);m.globalAlpha=1;m.globalCompositeOperation='source-over';return}
 }
 function fit(){const d=devicePixelRatio||1;cv.width=Math.max(1,Math.round(cv.clientWidth*d));cv.height=Math.max(1,Math.round(cv.clientHeight*d));build()}
-function loop(now){const t=(now-t0)/1000,dt=Math.min(.05,Math.max(0,t-last));last=t;if(scene)try{paint(t,dt)}catch(e){}requestAnimationFrame(loop)}
+function loop(now){const t=(now-t0)/1000,dt=Math.min(.05,Math.max(0,t-last));last=t;try{skyMotion(dt)}catch(e){}if(scene)try{paint(t,dt)}catch(e){}requestAnimationFrame(loop)}
 
 // How notable each kind of sky is, as a multiplier on its odds. The routine can override with report.featured.
 const RARITY={eclipse:6,comet:4,aurora:4,meteor:3,moon:2.2,snow:2,iss:1.6,fog:1.5,frost:1.2,sunset:1.2,stars:1};
@@ -1064,10 +1064,22 @@ $('next').onclick=()=>{touched=true;const n=(type==='rainbow'?STYLES.filter(s=>!
 
 // Drag the sky picture sideways to turn and look in another direction. Vertical swipes still scroll the page.
 let drag=null,dragged=false;
-cv.addEventListener('pointerdown',e=>{if(!REAL||!view)return;drag={x:e.clientX,az:view.az};try{cv.setPointerCapture(e.pointerId)}catch(_){}});
-cv.addEventListener('pointermove',e=>{if(!drag)return;view.az=((drag.az-(e.clientX-drag.x)/view.ppd)%360+360)%360;
-  if(!dragged&&Math.abs(e.clientX-drag.x)>6){dragged=true;$('dragHint').hidden=true}if(still)paint(.4,.016)});
-['pointerup','pointercancel'].forEach(n=>cv.addEventListener(n,()=>{drag=null}));
+const wrap360=a=>(a%360+360)%360,arc=(a,b)=>((b-a)%360+540)%360-180;
+cv.addEventListener('pointerdown',e=>{if(!REAL||!view)return;view.vel=0;view.azT=view.az;drag={x:e.clientX,az:view.az,lx:e.clientX,lt:e.timeStamp,v:0};try{cv.setPointerCapture(e.pointerId)}catch(_){}});
+cv.addEventListener('pointermove',e=>{if(!drag)return;
+  const evs=e.getCoalescedEvents?e.getCoalescedEvents():[];const last=evs.length?evs[evs.length-1]:e,x=last.clientX;
+  view.azT=drag.az-(x-drag.x)/view.ppd;
+  const dt=Math.max(1,e.timeStamp-drag.lt),v=-(x-drag.lx)/view.ppd/dt;drag.v=drag.v*.6+v*.4;drag.lx=x;drag.lt=e.timeStamp;
+  if(!dragged&&Math.abs(x-drag.x)>6){dragged=true;$('dragHint').hidden=true}
+  if(still){view.az=wrap360(view.azT);paint(.4,.016)}});
+['pointerup','pointercancel'].forEach(n=>cv.addEventListener(n,e=>{if(!drag)return;
+  // keep gliding only if the pointer was still moving when it let go
+  view.vel=e.timeStamp-drag.lt<80&&!still?Math.max(-.25,Math.min(.25,drag.v)):0;drag=null}));
+// Called once per frame before drawing: ease toward the target, then coast with friction.
+function skyMotion(dt){if(!view||view.azT==null)return;const ms=dt*1000;
+  if(!drag&&view.vel){view.azT+=view.vel*ms;view.vel*=Math.pow(.9,ms/16.7);if(Math.abs(view.vel)<.002)view.vel=0}
+  const d=arc(view.az,wrap360(view.azT)),k=1-Math.pow(1-.35,ms/16.7);
+  view.moving=Math.abs(d)>.02||!!view.vel||!!drag;view.az=Math.abs(d)<.005?wrap360(view.azT):wrap360(view.az+d*k)}
 $('lines').onclick=()=>{showLines=!showLines;$('lines').setAttribute('aria-checked',showLines);$('linesState').textContent=showLines?'on':'off';if(still)paint(.4,.016)};
 // The alert shrinks to its headline as you scroll. Tap it to read the rest; it folds away again when you scroll on.
 (()=>{const al=document.querySelector('.alert');let at=0;
