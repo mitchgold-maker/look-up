@@ -138,7 +138,9 @@ details[open] li:nth-child(2){animation-delay:.07s}details[open] li:nth-child(3)
 details[open] .mark{animation:pop .55s .25s cubic-bezier(.3,1.6,.5,1) both}
 details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;animation:grow .9s .15s cubic-bezier(.2,.7,.2,1) both}
 .view canvas.real{cursor:grab;touch-action:pan-y}.view canvas.real:active{cursor:grabbing}
-.dragHint{position:absolute;right:16px;top:16px;font:500 12px var(--mono);color:var(--ink);background:rgba(9,12,26,.6);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;pointer-events:none;animation:nudge 2.6s ease-in-out infinite}
+.skyTime{position:absolute;right:16px;top:16px;font:600 14px var(--body);color:var(--ink);background:rgba(6,9,20,.72);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;pointer-events:none;letter-spacing:.01em}
+.skyTime::before{content:"\25F7\00a0";color:var(--accent)}
+.dragHint{position:absolute;right:16px;top:56px;font:500 12px var(--mono);color:var(--ink);background:rgba(9,12,26,.6);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;pointer-events:none;animation:nudge 2.6s ease-in-out infinite}
 @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}
 .btn[aria-pressed="false"]{opacity:.6}
 .stage-spacer{display:none}
@@ -199,7 +201,7 @@ details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;an
 
   <div class="stage-wrap">
   <div class="stage">
-    <div class="view"><canvas id="sky" aria-label="Animation of the selected sky event"></canvas><span class="dragHint" id="dragHint" hidden>Drag to look around</span></div>
+    <div class="view"><canvas id="sky" aria-label="Animation of the selected sky event"></canvas><span class="skyTime" id="skyTime" hidden></span><span class="dragHint" id="dragHint" hidden>Drag to look around</span></div>
     <div class="alert" aria-live="polite" title="Tap to expand">
       <div class="app"><span id="aApp">Look Up</span><b id="aChance"></b></div>
       <p class="title" id="aTitle"></p>
@@ -542,8 +544,23 @@ function drawReal(st,t,k){
     if(!style.buf){ctx.fillStyle='rgba(220,228,255,.75)';ctx.font='11px ui-monospace,monospace';ctx.fillText(p.n,x+9,y+4)}}
   if(!R.skipMoon&&R.moon.alt>0&&R.moon.lit>3){const[x,y]=proj(R.moon.az,R.moon.alt);if(x>-30&&x<W+30)moonDisc(x,y,6+R.moon.lit*.05,R.moon.lit/100)}
 }
-function compassMarks(){ctx.font='10px ui-monospace,monospace';ctx.textAlign='center';ctx.fillStyle='rgba(225,230,245,.5)';
-  for(let a=0;a<360;a+=45){const[x]=proj(a,0);if(x>8&&x<W-8)ctx.fillText(compass(a),x,view.hz+15)}ctx.textAlign='start'}
+function compassMarks(){
+  const acc=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#e9cf98';
+  ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';ctx.shadowBlur=0;
+  for(let a=0;a<360;a+=45){const[x]=proj(a,0),main=a%90===0;if(x<14||x>W-14)continue;
+    const y=view.hz+(main?24:20),t=compass(a),fs=main?17:12;
+    ctx.font=(main?'700 ':'600 ')+fs+'px Instrument Sans,system-ui,sans-serif';
+    const w=ctx.measureText(t).width+(main?16:10),h=fs+(main?9:6);
+    ctx.globalAlpha=1;ctx.strokeStyle=main?'rgba(255,255,255,.55)':'rgba(255,255,255,.3)';ctx.lineWidth=main?2:1.2;ctx.beginPath();ctx.moveTo(x,view.hz-6);ctx.lineTo(x,y-h/2);ctx.stroke();
+    ctx.fillStyle='rgba(6,9,20,.72)';ctx.beginPath();ctx.roundRect(x-w/2,y-h/2,w,h,h/2);ctx.fill();
+    ctx.fillStyle=a===0?acc:main?'#ffffff':'rgba(230,234,248,.85)';ctx.fillText(t,x,y+1)}
+  ctx.restore();
+  // keep the time-and-direction badge in step with the view as people drag
+  const lbl=skyLabel();if(lbl!==skyLabel.last){skyLabel.last=lbl;$('skyTime').textContent=lbl}
+}
+// "9:00 PM tonight · facing SE": the moment this sky shows and which way the picture faces.
+function skyLabel(){if(!REAL)return '';const h=+new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'}).format(REAL.when);
+  const when=h>=12?'tonight':h<5?'after midnight':'before dawn';return clockNY(REAL.when)+' '+when+' \u00b7 facing '+compass(view.az)}
 
 function build(){
   W=cv.clientWidth||1;H=cv.clientHeight||1;
@@ -942,7 +959,7 @@ function render(info,gk){
   $('status').textContent=live&&report?`Checked ${report.checkedLabel||report.date||''} for ${report.place||'your location'}. ${report.summary||''}`:'Sample alerts with invented readings.';
   extras(info);
   $('aApp').textContent=live&&type===featured?'Tonight’s highlight':'Look Up';
-  $('lines').hidden=!REAL;$('dragHint').hidden=!REAL||dragged;cv.classList.toggle('real',!!REAL);
+  $('lines').hidden=!REAL;$('dragHint').hidden=!REAL||dragged;$('skyTime').hidden=!REAL;skyLabel.last=null;cv.classList.toggle('real',!!REAL);
   document.documentElement.style.setProperty('--accent',TYPES[type].accent);
   document.querySelectorAll('#chips button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===type));
 }
