@@ -151,6 +151,20 @@ details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;an
 .btn.switch b{font-weight:600;color:var(--dim);min-width:2.2em;text-align:left}
 .btn.switch[aria-checked="true"] b{color:var(--accent)}
 .stage-spacer{display:none}
+header{position:relative}
+.loc{position:relative;order:3;flex-basis:100%}
+.locbtn{font:600 14px var(--body);color:var(--ink);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.locbtn:hover{border-color:var(--dim)}
+.locpanel{position:absolute;z-index:20;left:0;top:calc(100% + 8px);width:min(420px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 20px 60px -20px rgba(0,0,0,.9)}
+.locpanel label{display:block;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.locpanel input{width:100%;font:500 16px var(--body);color:var(--ink);background:var(--night);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.locpanel ul{list-style:none;margin:8px 0 0;padding:0;max-height:240px;overflow:auto}
+.locpanel li button{width:100%;text-align:left;font:500 15px var(--body);color:var(--ink);background:none;border:0;border-radius:8px;padding:9px 10px;cursor:pointer}
+.locpanel li button:hover,.locpanel li button:focus-visible{background:rgba(255,255,255,.07)}
+.locmsg{margin:6px 0 0;color:var(--dim);font-size:14px;min-height:1em}
+.locacts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.locnote{margin:10px 0 0;color:var(--dim);font-size:12px}
+.credits a{color:var(--dim)}
 @media (min-width:641px){
   .stage{position:sticky;top:14px;z-index:1}
   .stage-spacer{display:block;height:170px}
@@ -195,6 +209,17 @@ details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;an
 <div class="wrap">
   <header>
     <h1>Look Up</h1>
+    <div class="loc">
+      <button class="locbtn" id="locBtn" type="button" aria-expanded="false" aria-controls="locPanel"><span aria-hidden="true">&#9906;</span> <span id="locName">State College, PA</span> <span aria-hidden="true">&#9662;</span></button>
+      <div class="locpanel" id="locPanel" hidden>
+        <label for="locQ">Show the sky for</label>
+        <input id="locQ" type="search" placeholder="Search a city or town" autocomplete="off">
+        <ul id="locList"></ul>
+        <p class="locmsg" id="locMsg" aria-live="polite"></p>
+        <div class="locacts"><button type="button" class="btn ghost" id="locHere">Use my location</button><button type="button" class="btn ghost" id="locHome" hidden>Back to State College</button></div>
+        <p class="locnote">Your place is saved only in this browser. Forecasts are fetched straight from public sources.</p>
+      </div>
+    </div>
     <p class="status" id="status">Sample alerts with invented readings.</p>
   </header>
 
@@ -243,8 +268,10 @@ details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;an
     <details id="d-drawn"><summary>How this one was drawn <span class="hint" id="h-drawn"></span></summary><div class="body"><ul class="drawn" id="drawn"></ul></div></details>
   </div>
   <p class="note" id="note"></p>
+  <p class="note credits" id="credits" hidden>Weather: <a href="https://open-meteo.com/">Open-Meteo.com</a> (CC BY 4.0), comparing the ECMWF, GFS and ICON models. Aurora and Kp: <a href="https://www.swpc.noaa.gov/">NOAA Space Weather Prediction Center</a>. Sun, Moon, planets and eclipses: <a href="https://github.com/cosinekitty/astronomy">Astronomy Engine</a>. Meteor showers: <a href="https://www.imo.net/resources/calendar/">IMO</a>. Place search: <a href="https://open-meteo.com/en/docs/geocoding-api">GeoNames via Open-Meteo</a>, <a href="https://www.bigdatacloud.com/">BigDataCloud</a>. Ratings are estimates from forecasts and can be wrong.</p>
 </div>
 
+<script src="local.js"></script>
 <script>
 const cv=document.getElementById('sky'),main=cv.getContext('2d');
 const mk=()=>document.createElement('canvas');
@@ -502,11 +529,15 @@ function altazOf(ra,dec,lst,lat){const h=(lst-ra)*D,d=dec*D,p=lat*D,alt=Math.asi
 function galEq(l,b){const aG=192.85948*D,dG=27.12825*D,ln=122.93192*D;l*=D;b*=D;
   const sd=Math.sin(dG)*Math.sin(b)+Math.cos(dG)*Math.cos(b)*Math.cos(ln-l);
   return[((aG+Math.atan2(Math.cos(b)*Math.sin(ln-l),Math.cos(dG)*Math.sin(b)-Math.sin(dG)*Math.cos(b)*Math.cos(ln-l)))/D+360)%360,Math.asin(sd)/D]}
-// The instant a local clock hour happens on a date in New York. Hours past 24 run into the next morning.
-function localAt(ds,hour){const[y,m,d]=String(ds).split('-').map(Number),f=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'});
-  for(const off of[4,5]){const dt=new Date(Date.UTC(y,m-1,d,hour+off));if(+f.format(dt)===hour%24)return dt}return new Date(Date.UTC(y,m-1,d,hour+5))}
-const todayNY=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
-const clockNY=dt=>new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'}).format(dt);
+// Time zone of the place being shown. State College by default; a chosen place sets its own.
+let TZ='America/New_York';
+// Minutes the zone is ahead of UTC at a given instant.
+function tzOff(tz,dt){const p=new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'}).formatToParts(dt),g=t=>+p.find(x=>x.type===t).value;
+  return(Date.UTC(g('year'),g('month')-1,g('day'),g('hour')%24,g('minute'),g('second'))-dt.getTime())/6e4}
+// The instant a local clock hour happens on a date in TZ. Hours past 24 run into the next morning.
+function localAt(ds,hour){const[y,m,d]=String(ds).split('-').map(Number);let t=Date.UTC(y,m-1,d,hour);for(let k=0;k<2;k++)t=Date.UTC(y,m-1,d,hour)-tzOff(TZ,new Date(t))*6e4;return new Date(t)}
+const todayNY=()=>new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(new Date());
+const clockNY=dt=>new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(dt);
 const compass=az=>['N','NE','E','SE','S','SW','W','NW'][Math.round(((az%360)+360)%360/45)%8];
 function sunAltAz(jd,lat,lon){const T=(jd-2451545)/36525,E=helio(EL.Earth,T),[ra,dec]=eqOf([-E[0],-E[1],-E[2]]),lst=(280.46061837+360.98564736629*(jd-2451545)+lon)%360;return altazOf(ra,dec,lst,lat)}
 // Sunset or sunrise for a date: scan the evening (or morning) in 2-minute steps for the moment the Sun crosses the horizon.
@@ -562,7 +593,7 @@ function compassMarks(){
   const lbl=skyLabel();if(lbl!==skyLabel.last){skyLabel.last=lbl;$('skyTime').textContent=lbl}
 }
 // "9:00 PM tonight · facing SE": the moment this sky shows and which way the picture faces.
-function skyLabel(){if(!REAL)return '';const h=+new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'}).format(REAL.when);
+function skyLabel(){if(!REAL)return '';const h=+new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',hourCycle:'h23'}).format(REAL.when);
   const when=h>=12?'tonight':h<5?'after midnight':'before dawn';return clockNY(REAL.when)+' '+when+' \u00b7 facing '+compass(view.az)}
 
 function build(){
@@ -958,7 +989,7 @@ function render(info,gk){
   $('h-drawn').textContent=style.n;
   const up=report?arr(report.upcoming):[];$('d-next').hidden=!(live&&up.length);
   $('upnext').replaceChildren(...up.map(u=>{const li=el('li');li.append(el('strong',(u.date?u.date+': ':'')+(u.name||'')),el('small',u.note||''));return li}));$('h-next').textContent=up.length+' dated';
-  $('note').textContent=live?'Odds are estimates from public forecasts and can be wrong. The checklist shows what they rest on.':'This gallery uses invented readings so you can judge the look. Tonight’s view uses real forecasts.';
+  $('note').textContent=$('note').dataset.fail&&live?$('note').dataset.fail:live?'Odds are estimates from public forecasts and can be wrong. The checklist shows what they rest on.':'This gallery uses invented readings so you can judge the look. Tonight’s view uses real forecasts.';
   $('status').textContent=live&&report?`Checked ${report.checkedLabel||report.date||''} for ${report.place||'your location'}. ${report.summary||''}`:'Sample alerts with invented readings.';
   extras(info);
   $('aApp').textContent=live&&type===featured?'Tonight’s highlight':'Look Up';
@@ -1154,12 +1185,22 @@ fit();if(!still)requestAnimationFrame(loop);
   try{sight=JSON.parse(localStorage.getItem('lookup.sightings')||'[]')}catch(e){sight=[]}
   uid='me';db={};
   const get=async p=>{const r=await fetch(p+'?t='+Math.floor(Date.now()/6e5),{cache:'no-store'});if(!r.ok)throw 0;return r.json()};
-  const skyP=get('data/sky.json').catch(()=>null),all=await get('data/reports.json');
-  SKYDB=await skyP;if(SKYDB&&SKYDB.stars)build();else SKYDB=null;
+  try{LU.ui()}catch(e){}
+  const skyP=get('data/sky.json').catch(()=>null),all=await get('data/reports.json').catch(()=>[]);
+  SKYDB=await skyP;if(!(SKYDB&&SKYDB.stars))SKYDB=null;
   reports=(Array.isArray(all)?all:[]).filter(r=>r&&Array.isArray(r.events)&&r.events.some(e=>e&&TYPES[e.type])).sort((x,y)=>x.date<y.date?1:-1);
-  if(!reports.length){updateSaw();return}
-  report=reports.find(r=>r.date===wantDate)||reports[0];$('modes').hidden=false;
-  try{const p=await get('data/places.json');places=p[report.placeId||'state-college-pa']||null}catch(e){}
+  const place=LU.current();
+  if(place){
+    $('status').textContent='Fetching tonight\u2019s forecast for '+place.name+'...';
+    try{report=await LU.build(place,reports[0]||null);reports=[report];$('credits').hidden=false;
+      if(report.sourceFailures&&report.sourceFailures.length)$('note').dataset.fail='Not available right now: '+report.sourceFailures.join(', ')+'. Those ratings are left out rather than guessed.'}
+    catch(e){$('status').textContent='Could not reach the weather service for '+place.name+', so there is no rating tonight rather than a guess. Try again in a few minutes, or pick another place.';if(SKYDB)build();updateSaw();return}
+  }else{
+    if(!reports.length){if(SKYDB)build();updateSaw();return}
+    report=reports.find(r=>r.date===wantDate)||reports[0];
+    try{const p=await get('data/places.json');places=p[report.placeId||'state-college-pa']||null}catch(e){}
+  }
+  if(SKYDB)build();$('modes').hidden=false;
   if(!touched)setMode('tonight',wantType);
   updateSaw();
 }catch(e){}})();

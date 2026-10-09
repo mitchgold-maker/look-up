@@ -4,6 +4,7 @@ This repo is the single source of truth for Look Up, Mitch's hobby sky-alert pro
 
 ## What lives where
 - `index.html`: the whole site (GitHub Pages, https://mitchgold-maker.github.io/look-up/). It draws each night's sky animation, the rating, the conditions and the deep-dive sections from the data files.
+- `local.js`: any-location mode. When a visitor picks a place (saved only in their browser, or shared as `?lat=&lon=&name=`), it builds tonight's report in the browser from primary sources: Open-Meteo (ECMWF, GFS and ICON models compared for a confidence rating), NOAA SWPC (Kp forecast and OVATION aurora nowcast), Astronomy Engine (pinned with an integrity hash; Sun, Moon, planets, eclipses) and the IMO meteor shower list. Same report shape and rating rules as the morning routine. If the weather source fails it shows a message instead of guessing; other failed sources drop only their rating and are listed. Facts and research for other places are borrowed from the latest State College report, minus anything location-specific.
 - `data/reports.json`: daily reports, newest first. Written only by the scheduled task "Look Up morning".
 - `data/sky.json`: star catalog (Yale Bright Star Catalog via d3-celestial, BSD-3-Clause), constellation lines, constellation label points and bright-star names.
 - `data/places.json`: viewing spots near State College, keyed by place id.
@@ -37,6 +38,11 @@ This repo is the single source of truth for Look Up, Mitch's hobby sky-alert pro
 - The painting (twinkle, glow, ground silhouettes, the four natural styles) stays artistic. Keep colours natural; the false-colour styles were removed on purpose.
 - Visitors can drag the picture to look around; constellation lines and names toggle with the Constellations button.
 - Motion respects `prefers-reduced-motion`. Animation loops must survive a hidden or zero-size page (they catch errors and never size a canvas to 0).
+
+## Trust rules for any location
+- Every rating shows its readings with the source and a link. Never show a number that was not fetched or computed that day.
+- When a source is missing, hide that rating and say so. Do not fill gaps with guesses.
+- Credit Open-Meteo (CC BY 4.0) wherever its data shows.
 
 ## Before you change anything
 1. Read this file, then `index.html` and the newest entry in `data/reports.json`.
