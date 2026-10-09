@@ -143,6 +143,13 @@ details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;an
 .dragHint{position:absolute;right:16px;top:56px;font:500 12px var(--mono);color:var(--ink);background:rgba(9,12,26,.6);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;pointer-events:none;animation:nudge 2.6s ease-in-out infinite}
 @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}
 .btn[aria-pressed="false"]{opacity:.6}
+.btn.switch{display:inline-flex;align-items:center;gap:9px}
+.btn.switch .knob{position:relative;width:30px;height:17px;border-radius:999px;background:rgba(255,255,255,.18);transition:background .25s;flex:none}
+.btn.switch .knob::after{content:"";position:absolute;left:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:transform .25s}
+.btn.switch[aria-checked="true"] .knob{background:var(--accent)}
+.btn.switch[aria-checked="true"] .knob::after{transform:translateX(13px)}
+.btn.switch b{font-weight:600;color:var(--dim);min-width:2.2em;text-align:left}
+.btn.switch[aria-checked="true"] b{color:var(--accent)}
 .stage-spacer{display:none}
 @media (min-width:641px){
   .stage{position:sticky;top:14px;z-index:1}
@@ -210,7 +217,7 @@ details[open] svg.chart .bar{transform-box:fill-box;transform-origin:50% 100%;an
     <div class="foot">
       <span class="edition" id="edition"></span>
       <span class="btns">
-        <button class="btn ghost" id="lines" type="button" aria-pressed="true" hidden>Constellations</button>
+        <button class="btn ghost switch" id="lines" type="button" role="switch" aria-checked="true" title="Show or hide constellation lines and names" hidden><span class="knob" aria-hidden="true"></span>Constellations <b id="linesState">on</b></button>
         <button class="btn ghost" id="next" type="button">Next style</button>
         <button class="btn" id="again" type="button">New edition</button>
       </span>
@@ -565,7 +572,7 @@ function skyLabel(){if(!REAL)return '';const h=+new Intl.DateTimeFormat('en-US',
 function build(){
   W=cv.clientWidth||1;H=cv.clientHeight||1;
   const r=rng(seed),nz=noise(seed^0x9e37),P=(live&&live.params)||{},num=(k,f)=>typeof P[k]==='number'?P[k]:f();
-  const pool=type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES,pickS=live?0:Math.floor(r()*pool.length);
+  const pool=type==='rainbow'?STYLES.filter(s=>!s.mono):STYLES,pickS=live&&report?Math.abs(hash(report.date+'.style.'+type))%pool.length:Math.floor(r()*pool.length);
   style=pool[(styleOver==null?pickS:styleOver)%pool.length];
   const gk=GROUNDS[Math.floor(r()*GROUNDS.length)];
   const sc=style.sc||.5;LW=style.buf==='half'&&sc<1?1.7:1;
@@ -959,6 +966,7 @@ function render(info,gk){
   $('status').textContent=live&&report?`Checked ${report.checkedLabel||report.date||''} for ${report.place||'your location'}. ${report.summary||''}`:'Sample alerts with invented readings.';
   extras(info);
   $('aApp').textContent=live&&type===featured?'Tonight’s highlight':'Look Up';
+  $('next').hidden=$('again').hidden=!!live;
   $('lines').hidden=!REAL;$('dragHint').hidden=!REAL||dragged;$('skyTime').hidden=!REAL;skyLabel.last=null;cv.classList.toggle('real',!!REAL);
   document.documentElement.style.setProperty('--accent',TYPES[type].accent);
   document.querySelectorAll('#chips button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===type));
@@ -1060,7 +1068,7 @@ cv.addEventListener('pointerdown',e=>{if(!REAL||!view)return;drag={x:e.clientX,a
 cv.addEventListener('pointermove',e=>{if(!drag)return;view.az=((drag.az-(e.clientX-drag.x)/view.ppd)%360+360)%360;
   if(!dragged&&Math.abs(e.clientX-drag.x)>6){dragged=true;$('dragHint').hidden=true}if(still)paint(.4,.016)});
 ['pointerup','pointercancel'].forEach(n=>cv.addEventListener(n,()=>{drag=null}));
-$('lines').onclick=()=>{showLines=!showLines;$('lines').setAttribute('aria-pressed',showLines);if(still)paint(.4,.016)};
+$('lines').onclick=()=>{showLines=!showLines;$('lines').setAttribute('aria-checked',showLines);$('linesState').textContent=showLines?'on':'off';if(still)paint(.4,.016)};
 // The alert shrinks to its headline as you scroll. Tap it to read the rest; it folds away again when you scroll on.
 (()=>{const al=document.querySelector('.alert');let at=0;
   al.addEventListener('click',()=>{if(innerWidth<=640)return;al.classList.toggle('open');at=scrollY});
