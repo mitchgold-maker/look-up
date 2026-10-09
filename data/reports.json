@@ -1,5 +1,711 @@
 [
   {
+    "date": "2026-10-09",
+    "checkedLabel": "Fri Oct 9, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A sheet of high cloud covers the sky all night under a nearly new Moon, hiding the stars, the last Draconids and any aurora, and the sunset looks plain unless the cloud edge breaks in the west.",
+    "featured": "sunset",
+    "pick": "Watch the sunset at 6:40 PM in the west-southwest and stay 15 minutes: if the Sun slips under the edge of the high cloud, the deck overhead can turn pink. Before dawn on Sunday, October 11, Mars sits in front of the Beehive cluster in the east, a binocular sight if the sky clears.",
+    "next": {
+      "name": "Mars in front of the Beehive cluster",
+      "date": "2026-10-11"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning crescent",
+        "lit": 2,
+        "note": "Not visible tonight. New Moon is Saturday, October 10, at 11:50 AM EDT."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "All night",
+          "where": "East at dusk, west before dawn",
+          "note": "Just past opposition and near its brightest, the one object likely to show through thin cloud"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "High in the east",
+          "note": "The brightest planet in the morning sky, with Regulus below it"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "East, following Jupiter",
+          "note": "Moves in front of the Beehive cluster on the morning of October 11"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "On this date in 1992, a fireball seen over Pennsylvania just after sunset dropped a meteorite in Peekskill, New York. What did it hit?",
+      "options": [
+        "A parked car",
+        "A house roof",
+        "A football field",
+        "A mailbox"
+      ],
+      "answer": 0,
+      "explain": "The 12.4 kg stone went through the trunk of a parked 1980 Chevrolet Malibu, and 16 videos, many from a high school football game, recorded the fireball."
+    },
+    "events": [
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset under a high cloud deck",
+        "sub": "The Sun sets at 6:40 PM in the west-southwest under a full sheet of high ice cloud with nothing lower. A solid deck usually blocks the low sunlight that lights clouds from below, so expect muted colour unless a gap opens on the western horizon.",
+        "look": {
+          "bearing": 262,
+          "label": "West-southwest at 6:40 PM, then overhead"
+        },
+        "params": {
+          "highCloud": 100
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "About 97%, all high cloud",
+            "score": 0.3,
+            "note": "Open-Meteo shows 100% high cloud and no low or mid cloud at 6 and 7 PM. Some high cloud is ideal for colour, but a complete deck tends to shade itself."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "0% rain chance",
+            "score": 0.95,
+            "note": "The National Weather Service hourly forecast has no rain this evening, so rain will not wash out the view."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses cloud amount only. It cannot see whether the western edge of the deck will be thin or broken, which is what decides a good sunset."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud layers around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo (CC BY 4.0)",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 100
+              },
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "9 PM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:40 PM EDT",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud at 6 PM and 7 PM",
+            "value": "Low 0%, mid 0%, high 100%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud near sunset",
+            "value": "9 of 9 (about 97%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at sunset",
+            "value": "0%",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Every model hour around sunset shows the same thing: no low or middle cloud at all, and high cloud at 100%. That is a sheet of ice cloud 6 km or more up, and the colour depends on whether low sunlight can slip under its western edge."
+          },
+          {
+            "cat": "New research",
+            "text": "A July 2026 paper in Atmospheric Chemistry and Physics by Marjani, Mehrdad and Quaas simulated aircraft contrails inside natural cirrus. Persistent contrails embedded in existing cirrus can survive, change the host cloud's humidity and ice, and in very moist, unstable air even spread upward above flight level."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Under a high deck, do not leave at the moment of sunset. Keep watching for 10 to 20 minutes, and turn around now and then: if the Sun finds a gap below the cloud edge, the underside of the deck overhead can light up pink after the horizon has gone dull."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 9, 1992, at about 7:50 PM EDT, just after sunset, a fireball crossed West Virginia and Pennsylvania heading north-northeast and dropped a 12.4 kg stone through the trunk of a parked car in Peekskill, New York. Sixteen separate videos, many shot by fans at a high school football game, captured it."
+          }
+        ],
+        "research": [
+          {
+            "title": "Investigating the development of persistent contrails in ice supersaturated regions with cloudy backgrounds using ICON-LEM",
+            "url": "https://acp.copernicus.org/articles/26/10695/2026/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "July 2026 study of how contrails grow inside existing cirrus, the kind of high cloud covering tonight's sunset."
+          },
+          {
+            "title": "Peekskill meteorite",
+            "url": "https://en.wikipedia.org/wiki/Peekskill_meteorite",
+            "source": "Wikipedia",
+            "note": "The October 9, 1992 fireball seen over Pennsylvania just after sunset."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 11,
+        "title": "Poor night for stargazing",
+        "sub": "A full deck of high cloud covers the sky from dusk to dawn, so the darkest Moon of the month goes to waste. Saturn, low in the east-southeast after dark, is the only thing likely to glow through any thin spots.",
+        "look": {
+          "bearing": 120,
+          "label": "East-southeast after dark, for Saturn if the cloud thins"
+        },
+        "params": {
+          "cloud": 97,
+          "moon": 2,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "About 97% cloud, 8 PM to 5 AM",
+            "score": 0.127,
+            "note": "7Timer shows 9 of 9 on its cloud scale all night, and Open-Meteo puts 94 to 100% high cloud over the whole night, so the sky is covered."
+          },
+          {
+            "name": "Moonlight",
+            "val": "2% lit, sets with the Sun",
+            "score": 0.95,
+            "note": "The Moon is a day from new and stays out of the night sky, so moonlight is no problem at all tonight."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 of 8",
+            "score": 0.95,
+            "note": "7Timer rates the air between the clouds as clear, but that only matters where the cloud deck breaks."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo (CC BY 4.0)",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "10 PM",
+                "v": 94
+              },
+              {
+                "t": "12 AM",
+                "v": 100
+              },
+              {
+                "t": "2 AM",
+                "v": 100
+              },
+              {
+                "t": "4 AM",
+                "v": 95
+              },
+              {
+                "t": "6 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "9 of 9 (about 97%) all night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Cloud layers overnight",
+            "value": "0% low, 0-14% mid, 94-100% high",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Transparency",
+            "value": "2 of 8 (1 is clearest)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "About 2% lit, new Moon October 10 at 11:50 AM EDT",
+            "source": "Computed from the lunar cycle; EarthSky",
+            "url": "https://earthsky.org/astronomy-essentials/visible-planets-tonight-mars-jupiter-venus-saturn/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Two independent forecasts agree: 7Timer's cloud score sits at its maximum from 8 PM to 8 AM, and Open-Meteo's high cloud stays between 94 and 100%. With the Moon only 2% lit, this would have been the darkest sky of the month."
+          },
+          {
+            "cat": "New research",
+            "text": "An August 2026 study in Astronomy & Astrophysics by ESO astronomer Olivier Hainaut simulated satellite trails over the Very Large Telescope. About 15,000 satellites orbit today and proposals add up to more than 1.7 million. He called 100,000 bearable, but said 300,000 could cost some telescopes most of their data."
+          },
+          {
+            "cat": "How it works",
+            "text": "7Timer rates tonight's transparency as 2 of 8, nearly the best, even with a 9 of 9 cloud score. Transparency describes haze and water vapour in the air itself, while cloud cover describes solid layers of droplets or ice. Clear air under a cloud deck still shows no stars."
+          }
+        ],
+        "research": [
+          {
+            "title": "Satellite proliferation imperils astronomical observations, study finds",
+            "url": "https://tribune.com.pk/story/2624969/satellite-proliferation-imperils-astronomical-observations-study-finds",
+            "source": "Reuters via The Express Tribune",
+            "note": "August 2026 report on an ESO study of how many satellites telescopes can tolerate."
+          }
+        ]
+      },
+      {
+        "type": "meteor",
+        "chance": 5,
+        "title": "Last Draconids hidden by cloud",
+        "sub": "Tonight is one night after the Draconid peak and the shower ends around October 10. Any break in the cloud from 8 PM to midnight is worth a look north and high, toward the head of Draco, but the cloud deck makes it a poor night.",
+        "look": {
+          "bearing": 315,
+          "label": "North-northwest and high, toward the head of Draco"
+        },
+        "params": {
+          "shower": "Draconids",
+          "radiant": "Head of Draco, high in the north at nightfall",
+          "speed": 20,
+          "zhr": 5,
+          "parent": "21P/Giacobini-Zinner",
+          "cloud": 97,
+          "moon": 2
+        },
+        "conds": [
+          {
+            "name": "Shower strength",
+            "val": "About 5 an hour at best, past peak",
+            "score": 0.368,
+            "note": "The Draconids peaked the night of October 8 at around 5 to 10 an hour, and rates drop quickly afterwards."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 97% cloud, 8 PM to 5 AM",
+            "score": 0.127,
+            "note": "7Timer shows 9 of 9 on its cloud scale all night, and Open-Meteo puts 94 to 100% high cloud over the whole night, so the sky is covered."
+          },
+          {
+            "name": "Moonlight",
+            "val": "2% lit, not up after midnight",
+            "score": 0.97,
+            "note": "No moonlight at all, so only the cloud stands in the way."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo (CC BY 4.0)",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "10 PM",
+                "v": 94
+              },
+              {
+                "t": "12 AM",
+                "v": 100
+              },
+              {
+                "t": "2 AM",
+                "v": 100
+              },
+              {
+                "t": "4 AM",
+                "v": 95
+              },
+              {
+                "t": "6 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Draconid peak",
+            "value": "Night of October 8-9, 5-10 meteors an hour, about 20 km/s",
+            "source": "Farmers' Almanac",
+            "url": "https://www.farmersalmanac.com/?p=441378"
+          },
+          {
+            "name": "Parent comet",
+            "value": "21P/Giacobini-Zinner, orbit about 6.5 years",
+            "source": "Farmers' Almanac",
+            "url": "https://www.farmersalmanac.com/?p=441378"
+          },
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "9 of 9 (about 97%) all night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "About 2% lit, new Moon October 10 at 11:50 AM EDT",
+            "source": "Computed from the lunar cycle; EarthSky",
+            "url": "https://earthsky.org/astronomy-essentials/visible-planets-tonight-mars-jupiter-venus-saturn/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The predicted peak passed around 9 PM EDT on October 8. Tonight's rate will be lower, and the cloud deck hides the radiant, which stands high in the north at nightfall, the reason this shower favours the evening."
+          },
+          {
+            "cat": "New research",
+            "text": "A team from the University of Manchester, the Natural History Museum and the Global Meteor Network presented a survey at EPSC 2026 that reprocesses several hundred fireballs from the network's 1,600-plus cameras in 45 countries. It aims at the first calibrated count of meteorite-dropping fireballs since the photographic networks of the 1980s."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "To tell a Draconid from a random meteor, trace its path backwards. A Draconid will point back to the head of Draco, a small lopsided box of stars high in the north, and it will move slowly, drifting rather than flashing."
+          }
+        ],
+        "research": [
+          {
+            "title": "A comprehensive survey of meteorite flux to Earth using the Global Meteor Network",
+            "url": "https://meetingorganizer.copernicus.org/EPSC2026/EPSC2026-92.html",
+            "source": "Europlanet Science Congress 2026",
+            "note": "Uses a citizen-science camera network to measure how often fireballs drop meteorites."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 5,
+        "title": "Valley fog very unlikely at sunrise",
+        "sub": "The cloud deck acts like a blanket overnight, so the air stays 5°F above its dew point at dawn. Wind is near calm, but without that last bit of cooling, fog is unlikely beyond the lowest hollows.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 5,
+          "wind": 2,
+          "cloud": 97
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "Temperature minus dew point 5°F at 7 AM",
+            "score": 0.45,
+            "note": "The gap narrows from 13°F at 9 PM to 5°F around 7 and 8 AM, short of the 0 to 2°F that fog usually needs."
+          },
+          {
+            "name": "Light wind",
+            "val": "2 mph northeast",
+            "score": 0.95,
+            "note": "Near-calm air would let cold air pool in the valleys if the night could cool enough."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 97% cloud, midnight to 8 AM",
+            "score": 0.127,
+            "note": "Cloud overhead sends heat back down, so the ground cannot cool to the dew point the way it did on clear nights this week."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 25,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "9 PM",
+                "v": 13
+              },
+              {
+                "t": "12 AM",
+                "v": 9
+              },
+              {
+                "t": "3 AM",
+                "v": 6
+              },
+              {
+                "t": "5 AM",
+                "v": 6
+              },
+              {
+                "t": "7 AM",
+                "v": 5
+              },
+              {
+                "t": "8 AM",
+                "v": 5
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature-dew point gap",
+            "value": "5°F, 7 AM to 8 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Overnight low",
+            "value": "44°F at 7 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at that time",
+            "value": "2 mph northeast",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:17 AM EDT Saturday",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The low is 44°F at 7 AM, warmer than the last two clear nights, and the dew point stays near 39 to 41°F. The forecast never mentions fog, and frost is out of the question."
+          },
+          {
+            "cat": "New research",
+            "text": "A five-year UC Santa Cruz project funded by the Heising-Simons Foundation is sampling the chemistry and biology of fog water at sites across California. The team collected its first fog water in summer 2025 and presented early results at the American Geophysical Union meeting that December."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "On a cloudy, near-calm night like this, any fog that does form will be shallow and confined to the very lowest ground, such as stream bottoms and hollows, rather than filling whole valleys. Look down from a high road at first light rather than expecting it in town."
+          }
+        ],
+        "research": [
+          {
+            "title": "Chemistry and Biology of Fog",
+            "url": "https://fognet.sites.ucsc.edu/chemistry-and-biology-of-fog",
+            "source": "UC Santa Cruz FogNet",
+            "note": "Project page for a multi-year study of what fog water carries."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely tonight",
+        "sub": "NOAA's storm forecast peaks at Kp 6 between 2 and 5 PM EDT, in daylight, and falls to Kp 4 by dark and 3 overnight. That is well below the level needed this far south, and the cloud deck would hide any glow anyway.",
+        "look": {
+          "bearing": 0,
+          "label": "Due north, low over the horizon"
+        },
+        "params": {
+          "kp": 4,
+          "cloud": 97,
+          "moon": 2
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 4 at most after dark",
+            "score": 0.03,
+            "note": "The G2 part of the storm is forecast for the afternoon. From 8 PM the forecast drops to Kp 4, then 3.67 and 3, while State College usually needs about Kp 7."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 97% cloud, 8 PM to 5 AM",
+            "score": 0.127,
+            "note": "7Timer shows 9 of 9 on its cloud scale all night, and Open-Meteo puts 94 to 100% high cloud over the whole night, so the sky is covered."
+          },
+          {
+            "name": "Moonlight",
+            "val": "2% lit",
+            "score": 0.996,
+            "note": "No moonlight, so a strong display would show well if the sky were clear."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "2 PM",
+                "v": 6
+              },
+              {
+                "t": "5 PM",
+                "v": 5.67
+              },
+              {
+                "t": "8 PM",
+                "v": 4
+              },
+              {
+                "t": "11 PM",
+                "v": 3.67
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours",
+            "value": "4.00 (8 to 11 PM EDT)",
+            "source": "NOAA SWPC Kp forecast",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "Storm forecast today",
+            "value": "G1 to G2, peak Kp 6 at 2 to 5 PM EDT, from an October 6 CME",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Observed Kp before the forecast",
+            "value": "Peak Kp 2 in the 24 hours to 8:30 PM EDT October 8",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "9 of 9 (about 97%) all night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's forecast issued at 8:30 PM EDT on October 8 said observed activity had only reached Kp 2 so far, so the CME launched on October 6 had not yet arrived. Arrival times for CMEs are often off by hours, which is why the timing of tonight's storm is uncertain."
+          },
+          {
+            "cat": "New research",
+            "text": "In June 2026 the German space agency DLR described how its TerraSAR-X and TanDEM-X radar satellites, flying as close as about 200 m apart at 505 km, ride out storms. Storms can raise air density at that height about tenfold, from 1 to 10 g per cubic km. After 2024 storms upset the pair, DLR switched to a mix of three forecast models, and both kept working through the January and February 2026 storms."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The same sunspot group behind this CME, Region 4549, also fired a flare that caused an R2 radio blackout at 11:48 AM EDT on October 8. A flare's X-rays reach Earth in about 8 minutes, while the cloud of solar material it may launch takes days."
+          }
+        ],
+        "research": [
+          {
+            "title": "Satellite operations challenge: a tight formation dance amid the aurora",
+            "url": "https://www.dlr.de/en/latest/news/2026/satellite-operations-challenge-a-tight-formation-dance-amid-the-aurora",
+            "source": "DLR",
+            "note": "June 2026 account of how geomagnetic storms affect satellites flying in close formation."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 11",
+        "name": "Mars in front of the Beehive",
+        "note": "A binocular sight in the east before dawn, with the Moon out of the way."
+      },
+      {
+        "date": "Oct 14",
+        "name": "Southern Taurids peak",
+        "note": "A slow shower known for occasional fireballs, with only a thin waxing crescent Moon that evening near Antares."
+      },
+      {
+        "date": "Oct 15",
+        "name": "Bright space station pass",
+        "note": "Magnitude -3.6, climbing to 79 degrees in the southeast at 6:40 AM."
+      },
+      {
+        "date": "Oct 21-22",
+        "name": "Orionids peak",
+        "note": "About 10 to 20 an hour from a dark site, best before dawn after the waxing gibbous Moon sets."
+      },
+      {
+        "date": "Oct 25-26",
+        "name": "Hunter's Moon",
+        "note": "The full Moon rises at sunset on October 25 with Saturn nearby."
+      }
+    ],
+    "sourceFailures": [
+      "IMO meteor shower calendar",
+      "AMS meteor shower calendar (no rates or radiants)",
+      "Space.com planet guide",
+      "Space.com Draconid guide"
+    ],
+    "ideas": [
+      {
+        "title": "Meteor shower details missing from AMS and IMO pages three days running",
+        "kind": "bug"
+      },
+      {
+        "title": "Keep a yearly meteor shower table in the repo",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-10-08",
     "checkedLabel": "Thu Oct 8, 6:00 AM ET",
     "place": "State College, PA",
