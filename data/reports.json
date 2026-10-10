@@ -1,5 +1,646 @@
 [
   {
+    "date": "2026-10-10",
+    "checkedLabel": "Sat Oct 10, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "The new Moon leaves the sky dark, but a middle-level cloud deck covers most of the night and rain moves in before dawn, so stars show only through brief gaps and any morning fog will be lost in rain.",
+    "featured": "fog",
+    "pick": "If the cloud breaks this evening, step out between 8 and 11 PM and look east-southeast for Saturn, the steady golden point well up in a moonless sky. If it stays covered, keep Tuesday, October 13 at 6:35 AM free: the space station rises to 26 degrees in the southeast at magnitude -1.5.",
+    "next": {
+      "name": "Possible minor to moderate geomagnetic storm",
+      "date": "2026-10-11"
+    },
+    "sky": {
+      "moon": {
+        "phase": "New Moon",
+        "lit": 0,
+        "note": "New Moon today, October 10. It sets with the Sun, so it adds no light tonight."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "All night",
+          "where": "East-southeast in the evening, west before dawn",
+          "note": "A week past opposition on October 3-4 and still near its brightest, with faint Neptune nearby for telescopes"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "East",
+          "note": "The brightest point in the predawn sky, slowly closing on Mars ahead of a November pairing"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "East, near Jupiter",
+          "note": "Drifting toward Jupiter through the month"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Neptune's largest moon, Triton, was discovered on this date in 1846. What makes its orbit unusual?",
+      "options": [
+        "It circles Neptune backwards, against the planet's spin",
+        "It takes exactly one Earth day to go around",
+        "It passes through Neptune's rings every orbit",
+        "It is shared between Neptune and Uranus"
+      ],
+      "answer": 0,
+      "explain": "Triton is the only large moon in the Solar System with a retrograde orbit, a clue that Neptune captured it from the Kuiper belt."
+    },
+    "events": [
+      {
+        "type": "stars",
+        "chance": 23,
+        "title": "Fair night for stargazing",
+        "sub": "The new Moon makes this the darkest night of the month, but a deck of middle-level cloud covers most of it. One forecast shows a gap around 11 PM, so check east-southeast for Saturn then; another keeps the sky covered, and rain arrives before dawn.",
+        "look": {
+          "bearing": 115,
+          "label": "East-southeast in the evening, for Saturn through any gap"
+        },
+        "params": {
+          "cloud": 77,
+          "moon": 0,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 3
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "About 77% cloud, 8 PM to 5 AM",
+            "score": 0.305,
+            "note": "7Timer dips to about 50% around 11 PM before climbing to 97% by 5 AM, while Open-Meteo shows a solid middle deck all night, so treat any clear spell as short."
+          },
+          {
+            "name": "Moonlight",
+            "val": "New Moon, 0% lit",
+            "score": 0.95,
+            "note": "The Moon is new today and sets with the Sun, so moonlight is no factor at all."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2-3 of 8, then 8 by 5 AM",
+            "score": 0.8,
+            "note": "The air between the clouds is clear in the evening, then turns murky as rain arrives before dawn."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 87
+              },
+              {
+                "t": "11 PM",
+                "v": 50
+              },
+              {
+                "t": "2 AM",
+                "v": 75
+              },
+              {
+                "t": "5 AM",
+                "v": 97
+              }
+            ]
+          },
+          {
+            "label": "Middle-level cloud tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo (CC BY 4.0)",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "10 PM",
+                "v": 100
+              },
+              {
+                "t": "12 AM",
+                "v": 70
+              },
+              {
+                "t": "2 AM",
+                "v": 100
+              },
+              {
+                "t": "4 AM",
+                "v": 100
+              },
+              {
+                "t": "6 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud 8 PM to 5 AM",
+            "value": "8, 5, 7, 9 of 9 (87%, 50%, 75%, 97%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Cloud layers 8 PM to 6 AM",
+            "value": "Mid 70-100%, low 0% until midnight then 37-100%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Transparency",
+            "value": "2 at 8 PM, 3 at 11 PM and 2 AM, 8 at 5 AM",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Sky forecast",
+            "value": "Mostly cloudy, light rain likely from 4 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The two cloud forecasts disagree. 7Timer opens a partial gap near 11 PM, while Open-Meteo shows 100% middle-level cloud from 6 PM to 11 PM with only a dip to 70% at midnight. A moonless gap, even a short one, is worth a look straight up."
+          },
+          {
+            "cat": "New research",
+            "text": "The Vera C. Rubin Observatory in Chile began its ten-year Legacy Survey of Space and Time on June 30, 2026. Its 3.2-billion-pixel camera takes a new image about every 40 seconds and will revisit each patch of the southern sky about 800 times."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "On a broken-cloud night, let your eyes adapt with the lights off and wait for a gap rather than giving up at the first look. Clouds lit from below by town lights look grey against black gaps, which makes the clear patches easy to spot as they drift over."
+          }
+        ],
+        "research": [
+          {
+            "title": "Rubin Observatory launches the most detailed sky survey ever attempted",
+            "url": "https://www.earth.com/news/rubin-observatory-launches-the-most-detailed-sky-survey-ever-attempted/",
+            "source": "Earth.com",
+            "note": "July 2026 report on the start of the Rubin survey, which will map billions of stars and galaxies."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 20,
+        "title": "Valley fog unlikely at sunrise",
+        "sub": "The air reaches saturation by 6 AM, but rain and a lowering cloud base do it rather than a clear, calm night, and the wind picks up to 7 mph. Expect grey drizzle and low cloud on the ridges at the 7:18 AM sunrise instead of a white fog sea in the valleys.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 7,
+          "cloud": 77
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "Temperature equals dew point, 51°F at 6 AM",
+            "score": 0.95,
+            "note": "The gap closes from 9°F at 9 PM to zero by 6 AM, but rain falling into the air is what moistens it."
+          },
+          {
+            "name": "Light wind",
+            "val": "7 mph at 6 AM",
+            "score": 0.7,
+            "note": "A steady breeze mixes the lowest air, which stops the calm cold pools that valley fog forms in."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 77% cloud overnight",
+            "score": 0.305,
+            "note": "Cloud overhead keeps the ground from cooling, so this is not a radiation-fog night."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 25,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "9 PM",
+                "v": 9
+              },
+              {
+                "t": "12 AM",
+                "v": 7
+              },
+              {
+                "t": "2 AM",
+                "v": 6
+              },
+              {
+                "t": "4 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 2
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 0
+              }
+            ]
+          },
+          {
+            "label": "Rain chance overnight",
+            "unit": "%",
+            "max": 100,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "12 AM",
+                "v": 7
+              },
+              {
+                "t": "2 AM",
+                "v": 35
+              },
+              {
+                "t": "4 AM",
+                "v": 55
+              },
+              {
+                "t": "6 AM",
+                "v": 79
+              },
+              {
+                "t": "8 AM",
+                "v": 82
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature-dew point gap",
+            "value": "0°F, 6 AM to 8 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Overnight low",
+            "value": "51°F at 6-7 AM",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at that time",
+            "value": "7 mph",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Rain chance at dawn",
+            "value": "79-81%",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:18 AM EDT Sunday",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo brings low cloud in from 1 AM, at 63 to 100% through 8 AM, and the National Weather Service has rain likely from 5 AM. Any reduced visibility at dawn will come from low cloud and rain on the ridges rather than fog pooling in the valleys."
+          },
+          {
+            "cat": "New research",
+            "text": "An August 2026 study of fog in Italy's Po Valley by Neuberger and colleagues found that swollen, water-coated aerosol particles that never become true droplets supplied about 21% of fog liquid water and accounted for 36% of sub-kilometre visibility events in which no droplets formed."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Counting those hydrated particles as droplets changes the picture a lot: in the same Po Valley data, leaving them out cut the droplet count from 97.4 to 12.4 per cubic centimetre, which is why the authors say fog instruments and models must tell the two apart."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 10, 1780, the Great Hurricane of 1780 was devastating the Caribbean. It killed an estimated 20,000 to 30,000 people."
+          }
+        ],
+        "research": [
+          {
+            "title": "Importance of hydrated aerosol particles for aerosol–fog relationships in the Italian Po Valley",
+            "url": "https://acp.copernicus.org/articles/26/11991/2026/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "Published August 24, 2026: how particles short of droplet size still thin out visibility in fog."
+          },
+          {
+            "title": "October 10",
+            "url": "https://en.wikipedia.org/wiki/October_10",
+            "source": "Wikipedia",
+            "note": "Date page listing the Great Hurricane of 1780 and the discovery of Triton in 1846."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset under a middle cloud deck",
+        "sub": "The Sun sets at 6:38 PM in the west-southwest just as a solid middle-level deck moves in over the high cloud. A thick grey layer at that height usually blocks the low sunlight, so expect a dull sky unless the western edge stays open.",
+        "look": {
+          "bearing": 262,
+          "label": "West-southwest at 6:38 PM"
+        },
+        "params": {
+          "highCloud": 93
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "About 87%, mid and high layers",
+            "score": 0.3,
+            "note": "Open-Meteo jumps from 10% middle cloud at 5 PM to 100% at 6 and 7 PM, under 93-100% high cloud, and 7Timer agrees on 8 of 9."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "0% rain chance",
+            "score": 0.95,
+            "note": "The National Weather Service has no rain this evening; it arrives after midnight."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only. It cannot tell whether the deck's western edge will be thin, which decides a good sunset."
+          }
+        ],
+        "series": [
+          {
+            "label": "Middle-level cloud around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo (CC BY 4.0)",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 5
+              },
+              {
+                "t": "5 PM",
+                "v": 10
+              },
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:38 PM EDT",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud at 7 PM",
+            "value": "Low 0%, mid 100%, high 93%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud near sunset",
+            "value": "8 of 9 (about 87%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at sunset",
+            "value": "0%",
+            "source": "NWS hourly forecast, State College grid",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The cloud forecast changes in the hour before sunset: middle cloud goes from 10% at 5 PM to 100% at 6 PM. If the deck arrives late, the 5 to 6 PM sky under thin high cloud may be the best light of the evening."
+          },
+          {
+            "cat": "New research",
+            "text": "An August 2026 preprint by Lange, Quaglia, Visioni, Rozanov and von Savigny modelled sky colours if a large volcano erupted while aerosols were being added to the stratosphere on purpose. The simulations show Bishop's Rings around the low Sun, greenish twilight and strong purple light."
+          },
+          {
+            "cat": "How it works",
+            "text": "Altostratus, the grey middle-level sheet forecast tonight, sits roughly 2 to 6 km up and is thick enough that the Sun shows only as a diffuse patch. Sunset colour needs sunlight to reach the cloud from below, so a solid altostratus deck usually means a grey sunset unless the horizon is clear."
+          }
+        ],
+        "research": [
+          {
+            "title": "Volcanic eruptions alter sky colours in a geoengineered world",
+            "url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3347/",
+            "source": "EGUsphere (under review for Atmospheric Chemistry and Physics)",
+            "note": "2026 modelling of twilight colours after a volcanic eruption, including purple light and green twilight."
+          },
+          {
+            "title": "Altostratus",
+            "url": "https://goldbook.iupac.org/terms/view/A00257/plain",
+            "source": "IUPAC Gold Book",
+            "note": "Definition of the middle-level cloud sheet expected at sunset tonight."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely tonight",
+        "sub": "Geomagnetic activity eases to Kp 2.67-3.33 after dark, far below the Kp 7 usually needed this far south, and cloud covers most of the sky. NOAA expects minor to moderate storming early on October 12 UTC, Sunday evening here, but rain is forecast then too.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low over the horizon"
+        },
+        "params": {
+          "kp": 3.33,
+          "cloud": 77,
+          "moon": 0
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Max Kp 3.33 after dark",
+            "score": 0.03,
+            "note": "NOAA's 3-hour forecast peaks at Kp 4.67 in late afternoon, before dark, then drops to 2.67 for the evening."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 77% cloud",
+            "score": 0.305,
+            "note": "Even a storm would be hard to see through tonight's middle deck."
+          },
+          {
+            "name": "Moonlight",
+            "val": "New Moon",
+            "score": 1.0,
+            "note": "No moonlight at all, the one thing in tonight's favour."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 4.67
+              },
+              {
+                "t": "8 PM",
+                "v": 2.67
+              },
+              {
+                "t": "11 PM",
+                "v": 2.67
+              },
+              {
+                "t": "2 AM",
+                "v": 3.33
+              },
+              {
+                "t": "5 AM",
+                "v": 3.33
+              },
+              {
+                "t": "8 AM",
+                "v": 3.67
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, 8 PM to 8 AM",
+            "value": "3.33 (predicted)",
+            "source": "NOAA SWPC planetary K-index forecast",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "Forecast peak Oct 10-12",
+            "value": "Kp 5.67 (G2), early October 12 UTC",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Highest Kp past 24 hours",
+            "value": "4",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's 3-day forecast issued at 0030 UTC today expects G1 to G2 storm conditions early on October 12 UTC from incoming CMEs and coronal hole streams, with a peak of Kp 5.67. That is Sunday evening in State College, still short of the Kp 7 usually needed here."
+          },
+          {
+            "cat": "New research",
+            "text": "A Nature paper published July 15, 2026 by Nithin Sivadas and Doğacan Öztürk found no sign of a limit on how hard the solar wind can disturb Earth's magnetic field. The apparent ceiling in past data came from measurement uncertainty, so a major storm could be about twice as strong as current estimates."
+          },
+          {
+            "cat": "How it works",
+            "text": "Storm forecasts rest on spacecraft parked at L1, about 1.5 million km sunward of Earth, which sample the solar wind before it arrives. Because a single craft samples only one point in a wide stream, the authors of the July study say that uncertainty must be built into how those readings are used."
+          }
+        ],
+        "research": [
+          {
+            "title": "Extreme solar storms can hit Earth harder than thought",
+            "url": "https://www.uaf.edu/news/extreme-solar-storms-can-hit-earth-harder-than-thought.php",
+            "source": "University of Alaska Fairbanks",
+            "note": "August 2026 release on the Nature study showing no saturation limit for geomagnetic disturbance."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 11-12",
+        "name": "Possible G1-G2 geomagnetic storm",
+        "note": "NOAA forecasts Kp up to 5.67 early on October 12 UTC, Sunday evening here, below the usual Kp 7 needed and with rain forecast."
+      },
+      {
+        "date": "Oct 13",
+        "name": "Space station pass",
+        "note": "Magnitude -1.5, rising to 26 degrees in the southeast at 6:38 AM."
+      },
+      {
+        "date": "Oct 14",
+        "name": "Southern Taurids peak",
+        "note": "The annual component of this slow, long-running shower peaks, with only a few meteors an hour but the odd fireball."
+      },
+      {
+        "date": "Oct 21-22",
+        "name": "Orionids peak",
+        "note": "About 10 to 20 an hour at maximum in a normal year, with a 74% lit Moon getting in the way."
+      },
+      {
+        "date": "Oct 26",
+        "name": "Hunter's Moon",
+        "note": "Full at 12:12 AM EDT on October 26, rising at sunset on the 25th."
+      }
+    ],
+    "sourceFailures": [
+      "Space.com planet guide (page body not readable)",
+      "AMS meteor shower calendar (no rates or radiants)"
+    ],
+    "ideas": [
+      {
+        "title": "Heads-up for a storm forecast tomorrow night, not just tonight",
+        "kind": "feature"
+      },
+      {
+        "title": "Show bright asteroid oppositions such as Vesta",
+        "kind": "feature"
+      }
+    ]
+  },
+  {
     "date": "2026-10-09",
     "checkedLabel": "Fri Oct 9, 6:00 AM ET",
     "place": "State College, PA",
