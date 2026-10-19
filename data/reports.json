@@ -1,5 +1,830 @@
 [
   {
+    "date": "2026-10-19",
+    "checkedLabel": "Mon Oct 19, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "Another clear, nearly calm night: Saturn and a gibbous Moon in the evening, a bright space station pass before dawn, and the air saturating at 37°F, so expect valley fog and patchy frost by Tuesday's sunrise.",
+    "featured": "fog",
+    "pick": "In mid-evening look south for a big triangle of Fomalhaut low down, Saturn to its upper left and the Moon to its upper right. Up early Tuesday? Catch the space station 27 degrees up in the north-northwest at 5:57 AM, then look down into the valleys for fog before sunrise at 7:28 AM.",
+    "next": {
+      "name": "Orionids meteor shower peak",
+      "date": "2026-10-21"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waxing gibbous",
+        "lit": 63,
+        "note": "Already up in the south at sunset; it sets around midnight, leaving the hours before dawn dark."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "All night",
+          "where": "Southeast after dark, highest in the middle of the night",
+          "note": "Magnitude 0.3 in Cetus, upper left of the bright star Fomalhaut"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "High in the east",
+          "note": "The brightest planet in the morning sky"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "East, near Jupiter",
+          "note": "Faint and reddish, following Jupiter up the sky"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Fomalhaut b, announced in 2008 as one of the first exoplanets photographed directly, turned out to be something else. What?",
+      "options": [
+        "A dust cloud from two colliding bodies",
+        "A background galaxy",
+        "A brown dwarf",
+        "A flaw in Hubble's camera"
+      ],
+      "answer": 0,
+      "explain": "Hubble later watched it fade and spread, and in 2023 caught a second such cloud, cs2, from another collision of bodies about 30 km across."
+    },
+    "events": [
+      {
+        "type": "fog",
+        "chance": 88,
+        "title": "Valley fog likely at sunrise",
+        "sub": "A third calm, cloudless night in a row: the NWS has the temperature falling from 50°F at 8 PM to meet the dew point at 37°F by 6 AM, with wind no stronger than 3 mph. That is just above freezing, so this is ordinary radiation fog in the valleys rather than freezing fog. Look down from higher ground before sunrise at 7:28 AM.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 3,
+          "cloud": 3
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "Dew point reached at 6 AM",
+            "score": 0.95,
+            "note": "37°F with a 37°F dew point at 6 AM and 100% humidity from 6 to 8 AM: the air is fully saturated."
+          },
+          {
+            "name": "Light wind",
+            "val": "3 mph at 6 AM",
+            "score": 0.95,
+            "note": "A light north breeze of 1 to 3 mph all night, gentle enough for cold air to pool in the valleys."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 3% cloud",
+            "score": 0.97,
+            "note": "No cloud blanket, so the ground loses heat to space all night."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point overnight",
+            "unit": "°F",
+            "max": 20,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 12
+              },
+              {
+                "t": "10 PM",
+                "v": 9
+              },
+              {
+                "t": "12 AM",
+                "v": 7
+              },
+              {
+                "t": "2 AM",
+                "v": 5
+              },
+              {
+                "t": "4 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 2
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "7 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 0
+              }
+            ]
+          },
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Temperature and dew point at 6 AM",
+            "value": "37°F and 37°F, 100% humidity, wind 3 mph N",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Temperature minus dew point",
+            "value": "12°F at 8 PM, 5°F at 2 AM, 2°F at 5 AM, 0°F from 6 to 8 AM",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud cover, dusk to dawn",
+            "value": "3% (score 1 of 9) at every 3-hour step from 5 PM to 8 AM",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Sunrise Tuesday",
+            "value": "7:28 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Unlike Sunday night, when the dew point and temperature met at 30°F, tonight they meet at 37°F, a few degrees above freezing. The fog should be made of liquid droplets, with frost only on the coldest grass, and a slightly stronger 3 mph breeze may keep it shallower and patchier than a dead-calm night."
+          },
+          {
+            "cat": "New research",
+            "text": "On October 16, 2026, Katarzyna Nurowska of the University of Warsaw presented balloon and ground measurements of radiation fog in a valley near Strzyżów, Poland. The fog core held about 0.2 to 0.4 grams of liquid water per cubic metre and up to about 300 droplets per cubic centimetre, with droplets of 8 to 10 micrometres near the ground that got smaller with height."
+          },
+          {
+            "cat": "How it works",
+            "text": "The same group is testing a way to measure fog without flying anything into it: one radiation station sits above the fog layer and one below, and the difference in sunlight and infrared reaching each reveals how much water the fog holds overhead. Existing radiation networks could then track fog continuously."
+          },
+          {
+            "cat": "On this day",
+            "text": "Subrahmanyan Chandrasekhar was born on October 19, 1910, in Lahore. On the voyage from India to Cambridge in 1930 he calculated that a white dwarf cannot be heavier than about 1.44 Suns, now the Chandrasekhar limit; he shared the 1983 Nobel Prize in Physics, and NASA's Chandra X-ray Observatory is named after him."
+          }
+        ],
+        "research": [
+          {
+            "title": "Characterizing radiation fog microphysics and radiative properties: from in situ and balloon observations to radiative closure using dual-level solar measurements",
+            "url": "https://igf.fuw.edu.pl/en/seminars/presentation/characterizing-radiation-fog-microphysics-and-radi-2026-2027-573056/",
+            "source": "University of Warsaw, Institute of Geophysics",
+            "note": "Droplet sizes and water content measured inside valley radiation fog, presented October 16, 2026."
+          },
+          {
+            "title": "Subrahmanyan Chandrasekhar",
+            "url": "https://en.wikipedia.org/wiki/Subrahmanyan_Chandrasekhar",
+            "source": "Wikipedia",
+            "note": "The astrophysicist born on October 19, 1910."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 66,
+        "title": "Great night for stargazing",
+        "sub": "Saturn shines in the southeast after dark and the lone bright star Fomalhaut sits low in the south by mid-evening, forming a big triangle with the Moon. The sky is cloudless and clear; the 63% lit Moon in the evening is what holds the rating back, and it sets around midnight.",
+        "look": {
+          "bearing": 180,
+          "label": "South in mid-evening, for Fomalhaut, Saturn and the Moon"
+        },
+        "params": {
+          "cloud": 3,
+          "moon": 63,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 5
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "About 3% cloud",
+            "score": 0.97,
+            "note": "7Timer and Open-Meteo agree on a cloudless night."
+          },
+          {
+            "name": "Moonlight",
+            "val": "63% lit, up in the evening",
+            "score": 0.72,
+            "note": "The waxing gibbous Moon brightens the sky until it sets around midnight; after that the sky is fully dark until dawn."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 of 8",
+            "score": 0.95,
+            "note": "Very clean air, but the seeing is 6 of 8, so stars twinkle and telescope views of Saturn will shimmer."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover, dusk to dawn",
+            "value": "3% (score 1 of 9) at every 3-hour step from 5 PM to 8 AM",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency and seeing, 8 PM to 5 AM",
+            "value": "Transparency 2 of 8 (1 best); seeing 6 of 8 (1 steadiest)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "63% lit, waxing gibbous at 8 PM",
+            "source": "Computed from the synodic month; Astronomy.com gives 64% for late evening",
+            "url": "https://www.astronomy.com/observing/the-sky-today-monday-october-19-2026/"
+          },
+          {
+            "name": "Fomalhaut and Saturn",
+            "value": "Fomalhaut magnitude 1.2, about 20° up in the south in late evening; Saturn magnitude 0.3 to its upper left in Cetus",
+            "source": "Astronomy.com",
+            "url": "https://www.astronomy.com/observing/the-sky-today-monday-october-19-2026/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Astronomy.com points out the triangle formed tonight by Fomalhaut, Saturn to its upper left and the Moon to its upper right. Fomalhaut, the 18th brightest star, is easy to pick out because the southern sky around it has almost no other bright stars."
+          },
+          {
+            "cat": "New research",
+            "text": "In December 2025 Paul Kalas of UC Berkeley and colleagues reported in Science that Hubble had caught a second planetesimal collision around Fomalhaut, a new dust cloud called cs2 that appeared in 2023 images. The bodies that smashed together were about 30 km across, and two such crashes seen in about 20 years is far more often than the one per 100,000 years earlier theory expected."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Fomalhaut b, announced in 2008 as one of the first exoplanets photographed directly, is now thought to have been an expanding dust cloud from an earlier collision, not a planet. Kalas warns that such clouds can mimic a planet's reflected light for years, a trap for future planet-hunting telescopes."
+          }
+        ],
+        "research": [
+          {
+            "title": "The Hubble Witnesses Catastrophic Collisions In The Fomalhaut System",
+            "url": "https://www.universetoday.com/articles/the-hubble-witnesses-catastrophic-collisions-in-the-fomalhaut-system",
+            "source": "Universe Today",
+            "note": "A second planetesimal crash around tonight's showcase star, reported in Science."
+          },
+          {
+            "title": "The Sky Today on Monday, October 19",
+            "url": "https://www.astronomy.com/observing/the-sky-today-monday-october-19-2026/",
+            "source": "Astronomy.com",
+            "note": "Tonight's Fomalhaut, Saturn and Moon triangle."
+          }
+        ]
+      },
+      {
+        "type": "iss",
+        "chance": 53,
+        "title": "Space station at 5:57 AM Tuesday",
+        "sub": "Before dawn Tuesday the station appears at 5:57 AM already 27 degrees up in the north-northwest, coming out of Earth's shadow, and slides down to the northeast by 6:00 at magnitude -2.4. A Good pass: very bright in a cloudless sky, but low, so face north with a clear view.",
+        "look": {
+          "bearing": 340,
+          "label": "North-northwest, 27 degrees up, at 5:57 AM Tuesday"
+        },
+        "params": {
+          "maxEl": 27
+        },
+        "conds": [
+          {
+            "name": "Pass height",
+            "val": "27 degrees",
+            "score": 0.6,
+            "note": "About three fists held at arm's length above the horizon; trees or buildings to the north could hide it."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 3% cloud",
+            "score": 0.97,
+            "note": "7Timer and Open-Meteo show no cloud before dawn."
+          },
+          {
+            "name": "Brightness",
+            "val": "Magnitude -2.4",
+            "score": 0.9,
+            "note": "The brightest of this week's morning passes, outshining every star."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover before dawn",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Pass Tuesday",
+            "value": "Appears 5:57:21 AM at 27° NNW (highest point), sets 6:00:18 AM at 10° NE, magnitude -2.4",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Next passes",
+            "value": "Wed 5:12 AM (17° NNE, mag -1.1) and 6:45 AM (15° N, mag -1.5)",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Cloud cover, dusk to dawn",
+            "value": "3% (score 1 of 9) at every 3-hour step from 5 PM to 8 AM",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Because the pass begins at its highest point, the station will seem to switch on out of nowhere 27 degrees up in the north-northwest as it leaves Earth's shadow and catches sunlight, then sink toward the northeast for about three minutes."
+          },
+          {
+            "cat": "New research",
+            "text": "NASA's highlights of 2025 station results, published in May 2026, include a JAXA solid-state lithium-ion battery that sat outside the station for 434 days and lost only 2% of its capacity, and MISSE-13 samples in which biomaterials infused with fungal melanin best resisted radiation damage."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Another 2025 result in the same NASA roundup came from a Russian magnetic 3D bioprinter, which used magnetic levitation to arrange calcium phosphate crystals into bone-graft structures. Pieces formed in weightlessness were better organised than those made on the ground."
+          }
+        ],
+        "research": [
+          {
+            "title": "NASA Highlights 2025 International Space Station Science Results",
+            "url": "https://www.nasa.gov/missions/station/iss-research/nasa-highlights-2025-international-space-station-science-results/",
+            "source": "NASA",
+            "note": "Batteries, materials and bioprinting results from the orbiting lab."
+          }
+        ]
+      },
+      {
+        "type": "frost",
+        "chance": 42,
+        "title": "Frost possible by dawn",
+        "sub": "The NWS low is 36°F at 7 AM, a few degrees warmer than the last two mornings, and it lists patchy frost from 6 to 8 AM. Expect frost on grass and car roofs in low, open spots rather than everywhere.",
+        "look": null,
+        "params": {
+          "lowF": 36,
+          "wind": 3,
+          "cloud": 3
+        },
+        "conds": [
+          {
+            "name": "Cold enough",
+            "val": "Low of 36°F at 7 AM",
+            "score": 0.45,
+            "note": "The air stays above freezing, so frost needs surfaces that cool below the air temperature."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 3% cloud",
+            "score": 0.97,
+            "note": "Nothing overhead to send heat back down to the ground."
+          },
+          {
+            "name": "Light wind",
+            "val": "3 mph",
+            "score": 0.95,
+            "note": "A light breeze, still gentle enough for a cold layer to settle at the surface."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature overnight",
+            "unit": "°F",
+            "max": 60,
+            "threshold": 32,
+            "thresholdLabel": "freezing",
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 50
+              },
+              {
+                "t": "10 PM",
+                "v": 46
+              },
+              {
+                "t": "12 AM",
+                "v": 43
+              },
+              {
+                "t": "2 AM",
+                "v": 40
+              },
+              {
+                "t": "4 AM",
+                "v": 39
+              },
+              {
+                "t": "6 AM",
+                "v": 37
+              },
+              {
+                "t": "7 AM",
+                "v": 36
+              },
+              {
+                "t": "8 AM",
+                "v": 37
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Overnight low",
+            "value": "36°F at 7 AM, wind 3 mph N",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Frost wording",
+            "value": "'Patchy Frost' 6 to 8 AM",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud cover, dusk to dawn",
+            "value": "3% (score 1 of 9) at every 3-hour step from 5 PM to 8 AM",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "With the air bottoming out at 36°F, frost will depend on radiative cooling: grass, roofs and windshields facing the open sky can drop several degrees below the air, while anything under a tree or porch roof will likely stay wet with dew instead."
+          },
+          {
+            "cat": "New research",
+            "text": "In June 2026 a University of Illinois Urbana-Champaign team led by Nenad Miljkovic reported a previously unknown way frost spreads across a surface: 'suspended ice bridges' that grow between frozen and still-liquid droplets, giving ice a path to hop from one droplet to the next."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "On a marginal morning like this one, check the lawn's lowest corner and a car windshield that faces straight up: these see the most sky and lose heat fastest. A thermometer at head height can read 36°F while the grass is already frosted."
+          }
+        ],
+        "research": [
+          {
+            "title": "University of Illinois researchers identify suspended ice bridges as a mechanism for frost propagation",
+            "url": "https://www.geneonline.com/university-of-illinois-researchers-identify-suspended-ice-bridges-as-a-mechanism-for-frost-propagation/",
+            "source": "GeneOnline",
+            "note": "How frost hops from droplet to droplet across a cold surface."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset",
+        "sub": "The Sun sets at 6:24 PM in the west-southwest with no cloud at any height, so expect a clean orange glow on the horizon rather than lit-up clouds. This uses total cloud only and is a rough guide.",
+        "look": {
+          "bearing": 255,
+          "label": "West-southwest at 6:24 PM"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud to catch the colour",
+            "val": "0% at sunset",
+            "score": 0.3,
+            "note": "Open-Meteo has no low, middle or high cloud from 4 PM to 8 PM."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain",
+            "score": 0.95,
+            "note": "7Timer and the NWS both show a dry, clear evening with 0% chance of rain."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses cloud amounts only, not haze or cloud texture."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 0
+              },
+              {
+                "t": "5 PM",
+                "v": 0
+              },
+              {
+                "t": "6 PM",
+                "v": 0
+              },
+              {
+                "t": "7 PM",
+                "v": 0
+              },
+              {
+                "t": "8 PM",
+                "v": 0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:24 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud at 6 PM and 7 PM",
+            "value": "Low 0%, mid 0%, high 0%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Weather at sunset",
+            "value": "Clear, 61°F at 6 PM, 0% chance of rain",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS has the temperature dropping 11 degrees, from 61°F at 6 PM to 50°F at 8 PM, as the clear sky lets heat escape right after sunset. That fast cooling is the start of the chain that ends in valley fog by morning."
+          },
+          {
+            "cat": "New research",
+            "text": "A July 2026 arXiv paper led by Jinji Li measured near-infrared sky brightness at Dome A, Antarctica, through polar day and polar night. In the J band the sky stopped being twilight and became night once the Sun was 9.3 degrees below the horizon, and 7.4 degrees in the H band."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Tonight the Sun reaches 9 degrees below the horizon roughly 45 minutes after it sets. On a cloudless evening, watch the east instead of the west during that time for the blue band of Earth's shadow rising, with a pink glow above it."
+          }
+        ],
+        "research": [
+          {
+            "title": "J and H band sky brightness measurements from polar day to polar night at Dome A, Antarctica",
+            "url": "https://arxiv.org/abs/2607.01923",
+            "source": "arXiv",
+            "note": "How quickly the sky darkens after sunset, measured from Antarctica's highest ice dome."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 3,
+        "title": "Aurora very unlikely",
+        "sub": "NOAA expects minor G1 storming from a coronal hole stream, with Kp peaking at 4.67 between 11 PM and 2 AM. That is well short of the Kp near 7 State College needs, and the Moon lights the northern sky until about midnight.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low on the horizon"
+        },
+        "params": {
+          "kp": 4.67,
+          "cloud": 3,
+          "moon": 63
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 4.67 at most",
+            "score": 0.03,
+            "note": "A minor storm, which usually keeps aurora over Canada and the northern border states."
+          },
+          {
+            "name": "Clear sky",
+            "val": "About 3% cloud",
+            "score": 0.97,
+            "note": "The northern horizon is clear, if there were anything to see."
+          },
+          {
+            "name": "Moonlight",
+            "val": "63% lit",
+            "score": 0.87,
+            "note": "The Moon would wash out a faint glow low in the north before it sets."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 4.33
+              },
+              {
+                "t": "8 PM",
+                "v": 4.33
+              },
+              {
+                "t": "11 PM",
+                "v": 4.67
+              },
+              {
+                "t": "2 AM",
+                "v": 3.67
+              },
+              {
+                "t": "5 AM",
+                "v": 3.0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Kp forecast tonight",
+            "value": "4.33 from 5 to 11 PM, 4.67 from 11 PM to 2 AM, 3.67 from 2 to 5 AM, 3.0 from 5 to 8 AM",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "3-day forecast",
+            "value": "Issued 8:30 PM Oct 18: G1 (minor) storming expected Oct 19-20 from a coronal hole high-speed stream; no storm watch found",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud cover, dusk to dawn",
+            "value": "3% (score 1 of 9) at every 3-hour step from 5 PM to 8 AM",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "This time NOAA's two products agree: both the Kp table and the 3-day text put the peak at 4.67, reaching G1, in the 03-06 UT block, which is 11 PM to 2 AM here. Sky watchers in places like northern Minnesota or Maine have a chance; Pennsylvania does not."
+          },
+          {
+            "cat": "New research",
+            "text": "A 2026 study in the Journal of Space Weather and Space Climate by Tomohiro Nakayama and Ryuho Kataoka used citizen-science photos from across Japan to triangulate red auroras seen from Hokkaido between June 2024 and March 2025. They reached 500 to 800 km up, well above the usual 200 to 400 km, during storms that standard indices rated only moderate."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The same team argues that dense solar wind heated and puffed up the upper atmosphere, which may have hidden how strong those storms really were. A hotter, taller atmosphere also drags harder on satellites, pulling them down faster than planned."
+          }
+        ],
+        "research": [
+          {
+            "title": "Scientists discover towering red auroras reaching deep into space above Japan",
+            "url": "https://www.sciencedaily.com/releases/2026/05/260521072359.htm",
+            "source": "ScienceDaily",
+            "note": "Red auroras far higher than expected during moderate storms, mapped with citizen photos."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 21-22",
+        "name": "Orionids peak",
+        "note": "The AMS expects 10 to 20 meteors an hour at best in a normal year, with a 74% lit Moon interfering while it is up."
+      },
+      {
+        "date": "Oct 23-24",
+        "name": "Moon near Saturn; Venus at inferior conjunction",
+        "note": "The nearly full Moon passes Saturn and Neptune while Venus slips between Earth and the Sun, out of sight."
+      },
+      {
+        "date": "Oct 24",
+        "name": "Leonis Minorids peak",
+        "note": "Star Walk lists this minor shower as active October 19-27, but near-full moonlight will drown it out."
+      },
+      {
+        "date": "Oct 26",
+        "name": "Full Hunter's Moon",
+        "note": "Rises in the east around sunset with Saturn nearby."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurids fireball swarm peak",
+        "note": "The AMS calls this component rich in fireballs, with a 25% lit waning crescent Moon."
+      }
+    ],
+    "sourceFailures": [
+      "IMO meteor calendar (no 2026 shower data, site rebuilding)",
+      "AMS meteor calendar page (no rates or radiants)",
+      "Comet search (no sourced current magnitude)"
+    ],
+    "ideas": [
+      {
+        "title": "Orionid rates still missing from IMO and AMS pages two days before the peak",
+        "kind": "bug"
+      },
+      {
+        "title": "Moonrise and moonset for State College from the keyless sunrise-sunset.org API",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-10-18",
     "checkedLabel": "Sun Oct 18, 6:00 AM ET",
     "place": "State College, PA",
