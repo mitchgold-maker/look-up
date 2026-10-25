@@ -1,5 +1,951 @@
 [
   {
+    "date": "2026-10-25",
+    "checkedLabel": "Sun Oct 25, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A clear evening for the full Hunter's Moon rising at sunset, then a calm, saturated night that should leave valley fog and patchy frost by Monday's 7:35 AM sunrise.",
+    "featured": "moon",
+    "pick": "Just after the 6:16 PM sunset, look low in the east for the full Hunter's Moon rising, when it can look orange; Saturn is the bright steady point to its right in the southeast. At first light Monday, look down into the valleys for fog and check windshields for frost.",
+    "next": {
+      "name": "Moon passes over the Pleiades",
+      "date": "2026-10-27"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Full",
+        "lit": 100,
+        "note": "Rises near sunset and sets near dawn; exactly full at 12:12 AM EDT on October 26."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening to after midnight",
+          "where": "Over 20 degrees up in the east-southeast an hour after sunset, then across the south",
+          "note": "The brightest star-like point in the southern sky this autumn, a few weeks past its October 4 opposition"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "Nearly 55 degrees up in the southeast, in Leo near Regulus",
+          "note": "Brighter than any star in the morning sky"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "Southeast, about 7 degrees to Jupiter's upper right",
+          "note": "Closing on Jupiter; it passes it on November 16"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Around the Hunter's Moon, how much later does the Moon rise each evening than the evening before?",
+      "options": [
+        "About 30 minutes",
+        "About 50 minutes",
+        "About 90 minutes",
+        "It rises at the same time"
+      ],
+      "answer": 0,
+      "explain": "The Farmers' Almanac puts the nightly delay near 30 minutes at this time of year, compared with a more typical 50, so bright moonlight follows sunset for several evenings in a row."
+    },
+    "events": [
+      {
+        "type": "moon",
+        "chance": 76,
+        "title": "Full Hunter's Moon rises at dusk: clear view",
+        "sub": "The Moon rises near the 6:16 PM sunset and is exactly full at 12:12 AM. Look low in the east in the first half hour after sunset, when it can look orange; the evening stays clear, with mid-level cloud possible after 11 PM.",
+        "look": {
+          "bearing": 80,
+          "label": "East at moonrise, for the Hunter's Moon"
+        },
+        "params": {
+          "variant": "super",
+          "lit": 100
+        },
+        "conds": [
+          {
+            "name": "The event",
+            "val": "Full at 12:12 AM EDT Oct 26",
+            "score": 0.97,
+            "note": "The Farmers' Almanac lists the Hunter's Moon peak at 12:12 AM EDT on Monday and recommends Sunday evening, when the Moon rises near sunset."
+          },
+          {
+            "name": "Moon up at the right time",
+            "val": "Rises near sunset, up all night",
+            "score": 0.95,
+            "note": "A full Moon sits opposite the Sun, so it climbs as the Sun sets and stays up until about dawn; the Royal Observatory Greenwich has it visible from dusk to dawn."
+          },
+          {
+            "name": "Clear sky",
+            "val": "about 19% cloud after dark",
+            "score": 0.83,
+            "note": "7Timer keeps the evening at its clearest level, with cloud building to about 50% around 2 AM; Open-Meteo instead puts a mid-level deck overhead from 11 PM to 5 AM, so the evening hours are the safest bet."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 12
+              },
+              {
+                "t": "2 AM",
+                "v": 50
+              },
+              {
+                "t": "5 AM",
+                "v": 12
+              },
+              {
+                "t": "8 AM",
+                "v": 12
+              }
+            ]
+          },
+          {
+            "label": "Mid-level cloud overnight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 0
+              },
+              {
+                "t": "10 PM",
+                "v": 0
+              },
+              {
+                "t": "11 PM",
+                "v": 75
+              },
+              {
+                "t": "12 AM",
+                "v": 100
+              },
+              {
+                "t": "1 AM",
+                "v": 83
+              },
+              {
+                "t": "2 AM",
+                "v": 96
+              },
+              {
+                "t": "3 AM",
+                "v": 56
+              },
+              {
+                "t": "4 AM",
+                "v": 100
+              },
+              {
+                "t": "5 AM",
+                "v": 63
+              },
+              {
+                "t": "6 AM",
+                "v": 1
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Full Moon",
+            "value": "Peak illumination 12:12 AM EDT Oct 26 (04:12 UTC); rises near sunset on Sunday evening",
+            "source": "Farmers' Almanac",
+            "url": "https://www.farmersalmanac.com/october-full-hunters-moon"
+          },
+          {
+            "name": "Hunter's Moon visibility",
+            "value": "Visible from about dusk to dawn on 25-26 October, near Pisces; may look orange when low",
+            "source": "Royal Observatory Greenwich",
+            "url": "https://www.rmg.co.uk/stories/space-astronomy/astronomy/night-sky-highlights-october-2026"
+          },
+          {
+            "name": "Sunset",
+            "value": "6:16 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Moon illumination",
+            "value": "100% lit overnight (computed from the synodic month; full at 12:12 AM EDT Oct 26)",
+            "source": "Look Up calculation",
+            "url": "https://mitchgold-maker.github.io/look-up/"
+          },
+          {
+            "name": "Cloud cover after dark",
+            "value": "Level 1 of 9 (about 3%) at 8 PM, 2 (about 12%) at 11 PM, 5 (about 50%) at 2 AM, 2 at 5 AM; mean about 19% over the dark hours; transparency 2 of 8 most of the night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Cloud layers",
+            "value": "No low or high cloud worth noting all night; mid-level cloud 0% until 10 PM, then 56-100% from 11 PM to 5 AM, 1% by 6 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Because the Moon is exactly full just after midnight, it rises at about the same time the Sun sets at 6:16 PM and stays up until dawn. Right after it clears the horizon, its light crosses the most air, which can tint the disc orange, as the Royal Observatory Greenwich notes."
+          },
+          {
+            "cat": "New research",
+            "text": "A Nature Astronomy study published in April 2026 by Oded Aharonson, Paul Hayne and Norbert Schörghofer found that the Moon's polar ice built up gradually over billions of years rather than in one delivery. Using LRO Diviner temperatures, LAMP readings and crater-evolution models, they found the oldest, longest-shadowed craters hold the strongest ice signals; Haworth Crater has likely been dark for more than 3 billion years."
+          },
+          {
+            "cat": "History",
+            "text": "The Hunter's Moon is the full Moon after the Harvest Moon, which fell on September 26 this year. The name comes from late autumn: with the harvest in and the fields bare stubble, well-fed game was easier to spot, and Anglo-Saxon tradition linked this Moon to the opening of the hunting season."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 25, 1671, Giovanni Domenico Cassini discovered Iapetus, Saturn's two-toned moon. He could see it only on Saturn's western side, when its bright face (reflecting 50 to 60% of sunlight) pointed at Earth; the dark face reflects just 3 to 5%, and he did not catch it on the eastern side until 1705, with a better telescope. Saturn is up in the southeast tonight."
+          }
+        ],
+        "research": [
+          {
+            "title": "A New Study Narrows the Search for Water on the Moon",
+            "url": "https://www.universetoday.com/articles/a-new-study-narrows-the-search-for-water-on-the-moon",
+            "source": "Universe Today",
+            "note": "April 2026 Nature Astronomy study showing the oldest shadowed craters near the lunar south pole hold the most ice."
+          },
+          {
+            "title": "Iapetus (moon)",
+            "url": "https://en.wikipedia.org/wiki/Iapetus_(moon)",
+            "source": "Wikipedia",
+            "note": "Discovery date and the bright and dark hemispheres of Saturn's moon Iapetus."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 75,
+        "title": "Valley fog likely at sunrise",
+        "sub": "The NWS has the air reaching its dew point at 43°F by 9 PM and staying saturated as it cools to 34°F, with no wind at all. Look down into the valleys from higher ground before Monday's 7:35 AM sunrise; a mid-level cloud deck after 11 PM could slow the cooling.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 0,
+          "cloud": 19
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "Dew point reached by 9 PM",
+            "score": 0.95,
+            "note": "Temperature equals dew point from 9 PM to 8 AM, so every degree of cooling turns more vapour into droplets."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph at 9 PM",
+            "score": 0.95,
+            "note": "Calm from 8 PM with only 1 mph puffs from the southwest around midnight, too weak to stir the damp ground layer."
+          },
+          {
+            "name": "Clear sky",
+            "val": "about 19% cloud after dark",
+            "score": 0.83,
+            "note": "Clear skies let the ground cool fastest; Open-Meteo's mid-level deck from 11 PM to 5 AM would act like a lid and slow that cooling if it arrives."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point overnight",
+            "unit": "°F",
+            "max": 20,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 16
+              },
+              {
+                "t": "7 PM",
+                "v": 10
+              },
+              {
+                "t": "8 PM",
+                "v": 6
+              },
+              {
+                "t": "9 PM",
+                "v": 0
+              },
+              {
+                "t": "12 AM",
+                "v": 0
+              },
+              {
+                "t": "3 AM",
+                "v": 0
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 0
+              }
+            ]
+          },
+          {
+            "label": "Mid-level cloud overnight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 0
+              },
+              {
+                "t": "10 PM",
+                "v": 0
+              },
+              {
+                "t": "11 PM",
+                "v": 75
+              },
+              {
+                "t": "12 AM",
+                "v": 100
+              },
+              {
+                "t": "1 AM",
+                "v": 83
+              },
+              {
+                "t": "2 AM",
+                "v": 96
+              },
+              {
+                "t": "3 AM",
+                "v": 56
+              },
+              {
+                "t": "4 AM",
+                "v": 100
+              },
+              {
+                "t": "5 AM",
+                "v": 63
+              },
+              {
+                "t": "6 AM",
+                "v": 1
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Temperature and dew point at 9 PM",
+            "value": "43°F and 43°F, wind 0 mph",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Temperature and dew point at 6 AM",
+            "value": "34°F and 34°F, wind 0 mph, patchy frost",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise Monday",
+            "value": "7:35 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers",
+            "value": "No low or high cloud worth noting all night; mid-level cloud 0% until 10 PM, then 56-100% from 11 PM to 5 AM, 1% by 6 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud cover after dark",
+            "value": "Level 1 of 9 (about 3%) at 8 PM, 2 (about 12%) at 11 PM, 5 (about 50%) at 2 AM, 2 at 5 AM; mean about 19% over the dark hours; transparency 2 of 8 most of the night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS keeps temperature and dew point locked together for 11 straight hours, from 9 PM to 8 AM, while the air falls from 43°F to 34°F. That long saturated stretch gives fog the whole night to thicken in the valleys."
+          },
+          {
+            "cat": "New research",
+            "text": "At the EGU General Assembly 2026, Ioannis Lolos and Tyson Terry of Arizona State University trained Random Forest, LightGBM and XGBoost models on hourly fog reports from 136 California weather stations to map monthly fog frequency. The single most influential predictor was dewpoint depression, the same temperature-minus-dew-point gap that drives tonight's rating."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Valley fog is best seen from above. From a ridge-top pull-off or hilltop at first light it looks like a flat white sea with ridges poking through; from the valley floor it just looks like a grey morning. Go early, because it thins as the Sun warms the ground."
+          }
+        ],
+        "research": [
+          {
+            "title": "EGU26-8182: Machine learning prediction of monthly fog frequency",
+            "url": "https://meetingorganizer.copernicus.org/EGU26/EGU26-8182.html",
+            "source": "EGU General Assembly 2026",
+            "note": "Finds dewpoint depression is the strongest predictor of how often fog forms."
+          }
+        ]
+      },
+      {
+        "type": "frost",
+        "chance": 59,
+        "title": "Frost possible by dawn",
+        "sub": "The NWS has a 34°F low from 6 to 8 AM in calm air, with patchy frost from 4 AM. Check lawns, roofs and windshields at first light; low spots and valley floors are the most likely to frost.",
+        "look": null,
+        "params": {
+          "lowF": 34,
+          "wind": 0,
+          "cloud": 19
+        },
+        "conds": [
+          {
+            "name": "Cold enough",
+            "val": "Low 34°F",
+            "score": 0.75,
+            "note": "That is the air a few feet up; grass and car roofs open to a clear sky radiate heat away and can dip below freezing, which is why the NWS lists patchy frost."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph at dawn",
+            "score": 0.95,
+            "note": "Dead calm lets the coldest air pool on the ground instead of being mixed with warmer air above."
+          },
+          {
+            "name": "Clear sky",
+            "val": "about 19% cloud after dark",
+            "score": 0.83,
+            "note": "Mid-level cloud from 11 PM to 5 AM would trap some heat; if it stays away, frost becomes more likely."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature overnight",
+            "unit": "°F",
+            "max": 70,
+            "source": "National Weather Service",
+            "threshold": 32,
+            "thresholdLabel": "freezing",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 59
+              },
+              {
+                "t": "9 PM",
+                "v": 43
+              },
+              {
+                "t": "12 AM",
+                "v": 39
+              },
+              {
+                "t": "3 AM",
+                "v": 37
+              },
+              {
+                "t": "5 AM",
+                "v": 35
+              },
+              {
+                "t": "6 AM",
+                "v": 34
+              },
+              {
+                "t": "8 AM",
+                "v": 34
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Overnight low",
+            "value": "34°F from 6 to 8 AM, dew point 34°F, wind 0 mph",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Frost in the forecast",
+            "value": "Patchy Frost from 4 AM to 8 AM",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud cover after dark",
+            "value": "Level 1 of 9 (about 3%) at 8 PM, 2 (about 12%) at 11 PM, 5 (about 50%) at 2 AM, 2 at 5 AM; mean about 19% over the dark hours; transparency 2 of 8 most of the night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS switches its forecast to Patchy Frost at 4 AM while the air is still 36°F. On calm, clear nights exposed surfaces lose heat to the sky faster than the air around them, so frost can form even when the thermometer stays above freezing."
+          },
+          {
+            "cat": "New research",
+            "text": "A team led by Jungmook Kim at Chonnam National University found that cold makes plants rapidly break down Aux/IAA repressor proteins, freeing the regulators ARF7 and ARF19 to switch on a master gene, CRF3, that reshapes root growth. The work, in Arabidopsis and tobacco, appeared in the Journal of Integrative Plant Biology in November 2025 and was covered in March 2026 as a route to frost-tolerant crops."
+          },
+          {
+            "cat": "How it works",
+            "text": "Tonight frost and fog draw on the same water vapour. Because the dew point falls with the temperature, moisture is being pulled out as fog droplets and dew all night; dew that forms above freezing and freezes later turns to clear frozen dew, while feathery hoarfrost grows straight from vapour onto surfaces already below freezing."
+          }
+        ],
+        "research": [
+          {
+            "title": "Scientists uncover plant 'cold switch' that could reduce costly spring frost losses",
+            "url": "https://farmtario.com/crops/scientists-uncover-plant-cold-switch-that-could-reduce-costly-spring-frost-losses/",
+            "source": "Farmtario",
+            "note": "March 2026 coverage of the Chonnam National University study on how cold rewires plant hormone signalling."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 43,
+        "title": "Good night for stargazing",
+        "sub": "The full Moon washes out faint stars all night, so stick to bright targets: Saturn in the southeast after dark, then Jupiter and Mars high in the southeast before dawn. The evening is clearest, with cloud building toward 2 AM.",
+        "look": {
+          "bearing": 120,
+          "label": "East-southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 19,
+          "moon": 100,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "about 19% cloud after dark",
+            "score": 0.83,
+            "note": "7Timer keeps the evening at its clearest level, with cloud building to about 50% around 2 AM; Open-Meteo instead puts a mid-level deck overhead from 11 PM to 5 AM, so the evening hours are the safest bet."
+          },
+          {
+            "name": "Moonlight",
+            "val": "100% lit, up all night",
+            "score": 0.55,
+            "note": "The brightest Moon of the month brightens the whole sky, hiding the Milky Way and all but the brighter stars."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 of 8",
+            "score": 0.95,
+            "note": "7Timer rates the air very clean, so the bright stars and planets that do show will look crisp."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 12
+              },
+              {
+                "t": "2 AM",
+                "v": 50
+              },
+              {
+                "t": "5 AM",
+                "v": 12
+              },
+              {
+                "t": "8 AM",
+                "v": 12
+              }
+            ]
+          },
+          {
+            "label": "Transparency tonight (1 is clearest)",
+            "unit": "",
+            "max": 8,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 2
+              },
+              {
+                "t": "11 PM",
+                "v": 2
+              },
+              {
+                "t": "2 AM",
+                "v": 2
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover after dark",
+            "value": "Level 1 of 9 (about 3%) at 8 PM, 2 (about 12%) at 11 PM, 5 (about 50%) at 2 AM, 2 at 5 AM; mean about 19% over the dark hours; transparency 2 of 8 most of the night",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon illumination",
+            "value": "100% lit overnight (computed from the synodic month; full at 12:12 AM EDT Oct 26)",
+            "source": "Look Up calculation",
+            "url": "https://mitchgold-maker.github.io/look-up/"
+          },
+          {
+            "name": "Saturn",
+            "value": "Brightest star-like object in the southern sky, moving from southeast to southwest during the evening",
+            "source": "Royal Observatory Greenwich",
+            "url": "https://www.rmg.co.uk/stories/space-astronomy/astronomy/night-sky-highlights-october-2026"
+          },
+          {
+            "name": "Planets in late October",
+            "value": "Saturn over 20° up in the east-southeast an hour after sunset; Jupiter nearly 55° up in the southeast before sunrise, with Mars 7.1° to its upper right",
+            "source": "When the Curves Line Up",
+            "url": "https://whenthecurveslineup.com/2026/10/19/2026-october-28-hunters-moon-mars-jupiter-and-saturn-in-the-sky/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "With the Moon full, planets are the best targets: Saturn rides in the southeast to south through the evening, and before dawn Jupiter, brighter than any star, sits nearly 55 degrees up in the southeast in Leo, with fainter orange Mars about 7 degrees to its upper right."
+          },
+          {
+            "cat": "New research",
+            "text": "A study in The Astrophysical Journal (November 2025) led by Andrew Boyle of UNC Chapel Hill found the Pleiades is the core of a much larger family: 3,019 stars spread across nearly 2,000 light-years that were all born about 100 million years ago. The team matched stars by age using TESS rotation periods, Gaia motions and Sloan chemistry, since stars spin more slowly as they age."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "On a full-Moon night, stand where a building or tree blocks the Moon itself and give your eyes ten minutes. Binoculars help most: they pull the Pleiades' brighter members out of the moonlit sky in the east by mid-evening, two nights before the Moon slides over the cluster."
+          }
+        ],
+        "research": [
+          {
+            "title": "The Pleiades is part of an enormous stellar complex birthed by the same star-forming event",
+            "url": "https://carnegiescience.edu/pleiades-part-enormous-stellar-complex-birthed-same-star-forming-event",
+            "source": "Carnegie Science",
+            "note": "November 2025 study that grows the Pleiades into a 3,019-star 'Greater Pleiades Complex'."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset tonight",
+        "sub": "Sunset is at 6:16 PM under a cloudless sky, so expect a clean fade from gold to blue rather than lit-up clouds. Turn around afterwards: the full Moon rises in the east at about the same time.",
+        "look": {
+          "bearing": 250,
+          "label": "West-southwest at sunset"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "about 3% (0% high cloud)",
+            "score": 0.3,
+            "note": "Colourful sunsets need some high cloud to catch the light; Open-Meteo shows 0% in every layer at 6 PM."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "0% chance of rain",
+            "score": 0.95,
+            "note": "The NWS has clear, dry weather through the evening."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, so treat it as a rough guide."
+          }
+        ],
+        "series": [
+          {
+            "label": "Low cloud this afternoon",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 3
+              },
+              {
+                "t": "4 PM",
+                "v": 2
+              },
+              {
+                "t": "5 PM",
+                "v": 0
+              },
+              {
+                "t": "6 PM",
+                "v": 0
+              },
+              {
+                "t": "7 PM",
+                "v": 0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:16 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers at 6 PM",
+            "value": "Low 0%, mid 0%, high 0%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Rain chance at 6 PM",
+            "value": "0%, clear",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud at 5 PM and 8 PM",
+            "value": "Level 1 of 9 (about 3%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "A full Moon rises opposite the setting Sun, so right after 6:16 PM the rising Moon and the fading sunset are on opposite horizons. Watch the eastern sky darken from the horizon upward as the Earth's own shadow climbs behind the Moon."
+          },
+          {
+            "cat": "New research",
+            "text": "NASA's Astronomy Picture of the Day for July 30, 2026 showed a deep red Sun photographed on July 22 in British Columbia's Okanagan region through wildfire smoke from the Pacific Northwest. The caption explains that smoke particles block and scatter bluer light, leaving the Sun dimmer and redder, and warns that looking straight at the Sun is never safe even when it looks dim."
+          },
+          {
+            "cat": "How it works",
+            "text": "At sunset, sunlight crosses far more air than at midday, and air molecules scatter blue light out of the beam, leaving orange and red. Without clouds high enough to stay in sunlight after the Sun is down, there is nothing to throw those colours back at you, which is why a cloudless evening like tonight gives a plain fade."
+          }
+        ],
+        "research": [
+          {
+            "title": "APOD: Red Sun through Wildfire Smoke",
+            "url": "https://science.nasa.gov/image-article/apod/apod-july-30-red-sun-trough-wildfire-smoke/",
+            "source": "NASA Science",
+            "note": "July 2026 photo and caption explaining how smoke particles redden the Sun."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 2,
+        "title": "Aurora very unlikely",
+        "sub": "NOAA expects Kp no higher than 3 after dark, far below the 7 or so needed this far south, and the full Moon would drown out a faint glow anyway.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low over the horizon"
+        },
+        "params": {
+          "kp": 3,
+          "cloud": 19,
+          "moon": 100
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 3 max after dark",
+            "score": 0.03,
+            "note": "Aurora reaches State College only in strong storms, around Kp 7 or more."
+          },
+          {
+            "name": "Clear sky",
+            "val": "about 19% cloud after dark",
+            "score": 0.83,
+            "note": "7Timer keeps the evening at its clearest level, with cloud building to about 50% around 2 AM; Open-Meteo instead puts a mid-level deck overhead from 11 PM to 5 AM, so the evening hours are the safest bet."
+          },
+          {
+            "name": "Moonlight",
+            "val": "100% lit",
+            "score": 0.8,
+            "note": "A bright aurora shows through moonlight, but a faint one near the horizon would be lost."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "2 PM",
+                "v": 4
+              },
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 2
+              },
+              {
+                "t": "2 AM",
+                "v": 2
+              },
+              {
+                "t": "5 AM",
+                "v": 2
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Kp forecast after dark",
+            "value": "3.00 for 5-11 PM, 2.00 from 11 PM to 8 AM; 4.00 estimated for 2-5 PM",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "3-day outlook",
+            "value": "Highest expected Kp 4.00; no G1 or greater storms expected",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's 3-day outlook expects no G1 or greater storms. The day's highest estimate, Kp 4, falls in the 2 to 5 PM block before dark, and the night settles to Kp 2 after 11 PM."
+          },
+          {
+            "cat": "New research",
+            "text": "A February 2026 paper in Annales Geophysicae by Sota Nanjo and colleagues describes fragmented aurora-like emissions seen over northern Scandinavia during the 1 January 2025 storm: small patches about 5 km apart and 10 km tall that each lasted 15 to 20 seconds while drifting east at about 200 m/s. The team traces them to electrons accelerated within the ionosphere itself, not particles raining in from space."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The same study caught picket fence aurora, rows of glowing pillars about 5 km apart at 110 to 140 km altitude, moving at 700 to 800 m/s together with red aurora. It is the first report of the fragments and the picket fence appearing together at those latitudes."
+          }
+        ],
+        "research": [
+          {
+            "title": "Observations of fragmented aurora-like emissions and picket fence on the poleward edge of the auroral oval",
+            "url": "https://angeo.copernicus.org/articles/44/63/2026/",
+            "source": "Annales Geophysicae",
+            "note": "February 2026 open-access study of fine-scale auroral structures during a major storm."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 27",
+        "name": "Moon passes over the Pleiades",
+        "note": "The 95% lit Moon covers stars in the cluster in the evening; binoculars help pick out stars against the glare."
+      },
+      {
+        "date": "Oct 31-Nov 1",
+        "name": "Bright dawn space station passes",
+        "note": "Oct 31 at 6:54 AM climbing to 67 degrees at magnitude -3.7, and Nov 1 at 5:09 AM reaching 72 degrees at -3.6."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurid fireball peak",
+        "note": "The fireball-swarm part of the Southern Taurids peaks with a 25% lit Moon, good for slow, bright meteors."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "Peaks with the Moon only 4% lit, so the occasional slow fireball stands out in a dark sky."
+      },
+      {
+        "date": "Nov 16-17",
+        "name": "Leonids peak and Mars passes Jupiter",
+        "note": "The Leonids from comet 55P/Tempel-Tuttle peak under a 39% lit Moon, and Mars passes Jupiter in the morning sky on the 16th."
+      }
+    ],
+    "sourceFailures": [
+      "AMS meteor calendar page (no ZHR, speed or radiant)",
+      "Comet search (nothing sourced at 8th magnitude or brighter)",
+      "Heavens-Above (no evening pass; dawn passes under 20 degrees)",
+      "Space.com planet guide (page body not readable)",
+      "TheSkyLive Moon pages (403)"
+    ],
+    "ideas": [
+      {
+        "title": "Moon scene needs a plain full-Moon variant instead of labelling it a supermoon",
+        "kind": "bug"
+      },
+      {
+        "title": "Lunar occultation predictions from IOTA's free 2026 tables",
+        "kind": "data"
+      },
+      {
+        "title": "AMS meteor page, comet search and Heavens-Above evening check have failed in every recent run",
+        "kind": "bug"
+      }
+    ]
+  },
+  {
     "date": "2026-10-24",
     "checkedLabel": "Sat Oct 24, 6:00 AM ET",
     "place": "State College, PA",
