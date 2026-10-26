@@ -1,5 +1,623 @@
 [
   {
+    "date": "2026-10-26",
+    "checkedLabel": "Mon Oct 26, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A clear sunset and a bright, nearly full Moon tonight, then calm, saturated air that should leave fog in the valleys by Tuesday's 7:36 AM sunrise.",
+    "featured": "fog",
+    "pick": "After dark, find the 99% lit Moon in the east with Hamal about 10 degrees to its upper right and the Pleiades about 15 degrees to its lower left; tomorrow evening the Moon moves over the cluster. At first light Tuesday, look down into the valleys from higher ground for fog.",
+    "next": {
+      "name": "Moon passes over the Pleiades",
+      "date": "2026-10-27"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning gibbous",
+        "lit": 99,
+        "note": "One night past full (12:12 AM EDT Oct 26); rises around sunset and is up all night."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening to after midnight",
+          "where": "Over 20 degrees up in the east-southeast an hour after sunset, then across the south",
+          "note": "Sets in the west over two hours before sunrise"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "Nearly 55 degrees up in the southeast, 6.3 degrees from Regulus",
+          "note": "The brightest point in the morning sky"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "Southeast, 7.1 degrees to Jupiter's upper right",
+          "note": "Passes Jupiter on November 16"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Tonight the Moon sits just below Hamal. Which constellation is Hamal the brightest star of?",
+      "options": [
+        "Aries",
+        "Taurus",
+        "Pisces",
+        "Perseus"
+      ],
+      "answer": 0,
+      "explain": "Hamal is the brightest star in Aries and, with Sheratan and Mesarthim, marks the Ram's head."
+    },
+    "events": [
+      {
+        "type": "fog",
+        "chance": 67,
+        "title": "Valley fog likely at sunrise",
+        "sub": "The NWS has the air saturated from 1 AM, with temperature and dew point falling together to 41°F by 8 AM in a 1 mph breeze. Look down into the valleys from higher ground before Tuesday's 7:36 AM sunrise; patches of high cloud overnight could slow the cooling a little.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 1,
+          "cloud": 29
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "Dew point reached by 1 AM",
+            "score": 0.95,
+            "note": "The NWS has temperature equal to dew point every hour from 1 AM to 8 AM, so further cooling condenses vapour into droplets."
+          },
+          {
+            "name": "Light wind",
+            "val": "1 mph at 1 AM",
+            "score": 0.95,
+            "note": "Winds of 1 to 2 mph all night are too weak to mix the damp, chilled layer near the ground with drier air above."
+          },
+          {
+            "name": "Clear sky",
+            "val": "about 29% cloud after dark",
+            "score": 0.74,
+            "note": "Clear skies let the ground radiate heat away fastest; 7Timer builds cloud toward dawn and Open-Meteo has high cloud from 1 to 3 AM, either of which acts like a loose lid."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 20,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 16
+              },
+              {
+                "t": "8 PM",
+                "v": 5
+              },
+              {
+                "t": "10 PM",
+                "v": 2
+              },
+              {
+                "t": "12 AM",
+                "v": 1
+              },
+              {
+                "t": "2 AM",
+                "v": 0
+              },
+              {
+                "t": "4 AM",
+                "v": 0
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 0
+              }
+            ]
+          },
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 12
+              },
+              {
+                "t": "2 AM",
+                "v": 37
+              },
+              {
+                "t": "5 AM",
+                "v": 62
+              },
+              {
+                "t": "8 AM",
+                "v": 37
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Temperature and dew point at 1 AM",
+            "value": "47°F and 47°F, wind 1 mph",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Temperature and dew point at 8 AM",
+            "value": "41°F and 41°F, wind 2 mph",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise Tuesday",
+            "value": "7:36 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers overnight",
+            "value": "Low cloud 0-5% all night; mid and high cloud near 100% from 8 to 9 PM and again 11 PM to midnight, high cloud 80-100% from 1 to 3 AM, clear 4 to 6 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud cover after dark",
+            "value": "Level 1 of 9 (about 3%) at 8 PM, 2 (about 12%) at 11 PM, 4 (about 37%) at 2 AM, 6 (about 62%) at 5 AM; mean about 29% over the dark hours; transparency 3 of 8 in the evening, 6 after midnight",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS has the gap between temperature and dew point closing from 16°F at 6 PM to 2°F by 10 PM and zero from 1 AM onward, while the air cools from 47°F to 41°F. Every degree of cooling after saturation turns more water vapour into droplets, and on a near-calm night those droplets collect in the low ground first."
+          },
+          {
+            "cat": "New research",
+            "text": "California's 2026 Indicators of Climate Change report, published by the state's environmental health agency, says winter tule fog days in the Central Valley fell 46% on average from 1981 to 2014. It also notes that the 2025-26 winter was unusually foggy after heavy early autumn rains, with a strong high-pressure inversion trapping soil moisture in the valley."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The same report cites a 2019 study that found Central Valley fog increased from 1930 to 1970 as nitrogen oxide emissions from cars rose, and has declined since 1980 as vehicle emission rules cleaned the air. Particles give water vapour something to condense on, so cleaner air can mean fewer foggy mornings."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 26, 1998, Hurricane Mitch reached Category 5 strength in the western Caribbean. The National Weather Service describes it as the second deadliest hurricane on record in the Atlantic."
+          }
+        ],
+        "research": [
+          {
+            "title": "Indicators of Climate Change in California (2026): Central Valley Fog",
+            "url": "https://oehha.ca.gov/sites/default/files/media/2026-09/07_CentralValleyFog.pdf",
+            "source": "California OEHHA",
+            "note": "A 2026 summary of how valley radiation fog has changed and what drives it, from soil moisture to air pollution."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 33,
+        "title": "Fair night for stargazing",
+        "sub": "A 99% lit Moon rises around sunset and lights the sky all night, so stick to bright targets: Saturn in the southern sky before midnight, then Jupiter and Mars in the southeast before dawn. Thin high cloud may come and go in the evening.",
+        "look": {
+          "bearing": 150,
+          "label": "South-southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 29,
+          "moon": 99,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "about 29% cloud after dark",
+            "score": 0.74,
+            "note": "7Timer keeps the evening nearly clear and builds cloud toward 62% by 5 AM; Open-Meteo instead puts thin mid and high cloud overhead from 8 PM to midnight, so expect some veiling."
+          },
+          {
+            "name": "Moonlight",
+            "val": "99% lit, up all night",
+            "score": 0.55,
+            "note": "One night past full, the Moon brightens the whole sky and hides the Milky Way and fainter stars."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 3 of 8 in the evening",
+            "score": 0.8,
+            "note": "7Timer rates the evening air fairly clean, worsening to 6 of 8 after midnight, so look early."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 12
+              },
+              {
+                "t": "2 AM",
+                "v": 37
+              },
+              {
+                "t": "5 AM",
+                "v": 62
+              },
+              {
+                "t": "8 AM",
+                "v": 37
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover after dark",
+            "value": "Level 1 of 9 (about 3%) at 8 PM, 2 (about 12%) at 11 PM, 4 (about 37%) at 2 AM, 6 (about 62%) at 5 AM; mean about 29% over the dark hours; transparency 3 of 8 in the evening, 6 after midnight",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Cloud layers overnight",
+            "value": "Low cloud 0-5% all night; mid and high cloud near 100% from 8 to 9 PM and again 11 PM to midnight, high cloud 80-100% from 1 to 3 AM, clear 4 to 6 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Moon illumination",
+            "value": "99% lit tonight (computed from the synodic month; full at 12:12 AM EDT Oct 26)",
+            "source": "Look Up calculation",
+            "url": "https://mitchgold-maker.github.io/look-up/"
+          },
+          {
+            "name": "Moon and stars",
+            "value": "About two hours after sunset the Moon is over 20° up in the east, 9.7° to the lower left of Hamal, with the Pleiades about 15° to its lower left",
+            "source": "When the Curves Line Up",
+            "url": "https://whenthecurveslineup.com/2026/10/17/2026-october-26-28-moon-and-pleiades/"
+          },
+          {
+            "name": "Planets in late October",
+            "value": "Saturn over 20° up in the east-southeast an hour after sunset and in the southern sky before midnight; Jupiter nearly 55° up in the southeast an hour before sunrise, with Mars 7.1° to its upper right",
+            "source": "When the Curves Line Up",
+            "url": "https://whenthecurveslineup.com/2026/10/19/2026-october-28-hunters-moon-mars-jupiter-and-saturn-in-the-sky/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Use the Moon as a pointer: about two hours after sunset it sits 9.7° to the lower left of Hamal, the brightest star in Aries, with the Pleiades about 15° beyond it. By tomorrow evening the Moon will have moved onto the cluster itself."
+          },
+          {
+            "cat": "New research",
+            "text": "Scientists analysing data that NASA's Juno spacecraft recorded in 2021 and 2022 found that lightning in Jupiter's big storms is at least 100 times more powerful than lightning on Earth. The results appeared in AGU Advances on March 20, 2026. Jupiter is the bright point nearly 55° up in the southeast before dawn."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Hamal, the star just above tonight's Moon, is an orange giant about 14.9 times wider than the Sun and 1.5 times as massive, with only about half the Sun's share of elements heavier than helium."
+          }
+        ],
+        "research": [
+          {
+            "title": "NASA's Juno Delivers New Science While Its Future Remains Uncertain",
+            "url": "https://aiaa.org/2026/03/24/nasas-juno-delivers-new-science-while-its-future-remains-uncertain/",
+            "source": "AIAA",
+            "note": "Reports the 2026 finding that Jupiter's lightning is at least 100 times stronger than Earth's, for the planet visible before dawn."
+          },
+          {
+            "title": "Hamal, an utterly normal star in Aries",
+            "url": "https://www.skyatnightmagazine.com/advice/hamal",
+            "source": "BBC Sky at Night Magazine",
+            "note": "Profile of the star beside tonight's Moon."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset tonight",
+        "sub": "Sunset is at 6:15 PM under a clear sky, so expect a clean fade from gold to blue rather than lit-up clouds. High cloud arrives around 8 PM, too late to catch the colour.",
+        "look": {
+          "bearing": 250,
+          "label": "West-southwest at sunset"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "about 3% (0% high cloud)",
+            "score": 0.3,
+            "note": "Colourful sunsets need some high cloud to catch the light; Open-Meteo shows 0% in every layer at 6 PM."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "1% chance of rain",
+            "score": 0.95,
+            "note": "The NWS has mostly clear, dry weather at 6 PM."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, so treat it as a rough guide."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud this evening",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 0
+              },
+              {
+                "t": "5 PM",
+                "v": 0
+              },
+              {
+                "t": "6 PM",
+                "v": 0
+              },
+              {
+                "t": "7 PM",
+                "v": 12
+              },
+              {
+                "t": "8 PM",
+                "v": 96
+              },
+              {
+                "t": "9 PM",
+                "v": 92
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:15 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers at 6 PM",
+            "value": "Low 0%, mid 0%, high 0%; high cloud 12% at 7 PM and 96% at 8 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Rain chance at 6 PM",
+            "value": "1%, mostly clear",
+            "source": "National Weather Service hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud at 5 PM and 8 PM",
+            "value": "Level 1 of 9 (about 3%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has no cloud in any layer at 6 PM, then a high deck building from 12% at 7 PM to 96% at 8 PM. If that cloud runs early, it could catch some late colour, but on current timing it arrives after the light has gone."
+          },
+          {
+            "cat": "New research",
+            "text": "An August 2026 preprint by Anna Lange and colleagues modelled how twilight would look if a large volcano erupted while humans were deliberately putting sulphur into the stratosphere. The simulations show Bishop's rings around the low Sun, unusual greenish twilight and pronounced purple light; for a 10 Tg sulphur dioxide eruption the colours barely differed between scenarios. It has not yet been peer reviewed."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "A cloudless western horizon like tonight's is the best setup for a green flash, a brief green rim on the last sliver of the setting Sun caused by the atmosphere bending colours by different amounts. Only look once the Sun is almost gone, never at the full disk."
+          }
+        ],
+        "research": [
+          {
+            "title": "Volcanic eruptions alter sky colours in a geoengineered world",
+            "url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3347/",
+            "source": "EGUsphere (Copernicus)",
+            "note": "2026 modelling of twilight colours, including purple light and Bishop's rings, after an eruption."
+          },
+          {
+            "title": "Green flash",
+            "url": "https://en.wikipedia.org/wiki/Green_flash",
+            "source": "Wikipedia",
+            "note": "Background on the green flash and when it is most likely."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 2,
+        "title": "Aurora very unlikely",
+        "sub": "NOAA expects Kp under 2 after dark, far below the 7 or so needed this far south, and the bright Moon would wash out a faint glow anyway.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low over the horizon"
+        },
+        "params": {
+          "kp": 1.67,
+          "cloud": 29,
+          "moon": 99
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 1.67 max after dark",
+            "score": 0.03,
+            "note": "Aurora reaches State College only in strong storms, around Kp 7 or more."
+          },
+          {
+            "name": "Clear sky",
+            "val": "about 29% cloud after dark",
+            "score": 0.74,
+            "note": "7Timer keeps the evening nearly clear and builds cloud toward 62% by 5 AM; Open-Meteo instead puts thin mid and high cloud overhead from 8 PM to midnight, so expect some veiling."
+          },
+          {
+            "name": "Moonlight",
+            "val": "99% lit",
+            "score": 0.8,
+            "note": "A bright aurora shows through moonlight, but a faint one near the horizon would be lost."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 1.67
+              },
+              {
+                "t": "8 PM",
+                "v": 1.67
+              },
+              {
+                "t": "11 PM",
+                "v": 1.33
+              },
+              {
+                "t": "2 AM",
+                "v": 1.33
+              },
+              {
+                "t": "5 AM",
+                "v": 1.33
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Kp forecast after dark",
+            "value": "1.67 for 5-11 PM, 1.33 from 11 PM to 8 AM",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "3-day outlook",
+            "value": "Highest expected Kp 3 for Oct 26-28; no G1 or greater storms expected",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's forecast tops out at Kp 1.67 in the 8 to 11 PM block and eases to 1.33 after that, one of the quietest nights of the month. The 3-day outlook expects no storm-level activity through Wednesday."
+          },
+          {
+            "cat": "New research",
+            "text": "A Science Advances paper published in June 2026, led by Naritoshi Kitamura of Nagoya University, used Japan's Arase satellite to show that about 85% of the ions in the ring current during the May 2024 superstorm were oxygen from Earth's own upper atmosphere, not particles from the solar wind. That storm, which brought aurora to unusually low latitudes, reached a SYM-H of -518 nanotesla, the second-largest since 1981."
+          },
+          {
+            "cat": "How it works",
+            "text": "NOAA's Kp index rates worldwide magnetic disturbance on a 0 to 9 scale in 3-hour blocks. As Kp rises, the auroral oval expands toward the equator; at about 41°N it usually takes Kp 7 or more before the glow shows low in the north."
+          }
+        ],
+        "research": [
+          {
+            "title": "Earth's ionosphere supplied vast majority of ring current ions during May 2024 super geomagnetic storm",
+            "url": "https://en.nagoya-u.ac.jp/news/articles/earths-ionosphere-supplied-vast-majority-of-ring-current-ions-during-may-2024-super-geomagnetic-storm-study-finds/",
+            "source": "Nagoya University",
+            "note": "New evidence that Earth's atmosphere helped power the storm that brought aurora far south in May 2024."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 27",
+        "name": "Moon passes over the Pleiades",
+        "note": "The 95% lit Moon covers some of the cluster's stars in the evening; binoculars help pick them out against the glare."
+      },
+      {
+        "date": "Oct 31-Nov 1",
+        "name": "Bright dawn space station passes",
+        "note": "Oct 31 at 6:55 AM climbing to 66 degrees at magnitude -3.7, and Nov 1 at 5:10 AM reaching 72 degrees at -3.6."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurid fireball peak",
+        "note": "The fireball-swarm part of the Southern Taurids peaks with the Moon about 23% lit, good for slow, bright meteors."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "Peaks with the Moon only about 6% lit, so the occasional slow fireball stands out in a dark sky."
+      },
+      {
+        "date": "Nov 16-17",
+        "name": "Leonids peak and Mars passes Jupiter",
+        "note": "The Leonids from comet 55P/Tempel-Tuttle peak under a Moon about half lit, and Mars passes Jupiter in the morning sky on the 16th."
+      }
+    ],
+    "sourceFailures": [
+      "AMS meteor calendar page (no ZHR, speed or radiant)",
+      "Comet search (nothing sourced at 8th magnitude or brighter)",
+      "Heavens-Above (no evening pass tonight)"
+    ],
+    "ideas": [
+      {
+        "title": "MET Norway's keyless Sunrise API for moonrise and moonset times",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-10-25",
     "checkedLabel": "Sun Oct 25, 6:00 AM ET",
     "place": "State College, PA",
