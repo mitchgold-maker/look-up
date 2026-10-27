@@ -1,5 +1,871 @@
 [
   {
+    "date": "2026-10-27",
+    "checkedLabel": "Tue Oct 27, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A high cloud deck arrives right at sunset and the sky stays mostly overcast all night, so the 96% lit Moon's pass across the Pleiades will be hard to catch except in a brief thinning around 11 PM.",
+    "featured": "sunset",
+    "pick": "At the 6:13 PM sunset, face west-southwest: Open-Meteo has a high cloud deck arriving just then with nothing below it, and if it is thin its underside can catch red and orange light. Around 11 PM, when the high cloud is forecast to thin out briefly, look east for the bright Moon sitting in the Pleiades; binoculars help pick out the cluster's stars beside it.",
+    "next": {
+      "name": "Moon near Elnath and Aldebaran",
+      "date": "2026-10-28"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning gibbous",
+        "lit": 96,
+        "note": "Rises around sunset in the east-northeast and is up all night, passing through the Pleiades in the evening."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening",
+          "where": "Southeast to south after dark",
+          "note": "Three weeks past its October 4 opposition, still the best planet of the evening"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "East",
+          "note": "Astronomy.com compares its orange-red tint to Aldebaran's"
+        },
+        {
+          "name": "Uranus",
+          "when": "Before dawn",
+          "where": "About 5 degrees to the lower left of the Moon",
+          "note": "Magnitude 5.6, but the Moon's glare means binoculars are needed"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "A July 2026 modelling study of aircraft contrails inside cirrus found that, in very humid and weakly stable air, a contrail can grow in which direction?",
+      "options": [
+        "Upward, above the plane's flight level",
+        "Only downward, below the flight level",
+        "Only sideways along the flight path",
+        "It cannot grow at all inside cirrus"
+      ],
+      "answer": 0,
+      "explain": "Marjani and colleagues found that latent heat released as the ice forms can lift the contrail above flight level, not just let it sink."
+    },
+    "events": [
+      {
+        "type": "sunset",
+        "chance": 40,
+        "title": "Colorful sunset possible under arriving high cloud",
+        "sub": "Look west-southwest at 6:13 PM. A high cloud deck moves in right at sunset with no low cloud in the way, which can light up well; the rating stays moderate because the deck may be too thick to let the light through.",
+        "look": {
+          "bearing": 253,
+          "label": "West-southwest at sunset, 6:13 PM"
+        },
+        "params": {
+          "highCloud": 100
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "75% (7Timer, 5 PM)",
+            "score": 0.6,
+            "note": "Some cloud is good for colour, but 7Timer and Open-Meteo both have it thickening fast around sunset."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain, 2% chance",
+            "score": 0.95,
+            "note": "Neither 7Timer nor the NWS has any precipitation this evening."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, so it cannot tell a thin glowing cirrus veil from a dull gray sheet."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 23
+              },
+              {
+                "t": "4 PM",
+                "v": 36
+              },
+              {
+                "t": "5 PM",
+                "v": 8
+              },
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:13 PM EDT",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers at 6 PM",
+            "value": "Low 0%, mid 0%, high 100%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud, 5 PM block",
+            "value": "75%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at 6 PM",
+            "value": "2%",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has the high cloud jumping from 8% at 5 PM to 100% at 6 PM, with no low or mid cloud at all. That is the classic setup for a lit-up sky if the sheet is thin; if it is thick, the colour will be muted to a gray glow."
+          },
+          {
+            "cat": "New research",
+            "text": "A July 2026 study in Atmospheric Chemistry and Physics by Sajedeh Marjani, Sina Mehrdad and Johannes Quaas simulated contrails inside natural cirrus at 154 m resolution. It found that how far a contrail spreads depends mostly on how deep the ice-saturated layer below the plane is and how long extra moisture lasts, so simple formation rules cannot predict how big contrails get."
+          },
+          {
+            "cat": "How it works",
+            "text": "Cirrus sits high enough to stay in sunlight after the Sun has set for the ground below. That late light has crossed a long path through the air, which strips out blue, so a thin high deck turns orange and pink while the land is already in shadow; a thick deck blocks the light and stays gray."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 27, 1929, a snowstorm dropped 27 inches of snow on Ishpeming, Michigan, in 24 hours, setting a state record."
+          }
+        ],
+        "research": [
+          {
+            "title": "Investigating the development of persistent contrails in ice supersaturated regions with cloudy backgrounds using ICON-LEM",
+            "url": "https://acp.copernicus.org/articles/26/10695/2026/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "Contrails often merge into the same high cirrus that colours sunsets; this July 2026 study models how they grow."
+          },
+          {
+            "title": "October 27 weather history",
+            "url": "https://newportriweather.com/mwd/history/oct/oct27.html",
+            "source": "Newport RI Weather",
+            "note": "Source for the Ishpeming snowstorm record."
+          }
+        ]
+      },
+      {
+        "type": "moon",
+        "chance": 16,
+        "title": "Moon over the Pleiades, likely clouded out",
+        "sub": "The 96% lit Moon passes over the Pleiades this evening in the east, covering some of the cluster's stars. High cloud is forecast through most of the evening, so the best chance is a brief thinning around 11 PM.",
+        "look": {
+          "bearing": 70,
+          "label": "East in the evening, Moon and Pleiades"
+        },
+        "params": {
+          "variant": "conjunction",
+          "lit": 96,
+          "near": "Pleiades"
+        },
+        "conds": [
+          {
+            "name": "The event",
+            "val": "Moon covers Pleiades stars",
+            "score": 0.97,
+            "note": "A real, dated event tonight: the Moon moves across the star cluster."
+          },
+          {
+            "name": "Moon above the horizon",
+            "val": "Up from about sunset",
+            "score": 0.95,
+            "note": "The Moon rises around sunset in the east-northeast and climbs through the evening."
+          },
+          {
+            "name": "Clear sky",
+            "val": "92% cloud",
+            "score": 0.17,
+            "note": "7Timer has the sky 87-97% covered all night, and Open-Meteo has 100% high cloud until a short gap near 11 PM."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "10 PM",
+                "v": 89
+              },
+              {
+                "t": "11 PM",
+                "v": 2
+              },
+              {
+                "t": "12 AM",
+                "v": 52
+              },
+              {
+                "t": "1 AM",
+                "v": 100
+              },
+              {
+                "t": "3 AM",
+                "v": 100
+              },
+              {
+                "t": "5 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Moon and Pleiades",
+            "value": "95% lit Moon covers stars in the cluster on Oct 27",
+            "source": "When the Curves Line Up",
+            "url": "https://whenthecurveslineup.com/2026/10/17/2026-october-26-28-moon-and-pleiades/"
+          },
+          {
+            "name": "Moon illuminated",
+            "value": "96% (computed)",
+            "source": "Astronomy (95% at 10 PM); 96% by synodic-month calculation",
+            "url": "https://www.astronomy.com/observing/the-sky-today-tuesday-october-27-2026/"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87-97% (mean 92%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "High cloud 6 PM to 5 AM",
+            "value": "100% most hours, 2% at 11 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The Moon moves about its own width every hour against the stars, so as it crosses the Pleiades stars blink out on its eastern, bright edge one after another. Tomorrow night, 88% lit, it will have moved on to sit near Elnath and Aldebaran."
+          },
+          {
+            "cat": "New research",
+            "text": "In October 2026, six months after the April flyby, NASA released a preliminary science report and the full dataset from Artemis II, including the crew's lunar photographs and spoken observations from the first crewed trip around the Moon since 1972."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "If the dawn sky clears, look about 5 degrees to the lower left of the Moon, roughly halfway along a line from the Pleiades to Aldebaran, for Uranus. At magnitude 5.6 it is technically a naked-eye planet, but tonight's Moon glare means binoculars."
+          }
+        ],
+        "research": [
+          {
+            "title": "NASA Makes Artemis II Lunar Mission Science Data Public",
+            "url": "https://aiaa.org/?p=37067",
+            "source": "AIAA (citing SpaceNews)",
+            "note": "October 2026 release of the Artemis II lunar science dataset."
+          },
+          {
+            "title": "The Sky Today on Tuesday, October 27",
+            "url": "https://www.astronomy.com/observing/the-sky-today-tuesday-october-27-2026/",
+            "source": "Astronomy",
+            "note": "Moon, Pleiades and Uranus positions for tonight and tomorrow morning."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 16,
+        "title": "Valley fog very unlikely at sunrise",
+        "sub": "The air reaches its dew point after midnight with no wind, which favours fog, but a thick cloud cover overnight slows the ground's cooling and holds the rating down. Check the valleys from a ridge at 7:37 AM anyway.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 0,
+          "cloud": 92
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "0°F gap from midnight",
+            "score": 0.95,
+            "note": "The NWS has temperature and dew point equal every hour from midnight to 8 AM."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph",
+            "score": 0.95,
+            "note": "Dead calm all night, which lets fog settle if it forms."
+          },
+          {
+            "name": "Clear sky",
+            "val": "92% cloud",
+            "score": 0.17,
+            "note": "Cloud works like a blanket, keeping the valleys from cooling quickly enough to thicken fog."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 20,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 14
+              },
+              {
+                "t": "8 PM",
+                "v": 6
+              },
+              {
+                "t": "10 PM",
+                "v": 2
+              },
+              {
+                "t": "12 AM",
+                "v": 0
+              },
+              {
+                "t": "2 AM",
+                "v": 0
+              },
+              {
+                "t": "4 AM",
+                "v": 0
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature-dew point gap",
+            "value": "0°F from midnight to 8 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind overnight",
+            "value": "0 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:37 AM EDT Wednesday",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87-97% (mean 92%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS closes the gap between temperature and dew point from 14°F at 6 PM to 2°F at 10 PM and zero from midnight, with no wind. The difference from Monday night is the cloud: 7Timer keeps the sky 87-97% covered, so expect haze and damp air rather than a deep fog layer."
+          },
+          {
+            "cat": "New research",
+            "text": "An August 2026 study in Atmospheric Chemistry and Physics from Italy's Po Valley found that swollen but not yet activated pollution particles held about 21% of the liquid water in fog and explained about 36% of sub-kilometre visibility events without true fog droplets. Polluted haze can look like fog without being fog."
+          },
+          {
+            "cat": "How it works",
+            "text": "NASA's Earth Observatory notes that in the Po Valley haze often comes before fog: the particles act as seeds for droplets, and a study co-authored by Eva Pauli found that fog with high aerosol levels lasted up to three hours longer than fog in cleaner air."
+          }
+        ],
+        "research": [
+          {
+            "title": "Importance of hydrated aerosol particles for aerosol-fog relationships in the Italian Po Valley",
+            "url": "https://acp.copernicus.org/articles/26/11991/2026/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "Shows how much of a polluted valley's fog is really swollen haze particles."
+          },
+          {
+            "title": "A Hazy, Foggy Day in Italy's Po Valley",
+            "url": "https://science.nasa.gov/earth/earth-observatory/a-hazy-foggy-day-in-italys-po-valley-153599",
+            "source": "NASA Earth Observatory",
+            "note": "Satellite view and plain explanation of why valley fog forms and lingers."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 8,
+        "title": "Poor night for stargazing",
+        "sub": "Cloud covers most of the sky all night and a 96% lit Moon brightens what is left. If the forecast gap near 11 PM appears, Saturn in the south is the target.",
+        "look": {
+          "bearing": 160,
+          "label": "South-southeast in the evening, for Saturn"
+        },
+        "params": {
+          "cloud": 92,
+          "moon": 96,
+          "planets": [
+            "Saturn",
+            "Mars",
+            "Uranus"
+          ],
+          "clarity": 3
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "92% cloud",
+            "score": 0.17,
+            "note": "7Timer has 87-97% cloud in every dark-hours block."
+          },
+          {
+            "name": "Moonlight",
+            "val": "96% lit, up all night",
+            "score": 0.57,
+            "note": "A nearly full Moon washes out all but the brightest stars."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 3-4 of 8",
+            "score": 0.8,
+            "note": "Where the cloud breaks, the air itself is reasonably clear."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 75
+              },
+              {
+                "t": "8 PM",
+                "v": 87
+              },
+              {
+                "t": "11 PM",
+                "v": 97
+              },
+              {
+                "t": "2 AM",
+                "v": 87
+              },
+              {
+                "t": "5 AM",
+                "v": 97
+              },
+              {
+                "t": "8 AM",
+                "v": 97
+              }
+            ]
+          },
+          {
+            "label": "High cloud tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "10 PM",
+                "v": 89
+              },
+              {
+                "t": "11 PM",
+                "v": 2
+              },
+              {
+                "t": "12 AM",
+                "v": 52
+              },
+              {
+                "t": "1 AM",
+                "v": 100
+              },
+              {
+                "t": "3 AM",
+                "v": 100
+              },
+              {
+                "t": "5 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87-97% (mean 92%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "High cloud 6 PM to 5 AM",
+            "value": "100% most hours, 2% at 11 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Transparency, dark hours",
+            "value": "3-4 (1 is clearest)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "96% lit, waning gibbous",
+            "source": "Astronomy (95% at 10 PM); 96% by synodic-month calculation",
+            "url": "https://www.astronomy.com/observing/the-sky-today-tuesday-october-27-2026/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The two cloud forecasts disagree a little: 7Timer has the sky 87-97% covered all night, while Open-Meteo has the high cloud dropping from 89% at 10 PM to 2% at 11 PM before closing again by 1 AM. If you want stars tonight, that hour is the one to watch."
+          },
+          {
+            "cat": "New research",
+            "text": "Webb observations reported in April 2026 found that Uranus's outermost rings are made of two different kinds of material, a new puzzle about how the rings formed. Uranus sits near tonight's Moon, between the Pleiades and Aldebaran."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "On any clear night with a bright Moon, try Kemble's Cascade in Camelopardalis: a line of about two dozen stars roughly 2.5 degrees long that runs toward the small cluster NGC 1502. Binoculars or a slow sweep with a telescope pick it out even under moonlight."
+          }
+        ],
+        "research": [
+          {
+            "title": "Uranus's outermost rings are made of two different things",
+            "url": "https://www.aip.org/news-and-analysis/aas/uranuss-outermost-rings-are-made-of-two-different-things",
+            "source": "AIP / Sky & Telescope",
+            "note": "April 2026 Webb result on the planet near tonight's Moon."
+          }
+        ]
+      },
+      {
+        "type": "frost",
+        "chance": 2,
+        "title": "Frost very unlikely at dawn",
+        "sub": "The low is 38°F at 6 AM with no wind, but overcast skies keep roofs and lawns from cooling below the air, so expect dew rather than frost.",
+        "look": null,
+        "params": {
+          "lowF": 38,
+          "wind": 0,
+          "cloud": 92
+        },
+        "conds": [
+          {
+            "name": "Cold enough",
+            "val": "Low 38°F",
+            "score": 0.15,
+            "note": "Several degrees above the range where frost forms on exposed surfaces."
+          },
+          {
+            "name": "Clear sky",
+            "val": "92% cloud",
+            "score": 0.17,
+            "note": "Cloud sends heat back down, so surfaces stay close to the air temperature."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph",
+            "score": 0.95,
+            "note": "Calm air would help frost, if it were colder and clearer."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature overnight",
+            "unit": "°F",
+            "max": 60,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "10 PM",
+                "v": 46
+              },
+              {
+                "t": "12 AM",
+                "v": 43
+              },
+              {
+                "t": "2 AM",
+                "v": 41
+              },
+              {
+                "t": "4 AM",
+                "v": 40
+              },
+              {
+                "t": "6 AM",
+                "v": 38
+              },
+              {
+                "t": "8 AM",
+                "v": 38
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Overnight low",
+            "value": "38°F at 6 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at the low",
+            "value": "0 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87-97% (mean 92%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "With the dew point also falling to 38°F by 6 AM, moisture will settle on cars and grass as dew. Under a clear sky surfaces can cool several degrees below the air; tonight's cloud cover takes that extra chill away."
+          },
+          {
+            "cat": "New research",
+            "text": "A CSIRO study released in June 2026, led by Fernanda Dreccer, simulated wheat at 83 sites across Australia's wheatbelt using climate data back to 1970. It found frost remains a major yield limit even when crops flower in the best window, and that avoiding heat and drought can push crops into more frost exposure."
+          },
+          {
+            "cat": "Did you know",
+            "text": "On October 27, 1843, a snowstorm with sleet and freezing temperatures reached Mississippi and was followed by a hard freeze the next morning."
+          }
+        ],
+        "research": [
+          {
+            "title": "Frost a challenge shaping Australian wheat production",
+            "url": "https://www.csiro.au/en/news/All/News/2026/June/Frost-a-challenge-shaping-Australian-wheat-production",
+            "source": "CSIRO",
+            "note": "June 2026 study on how frost risk interacts with heat and drought."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely",
+        "sub": "NOAA's Kp forecast tops out at 2.33 in the early evening, far below the 7 or more needed this far south, and cloud would hide it anyway.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low on the horizon"
+        },
+        "params": {
+          "kp": 2.33,
+          "cloud": 92,
+          "moon": 96
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 2.33 max",
+            "score": 0.03,
+            "note": "NOAA expects no G1 or stronger storms through October 29."
+          },
+          {
+            "name": "Clear sky",
+            "val": "92% cloud",
+            "score": 0.17,
+            "note": "Overcast skies would block even a strong display."
+          },
+          {
+            "name": "Moonlight",
+            "val": "96% lit",
+            "score": 0.81,
+            "note": "A bright Moon washes out faint aurora."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "2 PM",
+                "v": 1.67
+              },
+              {
+                "t": "5 PM",
+                "v": 2.33
+              },
+              {
+                "t": "8 PM",
+                "v": 1.33
+              },
+              {
+                "t": "11 PM",
+                "v": 1.33
+              },
+              {
+                "t": "2 AM",
+                "v": 1.67
+              },
+              {
+                "t": "5 AM",
+                "v": 1.33
+              },
+              {
+                "t": "8 AM",
+                "v": 1.33
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, evening and night",
+            "value": "2.33 (5-8 PM block)",
+            "source": "NOAA SWPC Kp forecast",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "G-scale outlook",
+            "value": "No G1 or greater expected Oct 27-29",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87-97% (mean 92%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's forecast has Kp at 2.33 from 5 to 8 PM and 1.33 to 1.67 for the rest of the night, and its forecasters see no fast solar wind streams or eruptions headed our way."
+          },
+          {
+            "cat": "New research",
+            "text": "A University of Southampton team led by Siyuan Wu reported in Nature Communications that the beads of light that appear just before an auroral substorm are tied to a burst of low-frequency radio waves, auroral kilometric radiation, produced above the aurora. They used NASA's Polar and Japan's Arase spacecraft with cameras in Lapland, and think the same trigger may work at Jupiter and Saturn."
+          },
+          {
+            "cat": "Did you know",
+            "text": "NOAA rates three kinds of space weather separately: geomagnetic storms (G), solar radiation storms (S) and radio blackouts (R). Only the G scale matters for aurora; today's forecast gives a 10% chance of an R1-R2 radio blackout from a solar flare, which can disrupt shortwave radio but does not light up the sky."
+          }
+        ],
+        "research": [
+          {
+            "title": "Scientists close in on solving the mystery behind intense auroral storms",
+            "url": "https://www.eurasiareview.com/01122025-scientists-close-in-on-solving-the-mystery-behind-intense-auroral-storms/",
+            "source": "Eurasia Review (University of Southampton)",
+            "note": "December 2025 report linking auroral beads to radio bursts before substorms."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 28",
+        "name": "Moon near Elnath and Aldebaran",
+        "note": "The 88% lit waning gibbous Moon moves east of the Pleiades to sit near the horns and eye of Taurus."
+      },
+      {
+        "date": "Oct 29 and 31",
+        "name": "Bright dawn space station passes",
+        "note": "Oct 29 at 6:53 AM reaching 44 degrees at magnitude -2.8, and Oct 31 at 6:55 AM climbing to 66 degrees at -3.7."
+      },
+      {
+        "date": "Nov 2",
+        "name": "Moon, Jupiter and Mars near Regulus",
+        "note": "Before sunrise the waning Moon joins Jupiter and Mars around Leo's brightest star."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurid fireball peak",
+        "note": "The fireball-rich part of the Southern Taurids peaks with the Moon about 25% lit."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "Peaks with the Moon only 4% lit, so occasional slow fireballs stand out in a dark sky."
+      }
+    ],
+    "sourceFailures": [
+      "Space.com planet guide (page body not readable)",
+      "AMS meteor calendar page (no ZHR, speed or radiant)"
+    ],
+    "ideas": [
+      {
+        "title": "Sunsethue free hobby API for sunset quality scores",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-10-26",
     "checkedLabel": "Mon Oct 26, 6:00 AM ET",
     "place": "State College, PA",
