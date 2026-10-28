@@ -1,5 +1,707 @@
 [
   {
+    "date": "2026-10-28",
+    "checkedLabel": "Wed Oct 28, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "The cloud clears around sunset and the night turns clear, calm and damp, so valley fog is likely by dawn and a bright space station pass crosses the morning sky at 6:53 AM Thursday, while the bright Moon and hazy air make it a poor night for faint stars.",
+    "featured": "iss",
+    "pick": "At 6:53 AM Thursday, from a hilltop above the valleys, watch the space station rise in the northwest, climb to 44 degrees up in the north-northeast at 6:56 and sink into the east-southeast by 6:59. Stay for the 7:38 AM sunrise to see the valley fog the NWS expects below you.",
+    "next": {
+      "name": "Bright space station pass, 66 degrees up before dawn",
+      "date": "2026-10-31"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning gibbous",
+        "lit": 91,
+        "note": "Rises in the evening and is up the rest of the night in Taurus, a day east of the Pleiades, so it washes out faint stars."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening",
+          "where": "Southeast around sunset, climbing into the south",
+          "note": "Just past its October 4 opposition, the best planet of the evening"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Early morning hours",
+          "where": "Rises in the southeast",
+          "note": "The brighter star-like point below Mars before dawn"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "High in the southeast about an hour before sunrise",
+          "note": "Slightly reddish; Astronomy compares its tint to Aldebaran's"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Prospero, launched on October 28, 1971 and still in orbit today, was the first British satellite launched successfully by what?",
+      "options": [
+        "A British rocket, Black Arrow",
+        "An American Scout rocket",
+        "A Soviet Soyuz rocket",
+        "A European Ariane rocket"
+      ],
+      "answer": 0,
+      "explain": "A Black Arrow rocket lifted it from Woomera, South Australia, making Britain the sixth nation to orbit a satellite on its own rocket."
+    },
+    "events": [
+      {
+        "type": "iss",
+        "chance": 74,
+        "title": "Space station at 6:53 AM Thursday: great pass",
+        "sub": "A bright pass rises in the northwest at 6:53 AM, peaks 44 degrees up in the north-northeast at 6:56 and ends in the east-southeast at 6:59, under a clear sky. Valleys may be foggy then, so watch from higher ground.",
+        "look": {
+          "bearing": 22,
+          "label": "North-northeast, 44 degrees up, at 6:56 AM Thursday"
+        },
+        "params": {
+          "maxEl": 44
+        },
+        "conds": [
+          {
+            "name": "Pass height",
+            "val": "44 degrees",
+            "score": 0.85,
+            "note": "High enough to clear trees and hills easily, though not overhead."
+          },
+          {
+            "name": "Clear sky",
+            "val": "3% cloud",
+            "score": 0.97,
+            "note": "7Timer has 3% cloud from 11 PM through 8 AM and Open-Meteo has no cloud at any level; patchy valley fog is the only thing that could block it."
+          },
+          {
+            "name": "Brightness",
+            "val": "Magnitude -2.8",
+            "score": 0.9,
+            "note": "Brighter than any star, so it will stand out even in morning twilight about 40 minutes before sunrise."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 97
+              },
+              {
+                "t": "8 PM",
+                "v": 87
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Pass",
+            "value": "6:53-6:59 AM Thursday, NW to ESE, max 44 degrees NNE at 6:56",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Brightness",
+            "value": "Magnitude -2.8",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Cloud at pass time",
+            "value": "3% (5 AM and 8 AM blocks)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:38 AM EDT Thursday",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Heavens-Above has the station appearing 10 degrees up in the northwest at 6:53 AM, reaching 44 degrees in the north-northeast at 6:56 and dropping to 10 degrees in the east-southeast at 6:59, at magnitude -2.8. The NWS forecasts patchy fog from 2 AM to 8 AM, so a ridge or hilltop gives the best chance of seeing it above the fog."
+          },
+          {
+            "cat": "New research",
+            "text": "A RIKEN-led study published in Nature Communications on June 30, 2026 grew human cells in the station's Kibo module, tended by astronaut Soichi Noguchi, and found their mitochondria made far fewer proteins in microgravity. Adding laminin, a molecule cells grip onto, restored it in ground simulations, pointing to weakened cell adhesion as a cause of astronauts' muscle loss."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Face the starting point in the northwest a minute early. The station moves at a steady pace like a high plane, but it does not blink and makes no sound; if you see blinking lights, that is an aircraft."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 28, 1971, a Black Arrow rocket launched the Prospero satellite from Woomera, South Australia, the first British satellite launched by a British rocket. It was switched off in 1996 but is still in orbit, and is not expected to fall back until about 2070."
+          }
+        ],
+        "research": [
+          {
+            "title": "Gravity activates mitochondrial translation",
+            "url": "https://astrobiology.com/2026/07/02/gravity-activates-mitochondrial-translation/",
+            "source": "Astrobiology (RIKEN release)",
+            "note": "June 2026 Nature Communications study of human cells grown on the station."
+          },
+          {
+            "title": "Prospero (satellite)",
+            "url": "https://en.wikipedia.org/wiki/Prospero_(satellite)",
+            "source": "Wikipedia",
+            "note": "Source for the October 28, 1971 launch."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 71,
+        "title": "Valley fog likely at sunrise",
+        "sub": "The air reaches its dew point by 10 PM, the wind stays near calm and the sky clears, which lets the valleys cool fast. Look down into the valleys from a ridge around the 7:38 AM sunrise.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 0,
+          "wind": 1,
+          "cloud": 24
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "0°F gap from 10 PM",
+            "score": 0.95,
+            "note": "The NWS has temperature and dew point equal every hour from 10 PM to 8 AM."
+          },
+          {
+            "name": "Light wind",
+            "val": "1 mph",
+            "score": 0.95,
+            "note": "Near calm from 2 AM, so fog can settle and thicken instead of being mixed away."
+          },
+          {
+            "name": "Clear sky",
+            "val": "24% mean cloud",
+            "score": 0.78,
+            "note": "Cloud lingers until about 8 PM, then the sky is clear, letting the ground radiate heat away all night."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 20,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 10
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "10 PM",
+                "v": 0
+              },
+              {
+                "t": "12 AM",
+                "v": 0
+              },
+              {
+                "t": "2 AM",
+                "v": 0
+              },
+              {
+                "t": "4 AM",
+                "v": 0
+              },
+              {
+                "t": "6 AM",
+                "v": 0
+              },
+              {
+                "t": "8 AM",
+                "v": 0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature-dew point gap",
+            "value": "0°F from 10 PM to 8 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind overnight",
+            "value": "1-2 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "NWS wording",
+            "value": "Patchy fog 2 AM to 8 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:38 AM EDT Thursday",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87% at 8 PM, then 3% from 11 PM to dawn (mean 24%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Unlike Tuesday night, when thick cloud kept the valleys from cooling, both 7Timer and Open-Meteo clear the sky by mid-evening. The NWS brings the temperature down from 61°F at 6 PM to 42°F at 8 AM with the dew point following it all the way, and its hourly wording switches to patchy fog at 2 AM."
+          },
+          {
+            "cat": "New research",
+            "text": "On May 12, 2026, NASA's Earth Observatory published a Terra satellite image of morning fog filling networks of river valleys in eastern Victoria, Australia. Geostationary satellite images showed the valley fog lasting about two hours after the 8:19 AM picture."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Valley fog often clears from open low ground first and lingers longest in deep mountain valleys, because those stay shaded longest after sunrise. Rivers and lakes feed extra water vapour into the fog, so river valleys like those around State College tend to fill first."
+          }
+        ],
+        "research": [
+          {
+            "title": "Australia's Cloudy Beauty",
+            "url": "https://science.nasa.gov/earth/earth-observatory/australias-cloudy-beauty/",
+            "source": "NASA Earth Observatory",
+            "note": "May 2026 satellite view of radiation fog in river valleys, with an explanation of how it forms."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset as the cloud clears",
+        "sub": "Look west-southwest at 6:12 PM. Open-Meteo clears a mid-level cloud deck just before sunset while 7Timer keeps it overcast, so expect either a clean, plain sky or a gray one; a departing deck to the east could still catch some pink.",
+        "look": {
+          "bearing": 250,
+          "label": "West-southwest at sunset, 6:12 PM"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "97% (7Timer, 5 PM)",
+            "score": 0.3,
+            "note": "7Timer's nearest block is overcast, while Open-Meteo has the mid deck dropping from 83% at 5 PM to nothing at 6 PM; either way there is little high cloud to light up."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain, 1% chance",
+            "score": 0.95,
+            "note": "The NWS has a 1% chance of rain at 6 PM and 7Timer shows no precipitation."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only and is a rough guide; tonight the two models also disagree on timing."
+          }
+        ],
+        "series": [
+          {
+            "label": "Mid-level cloud around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 100
+              },
+              {
+                "t": "5 PM",
+                "v": 83
+              },
+              {
+                "t": "6 PM",
+                "v": 0
+              },
+              {
+                "t": "7 PM",
+                "v": 0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:12 PM EDT",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers at 6 PM",
+            "value": "Low 0%, mid 0%, high 0%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud, 5 PM block",
+            "value": "97%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at 6 PM",
+            "value": "1%",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has 100% mid-level cloud at 4 PM, 83% at 5 PM and none at 6 PM, with no high cloud at all. If that timing holds, the Sun sets into a clear sky; the trailing edge of the deck, moving off to the east, is the most likely place to see colour."
+          },
+          {
+            "cat": "New research",
+            "text": "On August 10, 2026, Antonio Jordán of the University of Seville photographed the twilight sky 25 minutes after sunset while smoke from the Niebla wildfire, about 60 km away, hung over the city. The smoke replaced the usual deep blue with pink, mauve, violet and reddish tones near the horizon; the European Geosciences Union published the image on August 14."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Much of the deep blue overhead at sunset is not from scattering at all. Ozone absorbs orange and red light in its Chappuis bands, which matters most when sunlight takes the long path through the air at dusk; a 1953 estimate put ozone's share of the zenith blue at sunset at about two-thirds."
+          }
+        ],
+        "research": [
+          {
+            "title": "Purple haze over the city",
+            "url": "https://imaggeo.egu.eu/view/20307/",
+            "source": "EGU Imaggeo",
+            "note": "August 2026 photo and explanation of wildfire smoke colouring twilight."
+          },
+          {
+            "title": "Chappuis absorption",
+            "url": "https://en.wikipedia.org/wiki/Chappuis_absorption",
+            "source": "Wikipedia",
+            "note": "Why ozone helps keep the dusk sky blue."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 14,
+        "title": "Poor night for stargazing",
+        "sub": "The sky clears after 8 PM, but the 91% lit Moon rises in the evening and the damp air is forecast to be very hazy. Stick to bright targets: Saturn in the southeast after dusk, and Jupiter and Mars before dawn.",
+        "look": {
+          "bearing": 145,
+          "label": "Southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 24,
+          "moon": 91,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 1
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "24% mean cloud",
+            "score": 0.78,
+            "note": "Cloud hangs on until about 8 PM, then 7Timer has the sky 3% covered for the rest of the night."
+          },
+          {
+            "name": "Moonlight",
+            "val": "91% lit, up from evening",
+            "score": 0.59,
+            "note": "The waning gibbous Moon rises in the evening and stays up until after sunrise, brightening the whole sky."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 8 of 8",
+            "score": 0.3,
+            "note": "7Timer rates the air as hazy as it gets from 11 PM, consistent with the NWS dew point matching the temperature all night."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 97
+              },
+              {
+                "t": "8 PM",
+                "v": 87
+              },
+              {
+                "t": "11 PM",
+                "v": 3
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          },
+          {
+            "label": "Sky transparency (1 clearest, 8 haziest)",
+            "unit": "",
+            "max": 8,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 6
+              },
+              {
+                "t": "11 PM",
+                "v": 8
+              },
+              {
+                "t": "2 AM",
+                "v": 8
+              },
+              {
+                "t": "5 AM",
+                "v": 8
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "87% at 8 PM, then 3% from 11 PM to dawn (mean 24%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency",
+            "value": "6 at 8 PM, 8 from 11 PM (8 = haziest)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon illuminated",
+            "value": "91% (computed); Astronomy gives 88% at 10 PM",
+            "source": "Astronomy",
+            "url": "https://www.astronomy.com/observing/the-sky-today-wednesday-october-28-2026/"
+          },
+          {
+            "name": "Planets",
+            "value": "Saturn evening SE; Jupiter rises in the early hours; Mars high SE before dawn",
+            "source": "BBC Sky at Night",
+            "url": "https://www.skyatnightmagazine.com/news/hunters-moon-planets-october-2026"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "7Timer pairs a nearly cloudless sky after 11 PM with the worst transparency score, 8 of 8, while the NWS has the air saturated from 10 PM. That combination means a milky, hazy sky where only the Moon, Saturn and the brightest stars cut through."
+          },
+          {
+            "cat": "New research",
+            "text": "A study in Nature Astronomy reported in June 2026, led by Tobermory Mackay-Champion, used 1,319 marsquakes recorded by NASA's InSight lander to find a layer of iron- and magnesium-rich rock about 14 km thick deep in Mars's crust. The team says it took a large, long-lived underground magma system to build it, without Earth-style plate tectonics."
+          },
+          {
+            "cat": "How it works",
+            "text": "Astronomers rate the air two ways. Seeing is how steady it is, which sets how sharp a planet looks in a telescope; transparency is how clear it is, which sets how many faint stars get through. Tonight 7Timer gives middling seeing but very poor transparency, so Saturn may look fine while faint stars vanish."
+          }
+        ],
+        "research": [
+          {
+            "title": "Rumbles deep inside Mars hint at a vast ancient magma system",
+            "url": "https://sciencealert.com/rumbles-deep-inside-mars-hint-at-a-vast-ancient-magma-system",
+            "source": "ScienceAlert",
+            "note": "June 2026 InSight result about the planet rising in the southeast before dawn."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 2,
+        "title": "Aurora very unlikely",
+        "sub": "NOAA's Kp forecast stays below 2 through the night and its 3-day outlook expects no storms through October 30. State College needs about Kp 7.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low on the horizon, after 11 PM"
+        },
+        "params": {
+          "kp": 1.67,
+          "cloud": 24,
+          "moon": 91
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Max Kp 1.67",
+            "score": 0.03,
+            "note": "Far below the Kp 7 usually needed at 41 degrees north."
+          },
+          {
+            "name": "Clear sky",
+            "val": "24% mean cloud",
+            "score": 0.78,
+            "note": "Clear from about 11 PM, so a surprise would be visible."
+          },
+          {
+            "name": "Moonlight",
+            "val": "91% lit",
+            "score": 0.82,
+            "note": "Bright moonlight would wash out a faint glow low in the north."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 1.67
+              },
+              {
+                "t": "8 PM",
+                "v": 1.67
+              },
+              {
+                "t": "11 PM",
+                "v": 1.33
+              },
+              {
+                "t": "2 AM",
+                "v": 1.33
+              },
+              {
+                "t": "5 AM",
+                "v": 1.33
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours",
+            "value": "1.67",
+            "source": "NOAA SWPC Kp forecast",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "3-day outlook",
+            "value": "No G1 or greater storms expected Oct 28-30",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's forecast has Kp at 1.67 in the evening and 1.33 after midnight, and its 3-day outlook tops out at 2.33 on October 30, with no storm watch in effect."
+          },
+          {
+            "cat": "New research",
+            "text": "NASA's Earth Observatory published a February 16, 2026 view from the Suomi NPP satellite showing aurora over Iceland and then over Quebec and Newfoundland during a minor G1 storm. Later that day it reached G2, likely driven by a high-speed solar wind stream from a coronal hole; G2 storms can push aurora as far south as New York."
+          },
+          {
+            "cat": "How it works",
+            "text": "The satellite's day-night band picks up light from green to near-infrared at very low levels, so a single night pass records city lights, moonlit clouds and the aurora's glow together."
+          }
+        ],
+        "research": [
+          {
+            "title": "Northern Glow Spans Iceland and Canada",
+            "url": "https://science.nasa.gov/earth/earth-observatory/northern-glow-spans-iceland-and-canada/",
+            "source": "NASA Earth Observatory",
+            "note": "February 2026 satellite view of a G1-G2 aurora."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 31",
+        "name": "Bright space station pass",
+        "note": "Heavens-Above has a magnitude -3.7 pass reaching 66 degrees at 6:58 AM Saturday."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurids peak",
+        "note": "The AMS lists the fireball-rich peak with the Moon about 25% lit, a waning crescent."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "The AMS gives a Moon only 4% lit, so very dark skies if it is clear."
+      },
+      {
+        "date": "Nov 16-17",
+        "name": "Leonids peak",
+        "note": "From comet 55P/Tempel-Tuttle; the AMS notes a 39% lit Moon that may hide fainter meteors."
+      }
+    ],
+    "sourceFailures": [],
+    "ideas": [
+      {
+        "title": "Space station passes for any location from CelesTrak orbital elements",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-10-27",
     "checkedLabel": "Tue Oct 27, 6:00 AM ET",
     "place": "State College, PA",
