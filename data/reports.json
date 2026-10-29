@@ -1,5 +1,705 @@
 [
   {
+    "date": "2026-10-29",
+    "checkedLabel": "Thu Oct 29, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A clear, mild evening gives a short dark window before the bright Moon rises, thin cloud drifts in after midnight, and the air comes close to its dew point only around sunrise, so valley fog is possible rather than likely.",
+    "featured": "fog",
+    "pick": "Right after dark and before the Moon rises mid-evening, aim binoculars at Collinder 463, a loose crescent of young stars about 8 degrees north of Epsilon Cassiopeiae on the line toward Polaris. Before dawn Friday, Jupiter, Mars and Regulus line up high in the southeast.",
+    "next": {
+      "name": "Minor (G1) geomagnetic storm forecast Friday night",
+      "date": "2026-10-30"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning gibbous",
+        "lit": 84,
+        "note": "Rises mid-evening and is up the rest of the night, so the early evening is the darkest part of the night."
+      },
+      "items": [
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "Southeast, in Leo",
+          "note": "Magnitude -2.0, brighter than Sirius, with Regulus just to its east"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "About 60 degrees up in the southeast 90 minutes before sunrise",
+          "note": "Magnitude 0.8, a little over 6 degrees upper right of Jupiter"
+        },
+        {
+          "name": "Collinder 463",
+          "when": "Early evening",
+          "where": "North, in northern Cassiopeia, to the right of Polaris around 8 PM",
+          "note": "About 6th magnitude and wider than two full Moons; a binocular target"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Mars Year 39 began on September 30, 2026, at the planet's northern spring equinox. About how long is one Mars year in Earth days?",
+      "options": [
+        "687 days",
+        "365 days",
+        "225 days",
+        "4,333 days"
+      ],
+      "answer": 0,
+      "explain": "Mars takes 687 Earth days to orbit the Sun, so its New Year drifts across our calendar; Mars Year 40 starts on August 17, 2028."
+    },
+    "events": [
+      {
+        "type": "fog",
+        "chance": 55,
+        "title": "Valley fog possible at sunrise",
+        "sub": "The sky stays mostly clear, but a 5-6 mph breeze keeps the air 4-7 degrees above its dew point most of the night, and the gap only closes to 1 degree around 8 AM. Check the valleys from a ridge near the 7:39 AM sunrise; the low spots by streams are the likeliest to fill.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 1,
+          "wind": 6,
+          "cloud": 19
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "1°F gap at 8 AM",
+            "score": 0.95,
+            "note": "The NWS keeps a 4-7°F gap until 6 AM, closing to 3°F at 7 AM and 1°F at 8 AM, so any fog would form late, around sunrise."
+          },
+          {
+            "name": "Light wind",
+            "val": "6 mph",
+            "score": 0.7,
+            "note": "A steady west breeze mixes drier air down and slows the cooling of the valley floors, the main thing holding fog back."
+          },
+          {
+            "name": "Clear sky",
+            "val": "19% mean cloud",
+            "score": 0.83,
+            "note": "Mostly clear until after midnight, then patchy cloud; Open-Meteo shows a low deck around 5 AM that could slow cooling before dawn."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 20,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 17
+              },
+              {
+                "t": "12 AM",
+                "v": 6
+              },
+              {
+                "t": "2 AM",
+                "v": 7
+              },
+              {
+                "t": "4 AM",
+                "v": 6
+              },
+              {
+                "t": "6 AM",
+                "v": 4
+              },
+              {
+                "t": "7 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 1
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature-dew point gap",
+            "value": "1°F at 8 AM (52°F / 51°F)",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Overnight low",
+            "value": "52°F at 8 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind overnight",
+            "value": "5 mph SW, turning 6 mph W after 3 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Low cloud before dawn",
+            "value": "100% at 5 AM, 58% at 6 AM, 50% at 7 AM",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:39 AM EDT Friday",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS has relative humidity at 80% at midnight, climbing to 89% at 7 AM and 96% at 8 AM, with a west wind of 6 mph. That points to fog forming late and thin, most likely in sheltered hollows along streams rather than across whole valleys."
+          },
+          {
+            "cat": "New research",
+            "text": "A study published online on May 12, 2026 trained a LightGBM machine-learning model on four years of hourly weather data from China's Qiantang River Estuary to warn of fog 3 hours ahead. It was 98.6% accurate for low-visibility events, and re-weighting rare cases lifted its catch rate for dense fog from 44% to 70%; humidity, light wind and a small air-ground temperature difference drove its fog calls."
+          },
+          {
+            "cat": "How it works",
+            "text": "Radiation fog needs the air near the ground to cool to its dew point. On a calm night the coldest air slides downhill and pools in valleys, but even a light, steady breeze stirs that layer with warmer, drier air from above, which is why tonight's wind matters as much as the clear sky."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 29, 2012, Post-Tropical Cyclone Sandy made landfall near Brigantine, New Jersey at about 7:30 PM EDT. It brought severe gusts across eastern Pennsylvania, major flooding in the southeast of the state and heavy snow in southwestern Pennsylvania, with 36 inches at Richwood, West Virginia."
+          }
+        ],
+        "research": [
+          {
+            "title": "LightGBM-based early warning of dense fog in the Qiantang River Estuary with SHAP interpretation",
+            "url": "https://accscience.com/journal/AJWEP/23/3/10.36922/AJWEP025500379",
+            "source": "Asian Journal of Water, Environment and Pollution",
+            "note": "May 2026 study showing which weather readings best predict dense fog a few hours ahead."
+          },
+          {
+            "title": "Sandy 5th Anniversary",
+            "url": "https://www.weather.gov/phi/sandy_5th_anniversary",
+            "source": "NWS Philadelphia/Mount Holly",
+            "note": "Source for the October 29, 2012 landfall and its Pennsylvania impacts."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 41,
+        "title": "Good night for stargazing",
+        "sub": "The best window is right after dark, before the 84%-lit Moon rises mid-evening: look north for Cassiopeia and the binocular cluster Collinder 463. Moonlight and cloud building after midnight hold the rating to Good.",
+        "look": {
+          "bearing": 0,
+          "label": "North after dark, for Cassiopeia and Collinder 463"
+        },
+        "params": {
+          "cloud": 19,
+          "moon": 84,
+          "planets": [
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "19% mean cloud",
+            "score": 0.83,
+            "note": "7Timer has 3% cloud at 8 PM, rising to 12% at 11 PM, 25% at 2 AM and 37% at 5 AM, so the evening is the clearest part."
+          },
+          {
+            "name": "Moonlight",
+            "val": "84% lit",
+            "score": 0.62,
+            "note": "The waning gibbous Moon rises mid-evening and brightens the sky for the rest of the night."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 3-4 of 8",
+            "score": 0.8,
+            "note": "Reasonably clean air after dark, though not the crisp transparency of a post-front night."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 12
+              },
+              {
+                "t": "2 AM",
+                "v": 25
+              },
+              {
+                "t": "5 AM",
+                "v": 37
+              },
+              {
+                "t": "8 AM",
+                "v": 37
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud, 8 PM to 5 AM",
+            "value": "3%, 12%, 25%, 37% (mean 19%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency, 8 PM to 5 AM",
+            "value": "3, 3, 3, 4 (1 is best)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Seeing, 8 PM to 5 AM",
+            "value": "5, 4, 4, 4 (1 is steadiest)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "84% lit, waning gibbous, rises mid-evening",
+            "source": "Computed from the synodic month; Astronomy",
+            "url": "https://www.astronomy.com/observing/the-sky-today-thursday-october-29-2026/"
+          },
+          {
+            "name": "Planets before dawn",
+            "value": "Jupiter -2.0, Mars 0.8, with Regulus",
+            "source": "Astronomy",
+            "url": "https://www.astronomy.com/observing/the-sky-today-thursday-october-29-2026/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Collinder 463 is a loose group of young stars in northern Cassiopeia, about 6th magnitude and roughly 73 arcminutes across. Find Epsilon Cassiopeiae at the end of the W, then go about 8.2 degrees toward Polaris; many observers see the cluster as a crescent."
+          },
+          {
+            "cat": "New research",
+            "text": "Mars, high in the southeast before dawn, keeps surprising chemists: a study published in Nature Communications on April 21, 2026 reported that Curiosity found 21 carbon-bearing molecules in a rock sample called Mary Anning 3, drilled in 2020, seven of them never seen on Mars before. Nobody can yet say whether any relate to life."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Mars Year 39 began on September 30, 2026. Mars years are counted from the northern spring equinox of April 11, 1955, which counts as the start of Year 1, and run backward too: Galileo's first telescopic look at Mars in 1610 falls in Mars Year -183."
+          }
+        ],
+        "research": [
+          {
+            "title": "Organics on Mars: Curiosity finds 21 carbon-bearing molecules in Mary Anning 3",
+            "url": "https://earthsky.org/space/organics-on-mars-mary-anning-3-curiosity-rover/",
+            "source": "EarthSky",
+            "note": "April 2026 coverage of the Nature Communications study; Mars is visible before dawn."
+          },
+          {
+            "title": "Happy New Year, Mars! The Red Planet is turning 39",
+            "url": "https://astronomynow.com/2026/09/29/happy-new-year-mars-the-red-planet-is-turning-39/",
+            "source": "Astronomy Now",
+            "note": "How Mars years are counted, published a month ago."
+          }
+        ]
+      },
+      {
+        "type": "iss",
+        "chance": 34,
+        "title": "Space station at 6:07 AM Friday: low pass",
+        "sub": "The station appears 22 degrees up in the north-northwest at 6:07 AM, peaks 30 degrees up in the north-northeast at 6:08 and sets in the east at 6:11. It is bright, but it stays fairly low and patchy pre-dawn cloud may get in the way.",
+        "look": {
+          "bearing": 22,
+          "label": "North-northeast, 30 degrees up, at 6:08 AM Friday"
+        },
+        "params": {
+          "maxEl": 30
+        },
+        "conds": [
+          {
+            "name": "Pass height",
+            "val": "30 degrees",
+            "score": 0.6,
+            "note": "About a third of the way up the sky, so nearby trees or hills to the north can block it."
+          },
+          {
+            "name": "Clear sky",
+            "val": "37% cloud",
+            "score": 0.67,
+            "note": "7Timer has 37% cloud in the 5 AM block and Open-Meteo shows low cloud thinning from 5 to 7 AM, so there may be gaps."
+          },
+          {
+            "name": "Brightness",
+            "val": "Magnitude -2.2",
+            "score": 0.85,
+            "note": "Brighter than any star in the sky then, easy to spot through thin cloud."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 3
+              },
+              {
+                "t": "8 PM",
+                "v": 3
+              },
+              {
+                "t": "11 PM",
+                "v": 12
+              },
+              {
+                "t": "2 AM",
+                "v": 25
+              },
+              {
+                "t": "5 AM",
+                "v": 37
+              },
+              {
+                "t": "8 AM",
+                "v": 37
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Pass",
+            "value": "6:07-6:11 AM Friday, NNW to E, max 30 degrees NNE at 6:08",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Brightness",
+            "value": "Magnitude -2.2",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Cloud at pass time",
+            "value": "37% (5 AM block)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Low cloud at 6 AM",
+            "value": "58%",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Heavens-Above has this pass starting already 22 degrees up in the north-northwest, so look there at 6:07 AM rather than at the horizon. A better pass follows on Saturday morning, reaching 66 degrees at 6:58 AM at magnitude -3.7."
+          },
+          {
+            "cat": "New research",
+            "text": "NASA's Annual Highlights of Results, published in May 2026, counted 508 publications from station research in fiscal year 2025. About 63% reported Earth and space science, and about 60% were derived results from openly available station data, up 19% on the year before."
+          },
+          {
+            "cat": "History",
+            "text": "On October 29, 1998, Space Shuttle Discovery lifted off on mission STS-95 with Senator John Glenn aboard, more than 36 years after he became the first American to orbit Earth. At 77 he became the oldest person to fly in space."
+          }
+        ],
+        "research": [
+          {
+            "title": "2025 International Space Station Annual Highlights of Results",
+            "url": "https://www.nasa.gov/wp-content/uploads/2026/05/ahr-2025-20260518.pdf",
+            "source": "NASA",
+            "note": "May 2026 summary of what station research produced in 2025."
+          },
+          {
+            "title": "APOD: John Glenn's Discovery launch",
+            "url": "https://science.nasa.gov/image-article/apod-1998-october-30-john-glenn-discovery-launch",
+            "source": "NASA",
+            "note": "Source for the October 29, 1998 STS-95 launch."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset tonight",
+        "sub": "The Sun sets at 6:11 PM into a cloudless sky, so there are no clouds to catch red and pink light. Expect a clean yellow-orange glow low in the west-southwest. This uses total cloud only and is a rough guide.",
+        "look": {
+          "bearing": 250,
+          "label": "West-southwest at sunset, 6:11 PM"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "3% (0% at every level)",
+            "score": 0.3,
+            "note": "Colourful sunsets need some mid or high cloud to light up; Open-Meteo has none at 6 PM."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain",
+            "score": 0.95,
+            "note": "7Timer shows no precipitation through the evening."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "The score uses cloud amount only, not haze, dust or smoke."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud layers around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 0
+              },
+              {
+                "t": "5 PM",
+                "v": 0
+              },
+              {
+                "t": "6 PM",
+                "v": 0
+              },
+              {
+                "t": "7 PM",
+                "v": 1
+              },
+              {
+                "t": "8 PM",
+                "v": 5
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:11 PM EDT",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Low / mid / high cloud at 6 PM",
+            "value": "0% / 0% / 0%",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud, 5 PM and 8 PM",
+            "value": "3% and 3%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo shows no low, mid or high cloud at all from 3 PM to 6 PM, and 7Timer has 3% cloud, so tonight's sunset will be a clean gradient rather than a lit-up cloudscape."
+          },
+          {
+            "cat": "New research",
+            "text": "A study by CU Boulder and the Royal Netherlands Meteorological Institute, posted for review in September 2026, used the TROPOMI satellite to show that flaming wildfires make darker, more light-absorbing smoke while smouldering fires make paler smoke that scatters more light, the difference behind smoky sunsets that look dim red versus milky orange. A referee has questioned how precise the satellite absorption values are."
+          },
+          {
+            "cat": "How it works",
+            "text": "At sunset, sunlight crosses far more air than at midday and most blue light is scattered out along the way. On a clear evening that leaves a yellow-orange glow near the horizon; the deep reds and pinks people remember come from clouds overhead catching that reddened light from below."
+          }
+        ],
+        "research": [
+          {
+            "title": "Combustion controls and plume structure of wildfire aerosol optical properties observed by TROPOMI",
+            "url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-5052/",
+            "source": "EGUsphere (under review for ACP)",
+            "note": "September 2026 preprint on how fire type changes how smoke scatters and absorbs sunlight."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 2,
+        "title": "Aurora very unlikely tonight",
+        "sub": "NOAA's Kp forecast tops out near 2 during dark hours, far below the 7 or so needed this far south. A minor (G1) storm is forecast for Friday night, Kp 5 from 8 PM to 2 AM, which would still usually stay north of Pennsylvania.",
+        "look": {
+          "bearing": 0,
+          "label": "Low in the north"
+        },
+        "params": {
+          "kp": 2.33,
+          "cloud": 19,
+          "moon": 84
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 2.33 max",
+            "score": 0.03,
+            "note": "Quiet geomagnetic conditions all night; SWPC sees no significant solar wind features."
+          },
+          {
+            "name": "Clear sky",
+            "val": "19% mean cloud",
+            "score": 0.83,
+            "note": "Mostly clear, with some cloud after midnight."
+          },
+          {
+            "name": "Moonlight",
+            "val": "84% lit",
+            "score": 0.83,
+            "note": "A bright Moon would wash out a faint glow low in the north."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 2.33
+              },
+              {
+                "t": "8 PM",
+                "v": 2.0
+              },
+              {
+                "t": "11 PM",
+                "v": 1.67
+              },
+              {
+                "t": "2 AM",
+                "v": 1.67
+              },
+              {
+                "t": "5 AM",
+                "v": 1.0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours tonight",
+            "value": "2.33 (5-8 PM block)",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "Friday night forecast",
+            "value": "Kp 5.00 (G1) 8-11 PM, 4.67 11 PM-2 AM",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud, 8 PM to 5 AM",
+            "value": "3%, 12%, 25%, 37% (mean 19%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "84% lit, waning gibbous, rises mid-evening",
+            "source": "Computed from the synodic month; Astronomy",
+            "url": "https://www.astronomy.com/observing/the-sky-today-thursday-october-29-2026/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "SWPC's 3-day forecast, issued 00:30 UTC today, has Kp no higher than 2.33 tonight, then a rise to 5.00 in the 00-03 UTC block on October 31, which is 8-11 PM Friday here. That is minor storm level, worth watching but rarely enough for Pennsylvania."
+          },
+          {
+            "cat": "New research",
+            "text": "Researchers N. Brindley and D. Whiter used the Auroral Structure and Kinetics camera on Svalbard to compare two ways of estimating electric fields above aurora, in a study in JGR Space Physics reported this month. Small mismatches between the methods point to electrons interacting with Alfven waves above the ionosphere, a possible cause of the aurora's finest, fast-changing structures."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Kp is reported in thirds, so SWPC's 4.67 is the value written as 5-. That is why the 3-day forecast already tags Friday's 4.67 block as G1: the bottom edge of minor storm level."
+          }
+        ],
+        "research": [
+          {
+            "title": "Scientists find a possible explanation for tiny patterns in the northern lights",
+            "url": "https://knowridge.com/2026/10/scientists-find-a-possible-explanation-for-tiny-patterns-in-the-northern-lights/",
+            "source": "Knowridge Science Report",
+            "note": "October 2026 report on a JGR Space Physics study of small-scale auroral structure."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Oct 30",
+        "name": "Minor geomagnetic storm forecast",
+        "note": "SWPC forecasts Kp 5 (G1) from 8 to 11 PM Friday; aurora usually needs about Kp 7 at our latitude."
+      },
+      {
+        "date": "Oct 31",
+        "name": "Bright space station pass",
+        "note": "Heavens-Above has a magnitude -3.7 pass reaching 66 degrees in the southwest at 6:58 AM Saturday."
+      },
+      {
+        "date": "Nov 1",
+        "name": "Very high space station pass",
+        "note": "Magnitude -3.6 and 72 degrees up in the northeast at 4:10 AM EST, after clocks fall back (5:10 AM on Heavens-Above's UTC-4 table)."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurids peak",
+        "note": "The AMS lists this fireball-rich peak with a 25%-lit waning crescent Moon."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "The AMS gives a Moon only 4% lit, so dark skies if it is clear."
+      }
+    ],
+    "sourceFailures": [],
+    "ideas": [
+      {
+        "title": "JPL Horizons API rise, transit and set times as a cross-check for planet times",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-10-28",
     "checkedLabel": "Wed Oct 28, 6:00 AM ET",
     "place": "State College, PA",
