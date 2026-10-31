@@ -1,5 +1,753 @@
 [
   {
+    "date": "2026-10-31",
+    "checkedLabel": "Sat Oct 31, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A solid deck of high cloud covers State College from sunset through dawn, so stars, aurora, fog and frost all rate poorly tonight; clocks fall back an hour at 2 AM.",
+    "featured": "sunset",
+    "pick": "Tonight is clouded out, so set clocks back at 2 AM and look ahead: before dawn on Monday, Nov 2, the Moon sits about 1 to 2 degrees from Mars high in the southeast, with Jupiter below them and Regulus nearby.",
+    "next": {
+      "name": "Moon near Mars and Jupiter before dawn",
+      "date": "2026-11-02"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning gibbous",
+        "lit": 66,
+        "note": "Rises during the evening and is high in the south before dawn; Last Quarter on Sunday afternoon."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening",
+          "where": "East-southeast as darkness falls",
+          "note": "Retrograding slowly in front of Cetus; a telescope shows the rings and Titan"
+        },
+        {
+          "name": "Jupiter",
+          "when": "Before dawn",
+          "where": "More than halfway up in the southeast",
+          "note": "About 6 degrees upper right of Regulus"
+        },
+        {
+          "name": "Mars",
+          "when": "Before dawn",
+          "where": "Southeast, 5.6 degrees upper right of Jupiter",
+          "note": "Passes Jupiter on November 16"
+        },
+        {
+          "name": "Venus",
+          "when": "Just before sunrise",
+          "where": "About 5 degrees up in the east-southeast 30 minutes before sunrise",
+          "note": "Emerging from twilight; rising earlier each morning"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Pope John Paul II's October 31, 1992 speech on Galileo closed a study he had opened in which year?",
+      "options": [
+        "1979",
+        "1965",
+        "1987",
+        "1992"
+      ],
+      "answer": 0,
+      "explain": "He reopened the Galileo affair in 1979, and the findings were presented in 1992; there was no re-trial or pardon."
+    },
+    "events": [
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset tonight",
+        "sub": "The Sun sets at 6:08 PM in the west-southwest under a solid sheet of high cloud with some mid-level cloud below it. A full overcast usually blocks the light that would colour it; watch for a gap low in the west, which is the one way it could still glow.",
+        "look": {
+          "bearing": 245,
+          "label": "West-southwest at 6:08 PM"
+        },
+        "params": {
+          "highCloud": 100
+        },
+        "conds": [
+          {
+            "name": "Cloud to catch colour",
+            "val": "97% total",
+            "score": 0.3,
+            "note": "Too much cloud: with the sky nearly covered, sunlight has little room to reach the cloud undersides from below."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain",
+            "score": 0.95,
+            "note": "7Timer shows no precipitation and the NWS puts the rain chance at 0% at 6 PM."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, so treat it as a rough guide."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud layers at sunset (6 PM)",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "Low",
+                "v": 1
+              },
+              {
+                "t": "Mid",
+                "v": 45
+              },
+              {
+                "t": "High",
+                "v": 100
+              }
+            ]
+          },
+          {
+            "label": "High cloud (cirrus) this evening",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "9 PM",
+                "v": 72
+              },
+              {
+                "t": "10 PM",
+                "v": 87
+              },
+              {
+                "t": "11 PM",
+                "v": 100
+              },
+              {
+                "t": "12 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "6:08 PM EDT",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "High cloud at 6 PM",
+            "value": "100% (mid 45%, low 1%)",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud near sunset",
+            "value": "97%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at 6 PM",
+            "value": "0%",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has almost no low cloud at sunset (1%) but a full high deck (100%) and mid-level cloud near 45%. Clocks fall back at 2 AM, so Sunday's sunset, 6:07 PM on today's clock, reads 5:07 PM EST."
+          },
+          {
+            "cat": "New research",
+            "text": "On April 28, 2026, an observer in Mutare, Zimbabwe photographed a faint 'volcanic twilight arch' 20 minutes to an hour after sunset, which EarthSky attributes to stratospheric aerosols still lingering from the January 2022 Hunga Tonga eruption more than four years later. An April 2026 lidar paper likewise tracks those aerosols over Antarctica."
+          },
+          {
+            "cat": "How it works",
+            "text": "High, wispy cirrus sits high enough to catch the last red and orange rays after the Sun has set at ground level, while a low deck is the main obstacle to colour. Tonight's problem is the opposite: the high cloud is solid rather than broken."
+          },
+          {
+            "cat": "On this day",
+            "text": "On October 31, 1992, Pope John Paul II addressed the Pontifical Academy of Sciences on the Galileo affair, closing a study he had opened in 1979. Newspapers called it a pardon, but there was no re-trial or pardon: the Church had accepted the heliocentric model for centuries."
+          }
+        ],
+        "research": [
+          {
+            "title": "Volcanic sunset twilight arch, Mutare, Zimbabwe (April 28, 2026)",
+            "url": "https://ecp.earthsky.org/community-photos/entry/82344",
+            "source": "EarthSky Community Photos",
+            "note": "A 2026 observation of Hunga Tonga aerosols still shaping twilight colour."
+          },
+          {
+            "title": "Lidar detection of Hunga Tonga volcanic aerosols in Antarctica",
+            "url": "https://www.epj-conferences.org/10.1051/epjconf/202636204011",
+            "source": "EPJ Web of Conferences (April 2026)",
+            "note": "Shows the eruption's stratospheric aerosols still being measured years later."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 9,
+        "title": "Valley fog very unlikely at sunrise",
+        "sub": "The air gets close to saturation by dawn Sunday and the wind dies off completely, but a thick cloud deck keeps the ground from cooling enough to form fog. Check the valleys from a ridge at sunrise only if the sky clears overnight.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 3,
+          "wind": 0,
+          "cloud": 97
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "3°F gap",
+            "score": 0.75,
+            "note": "At 5 AM the NWS has 36°F with a 33°F dew point: close, but not quite saturated."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph",
+            "score": 0.95,
+            "note": "Calm all night, which would let fog settle if it formed."
+          },
+          {
+            "name": "Clear sky",
+            "val": "97% cloud",
+            "score": 0.13,
+            "note": "7Timer has the sky 97% covered at every step from sunset to dawn, and Open-Meteo agrees the high deck stays near 100%."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 10,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "12 AM",
+                "v": 6
+              },
+              {
+                "t": "2 AM",
+                "v": 5
+              },
+              {
+                "t": "3 AM",
+                "v": 4
+              },
+              {
+                "t": "5 AM",
+                "v": 3
+              },
+              {
+                "t": "6 AM",
+                "v": 4
+              },
+              {
+                "t": "7 AM",
+                "v": 4
+              },
+              {
+                "t": "8 AM",
+                "v": 5
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temp minus dew point",
+            "value": "3°F (36°F / 33°F at 5 AM EST)",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind then",
+            "value": "0 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise Sunday",
+            "value": "6:41 AM EST",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Mean cloud, dark hours",
+            "value": "97%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS sky goes from mostly cloudy to cloudy by 6 AM Sunday; cloud sends heat back down to the ground, which is why the dew point gap stalls at 3 to 4°F instead of closing."
+          },
+          {
+            "cat": "New research",
+            "text": "A September 2026 safety article from Norway's aviation authority, republished by EASA, warns that a 4°C temperature and dew point gap may be a safe margin on a spring day but not in autumn, because longer nights give the ground much more time to cool."
+          },
+          {
+            "cat": "How it works",
+            "text": "Radiation fog forms at night under a clear sky and little wind, inside a stable layer of air near the ground; once the air cools to its dew point, water vapour condenses on tiny particles called condensation nuclei."
+          }
+        ],
+        "research": [
+          {
+            "title": "Dew point spread and radiation fog",
+            "url": "https://www.easa.europa.eu/community/topics/dew-point-spread-and-radiation-fog",
+            "source": "EASA Community / CAA Norway (September 2026)",
+            "note": "Why autumn needs a wider dew point margin than spring."
+          },
+          {
+            "title": "Radiation fog in southeastern Poland",
+            "url": "https://acp.copernicus.org/articles/25/13493/2025/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "Field study of how radiation fog forms in a stable night layer."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 8,
+        "title": "Poor night for stargazing",
+        "sub": "Saturn is in the east-southeast as darkness falls, but a high cloud deck covers the sky from dusk to dawn and the 66%-lit Moon rises in the evening. The only hope is a brief thin spot in the cirrus around 9 PM.",
+        "look": {
+          "bearing": 115,
+          "label": "East-southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 97,
+          "moon": 66,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "97% cloud",
+            "score": 0.13,
+            "note": "7Timer has the sky 97% covered at every step from sunset to dawn, and Open-Meteo agrees the high deck stays near 100%."
+          },
+          {
+            "name": "Moonlight",
+            "val": "66% lit",
+            "score": 0.7,
+            "note": "The waning gibbous Moon rises during the evening and brightens the sky for the rest of the night."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 of 8",
+            "score": 0.95,
+            "note": "The air itself is clean; the cloud is the whole problem."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 97
+              },
+              {
+                "t": "8 PM",
+                "v": 97
+              },
+              {
+                "t": "11 PM",
+                "v": 97
+              },
+              {
+                "t": "1 AM",
+                "v": 97
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          },
+          {
+            "label": "High cloud (cirrus) this evening",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 100
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              },
+              {
+                "t": "9 PM",
+                "v": 72
+              },
+              {
+                "t": "10 PM",
+                "v": 87
+              },
+              {
+                "t": "11 PM",
+                "v": 100
+              },
+              {
+                "t": "12 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Mean cloud, dark hours",
+            "value": "97%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency (1 best)",
+            "value": "2",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon lit at midnight",
+            "value": "66%",
+            "source": "Computed from the synodic month",
+            "url": "https://whenthecurveslineup.com/2026/10/23/2026-november-1-daylight-saving-time-ends-moon-jupiter-mars-and-the-planets/"
+          },
+          {
+            "name": "Saturn",
+            "value": "East-southeast at dusk",
+            "source": "When the Curves Line Up",
+            "url": "https://whenthecurveslineup.com/2026/10/23/2026-november-1-daylight-saving-time-ends-moon-jupiter-mars-and-the-planets/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Saturn is the brightest star-like point in the east-southeast after dark, slowly moving backward in front of Cetus, and Uranus sits in the same binocular field as the Pleiades, though cloud will hide both tonight."
+          },
+          {
+            "cat": "New research",
+            "text": "A February 2026 paper led by Coralie Neiner describes Pollux, a proposed European spectrograph for NASA's Habitable Worlds Observatory that would split light from 100 nanometres to 1.8 microns and measure polarisation in the ultraviolet; the star it shares a name with sat 5.4 degrees from this morning's Moon."
+          },
+          {
+            "cat": "History",
+            "text": "Halloween is a cross-quarter day, halfway between the September equinox and the December solstice, and the Pleiades used to cross the meridian at midnight around this date; the slow wobble of Earth's axis has moved that to about November 21."
+          }
+        ],
+        "research": [
+          {
+            "title": "The Pollux European instrument concept for HWO",
+            "url": "https://arxiv.org/abs/2602.09828",
+            "source": "arXiv (February 2026)",
+            "note": "A future instrument to study stars and exoplanet atmospheres in ultraviolet light."
+          }
+        ]
+      },
+      {
+        "type": "frost",
+        "chance": 5,
+        "title": "Frost very unlikely at dawn",
+        "sub": "The low near 36°F around dawn Sunday is a few degrees too warm, and the cloud deck holds heat in. Windshields should be wet at most.",
+        "look": null,
+        "params": {
+          "lowF": 36,
+          "wind": 0,
+          "cloud": 97
+        },
+        "conds": [
+          {
+            "name": "Cold enough",
+            "val": "36°F low",
+            "score": 0.45,
+            "note": "Surfaces can run a few degrees colder than the air, but 36°F under cloud is marginal at best."
+          },
+          {
+            "name": "Clear sky",
+            "val": "97% cloud",
+            "score": 0.13,
+            "note": "7Timer has the sky 97% covered at every step from sunset to dawn, and Open-Meteo agrees the high deck stays near 100%."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph",
+            "score": 0.95,
+            "note": "Calm air would help frost, if the sky were clear."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature overnight",
+            "unit": "°F",
+            "max": 60,
+            "source": "NWS",
+            "points": [
+              {
+                "t": "6 PM",
+                "v": 54
+              },
+              {
+                "t": "12 AM",
+                "v": 40
+              },
+              {
+                "t": "2 AM",
+                "v": 38
+              },
+              {
+                "t": "4 AM",
+                "v": 37
+              },
+              {
+                "t": "6 AM",
+                "v": 36
+              },
+              {
+                "t": "8 AM",
+                "v": 39
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Overnight low",
+            "value": "36°F (5 to 7 AM EST)",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at the low",
+            "value": "0 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Mean cloud, dark hours",
+            "value": "97%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS has the air falling from 54°F at 6 PM to 36°F by 5 AM and holding there until after sunrise at 6:41 AM EST, with a 32 to 33°F dew point."
+          },
+          {
+            "cat": "New research",
+            "text": "University of Illinois engineers reported in Nature Physics in May 2026 that ice can spread between frozen droplets by bridges that grow up through the air on water-repelling surfaces, and that these suspended bridges slowed frost spread by more than 80%."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Climate Central's first-freeze studies count the first date from August 1 with a low at or below 32°F, but frost can form when the air is a little warmer than that, because grass and car roofs cool below the air around them."
+          }
+        ],
+        "research": [
+          {
+            "title": "Illinois scientists unveil novel mechanism to halt frost propagation",
+            "url": "https://bioengineer.org/?p=356220",
+            "source": "Bioengineer.org (June 2026)",
+            "note": "How surface wetting changes the way frost spreads."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely tonight",
+        "sub": "A minor G1 storm is possible this evening, peaking near Kp 4.7, but State College needs about Kp 7, and the sky is overcast anyway.",
+        "look": {
+          "bearing": 0,
+          "label": "Low in the north after dark"
+        },
+        "params": {
+          "kp": 4.67,
+          "cloud": 97,
+          "moon": 66
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 4.67",
+            "score": 0.03,
+            "note": "G1 levels from a coronal hole stream; far short of the Kp 7 that usually brings aurora to 41°N."
+          },
+          {
+            "name": "Clear sky",
+            "val": "97% cloud",
+            "score": 0.13,
+            "note": "7Timer has the sky 97% covered at every step from sunset to dawn, and Open-Meteo agrees the high deck stays near 100%."
+          },
+          {
+            "name": "Moonlight",
+            "val": "66% lit",
+            "score": 0.87,
+            "note": "The Moon would wash out a faint glow, but it matters little tonight."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "5 PM",
+                "v": 4.67
+              },
+              {
+                "t": "8 PM",
+                "v": 3.67
+              },
+              {
+                "t": "11 PM",
+                "v": 4.67
+              },
+              {
+                "t": "1 AM",
+                "v": 3.33
+              },
+              {
+                "t": "4 AM",
+                "v": 2.67
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours",
+            "value": "4.67 (G1)",
+            "source": "NOAA SWPC Kp forecast",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "3-day outlook",
+            "value": "G1 expected Oct 31 and Nov 1",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Mean cloud, dark hours",
+            "value": "97%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's Kp table puts the strongest blocks at 5 to 8 PM and 11 PM to 2 AM EDT, both at Kp 4.67, driven by a positive-polarity coronal hole stream that should weaken by Monday."
+          },
+          {
+            "cat": "New research",
+            "text": "In February 2026 NASA flew two sounding rocket missions from Poker Flat, Alaska: GNEISS used paired rockets and ground receivers to make a radio 'CT scan' of the plasma under an aurora, reaching about 319 km."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Some auroras contain 'black aurora', dark patches inside the glow; scientists suspect these mark places where the electric currents above suddenly reverse, which NASA's BADASS rocket flew through to test."
+          }
+        ],
+        "research": [
+          {
+            "title": "NASA fires twin rockets to CT scan the northern lights",
+            "url": "https://thedebrief.org/nasa-fires-twin-rockets-to-ct-scan-the-northern-lights-and-map-hidden-auroral-currents/",
+            "source": "The Debrief (February 2026)",
+            "note": "How GNEISS and BADASS probe the currents that power auroras."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Nov 2",
+        "name": "Moon near Mars before dawn",
+        "note": "The Moon sits about 1 to 2 degrees from Mars in the southeast, with Jupiter below and Regulus nearby."
+      },
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurid fireballs",
+        "note": "The fireball component of the Southern Taurids peaks; rates are low but slow, bright meteors are possible, with a waning Moon."
+      },
+      {
+        "date": "Nov 6-7",
+        "name": "Crescent Moon near Venus",
+        "note": "A thin crescent sits near Venus low in the east-southeast before sunrise."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "A slow, modest shower known for occasional fireballs, near new Moon."
+      },
+      {
+        "date": "Nov 16",
+        "name": "Mars passes Jupiter",
+        "note": "The two planets pass about 1.2 degrees apart before dawn in the southeast."
+      }
+    ],
+    "sourceFailures": [
+      "Comet search (nothing sourced at 8th magnitude or brighter)"
+    ],
+    "ideas": [
+      {
+        "title": "Show a clock-change note on nights when Daylight Saving Time starts or ends",
+        "kind": "feature"
+      }
+    ]
+  },
+  {
     "date": "2026-10-30",
     "checkedLabel": "Fri Oct 30, 6:00 AM ET",
     "place": "State College, PA",
