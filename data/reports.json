@@ -1,5 +1,832 @@
 [
   {
+    "date": "2026-11-02",
+    "checkedLabel": "Mon Nov 2, 5:55 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "Clear low skies at sunset could give some colour at 5:06 PM, then cloud thickens overnight and likely hides the Moon, Mars and Jupiter before dawn.",
+    "featured": "sunset",
+    "pick": "Step outside at 5:06 PM and face west-southwest: with almost no low cloud, any streaks of high cirrus can glow red in the minutes after sunset. If you are up before dawn Tuesday and the sky is clear, look east-southeast for the Moon below Jupiter and Mars.",
+    "next": {
+      "name": "Southern Taurids peak night",
+      "date": "2026-11-04"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning, just past last quarter",
+        "lit": 45,
+        "note": "Not up in the early evening; high in the southeast before dawn, below Mars and Jupiter."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening to after midnight",
+          "where": "East-southeast after dark, south around midnight",
+          "note": "Rings show their south face"
+        },
+        {
+          "name": "Jupiter",
+          "when": "After midnight to dawn",
+          "where": "East to southeast",
+          "note": "The brightest point near the Moon before dawn Tuesday"
+        },
+        {
+          "name": "Mars",
+          "when": "After midnight to dawn",
+          "where": "East to southeast, 4.8 degrees upper right of Jupiter",
+          "note": "Closest to Jupiter on November 15-16"
+        },
+        {
+          "name": "Venus",
+          "when": "Just before sunrise",
+          "where": "About 5 degrees up in the east-southeast",
+          "note": "Spica is 2.3 degrees to its upper left"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "The space station has had people aboard without a break since Expedition 1 arrived on November 2, 2000. Where did that crew launch from?",
+      "options": [
+        "Baikonur Cosmodrome, Kazakhstan",
+        "Kennedy Space Center, Florida",
+        "Plesetsk Cosmodrome, Russia",
+        "Tanegashima Space Center, Japan"
+      ],
+      "answer": 0,
+      "explain": "William Shepherd, Yuri Gidzenko and Sergei Krikalev launched from Baikonur two days before docking."
+    },
+    "events": [
+      {
+        "type": "sunset",
+        "chance": 60,
+        "title": "Colorful sunset possible at 5:06 PM",
+        "sub": "The Sun sets at 5:06 PM in the west-southwest, the second evening on standard time. Low and mid cloud are nearly absent, so any thin high cloud overhead can catch red and orange light after the Sun is down; the models disagree on how much high cloud there will be.",
+        "look": {
+          "bearing": 245,
+          "label": "West-southwest at 5:06 PM"
+        },
+        "params": {
+          "highCloud": 7
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "About 50% total",
+            "score": 0.9,
+            "note": "7Timer puts total cloud near 50% at 4 PM, a good amount for colour, but Open-Meteo shows only 7% high cloud at 5 PM, so the canvas may be thinner than that."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain",
+            "score": 0.95,
+            "note": "7Timer shows no precipitation and the NWS gives a 1-2% chance of rain through the evening."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, which says little about where the cloud sits or how high it is."
+          }
+        ],
+        "series": [
+          {
+            "label": "High cloud around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 57
+              },
+              {
+                "t": "4 PM",
+                "v": 10
+              },
+              {
+                "t": "5 PM",
+                "v": 7
+              },
+              {
+                "t": "6 PM",
+                "v": 99
+              },
+              {
+                "t": "7 PM",
+                "v": 7
+              },
+              {
+                "t": "8 PM",
+                "v": 87
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "5:06 PM EST",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud at 5 PM",
+            "value": "Low 5%, mid 3%, high 7%",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud, 4 PM and 7 PM",
+            "value": "50%, 62%",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance, 6-8 PM",
+            "value": "1-2%",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has high cloud swinging from 57% at 3 PM to 10% at 4 PM and back to 99% at 6 PM, which usually means patchy streaks of cirrus passing through. If one of those streaks sits overhead at 5:06 PM, it can light up after sunset."
+          },
+          {
+            "cat": "New research",
+            "text": "In July 2026, when Canadian wildfire smoke turned New England skies yellow, Connecticut Public's chief meteorologist Garett Argianas explained that smoke particles take out the blue and violet end of sunlight, and that the thicker and denser the smoke, the more oranges and reds come through."
+          },
+          {
+            "cat": "How it works",
+            "text": "At sunset, light reaches you after a long, low path through the air, which scatters most of the blue away. Clouds high in the sky are still in that reddened sunlight after the ground is in shadow, which is why high, thin cloud glows best and a low grey deck on the western horizon blocks the show."
+          },
+          {
+            "cat": "On this day",
+            "text": "On November 2, 2000, the Expedition 1 crew of William Shepherd, Yuri Gidzenko and Sergei Krikalev arrived at the International Space Station, two days after launching from Baikonur. People have lived aboard without a break ever since; by the 25th anniversary at least 290 people from 26 countries had visited."
+          }
+        ],
+        "research": [
+          {
+            "title": "Yellow sky, oh my: Why wildfires and weather turn the sky different colors",
+            "url": "https://www.ctpublic.org/news/2026-07-16/yellow-sky-oh-my-why-wildfires-weather-turn-the-sky-different-colors",
+            "source": "Connecticut Public",
+            "note": "July 2026 explainer on how smoke particle density and size shift the sky toward orange and red."
+          },
+          {
+            "title": "The International Space Station marks 25 years of continuous human presence",
+            "url": "https://www.nasa.gov/history/the-international-space-station-marks-25-years-of-continuous-human-presence/",
+            "source": "NASA",
+            "note": "Source for the Expedition 1 arrival on November 2, 2000."
+          }
+        ]
+      },
+      {
+        "type": "moon",
+        "chance": 31,
+        "title": "Moon below Mars and Jupiter before dawn: partial view",
+        "sub": "Before dawn Tuesday the Moon, a little under half lit, sits below Mars and Jupiter in the east-southeast, with Jupiter the brighter of the two and Regulus between the Moon and Jupiter. Look about an hour before sunrise; cloud is forecast to thicken after 1 AM.",
+        "look": {
+          "bearing": 120,
+          "label": "East-southeast, an hour before sunrise Tuesday"
+        },
+        "params": {
+          "variant": "conjunction",
+          "lit": 41,
+          "near": "Jupiter"
+        },
+        "conds": [
+          {
+            "name": "The grouping",
+            "val": "Moon below Mars and Jupiter",
+            "score": 0.97,
+            "note": "Sky at Night lists November 3 as the morning the half-lit Moon sits below the planet pair after midnight."
+          },
+          {
+            "name": "Moon up at the right time",
+            "val": "High in the southeast before dawn",
+            "score": 0.95,
+            "note": "The Moon is well up after midnight and still high an hour before sunrise."
+          },
+          {
+            "name": "Clear sky",
+            "val": "74% cloud",
+            "score": 0.33,
+            "note": "7Timer has 62% cloud at 1 AM but 97% by 4 AM, so the pre-dawn view is the most at risk."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 50
+              },
+              {
+                "t": "7 PM",
+                "v": 62
+              },
+              {
+                "t": "10 PM",
+                "v": 75
+              },
+              {
+                "t": "1 AM",
+                "v": 62
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Moon",
+            "value": "About 41% lit before dawn (computed); half-lit per Sky at Night",
+            "source": "Look Up calculation and BBC Sky at Night",
+            "url": "https://www.skyatnightmagazine.com/news/planet-alignment-november-december-2026"
+          },
+          {
+            "name": "Grouping",
+            "value": "Moon below Mars and Jupiter after midnight, Nov 3",
+            "source": "BBC Sky at Night",
+            "url": "https://www.skyatnightmagazine.com/news/planet-alignment-november-december-2026"
+          },
+          {
+            "name": "Separations an hour before sunrise",
+            "value": "Moon 8.9 degrees from Jupiter, 12.6 degrees from Mars",
+            "source": "When the Curves Line Up",
+            "url": "https://whenthecurveslineup.com/2026/10/25/2026-november-3-moon-jupiter-mars-venus-and-saturn-todays-highlights/"
+          },
+          {
+            "name": "Cloud cover, 7 PM to 4 AM",
+            "value": "62%, 75%, 62%, 97% (mean 74%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "An hour before sunrise Tuesday, the Moon is about 8.9 degrees from Jupiter and 12.6 degrees from Mars, with Mars 4.8 degrees to Jupiter's upper right. A fist at arm's length covers roughly 10 degrees, so the three fit in about two fists."
+          },
+          {
+            "cat": "New research",
+            "text": "A NASA-funded study in Science, announced October 29, 2026, dated the minerals in Teghaza 001, an 800-gram Martian meteorite found on a salt plain in Mali in 2022, to more than 4.1 billion years old, among the oldest Mars rocks known. The team matched it to 13 possible source areas on Mars."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Watch Mars and Jupiter on clear mornings over the next two weeks: Mars closes in on Jupiter until the two are closest on November 15-16. Sky at Night suggests looking 45 to 60 minutes before sunrise and stopping well before the Sun comes up."
+          }
+        ],
+        "research": [
+          {
+            "title": "NASA-funded study details one of oldest Mars meteorites ever found",
+            "url": "https://www.nasa.gov/solar-system/planets/mars/nasa-funded-study-details-one-of-oldest-mars-meteorites-ever-found/",
+            "source": "NASA",
+            "note": "New dating of a Martian meteorite, relevant to Mars beside the Moon this morning."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 30,
+        "title": "Fair night for stargazing",
+        "sub": "Saturn is the best target, in the east-southeast after dark and in the south by midnight. Cloud near 62-75% through the evening leaves only gaps, but the air between the clouds is clear, and the Moon stays down until late.",
+        "look": {
+          "bearing": 135,
+          "label": "Southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 74,
+          "moon": 45,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 5
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "74% cloud",
+            "score": 0.33,
+            "note": "Gaps are most likely between 7 PM and 1 AM; 7Timer goes fully overcast by 4 AM."
+          },
+          {
+            "name": "Moonlight",
+            "val": "45% lit, rises late",
+            "score": 0.95,
+            "note": "The waning Moon is not up in the early evening, so the evening sky is dark between clouds."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 of 8",
+            "score": 0.95,
+            "note": "Where the cloud breaks, 7Timer rates the air very clean, good for fainter stars."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 50
+              },
+              {
+                "t": "7 PM",
+                "v": 62
+              },
+              {
+                "t": "10 PM",
+                "v": 75
+              },
+              {
+                "t": "1 AM",
+                "v": 62
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover, 7 PM to 4 AM",
+            "value": "62%, 75%, 62%, 97% (mean 74%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency, 7 PM to 1 AM",
+            "value": "2 (1 is clearest)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Saturn",
+            "value": "Rises in the east after sunset, south around midnight",
+            "source": "BBC Sky at Night",
+            "url": "https://www.skyatnightmagazine.com/news/planet-alignment-november-december-2026"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "About an hour after sunset Saturn is nearly 25 degrees up in the east-southeast. In a small telescope the rings show their south face, now tilted toward the Sun and Earth."
+          },
+          {
+            "cat": "New research",
+            "text": "A paper in Science Advances on September 2, 2026, described a ten-sided wave pattern circling Saturn's south pole near 62-63 degrees south, a southern cousin of the famous northern hexagon. Amateur observers are now watching for it alongside long-lived ovals in both hemispheres."
+          },
+          {
+            "cat": "Did you know",
+            "text": "Uranus reaches opposition on November 25 and sits between the Pleiades and the Hyades in Taurus, rising in the east as the evening goes on. From a dark site it is just visible to the naked eye as a faint greenish star."
+          }
+        ],
+        "research": [
+          {
+            "title": "Saturn 2026 apparition notes",
+            "url": "https://britastro.org/section_information_/saturn-uranus-and-neptune-section-overview/saturn-apparition-notes/saturn-2026-apparition-notes",
+            "source": "British Astronomical Association",
+            "note": "Amateur reports this season, including the decagon wave paper and ring spokes."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 30,
+        "title": "Valley fog unlikely at sunrise",
+        "sub": "The air nearly saturates by dawn under calm wind and the NWS lists patchy fog from 3 AM, but thickening cloud keeps the ground from cooling much. Look down into the valleys from a ridge around 6:43 AM sunrise.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 2,
+          "wind": 0,
+          "cloud": 74
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "2°F spread at 7 AM",
+            "score": 0.95,
+            "note": "Temperature 42°F against a 40°F dew point leaves almost no room before the air saturates."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph",
+            "score": 0.95,
+            "note": "Calm air from 4 AM lets cold air pool in the valleys."
+          },
+          {
+            "name": "Clear sky",
+            "val": "74% cloud",
+            "score": 0.33,
+            "note": "Cloud traps the ground's heat, so the valleys cool less than on a clear night."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 10,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "10 PM",
+                "v": 6
+              },
+              {
+                "t": "12 AM",
+                "v": 5
+              },
+              {
+                "t": "2 AM",
+                "v": 4
+              },
+              {
+                "t": "4 AM",
+                "v": 3
+              },
+              {
+                "t": "6 AM",
+                "v": 4
+              },
+              {
+                "t": "7 AM",
+                "v": 2
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Lowest temperature",
+            "value": "42°F at 7 AM",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Smallest spread",
+            "value": "2°F (42°F, dew point 40°F) at 7 AM",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind",
+            "value": "0 mph from 4 AM",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "6:44 AM EST Tuesday",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS hourly forecast has 'Patchy Fog' from 3 AM through 8 AM with humidity reaching 93% at 7 AM, so expect thin patches in the lowest spots rather than a full valley sea."
+          },
+          {
+            "cat": "New research",
+            "text": "A Met Office talk in July 2026 trained machine-learning models on two years of sensor data from Cardington, England. A gradient-boosting model sorted visibility into six classes with 0.97 accuracy, while a model forecasting the exact visibility over time did much worse, with a correlation of only 0.39."
+          },
+          {
+            "cat": "How it works",
+            "text": "Radiation fog forms when the ground loses heat to a clear sky overnight and chills the air touching it to its dew point. Cloud overhead sends some of that heat back down, which is why a cloudy night can stall fog even when the air is nearly saturated."
+          }
+        ],
+        "research": [
+          {
+            "title": "Machine learning for visibility range forecasting and classification",
+            "url": "https://rse-south-west.society-rse.org/meetings/2026-07-31-bath/talks/FDevoto_2026-07.pdf",
+            "source": "Met Office (RSE South West meeting)",
+            "note": "July 2026 results on predicting fog-level visibility from weather sensors."
+          }
+        ]
+      },
+      {
+        "type": "iss",
+        "chance": 19,
+        "title": "Space station at 5:12 AM Tuesday: poor pass",
+        "sub": "A bright pass appears 37 degrees up in the southwest at 5:12 AM Tuesday and sinks to the south-southeast by 5:15. It is bright enough to see easily, but cloud is forecast to cover the sky by then.",
+        "look": {
+          "bearing": 225,
+          "label": "Southwest, 37 degrees up, at 5:12 AM Tuesday"
+        },
+        "params": {
+          "maxEl": 37
+        },
+        "conds": [
+          {
+            "name": "Pass height",
+            "val": "37 degrees",
+            "score": 0.6,
+            "note": "Moderately high, clear of most trees, and it appears already well up."
+          },
+          {
+            "name": "Clear sky",
+            "val": "74% cloud",
+            "score": 0.33,
+            "note": "7Timer has 97% cloud at 4 AM, close to the pass time."
+          },
+          {
+            "name": "Brightness",
+            "val": "Magnitude -3.0",
+            "score": 0.95,
+            "note": "Brighter than Jupiter, easy to see through any gap."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 50
+              },
+              {
+                "t": "7 PM",
+                "v": 62
+              },
+              {
+                "t": "10 PM",
+                "v": 75
+              },
+              {
+                "t": "1 AM",
+                "v": 62
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Pass",
+            "value": "5:12 AM 37° SW, 5:15 AM 10° SSE",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Brightness",
+            "value": "Magnitude -3.0",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Cloud cover, 7 PM to 4 AM",
+            "value": "62%, 75%, 62%, 97% (mean 74%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "This pass begins at its highest point, 37 degrees up, because the station flies out of Earth's shadow into sunlight right there. The next evening passes are November 9 to 11, including a 66-degree pass at 6:46 PM on the 11th."
+          },
+          {
+            "cat": "New research",
+            "text": "The ISS National Lab reported in January 2026 that research it sponsored produced 76 peer-reviewed papers in fiscal year 2025, up from a record 51 the year before. One highlight: brain organoids self-assembled in days aboard the station, compared with months on Earth."
+          },
+          {
+            "cat": "How it works",
+            "text": "You only see the station when it is in sunlight and you are in darkness, which is why passes come in the hour or two after sunset or before sunrise. Passes that start or end abruptly mid-sky are the station entering or leaving Earth's shadow."
+          }
+        ],
+        "research": [
+          {
+            "title": "ISS National Lab marks record year for space-based scientific results",
+            "url": "https://issnationallab.org/?p=51415",
+            "source": "ISS National Lab",
+            "note": "January 2026 count of peer-reviewed results from station research."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely tonight",
+        "sub": "Kp is forecast to stay at 2 or below overnight, far short of the 7 or more State College needs, and cloud covers most of the sky.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low over the horizon"
+        },
+        "params": {
+          "kp": 2,
+          "cloud": 74,
+          "moon": 45
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 2 max",
+            "score": 0.03,
+            "note": "NOAA expects no G1 or greater storms through November 4."
+          },
+          {
+            "name": "Clear sky",
+            "val": "74% cloud",
+            "score": 0.33,
+            "note": "Even a surprise display would be hard to see through this cloud."
+          },
+          {
+            "name": "Moonlight",
+            "val": "45% lit",
+            "score": 0.91,
+            "note": "The Moon is up after midnight and would wash out a faint glow."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 2.0
+              },
+              {
+                "t": "7 PM",
+                "v": 1.67
+              },
+              {
+                "t": "10 PM",
+                "v": 2.0
+              },
+              {
+                "t": "1 AM",
+                "v": 1.67
+              },
+              {
+                "t": "4 AM",
+                "v": 1.33
+              },
+              {
+                "t": "7 AM",
+                "v": 0.67
+              }
+            ]
+          },
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 50
+              },
+              {
+                "t": "7 PM",
+                "v": 62
+              },
+              {
+                "t": "10 PM",
+                "v": 75
+              },
+              {
+                "t": "1 AM",
+                "v": 62
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours",
+            "value": "2.0",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "Highest Kp, past 24 hours",
+            "value": "5 (G1)",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud cover, 7 PM to 4 AM",
+            "value": "62%, 75%, 62%, 97% (mean 74%)",
+            "source": "7Timer ASTRO",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's 3-day forecast says Kp briefly reached 5, a minor G1 storm, in the 24 hours before it was issued, but it expects Kp to stay below storm levels through November 4."
+          },
+          {
+            "cat": "New research",
+            "text": "NASA's MAVEN team reported in Nature Communications in July 2026 that a miniature version of the Dungey cycle, the process that drives Earth's auroras, runs over Mars' patches of magnetized crust, producing small, localized auroras there."
+          },
+          {
+            "cat": "How it works",
+            "text": "Kp is a 0 to 9 scale of how disturbed Earth's magnetic field is, averaged over 3-hour blocks from magnetometers around the world. As Kp rises, the auroral oval spreads toward the equator, which is why a latitude like State College's needs Kp around 7."
+          }
+        ],
+        "research": [
+          {
+            "title": "NASA's MAVEN illuminates new understanding of auroras at Mars",
+            "url": "https://science.nasa.gov/missions/maven/nasas-maven-illuminates-new-understanding-of-auroras-at-mars/",
+            "source": "NASA",
+            "note": "July 2026 study linking Martian auroras to an Earth-like process."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Nov 4-5",
+        "name": "Southern Taurids peak",
+        "note": "A slow shower known for fireballs, with a fireball component peaking Nov 5 under a 25% lit waning Moon."
+      },
+      {
+        "date": "Nov 6-7",
+        "name": "Crescent Moon near Venus",
+        "note": "A thin crescent joins Venus and Spica low in the east-southeast before sunrise."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "Occasional fireballs under a 4% lit Moon."
+      },
+      {
+        "date": "Nov 15-16",
+        "name": "Mars and Jupiter closest",
+        "note": "The pair look like a bright double star in the east-southeast before dawn."
+      },
+      {
+        "date": "Nov 16-17",
+        "name": "Leonids peak",
+        "note": "Best after midnight, with a 39% lit waxing crescent Moon."
+      }
+    ],
+    "sourceFailures": [
+      "Comet search (nothing sourced at 8th magnitude or brighter)",
+      "AMS meteor calendar (no ZHR, speed or radiant)"
+    ],
+    "ideas": [
+      {
+        "title": "Planet-pair event for close conjunctions such as Mars and Jupiter on Nov 15-16",
+        "kind": "feature"
+      }
+    ]
+  },
+  {
     "date": "2026-11-01",
     "checkedLabel": "Sun Nov 1, 5:55 AM ET",
     "place": "State College, PA",
