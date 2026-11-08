@@ -1,5 +1,607 @@
 [
   {
+    "date": "2026-11-08",
+    "checkedLabel": "Sun Nov 8, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A dry, mostly clear and moonless evening on the eve of new Moon, with the darkest, clearest sky from dusk to about 10 PM before some cloud drifts in toward dawn.",
+    "featured": "stars",
+    "pick": "Between 7 and 10 PM, find Saturn as the bright steady point in the southeast, then turn high in the east to look for the Andromeda Galaxy as a faint oval glow; with the Moon down, this is the darkest evening of the month.",
+    "next": {
+      "name": "New Moon and an evening space station pass",
+      "date": "2026-11-09"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waning crescent",
+        "lit": 1,
+        "note": "About 1% lit and below the horizon all evening; new Moon is tomorrow."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening",
+          "where": "Southeast after dusk",
+          "note": "The brightest point in the evening sky tonight"
+        },
+        {
+          "name": "Jupiter and Mars",
+          "when": "Before dawn",
+          "where": "Southeast before sunrise",
+          "note": "Closing in for their closest pairing on Nov 14-17, when Mars passes about a degree north of Jupiter"
+        },
+        {
+          "name": "Venus",
+          "when": "Before dawn",
+          "where": "Low in the southeast",
+          "note": "Mercury joins it low in the southeast later this month, at greatest elongation on Nov 20"
+        }
+      ]
+    },
+    "quiz": {
+      "q": "Edmond Halley, born on November 8, 1656, paid for the first printing of which famous book?",
+      "options": [
+        "Isaac Newton's Principia",
+        "Galileo's Starry Messenger",
+        "Kepler's New Astronomy",
+        "Copernicus's On the Revolutions"
+      ],
+      "answer": 0,
+      "explain": "Halley encouraged Newton to publish and paid for the 1687 edition of the Principia, then used its law of gravity to predict his comet's 1758 return."
+    },
+    "events": [
+      {
+        "type": "stars",
+        "chance": 69,
+        "title": "Great night for stargazing",
+        "sub": "A moonless, mostly clear evening on the eve of new Moon. Saturn is the bright steady point in the southeast after dusk, and the dark sky between about 7 and 10 PM is the time to look for the Milky Way and the Andromeda Galaxy before some cloud drifts in toward dawn.",
+        "look": {
+          "bearing": 135,
+          "label": "Southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 11,
+          "moon": 1,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "11% average cloud",
+            "score": 0.9,
+            "note": "7Timer has 12% cloud at 7 PM and 3% at 10 PM and 1 AM, rising to 25% at 4 AM; the NWS is less sure and calls it partly to mostly cloudy after 9 PM, so the early evening is the safest window."
+          },
+          {
+            "name": "Moonlight",
+            "val": "About 1% lit, down all evening",
+            "score": 0.95,
+            "note": "New Moon is tomorrow, so the sky is as dark as it gets all month."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 2 to 4 of 8",
+            "score": 0.8,
+            "note": "7Timer rates the air very clear (2) at 7 and 10 PM, slipping to 3 at 1 AM and 4 by 4 AM, so faint objects look best in the evening."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 37
+              },
+              {
+                "t": "7 PM",
+                "v": 12
+              },
+              {
+                "t": "10 PM",
+                "v": 3
+              },
+              {
+                "t": "1 AM",
+                "v": 3
+              },
+              {
+                "t": "4 AM",
+                "v": 25
+              },
+              {
+                "t": "7 AM",
+                "v": 62
+              }
+            ]
+          },
+          {
+            "label": "Transparency (1 clearest, 8 haziest)",
+            "unit": "",
+            "max": 8,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "7 PM",
+                "v": 2
+              },
+              {
+                "t": "10 PM",
+                "v": 2
+              },
+              {
+                "t": "1 AM",
+                "v": 3
+              },
+              {
+                "t": "4 AM",
+                "v": 4
+              },
+              {
+                "t": "7 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover (dark hours)",
+            "value": "12% at 7 PM, 3% at 10 PM, 3% at 1 AM, 25% at 4 AM (average 11%)",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency",
+            "value": "2, 2, 3 and 4 of 8 through the night",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Low, mid and high cloud",
+            "value": "0% from 5 PM to 10 PM, low cloud 8 to 14% around midnight",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Hourly sky",
+            "value": "Clear to mostly clear 6 to 8 PM, partly to mostly cloudy after 9 PM",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Moon",
+            "value": "About 1% lit, waning, new Moon tomorrow; below the horizon all evening",
+            "source": "Computed from the average synodic month",
+            "url": "https://www.skyatnightmagazine.com/advice/stargazing-november-2026"
+          },
+          {
+            "name": "Planets",
+            "value": "Saturn in the evening; Jupiter and Mars before dawn, closest on Nov 14-17",
+            "source": "BBC Sky at Night Magazine",
+            "url": "https://www.skyatnightmagazine.com/advice/stargazing-november-2026"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "This is the darkest evening of the month: the Moon is about 1% lit and stays down, and 7Timer has the cloud at just 3% at 10 PM with transparency 2 of 8. Open-Meteo shows no cloud at any level from 5 to 10 PM, while the NWS hourly forecast adds some cloud after 9 PM, so start early."
+          },
+          {
+            "cat": "New research",
+            "text": "In June 2026 astronomers announced Andromeda XXXVI, one of the faintest galaxies known around the Andromeda Galaxy. Amateur astronomer Giuseppe Donatiello spotted it in public survey images; follow-up with the Gran Telescopio Canarias found just 46 member stars, about 12.5 billion years old. The paper is in Astronomy & Astrophysics."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "To see the Andromeda Galaxy without a telescope, give your eyes time to adapt to the dark away from lights and look slightly to one side of where it sits: the edge of your vision is more sensitive to faint light, and the galaxy's oval glow appears more clearly than when you stare straight at it."
+          },
+          {
+            "cat": "On this day",
+            "text": "Edmond Halley was born on November 8, 1656. He catalogued 341 southern stars from Saint Helena, paid for the 1687 printing of Newton's Principia, and used Newton's gravity to predict that the comet now named after him would return in 1758, which it did after his death."
+          }
+        ],
+        "research": [
+          {
+            "title": "Surrey astronomers help discover one of the faintest galaxies around Andromeda",
+            "url": "https://www.surrey.ac.uk/news/surrey-astronomers-help-discover-one-faintest-galaxies-around-andromeda",
+            "source": "University of Surrey",
+            "note": "June 2026: an amateur's find in public survey images confirmed as an ultra-faint dwarf galaxy orbiting Andromeda."
+          },
+          {
+            "title": "Edmond Halley",
+            "url": "https://en.wikipedia.org/wiki/Edmond_Halley",
+            "source": "Wikipedia",
+            "note": "Background for the On this day fact: born November 8, 1656."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 24,
+        "title": "Valley fog unlikely at sunrise",
+        "sub": "The air comes within 3°F of saturation by 7 AM, but a 12 mph breeze will keep stirring the valleys, so fog has little chance before the 6:51 AM sunrise.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 3,
+          "wind": 12,
+          "cloud": 11
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "3°F gap at 7 AM",
+            "score": 0.75,
+            "note": "The NWS has 41°F with a 38°F dew point at 7 AM, close enough for mist in sheltered spots."
+          },
+          {
+            "name": "Light wind",
+            "val": "12 mph at 7 AM",
+            "score": 0.35,
+            "note": "Wind picks up from 8 mph overnight to 12 mph by 5 AM, too much for the still, chilled layer that radiation fog needs."
+          },
+          {
+            "name": "Clear sky",
+            "val": "11% average cloud",
+            "score": 0.9,
+            "note": "Mostly clear skies let the ground cool, but 7Timer adds cloud toward dawn, rising to 62% by 7 AM."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 15,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "1 AM",
+                "v": 6
+              },
+              {
+                "t": "3 AM",
+                "v": 6
+              },
+              {
+                "t": "5 AM",
+                "v": 4
+              },
+              {
+                "t": "6 AM",
+                "v": 5
+              },
+              {
+                "t": "7 AM",
+                "v": 3
+              },
+              {
+                "t": "8 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Lowest temperature, midnight to 8 AM",
+            "value": "41°F at 7 AM",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Smallest temperature minus dew point",
+            "value": "3°F at 7 AM (41°F and 38°F)",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at that time",
+            "value": "12 mph",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "6:51 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS keeps the dew point climbing from 32°F at 5 PM to 38-39°F overnight while the temperature only falls to 41°F, but the wind never drops below 8 mph and reaches 12 mph by dawn, which mixes the cool air near the ground away before fog can settle."
+          },
+          {
+            "cat": "New research",
+            "text": "California's 2026 climate-indicators report says winter tule fog in the Central Valley fell 46% on average from 1981 to 2014, yet winter 2025-26 was unusually foggy: heavy early autumn rain followed by a strong high-pressure system trapped soil moisture under an inversion until a December 2025 storm cleared it."
+          },
+          {
+            "cat": "History",
+            "text": "Research cited in that report found Central Valley fog increased significantly from 1930 to 1970 as motor-vehicle nitrogen oxide emissions rose, then declined after 1980 as emission rules cleaned the air: pollution particles give water vapour something to condense on."
+          }
+        ],
+        "research": [
+          {
+            "title": "Indicators of Climate Change in California (2026): Central Valley Fog",
+            "url": "https://oehha.ca.gov/sites/default/files/media/2026-09/07_CentralValleyFog.pdf",
+            "source": "California OEHHA",
+            "note": "2026 report on long-term fog decline, the unusually foggy 2025-26 winter, and the role of air pollution."
+          }
+        ]
+      },
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset at 4:59 PM",
+        "sub": "A dry, cloudless sunset at 4:59 PM: Open-Meteo has no low, mid or high cloud at 5 PM, and without clouds to catch the light the colour stays in a thin band along the western horizon.",
+        "look": {
+          "bearing": 241,
+          "label": "West-southwest at 4:59 PM"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud to catch colour",
+            "val": "0% at 5 PM",
+            "score": 0.3,
+            "note": "Clouds are what turn red and orange after sunset; a clear sky gives a clean but plain glow."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "Sunny, 0% rain chance",
+            "score": 0.95,
+            "note": "The NWS has sunny skies and 55°F at 5 PM."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, so treat it as a rough guide; 7Timer had 37% cloud at 4 PM, so a few clouds may linger."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud layers around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 0
+              },
+              {
+                "t": "4 PM",
+                "v": 0
+              },
+              {
+                "t": "5 PM",
+                "v": 0
+              },
+              {
+                "t": "6 PM",
+                "v": 0
+              },
+              {
+                "t": "7 PM",
+                "v": 0
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "4:59 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud at 5 PM",
+            "value": "Low 0%, mid 0%, high 0%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Weather at 5 PM",
+            "value": "Sunny, 55°F, dew point 32°F, 0% rain chance",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Cloud at 4 PM",
+            "value": "37%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS has a 55°F temperature and a 32°F dew point at 5 PM, a dry and clean airmass; with Open-Meteo showing no cloud in any layer at sunset, expect a crisp yellow-orange horizon rather than a coloured sky."
+          },
+          {
+            "cat": "New research",
+            "text": "On August 10, 2026, University of Seville researcher Antonio Jordán photographed smoke from the Niebla wildfire, about 60 km away, turning Seville's twilight pink, mauve and violet 25 minutes after sunset. His EGU Imaggeo image explains that the smoke scattered and absorbed part of the sunlight that normally leaves a deep blue twilight."
+          },
+          {
+            "cat": "How it works",
+            "text": "At sunset, sunlight crosses so much air that most blue light is scattered out and mainly red and orange reach you. On a cloudless evening that light only shows near the horizon; clouds overhead act as a screen that catches it, which is why the most colourful sunsets need some cloud."
+          }
+        ],
+        "research": [
+          {
+            "title": "Purple haze over the city",
+            "url": "https://imaggeo.egu.eu/view/20307/",
+            "source": "EGU Imaggeo",
+            "note": "August 2026 photo and explanation of how wildfire smoke changed twilight colours over Seville."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 3,
+        "title": "Aurora very unlikely",
+        "sub": "A coronal hole stream is keeping Earth's field unsettled, but NOAA's Kp peaks at 4.67 between 10 PM and 1 AM, far short of the Kp 7 usually needed this far south.",
+        "look": {
+          "bearing": 0,
+          "label": "Low on the northern horizon, if at all"
+        },
+        "params": {
+          "kp": 4.67,
+          "cloud": 11,
+          "moon": 1
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 4.67 at most",
+            "score": 0.03,
+            "note": "NOAA forecasts Kp 3.67 to 4.67 through the dark hours; at about 41N an aurora usually needs Kp 7 or more."
+          },
+          {
+            "name": "Clear sky",
+            "val": "11% average cloud",
+            "score": 0.9,
+            "note": "The sky is mostly clear in the evening, so a surprise outburst would at least be visible."
+          },
+          {
+            "name": "Moonlight",
+            "val": "About 1% lit",
+            "score": 1.0,
+            "note": "No Moon tonight to wash out a faint glow."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 4.67
+              },
+              {
+                "t": "7 PM",
+                "v": 3.67
+              },
+              {
+                "t": "10 PM",
+                "v": 4.67
+              },
+              {
+                "t": "1 AM",
+                "v": 3.67
+              },
+              {
+                "t": "4 AM",
+                "v": 3.0
+              },
+              {
+                "t": "7 AM",
+                "v": 2.67
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours",
+            "value": "4.67 (10 PM to 1 AM)",
+            "source": "NOAA SWPC Kp forecast",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "3-day outlook",
+            "value": "Highest expected Kp 5 (G1), with a chance of G2 on Nov 8 into Nov 9 from a coronal hole stream",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud",
+            "value": "11% average in the dark hours",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA blames this weekend's activity on a high-speed stream from a negative-polarity coronal hole. Its 3-day forecast allows a chance of G2 storm levels today into Monday, but even G2 corresponds to Kp 6, still below what usually brings aurora into view from central Pennsylvania."
+          },
+          {
+            "cat": "New research",
+            "text": "New Mexico State University graduate student Khagendra Katuwal and R.T. James McAteer studied 70 coronal holes with NASA's Solar Dynamics Observatory and found about 88% had a strong imbalance between their magnetic polarities, which they link to fast solar wind. The work, released in March 2026, appears in The Astrophysical Journal."
+          },
+          {
+            "cat": "How it works",
+            "text": "Coronal holes are regions where the Sun's magnetic field lines open into space instead of looping back down. As McAteer put it, regions with open field lines are unbalanced, letting particles escape easily and stream out as the fast solar wind behind storms like this weekend's."
+          }
+        ],
+        "research": [
+          {
+            "title": "NMSU astronomy student's research on coronal holes improves space weather forecasting",
+            "url": "https://newsroom.nmsu.edu/news/nmsu-astronomy-student-s-research-on-coronal-holes-improves-space-weather-forecasting/s/bb3222af-0d64-4162-9ed2-8e159ac6a9c4",
+            "source": "New Mexico State University",
+            "note": "March 2026 study linking magnetic imbalance in coronal holes to the fast solar wind behind tonight's unsettled field."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Nov 9",
+        "name": "New Moon and a low space station pass, 6:43 PM",
+        "note": "The station rises in the south-southwest and reaches only 19 degrees in the south at magnitude -1.8."
+      },
+      {
+        "date": "Nov 11",
+        "name": "Bright space station pass, 6:43 PM",
+        "note": "A high pass reaching 66 degrees in the south-southwest at magnitude -3.6, the best of the week."
+      },
+      {
+        "date": "Nov 11-12",
+        "name": "Northern Taurids peak",
+        "note": "A fireball-rich shower with only a 4% waxing crescent Moon, according to the American Meteor Society."
+      },
+      {
+        "date": "Nov 14-17",
+        "name": "Mars and Jupiter closest",
+        "note": "Mars passes about a degree north of Jupiter in the southeast before dawn."
+      },
+      {
+        "date": "Nov 17-18",
+        "name": "Leonids peak",
+        "note": "From Comet 55P/Tempel-Tuttle; the crescent Moon sets in the evening, leaving the late hours dark."
+      }
+    ],
+    "ideas": [
+      {
+        "title": "Deep-sky target of the night, such as the Andromeda Galaxy, on moonless nights",
+        "kind": "feature"
+      }
+    ],
+    "sourceFailures": []
+  },
+  {
     "date": "2026-11-07",
     "checkedLabel": "Sat Nov 7, 6:00 AM ET",
     "place": "State College, PA",
