@@ -1,5 +1,826 @@
 [
   {
+    "date": "2026-11-15",
+    "checkedLabel": "Sun Nov 15, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A low cloud deck covers State College through tonight and clears tomorrow afternoon, just ahead of the Leonids and a minor geomagnetic storm forecast for Monday night.",
+    "featured": "sunset",
+    "pick": "Tonight stays overcast, so plan for Monday: 7Timer clears the sky to 12% by 7 PM and 3% by 10 PM, and the space station crosses from the west at 5:58 PM, climbing to 27 degrees in the north-northwest. After the Moon sets, the Leonids are building toward their Nov 17-18 peak.",
+    "next": {
+      "name": "Leonids meteor shower peak",
+      "date": "2026-11-17"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waxing crescent",
+        "lit": 37,
+        "note": "About 29 degrees up in the southwest at sunset and setting around 10 PM, behind cloud tonight."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening until about 2:50 AM",
+          "where": "South after dark",
+          "note": "The only bright planet of the evening this month."
+        },
+        {
+          "name": "Jupiter and Mars",
+          "when": "Before dawn",
+          "where": "Southeast, in Leo",
+          "note": "1.2 degrees apart on Nov 15-16, close enough to share one low-power telescope view."
+        },
+        {
+          "name": "Venus",
+          "when": "Before dawn",
+          "where": "Low in the east-southeast",
+          "note": "Heading for greatest brilliancy, about magnitude -4.9, around Nov 25-29."
+        },
+        {
+          "name": "Mercury",
+          "when": "About 45 minutes before sunrise",
+          "where": "7 to 10 degrees up in the east-southeast",
+          "note": "Greatest western elongation, 19.6 degrees from the Sun, on Nov 20."
+        }
+      ]
+    },
+    "quiz": {
+      "q": "William Herschel, born on November 15, 1738, found a new planet in 1781. Whom did he first name it after?",
+      "options": [
+        "King George III",
+        "Isaac Newton",
+        "His sister Caroline",
+        "The Roman god Uranus"
+      ],
+      "answer": 0,
+      "explain": "He called it Georgium sidus, the Georgian star, after King George III; the name Uranus came later."
+    },
+    "events": [
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset at 4:53 PM",
+        "sub": "A closed low cloud deck sits over the western horizon at sunset with no mid or high cloud above it to catch colour. This rating uses total cloud only and is a rough guide.",
+        "look": {
+          "bearing": 242,
+          "label": "West-southwest at sunset"
+        },
+        "params": {
+          "highCloud": 0
+        },
+        "conds": [
+          {
+            "name": "Cloud at sunset",
+            "val": "97% total; low 100%, mid 0%, high 0% at 5 PM",
+            "score": 0.3,
+            "note": "Colour needs high or mid cloud lit from below through a clear western horizon; tonight there is only the low deck."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "0% rain chance at 5 PM",
+            "score": 0.95,
+            "note": "The NWS has partly sunny skies and no rain at 5 PM, and 7Timer shows no precipitation."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, so treat it as a rough guide."
+          }
+        ],
+        "series": [
+          {
+            "label": "Low cloud around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 100
+              },
+              {
+                "t": "4 PM",
+                "v": 100
+              },
+              {
+                "t": "5 PM",
+                "v": 100
+              },
+              {
+                "t": "6 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 66
+              },
+              {
+                "t": "8 PM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "4:53 PM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud layers at 5 PM",
+            "value": "Low 100%, mid 0%, high 0%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud at 4 PM",
+            "value": "97%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at 5 PM",
+            "value": "0%, partly sunny",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has the low cloud at 100% from 3 PM to 6 PM with nothing at all in the mid or high layers, so there is no upper cloud for the setting Sun to light. Its only gap is a dip to 66% at 7 PM, about two hours after the colour has gone."
+          },
+          {
+            "cat": "New research",
+            "text": "An April 2026 study in Atmospheric Chemistry and Physics used 60 pyranometers at the ARM Southern Great Plains site to watch cloud shadows pass. Right at the edge of a shadow, sunlight on the ground jumped as much as 20% above clear-sky values, because light scatters sideways out of the cloud edges, and the size of the gap and the height of the cloud base set how strong the boost is."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "When you judge a coming sunset, look up as well as west: thin high or mid cloud overhead with a clear strip on the western horizon is the setup that colours, while a low deck like today's blocks the light before it can reach anything above it."
+          },
+          {
+            "cat": "On this day",
+            "text": "William Herschel was born on November 15, 1738, in Hanover. In 1800 he split sunlight with a prism and set blackened thermometers in each colour; the temperature rose from violet to red and was highest of all just past the red end, where no light showed. He had found the infrared part of sunlight, which he called calorific rays."
+          }
+        ],
+        "research": [
+          {
+            "title": "Characterisation of cloud shadow transition signatures using a dense pyranometer network",
+            "url": "https://acp.copernicus.org/articles/26/5727/2026/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "April 2026 measurements of how sunlight brightens at the edges of cloud gaps."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 15,
+        "title": "Valley fog very unlikely at sunrise",
+        "sub": "The air is almost saturated before dawn and nearly calm, but the low overcast keeps the ground from cooling, which is what normally lets fog form in the valleys. Look for low cloud on the ridges rather than fog below them.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 1,
+          "wind": 2,
+          "cloud": 93
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "1°F gap at 4 AM (32°F, dew point 31°F)",
+            "score": 0.95,
+            "note": "The air needs to cool only a degree to reach its dew point."
+          },
+          {
+            "name": "Light wind",
+            "val": "2 mph at 4 AM",
+            "score": 0.95,
+            "note": "Calm air lets a fog layer settle instead of mixing out."
+          },
+          {
+            "name": "Clear sky",
+            "val": "93% average cloud, 6 PM to 6 AM",
+            "score": 0.17,
+            "note": "7Timer keeps the sky 75% to 97% covered all night, and Open-Meteo has the low cloud at 100% nearly every hour."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point before dawn",
+            "unit": "°F",
+            "max": 10,
+            "source": "NWS hourly forecast",
+            "points": [
+              {
+                "t": "12 AM",
+                "v": 4
+              },
+              {
+                "t": "2 AM",
+                "v": 3
+              },
+              {
+                "t": "4 AM",
+                "v": 1
+              },
+              {
+                "t": "6 AM",
+                "v": 4
+              },
+              {
+                "t": "8 AM",
+                "v": 6
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Smallest temperature minus dew point gap",
+            "value": "1°F at 4 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at 4 AM",
+            "value": "2 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "6:59 AM",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Low cloud before dawn",
+            "value": "95-100%",
+            "source": "Open-Meteo (CC BY 4.0)",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS hourly forecast has the temperature and dew point only 1°F apart at 4 AM with a 2 mph wind, which on a clear night would point strongly to valley fog. Open-Meteo keeps the low cloud at 95% to 100% right through sunrise, though, so the ground stays blanketed."
+          },
+          {
+            "cat": "New research",
+            "text": "A May 2026 paper in Theoretical and Applied Climatology by Eken and Asilhan Sirdas of Istanbul Technical University built a Radiation Fog Coefficient from 38 linked measures, from radiative cooling to dew-point depression and wind, and tested it on seven night-time low-visibility cases in Türkiye. It is centred on 3 to 4 AM, when cooling is strongest and the dew-point gap is usually smallest, which matches tonight's 4 AM minimum."
+          },
+          {
+            "cat": "How it works",
+            "text": "Valley fog on a calm night starts with the ground radiating heat to space. A cloud deck sends much of that heat back down, so even saturated air can stay a degree or so above its dew point all night, as forecast tonight."
+          }
+        ],
+        "research": [
+          {
+            "title": "A multi-parameter diagnostic framework for radiation fog and nocturnal visibility",
+            "url": "https://research.itu.edu.tr/en/publications/a-multi-parameter-diagnostic-framework-for-radiation-fog-and-noct/",
+            "source": "Theoretical and Applied Climatology (Istanbul Technical University)",
+            "note": "May 2026 framework that separates radiation fog from other causes of poor visibility."
+          }
+        ]
+      },
+      {
+        "type": "frost",
+        "chance": 12,
+        "title": "Frost very unlikely at dawn",
+        "sub": "The low touches 32°F around 4 AM with almost no wind, but the overcast keeps lawns and roofs from cooling below the air, which is how frost forms. Exposed car windshields are the most likely place to find any.",
+        "look": null,
+        "params": {
+          "lowF": 32,
+          "wind": 2,
+          "cloud": 93
+        },
+        "conds": [
+          {
+            "name": "Cold enough",
+            "val": "Low 32°F at 4 AM",
+            "score": 0.75,
+            "note": "Right at freezing, so surfaces need to cool a little below the air to frost over."
+          },
+          {
+            "name": "Clear sky",
+            "val": "93% average cloud, 6 PM to 6 AM",
+            "score": 0.17,
+            "note": "7Timer keeps the sky 75% to 97% covered all night, and Open-Meteo has the low cloud at 100% nearly every hour."
+          },
+          {
+            "name": "Light wind",
+            "val": "2 mph at 4 AM",
+            "score": 0.95,
+            "note": "Still air would let a cold layer form on the ground if the sky were clear."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature overnight",
+            "unit": "°F",
+            "max": 50,
+            "source": "NWS hourly forecast",
+            "points": [
+              {
+                "t": "9 PM",
+                "v": 37
+              },
+              {
+                "t": "12 AM",
+                "v": 35
+              },
+              {
+                "t": "2 AM",
+                "v": 34
+              },
+              {
+                "t": "4 AM",
+                "v": 32
+              },
+              {
+                "t": "6 AM",
+                "v": 35
+              },
+              {
+                "t": "8 AM",
+                "v": 38
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Overnight low",
+            "value": "32°F at 4 AM",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at 4 AM",
+            "value": "2 mph",
+            "source": "NWS hourly forecast",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Average cloud, 6 PM to 6 AM",
+            "value": "93%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "The NWS has the temperature sliding from 37°F at 9 PM to 32°F at 4 AM and then back up to 35°F by 6 AM, so the frost window is short. With low cloud overhead, surfaces will stay close to the air temperature."
+          },
+          {
+            "cat": "New research",
+            "text": "A 2026 study in The Cryosphere by Rudisill and colleagues, using the SAIL field lab in the Colorado Rockies, found that night clouds add 30 to 40 watts per square metre of heat to the snow surface, enough to stop surface hoar, the frost that grows on snow. Under a high-emissions scenario it projects an 81% drop in the overnight water-vapour deposit by 2100."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "The same study found frost-like hoar grows when the surface is about 10°C colder than the air just above it on clear, calm nights. That gap is why frost can coat a car roof facing the open sky while a thermometer at head height still reads a few degrees above freezing; look at surfaces that see the most sky."
+          }
+        ],
+        "research": [
+          {
+            "title": "Reduced Surface Hoar in a Warming World",
+            "url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-935/",
+            "source": "EGUsphere / The Cryosphere",
+            "note": "2026 field and model study of the conditions that let frost crystals grow on snow, and how cloud and wind stop it."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 11,
+        "title": "Poor night for stargazing",
+        "sub": "Low cloud covers the sky all night, so Saturn in the south after dark is unlikely to show. Monday evening looks far better as the sky clears.",
+        "look": {
+          "bearing": 190,
+          "label": "South after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 93,
+          "moon": 37,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "93% average cloud, 6 PM to 6 AM",
+            "score": 0.17,
+            "note": "7Timer keeps the sky 75% to 97% covered all night, and Open-Meteo has the low cloud at 100% nearly every hour."
+          },
+          {
+            "name": "Moonlight",
+            "val": "37% lit, sets around 10 PM",
+            "score": 0.83,
+            "note": "The crescent brightens the early evening, then leaves the rest of the night dark."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 3 of 8",
+            "score": 0.8,
+            "note": "Above the cloud the air is fairly clean, which will matter once it clears."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "7 PM",
+                "v": 75
+              },
+              {
+                "t": "10 PM",
+                "v": 97
+              },
+              {
+                "t": "1 AM",
+                "v": 97
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          },
+          {
+            "label": "Cloud cover tomorrow evening",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 25
+              },
+              {
+                "t": "7 PM",
+                "v": 12
+              },
+              {
+                "t": "10 PM",
+                "v": 3
+              },
+              {
+                "t": "1 AM",
+                "v": 3
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Average cloud, 6 PM to 6 AM",
+            "value": "93%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Transparency",
+            "value": "3 (1 is clearest)",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moon",
+            "value": "37% lit, waxing crescent",
+            "source": "Computed (synodic month)",
+            "url": "https://www.telescopeadvisor.com/night-sky-in-november-2026/"
+          },
+          {
+            "name": "Planets tonight",
+            "value": "Saturn evening; Jupiter and Mars 1.2° apart before dawn",
+            "source": "Telescope Advisor",
+            "url": "https://www.telescopeadvisor.com/night-sky-in-november-2026/"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "7Timer has the sky at 75% cover at 7 PM and 97% from 10 PM to dawn, then clears it to 25% at 4 PM Monday, 12% at 7 PM and 3% by 10 PM. Tonight is one to skip; tomorrow night is the one to plan for."
+          },
+          {
+            "cat": "New research",
+            "text": "A study by ESO astronomer Olivier Hainaut, accepted by Astronomy and Astrophysics in July 2026, is the first to estimate how satellites brighten the whole background sky, not just leave trails. With about 1.7 million satellites proposed and some 14,000 in orbit now, it suggests keeping the total near 100,000, each fainter than magnitude 7."
+          },
+          {
+            "cat": "Did you know",
+            "text": "William Herschel found Uranus on March 13, 1781, while searching for double stars. It showed a small disk instead of a point, and he first took it for a comet before its orbit showed it was a planet beyond Saturn. Uranus reaches opposition this year on Nov 25."
+          }
+        ],
+        "research": [
+          {
+            "title": "Satellite constellations could make the night sky several times brighter (eso2607)",
+            "url": "https://eso.org/public/news/eso2607/",
+            "source": "ESO",
+            "note": "July 2026 estimate of how satellite fleets raise sky background brightness."
+          }
+        ]
+      },
+      {
+        "type": "iss",
+        "chance": 9,
+        "title": "Space station at 6:47 PM, poor pass",
+        "sub": "A low pass climbing only to 21 degrees in the north-northwest, behind tonight's cloud. Monday's 5:58 PM pass is higher, brighter and under clearing skies.",
+        "look": {
+          "bearing": 315,
+          "label": "Low in the northwest at 6:47 PM"
+        },
+        "params": {
+          "maxEl": 21
+        },
+        "conds": [
+          {
+            "name": "Pass height",
+            "val": "21° maximum",
+            "score": 0.6,
+            "note": "Low passes stay in the thicker air near the horizon."
+          },
+          {
+            "name": "Clear sky",
+            "val": "93% average cloud, 6 PM to 6 AM",
+            "score": 0.17,
+            "note": "7Timer keeps the sky 75% to 97% covered all night, and Open-Meteo has the low cloud at 100% nearly every hour."
+          },
+          {
+            "name": "Brightness",
+            "val": "Magnitude -1.7",
+            "score": 0.85,
+            "note": "Bright enough to see easily through a gap in the cloud."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "7 PM",
+                "v": 75
+              },
+              {
+                "t": "10 PM",
+                "v": 97
+              },
+              {
+                "t": "1 AM",
+                "v": 97
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Pass tonight",
+            "value": "6:47 PM, WNW to NNW, max 21°, mag -1.7",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Pass Monday",
+            "value": "5:58 PM, W to NNE, max 27°, mag -2.2",
+            "source": "Heavens-Above",
+            "url": "https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=40.79&lng=-77.86&loc=Unnamed&alt=350&tz=EST"
+          },
+          {
+            "name": "Cloud at 7 PM",
+            "value": "75%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Heavens-Above has the station appearing in the west-northwest at 6:47 PM and staying low in the north-northwest, peaking at 21 degrees. 7Timer has 75% cloud at 7 PM, the thinnest of the night but still mostly covered."
+          },
+          {
+            "cat": "New research",
+            "text": "NASA's station blog for the week of Nov 2 lists a portable DNA sequencer being used to study antibiotic-resistant bacteria in weightlessness, vascular tissue printed in the BioFabrication Facility, and the Bio-Monitor vest tracking how the heart and lungs adapt during exercise."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The spacewalks this month install the eighth and final roll-out solar array, which NASA says lifts the station's power by about 30%, from roughly 160 kilowatts to about 215. The extra panel area also makes the station a slightly larger reflector of sunlight."
+          }
+        ],
+        "research": [
+          {
+            "title": "Week starts with spacewalk preps and life science",
+            "url": "https://nasa.gov/blogs/spacestation/2026/11/02/week-starts-with-spacewalk-preps-and-life-science",
+            "source": "NASA",
+            "note": "November 2026 station science and the final solar array upgrade."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely tonight",
+        "sub": "Kp tops out at 3.3 between 7 and 10 PM, far short of the 7 or so needed this far south, and the sky is overcast. NOAA forecasts a minor storm late Monday night.",
+        "look": {
+          "bearing": 0,
+          "label": "Low on the northern horizon"
+        },
+        "params": {
+          "kp": 3.3,
+          "cloud": 93,
+          "moon": 37
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 3.3 at most",
+            "score": 0.03,
+            "note": "At 41°N the aurora usually needs Kp 7 or more to show."
+          },
+          {
+            "name": "Clear sky",
+            "val": "93% average cloud, 6 PM to 6 AM",
+            "score": 0.17,
+            "note": "7Timer keeps the sky 75% to 97% covered all night, and Open-Meteo has the low cloud at 100% nearly every hour."
+          },
+          {
+            "name": "Moonlight",
+            "val": "37% lit, sets around 10 PM",
+            "score": 0.93,
+            "note": "The Moon would hardly matter after 10 PM."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "7 PM",
+                "v": 3.33
+              },
+              {
+                "t": "10 PM",
+                "v": 2
+              },
+              {
+                "t": "1 AM",
+                "v": 2
+              },
+              {
+                "t": "4 AM",
+                "v": 3
+              },
+              {
+                "t": "7 AM",
+                "v": 3
+              }
+            ]
+          },
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "7 PM",
+                "v": 75
+              },
+              {
+                "t": "10 PM",
+                "v": 97
+              },
+              {
+                "t": "1 AM",
+                "v": 97
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp tonight",
+            "value": "3.33 (7-10 PM)",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "Highest Kp, Nov 15-17",
+            "value": "4.67 (G1), 10 PM to 1 AM Monday night",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Average cloud",
+            "value": "93%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's 3-day forecast expects a positive-polarity coronal hole stream to bring a G1 minor storm, Kp 4.67, from 10 PM to 1 AM Monday night. That is still well short of what State College usually needs, but it is the most active stretch of the next three days."
+          },
+          {
+            "cat": "New research",
+            "text": "A 2026 Nature Communications paper led by Sheng Tian of UCLA combined spacecraft and ground cameras from a lined-up pass on April 16, 2015. It found Alfvén waves carrying energy down field lines to a zone about 1.5 Earth radii up, where a 1 to 10 kilovolt drop speeds electrons to 1 to 10 keV and lights the arc, with similar particle signatures seen at Jupiter."
+          },
+          {
+            "cat": "How it works",
+            "text": "An auroral arc is lit by electrons that a voltage drop high above the pole accelerates downward. In satellite data their energies form an upside-down V across the arc, highest in the middle, which is why scientists call these inverted-V events."
+          }
+        ],
+        "research": [
+          {
+            "title": "Alfvén waves power the auroral acceleration region (THEMIS science nugget)",
+            "url": "https://themis.igpp.ucla.edu/nuggets/nuggets_2026/tianNC/Tian_26.html",
+            "source": "UCLA THEMIS",
+            "note": "2026 summary of how wave energy becomes the electric field that drives auroral arcs."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Nov 16-17",
+        "name": "Minor geomagnetic storm forecast",
+        "note": "NOAA expects Kp near 4.7 from 10 PM to 1 AM, likely too weak to show at 41°N, but worth a glance north with clearing skies."
+      },
+      {
+        "date": "Nov 17-18",
+        "name": "Leonids peak",
+        "note": "Debris from comet 55P/Tempel-Tuttle at 71 km/s; guides give about 15 meteors an hour, and the first-quarter Moon sets around midnight. The AMS lists the peak a night earlier, Nov 16-17."
+      },
+      {
+        "date": "Nov 20",
+        "name": "Mercury at greatest western elongation",
+        "note": "19.6 degrees from the Sun, 7 to 10 degrees up in the east-southeast 45 minutes before sunrise."
+      },
+      {
+        "date": "Nov 24",
+        "name": "Beaver supermoon",
+        "note": "The full Moon falls close to perigee, so it looks slightly larger and brighter than average."
+      },
+      {
+        "date": "Nov 25",
+        "name": "Uranus at opposition",
+        "note": "Magnitude 5.6 in Taurus and up all night; binoculars show it as a star-like point."
+      }
+    ],
+    "sourceFailures": [
+      "IMO meteor calendar"
+    ],
+    "ideas": [
+      {
+        "title": "RainViewer ended its satellite frames; Rainbow.ai cloud nowcast tiles as an alternative",
+        "kind": "data"
+      }
+    ]
+  },
+  {
     "date": "2026-11-14",
     "checkedLabel": "Sat Nov 14, 6:00 AM ET",
     "place": "State College, PA",
