@@ -1,5 +1,751 @@
 [
   {
+    "date": "2026-11-21",
+    "checkedLabel": "Sat Nov 21, 6:00 AM ET",
+    "place": "State College, PA",
+    "placeId": "state-college-pa",
+    "lat": 40.79,
+    "lon": -77.86,
+    "summary": "A grey, overcast night from sunset to dawn, with the 92%-lit Moon and the small Alpha Monocerotid peak both hidden behind the cloud.",
+    "featured": "sunset",
+    "pick": "Tonight's cloud hides everything, so plan for Wednesday, November 25, about 6 AM: Jupiter, Mars and the star Regulus fit in one binocular field high in the south, the closest such grouping until 2062.",
+    "next": {
+      "name": "Full Beaver Moon",
+      "date": "2026-11-24"
+    },
+    "sky": {
+      "moon": {
+        "phase": "Waxing gibbous",
+        "lit": 92,
+        "note": "Rises 2:38 PM and sets 4:44 AM, behind cloud all night."
+      },
+      "items": [
+        {
+          "name": "Saturn",
+          "when": "Evening",
+          "where": "Southeast after dusk",
+          "note": "Retrograding in front of Cetus; the only bright evening planet."
+        },
+        {
+          "name": "Uranus",
+          "when": "All night",
+          "where": "Taurus, between the Pleiades and Hyades",
+          "note": "Magnitude 5.6, a binocular target; opposition on November 25."
+        },
+        {
+          "name": "Jupiter and Mars",
+          "when": "Before dawn",
+          "where": "High in the south about an hour before sunrise",
+          "note": "Closing in on Regulus for the November 25 grouping."
+        },
+        {
+          "name": "Venus",
+          "when": "Before dawn",
+          "where": "About 20 degrees up in the southeast",
+          "note": "Close to the upper left of the star Spica."
+        },
+        {
+          "name": "Space station",
+          "when": "5:14 PM",
+          "where": "Low in the north, 15 degrees at best",
+          "note": "Magnitude -1.5 but behind cloud; a 61-degree pass comes November 28 at 6:05 PM."
+        }
+      ]
+    },
+    "quiz": {
+      "q": "The new meteor stream M2026-A1, confirmed in 2026, most likely comes from what?",
+      "options": [
+        "A rocky asteroid shedding debris close to the Sun",
+        "Halley's Comet",
+        "Pieces of a broken-up satellite",
+        "Rock blasted off the Moon by an impact"
+      ],
+      "answer": 0,
+      "explain": "Its 282 meteors follow an asteroid-like orbit that comes within 0.22 au of the Sun, where heating can crumble a rocky body into a 'rock-comet' stream."
+    },
+    "events": [
+      {
+        "type": "sunset",
+        "chance": 20,
+        "title": "Plain sunset at 4:48 PM",
+        "sub": "The Sun sets at 4:48 PM in the west-southwest under a solid deck of mid and high cloud. With no gap on the horizon for low sunlight to shine through, expect a grey fade rather than color; a sudden break to the southwest is the only thing that would change that.",
+        "look": {
+          "bearing": 244,
+          "label": "West-southwest at 4:48 PM"
+        },
+        "params": {
+          "highCloud": 100
+        },
+        "conds": [
+          {
+            "name": "Cloud to light up",
+            "val": "97% cloud; 100% mid and high",
+            "score": 0.3,
+            "note": "There is plenty of cloud, but it is a continuous sheet, so the setting Sun cannot get underneath to light it from below."
+          },
+          {
+            "name": "Dry at sunset",
+            "val": "No rain",
+            "score": 0.95,
+            "note": "7Timer shows no precipitation and the NWS has a 0% chance of rain at 5 PM."
+          },
+          {
+            "name": "Forecast confidence",
+            "val": "Rough guide",
+            "score": 0.7,
+            "note": "This rating uses total cloud only, not where the gaps are, so it is a rough guide."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud layers around sunset",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 100
+              },
+              {
+                "t": "4 PM",
+                "v": 100
+              },
+              {
+                "t": "5 PM",
+                "v": 100
+              },
+              {
+                "t": "6 PM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Sunset",
+            "value": "4:48 PM",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Low, mid and high cloud at 5 PM",
+            "value": "0%, 100%, 100%",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Total cloud at 4 PM",
+            "value": "97%",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Rain chance at 5 PM",
+            "value": "0%",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Open-Meteo has the mid-level deck arriving at 4 PM, less than an hour before sunset, on top of high cloud that is already in place, with almost nothing below 2 km. That layering means the sky to the west-southwest should go from bright grey to dark grey with little warm color."
+          },
+          {
+            "cat": "New research",
+            "text": "An EGUsphere preprint posted in August 2026 by Anna Lange, Christian von Savigny and colleagues modelled twilight colors after volcanic eruptions in a world already using stratospheric aerosol injection. Their simulations show Bishop's Rings around the low Sun, an unusual greenish twilight and a stronger purple light as aerosol loading rises."
+          },
+          {
+            "cat": "How it works",
+            "text": "Colorful sunsets need two things at once: cloud high enough to catch red light, and a clear slot near the horizon so that light can reach it. When the horizon itself is blocked, as tonight, the clouds above only see sunlight that has already been dimmed and grayed by the cloud below the Sun."
+          },
+          {
+            "cat": "On this day",
+            "text": "On November 21, 1676, Ole Rømer told the Royal Academy of Sciences in Paris that light takes time to travel. He had timed Io emerging from Jupiter's shadow and found it ran about 10 minutes late when Earth was farther from Jupiter, the first measurement showing light has a finite speed."
+          }
+        ],
+        "research": [
+          {
+            "title": "Volcanic eruptions alter sky colours in a geoengineered world",
+            "url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3347/",
+            "source": "EGUsphere (Copernicus)",
+            "note": "August 2026 preprint modelling twilight colors, purple light and Bishop's Rings."
+          },
+          {
+            "title": "Rømer's determination of the speed of light",
+            "url": "https://en.wikipedia.org/wiki/R%C3%B8mer%27s_determination_of_the_speed_of_light",
+            "source": "Wikipedia",
+            "note": "How timings of Io's eclipses, presented on November 21, 1676, showed light has a finite speed."
+          }
+        ]
+      },
+      {
+        "type": "fog",
+        "chance": 11,
+        "title": "Valley fog very unlikely at sunrise",
+        "sub": "The air will be almost saturated by dawn, with the dew point within 1-2°F of the temperature and no wind, but a thick cloud deck overhead stops the ground from cooling. Expect damp, grey air and perhaps mist, not the classic sea of fog in the valleys.",
+        "look": {
+          "bearing": 90,
+          "label": "Down into the valleys from a ridge at sunrise"
+        },
+        "params": {
+          "spreadF": 1,
+          "wind": 0,
+          "cloud": 97
+        },
+        "conds": [
+          {
+            "name": "Air near saturation",
+            "val": "1°F gap (44/43°F at 8 AM)",
+            "score": 0.95,
+            "note": "The temperature and dew point are only 2°F apart at 7 AM and 1°F apart by 8 AM."
+          },
+          {
+            "name": "Light wind",
+            "val": "0 mph",
+            "score": 0.95,
+            "note": "The NWS has calm air from 3 AM onward, which would normally let fog settle."
+          },
+          {
+            "name": "Clear sky",
+            "val": "97% cloud on average",
+            "score": 0.127,
+            "note": "Cloud keeps the ground from losing heat to space; the NWS has the temperature stuck between 42 and 45°F all night, so the valleys never get the extra chill that forms radiation fog."
+          }
+        ],
+        "series": [
+          {
+            "label": "Temperature minus dew point",
+            "unit": "°F",
+            "max": 20,
+            "source": "National Weather Service",
+            "points": [
+              {
+                "t": "8 PM",
+                "v": 8
+              },
+              {
+                "t": "11 PM",
+                "v": 6
+              },
+              {
+                "t": "2 AM",
+                "v": 5
+              },
+              {
+                "t": "5 AM",
+                "v": 2
+              },
+              {
+                "t": "7 AM",
+                "v": 2
+              },
+              {
+                "t": "8 AM",
+                "v": 1
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Lowest temp minus dew point, midnight to 8 AM",
+            "value": "1°F (44/43°F at 8 AM)",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Wind at that time",
+            "value": "0 mph",
+            "source": "National Weather Service",
+            "url": "https://api.weather.gov/gridpoints/CTP/69,57/forecast/hourly"
+          },
+          {
+            "name": "Sunrise",
+            "value": "7:06 AM",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "97% at every 3-hour step, 7 PM to 7 AM",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Under tonight's cloud deck the NWS has the air cooling only 7°F, from 49°F at 7 PM to 42°F at 5 AM, while the dew point holds near 40°F: close to saturation, but without the hard ground chill that makes thick valley fog."
+          },
+          {
+            "cat": "New research",
+            "text": "A September 2026 study in Atmospheric Chemistry and Physics by a Karlsruhe team found that warm-water intrusions called Benguela Niños explain nearly half of the year-to-year swings in fog along Angola's Namib coast: warmer sea, less fog. Over 1982-2019, a more stable atmosphere and a warming ocean roughly cancelled out."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The fog that waters life in the Namib Desert is a different kind from Central Pennsylvania's valley fog: it is advection fog, made when moist ocean air is chilled over cold coastal water and blown onshore, rather than fog made by ground cooling on a clear night."
+          }
+        ],
+        "research": [
+          {
+            "title": "Coastal upwelling and tropical warm water intrusions are key drivers of interannual fog variability along the southwestern African coast",
+            "url": "https://acp.copernicus.org/articles/26/12565/2026/",
+            "source": "Atmospheric Chemistry and Physics",
+            "note": "Satellite fog records from 2004-2019, extended to 1982, show what controls coastal fog year to year."
+          }
+        ]
+      },
+      {
+        "type": "stars",
+        "chance": 6,
+        "title": "Poor night for stargazing",
+        "sub": "Solid cloud is forecast from dusk to dawn, and the 92%-lit Moon would wash out faint stars even through a gap. If a break opens, Saturn is the target in the southeast after dark.",
+        "look": {
+          "bearing": 135,
+          "label": "Southeast after dark, for Saturn"
+        },
+        "params": {
+          "cloud": 97,
+          "moon": 92,
+          "planets": [
+            "Saturn",
+            "Jupiter",
+            "Venus"
+          ],
+          "clarity": 4
+        },
+        "conds": [
+          {
+            "name": "Clear sky",
+            "val": "97% cloud on average",
+            "score": 0.127,
+            "note": "7Timer has the top cloud class at every step from 7 PM to 7 AM, and Open-Meteo has 100% mid and high cloud all night."
+          },
+          {
+            "name": "Moonlight",
+            "val": "92% lit, up until 4:44 AM",
+            "score": 0.586,
+            "note": "The Moon rises at 2:38 PM and is up through most of the night, so only bright stars and planets would show."
+          },
+          {
+            "name": "Clear air",
+            "val": "Transparency 3 of 8",
+            "score": 0.8,
+            "note": "7Timer rates the air above the cloud as fairly clear, which would only matter through a break."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 97
+              },
+              {
+                "t": "7 PM",
+                "v": 97
+              },
+              {
+                "t": "10 PM",
+                "v": 97
+              },
+              {
+                "t": "1 AM",
+                "v": 97
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          },
+          {
+            "label": "Mid-level cloud tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "Open-Meteo",
+            "points": [
+              {
+                "t": "3 PM",
+                "v": 0
+              },
+              {
+                "t": "4 PM",
+                "v": 100
+              },
+              {
+                "t": "7 PM",
+                "v": 100
+              },
+              {
+                "t": "10 PM",
+                "v": 100
+              },
+              {
+                "t": "1 AM",
+                "v": 100
+              },
+              {
+                "t": "4 AM",
+                "v": 100
+              },
+              {
+                "t": "7 AM",
+                "v": 100
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "97% at every 3-hour step, 7 PM to 7 AM",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Low, mid and high cloud, evening to dawn",
+            "value": "0-13% low, 100% mid, 100% high",
+            "source": "Open-Meteo",
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=40.79&longitude=-77.86&daily=sunrise,sunset&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high&timezone=America%2FNew_York&forecast_days=2"
+          },
+          {
+            "name": "Transparency",
+            "value": "3 of 8",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          },
+          {
+            "name": "Moonrise and moonset",
+            "value": "Rises 2:38 PM, sets 4:44 AM",
+            "source": "Time and Date",
+            "url": "https://www.timeanddate.com/moon/usa/state-college"
+          },
+          {
+            "name": "Uranus",
+            "value": "Magnitude 5.6 in Taurus; opposition Nov 25",
+            "source": "BBC Sky at Night",
+            "url": "https://www.skyatnightmagazine.com/news/uranus-november-2026"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "Sky at Night picked this evening, around 7:15 PM Eastern, as the best time this year to find Uranus, because the Moon is still well away from it in Taurus. Tonight's cloud takes that chance away, and by opposition on November 25 the full Moon sits only about 6 degrees from the planet."
+          },
+          {
+            "cat": "New research",
+            "text": "A University of Connecticut team led by Zhe Zhu reported in Nature in 2026 that artificial light at night grew 16% between 2014 and 2022 in NASA satellite data, with the United States the most brightly lit country. Some areas did get darker, including places that switch streetlights off late at night."
+          },
+          {
+            "cat": "Did you know",
+            "text": "The Pleiades, a few degrees from Uranus tonight, are only the bright core of a much larger family: a 2025 study in The Astrophysical Journal used Gaia motions, TESS spin rates and SDSS chemistry to find about 3,000 sibling stars spread across nearly 2,000 light-years, all born in the same star-forming event about 100 million years ago."
+          }
+        ],
+        "research": [
+          {
+            "title": "Light pollution increased 16% between 2014 and 2022, study finds",
+            "url": "https://petapixel.com/2026/05/08/light-pollution-increased-16-between-2014-and-2022-study-finds/",
+            "source": "PetaPixel",
+            "note": "May 2026 report on the Nature study of Earth's night lights."
+          },
+          {
+            "title": "The Pleiades is part of an enormous stellar complex birthed by the same star-forming event",
+            "url": "https://carnegiescience.edu/pleiades-part-enormous-stellar-complex-birthed-same-star-forming-event",
+            "source": "Carnegie Science",
+            "note": "The Greater Pleiades Complex, found by matching motion, spin and chemistry."
+          },
+          {
+            "title": "Right now is your best chance to see Uranus",
+            "url": "https://www.skyatnightmagazine.com/news/uranus-november-2026",
+            "source": "BBC Sky at Night Magazine",
+            "note": "Why November 22 (UT) beats opposition night for finding Uranus this year."
+          }
+        ]
+      },
+      {
+        "type": "meteor",
+        "chance": 4,
+        "title": "Alpha Monocerotids peak: poor night",
+        "sub": "The small Alpha Monocerotid shower peaks tonight, usually with only a few meteors an hour, and both a full cloud deck and a 92%-lit Moon stand in the way. If the sky clears, the best window is after moonset at 4:44 AM, facing south.",
+        "look": {
+          "bearing": 180,
+          "label": "South, after moonset at 4:44 AM"
+        },
+        "params": {
+          "shower": "Alpha Monocerotids",
+          "radiant": "Monoceros, RA 117°, Dec +1°",
+          "speed": 65,
+          "zhr": 4,
+          "parent": "Unknown long-period comet",
+          "cloud": 97,
+          "moon": 92
+        },
+        "conds": [
+          {
+            "name": "Shower strength",
+            "val": "About 4 an hour at best",
+            "score": 0.52,
+            "note": "The IMO lists the peak as November 22 and expects no outburst this year; a Dutch forecast gives about 4 meteors an hour even with the radiant overhead."
+          },
+          {
+            "name": "Clear sky",
+            "val": "97% cloud on average",
+            "score": 0.127,
+            "note": "No breaks are forecast at any hour, which matters most for faint, fast meteors like these."
+          },
+          {
+            "name": "Moonlight",
+            "val": "92% lit, sets 4:44 AM",
+            "score": 0.586,
+            "note": "The Moon is up until 4:44 AM, leaving about an hour of dark sky before dawn."
+          }
+        ],
+        "series": [
+          {
+            "label": "Cloud cover tonight",
+            "unit": "%",
+            "max": 100,
+            "source": "7Timer",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 97
+              },
+              {
+                "t": "7 PM",
+                "v": 97
+              },
+              {
+                "t": "10 PM",
+                "v": 97
+              },
+              {
+                "t": "1 AM",
+                "v": 97
+              },
+              {
+                "t": "4 AM",
+                "v": 97
+              },
+              {
+                "t": "7 AM",
+                "v": 97
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Peak",
+            "value": "November 22, solar longitude 239.32°",
+            "source": "IMO 2026 Meteor Shower Calendar",
+            "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
+          },
+          {
+            "name": "Radiant and speed",
+            "value": "RA 117°, Dec +1°; 65 km/s",
+            "source": "IMO 2026 Meteor Shower Calendar",
+            "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
+          },
+          {
+            "name": "Expected rate",
+            "value": "About 4 an hour with the radiant overhead",
+            "source": "hemel.waarnemen.com",
+            "url": "https://hemel.waarnemen.com/meteoorzwermen/alfa-Monocerotiden_2026.html"
+          },
+          {
+            "name": "Moonset",
+            "value": "4:44 AM",
+            "source": "Time and Date",
+            "url": "https://www.timeanddate.com/moon/usa/state-college"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "97% at every 3-hour step, 7 PM to 7 AM",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "From State College the radiant in Monoceros rises around 10 PM and stands highest, almost 50 degrees up in the south, around 4 AM, just before the Moon sets at 4:44 AM."
+          },
+          {
+            "cat": "New research",
+            "text": "Patrick Shober's paper in The Astrophysical Journal (2026) searched 235,271 meteors from four camera networks and confirmed a new stream, M2026-A1, of 282 meteors on an asteroid-like orbit that dips to 0.22 au from the Sun, likely debris shed by a rocky body baking near the Sun."
+          },
+          {
+            "cat": "Observing tip",
+            "text": "Alpha Monocerotids hit the air at 65 km/s, among the fastest of any shower, so they are short, quick streaks; tracing one back to a point about 5 degrees south of the bright star Procyon tells you it belongs to the shower rather than being a random meteor."
+          }
+        ],
+        "research": [
+          {
+            "title": "Asteroidal activity amongst meteor datasets: Confirmed new \"rock-comet\" stream and search for a tidal disruption signature",
+            "url": "https://arxiv.org/abs/2602.16845",
+            "source": "arXiv / The Astrophysical Journal",
+            "note": "A new meteor stream that appears to come from an asteroid breaking down near the Sun."
+          }
+        ]
+      },
+      {
+        "type": "aurora",
+        "chance": 1,
+        "title": "Aurora very unlikely tonight",
+        "sub": "NOAA forecasts a quiet magnetic field with Kp no higher than 2.33 tonight, far below the Kp 7 usually needed this far south, and the sky is overcast.",
+        "look": {
+          "bearing": 0,
+          "label": "North, low over the horizon"
+        },
+        "params": {
+          "kp": 2.33,
+          "cloud": 97,
+          "moon": 92
+        },
+        "conds": [
+          {
+            "name": "Storm strength",
+            "val": "Kp 2.33 at most",
+            "score": 0.03,
+            "note": "NOAA expects no G1 or stronger storm and no solar wind features through November 23."
+          },
+          {
+            "name": "Clear sky",
+            "val": "97% cloud on average",
+            "score": 0.127,
+            "note": "Even a surprise storm would be hidden by tonight's unbroken cloud."
+          },
+          {
+            "name": "Moonlight",
+            "val": "92% lit",
+            "score": 0.816,
+            "note": "The bright Moon would dim a faint glow but not hide a strong display."
+          }
+        ],
+        "series": [
+          {
+            "label": "Kp forecast, 3-hour blocks",
+            "unit": "Kp",
+            "max": 9,
+            "threshold": 7,
+            "thresholdLabel": "needed at 41N",
+            "source": "NOAA SWPC",
+            "points": [
+              {
+                "t": "4 PM",
+                "v": 2.33
+              },
+              {
+                "t": "7 PM",
+                "v": 2.33
+              },
+              {
+                "t": "10 PM",
+                "v": 2
+              },
+              {
+                "t": "1 AM",
+                "v": 2
+              },
+              {
+                "t": "4 AM",
+                "v": 2
+              },
+              {
+                "t": "7 AM",
+                "v": 2
+              }
+            ]
+          }
+        ],
+        "readings": [
+          {
+            "name": "Max Kp, dark hours",
+            "value": "2.33 (4-10 PM)",
+            "source": "NOAA SWPC",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json"
+          },
+          {
+            "name": "Storm outlook Nov 21-23",
+            "value": "No G1 or stronger expected; max Kp 4.00 on Nov 23",
+            "source": "NOAA SWPC 3-day forecast",
+            "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+          },
+          {
+            "name": "Cloud cover, dark hours",
+            "value": "97% at every 3-hour step, 7 PM to 7 AM",
+            "source": "7Timer",
+            "url": "https://www.7timer.info/bin/astro.php?lon=-77.86&lat=40.79&ac=0&unit=metric&output=json&tzshift=0"
+          }
+        ],
+        "facts": [
+          {
+            "cat": "Tonight",
+            "text": "NOAA's highest Kp for the next three days is 4.00, in the 7-10 AM block on November 23, during daylight here and still three steps short of what an aurora at 41N normally needs."
+          },
+          {
+            "cat": "New research",
+            "text": "A University of Southampton team reported in Nature Communications (November 2025) that auroral kilometric radiation, natural radio emission from above the aurora, shows a distinct signal just as auroral beads appear, then jumps at substorm onset, linking the beads to what triggers the substorm."
+          },
+          {
+            "cat": "How it works",
+            "text": "Auroral beads are evenly spaced bright spots that form along a quiet arc shortly before it erupts into a substorm. Researchers read them as the visible sign of an instability growing in near-Earth space, which is why catching the moment they appear helps pin down what sets a substorm off."
+          }
+        ],
+        "research": [
+          {
+            "title": "Scientists close in on solving the mystery behind intense auroral storms",
+            "url": "https://www.southampton.ac.uk/news/2025/11/scientists-close-in-on-solving-the-mystery-behind-intense-auroral-storms.page",
+            "source": "University of Southampton",
+            "note": "Radio signals from above the aurora that mark substorm onset."
+          }
+        ]
+      }
+    ],
+    "upcoming": [
+      {
+        "date": "Nov 24",
+        "name": "Full Beaver Moon",
+        "note": "Full at 9:53 AM, close to perigee, so it rises large and bright that evening."
+      },
+      {
+        "date": "Nov 25",
+        "name": "Jupiter, Mars and Regulus; Uranus at opposition",
+        "note": "Before dawn the three fit in one binocular field; Uranus is at its brightest, magnitude 5.6, but sits near the bright Moon."
+      },
+      {
+        "date": "Nov 28",
+        "name": "Bright space station pass",
+        "note": "6:05 PM, climbing to 61 degrees at magnitude -3.8, the best pass of the coming week."
+      },
+      {
+        "date": "Nov 28",
+        "name": "November Orionids maximum",
+        "note": "A weak shower of about 3 an hour, only four days after Full Moon."
+      },
+      {
+        "date": "Dec 13-14",
+        "name": "Geminids peak",
+        "note": "Maximum December 14 at 14h UT with a ZHR of 150 and little moonlight."
+      }
+    ],
+    "sourceFailures": [],
+    "ideas": []
+  },
+  {
     "date": "2026-11-20",
     "checkedLabel": "Fri Nov 20, 6:00 AM ET",
     "place": "State College, PA",
